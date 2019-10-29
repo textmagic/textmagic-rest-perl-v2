@@ -147,7 +147,7 @@ __PACKAGE__->method_documentation({
     'cost' => {
     	datatype => 'Number',
     	base_name => 'cost',
-    	description => 'Cost to check one number is constant – 0.04 in your account currency.',
+    	description => 'Cost to check that one number is constant – 0.04 in your account currency.',
     	format => '',
     	read_only => '',
     		},
@@ -168,7 +168,7 @@ __PACKAGE__->method_documentation({
     'encoding' => {
     	datatype => 'string',
     	base_name => 'encoding',
-    	description => 'Message charset. Could be: * **ISO-8859-1** for plaintext SMS * **UTF-16BE** for Unicode SMS ',
+    	description => 'Message charset. Could be: * **ISO-8859-1** – for plaintext SMS; * **UTF-16BE** – for Unicode SMS. ',
     	format => '',
     	read_only => '',
     		},
@@ -182,7 +182,7 @@ __PACKAGE__->method_documentation({
     'charset_label' => {
     	datatype => 'string',
     	base_name => 'charsetLabel',
-    	description => 'Human-readable message charset label. Could be: *   **ISO-8859-1** for plaintext SMS *   **UTF-16BE** for Unicode SMS *   **Voice** for voice services (Text-to-Speech or Voice Broadcast) messages ',
+    	description => 'Human-readable message charset label. Could be: *   **ISO-8859-1** for plaintext SMS; *   **UTF-16BE** for Unicode SMS; *   **Voice** for voice services (Text-to-Speech or Voice Broadcast) messages. ',
     	format => '',
     	read_only => '',
     		},

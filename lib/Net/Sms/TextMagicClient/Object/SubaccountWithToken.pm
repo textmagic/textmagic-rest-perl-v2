@@ -241,14 +241,14 @@ __PACKAGE__->method_documentation({
     'email_accepted' => {
     	datatype => 'boolean',
     	base_name => 'emailAccepted',
-    	description => 'Is account has confirmed Email.',
+    	description => 'Does the account have a confirmed Email?.',
     	format => '',
     	read_only => '',
     		},
     'phone_accepted' => {
     	datatype => 'boolean',
     	base_name => 'phoneAccepted',
-    	description => 'Is account has confirmed Phone number.',
+    	description => 'Does the account have a confirmed Phone Number?.',
     	format => '',
     	read_only => '',
     		},

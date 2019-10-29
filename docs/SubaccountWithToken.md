@@ -21,8 +21,8 @@ Name | Type | Description | Notes
 **country** | [**Country**](Country.md) |  | 
 **timezone** | [**Timezone**](Timezone.md) |  | 
 **subaccount_type** | **string** | Type of account: *   **A** for Administrator sub-account *   **U** for Regular User  | 
-**email_accepted** | **boolean** | Is account has confirmed Email. | 
-**phone_accepted** | **boolean** | Is account has confirmed Phone number. | 
+**email_accepted** | **boolean** | Does the account have a confirmed Email?. | 
+**phone_accepted** | **boolean** | Does the account have a confirmed Phone Number?. | 
 **avatar** | [**UserImage**](UserImage.md) |  | 
 **token** | **string** | Access token of account. | 
 

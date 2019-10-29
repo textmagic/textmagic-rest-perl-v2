@@ -674,13 +674,13 @@ isa_ok($api, 'Net::Sms::TextMagicClient::TextMagicApi');
 }
 
 #
-# get_favourites test
+# get_favorites test
 #
 {
     my $page = undef; # replace NULL with a proper value
     my $limit = undef; # replace NULL with a proper value
     my $query = undef; # replace NULL with a proper value
-    my $result = $api->get_favourites(page => $page, limit => $limit, query => $query);
+    my $result = $api->get_favorites(page => $page, limit => $limit, query => $query);
 }
 
 #

@@ -155,7 +155,7 @@ __PACKAGE__->method_documentation({
     'price' => {
     	datatype => 'Number',
     	base_name => 'price',
-    	description => 'Amount of credit which will be deducted from your account balance when this verification is successfully completed.',
+    	description => 'An amount of credit which will be deducted from your account balance when this verification is successfully completed.',
     	format => '',
     	read_only => '',
     		},

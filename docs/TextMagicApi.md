@@ -84,7 +84,7 @@ Method | HTTP request | Description
 [**get_custom_field**](TextMagicApi.md#get_custom_field) | **GET** /api/v2/customfields/{id} | Get the details of a specific custom field
 [**get_custom_fields**](TextMagicApi.md#get_custom_fields) | **GET** /api/v2/customfields | Get all custom fields
 [**get_dedicated_number**](TextMagicApi.md#get_dedicated_number) | **GET** /api/v2/numbers/{id} | Get the details of a specific dedicated number
-[**get_favourites**](TextMagicApi.md#get_favourites) | **GET** /api/v2/contacts/favorite | Get favorite contacts and lists
+[**get_favorites**](TextMagicApi.md#get_favorites) | **GET** /api/v2/contacts/favorite | Get favorite contacts and lists
 [**get_inbound_message**](TextMagicApi.md#get_inbound_message) | **GET** /api/v2/replies/{id} | Get a single inbound message
 [**get_inbound_messages_notification_settings**](TextMagicApi.md#get_inbound_messages_notification_settings) | **GET** /api/v2/user/notification/inbound | Get inbound messages notification settings
 [**get_invoices**](TextMagicApi.md#get_invoices) | **GET** /api/v2/invoices | Get all invoices
@@ -328,7 +328,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     password => 'YOUR_PASSWORD',
 );
 
-my $verify_id = '"123e4567-e89b-12d3-a456-426655440000"'; # string | the verifyId that you received in Step 1.
+my $verify_id = '"123e4567-e89b-12d3-a456-426655440000"'; # string | The verifyId that you received in Step 1.
 
 eval { 
     $api_instance->cancel_verification(verify_id => $verify_id);
@@ -342,7 +342,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **verify_id** | **string**| the verifyId that you received in Step 1. | 
+ **verify_id** | **string**| The verifyId that you received in Step 1. | 
 
 ### Return type
 
@@ -1491,7 +1491,7 @@ void (empty response body)
 
 Delete a single inbound message
 
-> Note, deleted inbound message will disappear from TextMagic Online, chats, and any other place they are referenced.  So, be careful! 
+> Note: deleted inbound messages will disappear from TextMagic Online, chats, and any other place they are referenced.  So, be careful! 
 
 ### Example 
 ```perl
@@ -1540,7 +1540,7 @@ void (empty response body)
 
 Delete inbound messages (bulk)
 
-> Note, deleted inbound message will disappear from TextMagic Online, chats, and any other place they are referenced.  So, be careful! 
+> Note: deleted inbound messages will disappear from TextMagic Online, chats, and any other place they are referenced.  So, be careful! 
 
 ### Example 
 ```perl
@@ -2398,9 +2398,9 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 my $status = '"a"'; # string | Fetch only (a)ctive, (c)losed or (d)eleted chats
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
-my $voice = 56; # int | Fetch results with voice calls
-my $flat = 1; # int | Should additional contact info be included
+my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
+my $voice = 56; # int | Fetch results with voice calls.
+my $flat = 1; # int | Should additional contact info be included?
 
 eval { 
     my $result = $api_instance->get_all_chats(status => $status, page => $page, limit => $limit, order_by => $order_by, voice => $voice, flat => $flat);
@@ -2418,9 +2418,9 @@ Name | Type | Description  | Notes
  **status** | **string**| Fetch only (a)ctive, (c)losed or (d)eleted chats | [optional] 
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
- **voice** | **int**| Fetch results with voice calls | [optional] [default to 0]
- **flat** | **int**| Should additional contact info be included | [optional] [default to 0]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
+ **voice** | **int**| Fetch results with voice calls. | [optional] [default to 0]
+ **flat** | **int**| Should additional contact info be included? | [optional] [default to 0]
 
 ### Return type
 
@@ -2457,7 +2457,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
+my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
@@ -2475,7 +2475,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
 ### Return type
@@ -2619,7 +2619,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $status = 'status_example'; # string | Fetch schedules with the specific status: a - actual, c - completed, x - all
+my $status = 'status_example'; # string | Fetch schedules with a specific status: a - actual, c - completed, x - all.
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
@@ -2638,7 +2638,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **status** | **string**| Fetch schedules with the specific status: a - actual, c - completed, x - all | [optional] [default to x]
+ **status** | **string**| Fetch schedules with a specific status: a - actual, c - completed, x - all. | [optional] [default to x]
  **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
@@ -3185,10 +3185,10 @@ my $id = 1; # int |
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
 my $query = 'query_example'; # string | Find messages by specified search query
-my $start = 56; # int | Return messages since specified timestamp only
-my $end = 56; # int | Return messages up to specified timestamp only
+my $start = 56; # int | Return messages since specified timestamp only.
+my $end = 56; # int | Return messages up to specified timestamp only.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
-my $voice = 56; # int | Fetch results with voice calls
+my $voice = 56; # int | Fetch results with voice calls.
 
 eval { 
     my $result = $api_instance->get_chat_messages(id => $id, page => $page, limit => $limit, query => $query, start => $start, end => $end, direction => $direction, voice => $voice);
@@ -3207,10 +3207,10 @@ Name | Type | Description  | Notes
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **query** | **string**| Find messages by specified search query | [optional] 
- **start** | **int**| Return messages since specified timestamp only | [optional] 
- **end** | **int**| Return messages up to specified timestamp only | [optional] 
+ **start** | **int**| Return messages since specified timestamp only. | [optional] 
+ **end** | **int**| Return messages up to specified timestamp only. | [optional] 
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
- **voice** | **int**| Fetch results with voice calls | [optional] [default to 0]
+ **voice** | **int**| Fetch results with voice calls. | [optional] [default to 0]
 
 ### Return type
 
@@ -3945,8 +3945,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_favourites**
-> GetFavouritesPaginatedResponse get_favourites(page => $page, limit => $limit, query => $query)
+# **get_favorites**
+> GetFavoritesPaginatedResponse get_favorites(page => $page, limit => $limit, query => $query)
 
 Get favorite contacts and lists
 
@@ -3968,11 +3968,11 @@ my $limit = 56; # int | The number of results per page.
 my $query = '"A"'; # string | Find contacts or lists by specified search query
 
 eval { 
-    my $result = $api_instance->get_favourites(page => $page, limit => $limit, query => $query);
+    my $result = $api_instance->get_favorites(page => $page, limit => $limit, query => $query);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling TextMagicApi->get_favourites: $@\n";
+    warn "Exception when calling TextMagicApi->get_favorites: $@\n";
 }
 ```
 
@@ -3986,7 +3986,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetFavouritesPaginatedResponse**](GetFavouritesPaginatedResponse.md)
+[**GetFavoritesPaginatedResponse**](GetFavoritesPaginatedResponse.md)
 
 ### Authorization
 
@@ -6237,7 +6237,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
 my $query = 'query_example'; # string | Find chats by specified search query
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
+my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
 
 eval { 
     my $result = $api_instance->search_chats_by_receipent(page => $page, limit => $limit, query => $query, order_by => $order_by);
@@ -6255,7 +6255,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **query** | **string**| Find chats by specified search query | [optional] 
- **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
 
 ### Return type
 
@@ -6296,7 +6296,7 @@ my $shared = 56; # int | Should shared contacts to be included
 my $ids = 'ids_example'; # string | Find contact by ID(s)
 my $list_id = 56; # int | Find contact by List ID
 my $include_blocked = 56; # int | Should blocked contacts to be included
-my $query = 'query_example'; # string | Find contacts by specified search query
+my $query = 'query_example'; # string | Find contacts by specified search query.
 my $local = 56; # int | Treat phone number passed in 'query' field as local. Default is 0
 my $country = 'country_example'; # string | 2-letter ISO country code for local phone numbers, used when 'local' is set to true. Default is account country
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
@@ -6321,7 +6321,7 @@ Name | Type | Description  | Notes
  **ids** | **string**| Find contact by ID(s) | [optional] 
  **list_id** | **int**| Find contact by List ID | [optional] 
  **include_blocked** | **int**| Should blocked contacts to be included | [optional] 
- **query** | **string**| Find contacts by specified search query | [optional] 
+ **query** | **string**| Find contacts by specified search query. | [optional] 
  **local** | **int**| Treat phone number passed in &#39;query&#39; field as local. Default is 0 | [optional] [default to 0]
  **country** | **string**| 2-letter ISO country code for local phone numbers, used when &#39;local&#39; is set to true. Default is account country | [optional] 
  **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
@@ -6364,7 +6364,7 @@ my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
 my $ids = 'ids_example'; # string | Find message by ID(s).
 my $query = 'query_example'; # string | Find recipients by specified search query.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
+my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
 my $expand = 56; # int | Expand by adding firstName, lastName and contactId.
 
@@ -6385,7 +6385,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **ids** | **string**| Find message by ID(s). | [optional] 
  **query** | **string**| Find recipients by specified search query. | [optional] 
- **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
  **expand** | **int**| Expand by adding firstName, lastName and contactId. | [optional] [default to 0]
 
@@ -6554,8 +6554,8 @@ my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
 my $query = 'query_example'; # string | Find messages by specified search query
 my $ids = 'ids_example'; # string | Find schedules by ID(s)
-my $status = 'status_example'; # string | Fetch schedules with the specific status: a - actual, c - completed, x - all
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
+my $status = 'status_example'; # string | Fetch schedules with a specific status: a - actual, c - completed, x - all.
+my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
@@ -6575,8 +6575,8 @@ Name | Type | Description  | Notes
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **query** | **string**| Find messages by specified search query | [optional] 
  **ids** | **string**| Find schedules by ID(s) | [optional] 
- **status** | **string**| Fetch schedules with the specific status: a - actual, c - completed, x - all | [optional] [default to x]
- **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
+ **status** | **string**| Fetch schedules with a specific status: a - actual, c - completed, x - all. | [optional] [default to x]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
 ### Return type
@@ -6707,7 +6707,7 @@ Name | Type | Description  | Notes
 
 Step 1: Send a verification code 
 
-Sends verification code to specified phone number.
+Sends a verification code to a specified phone number.
 
 ### Example 
 ```perl

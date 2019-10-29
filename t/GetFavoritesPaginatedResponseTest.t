@@ -25,9 +25,9 @@ use strict;
 use warnings;
 
 
-use_ok('Net::Sms::TextMagicClient::Object::GetFavouritesPaginatedResponse');
+use_ok('Net::Sms::TextMagicClient::Object::GetFavoritesPaginatedResponse');
 
-my $instance = Net::Sms::TextMagicClient::Object::GetFavouritesPaginatedResponse->new();
+my $instance = Net::Sms::TextMagicClient::Object::GetFavoritesPaginatedResponse->new();
 
-isa_ok($instance, 'Net::Sms::TextMagicClient::Object::GetFavouritesPaginatedResponse');
+isa_ok($instance, 'Net::Sms::TextMagicClient::Object::GetFavoritesPaginatedResponse');
 

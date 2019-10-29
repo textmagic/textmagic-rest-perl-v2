@@ -158,7 +158,7 @@ __PACKAGE__->method_documentation({
     'display_time_format' => {
     	datatype => 'string',
     	base_name => 'displayTimeFormat',
-    	description => 'User&#39;s preferred format of time display: * *12h* – AM/PM format; * *24h* – 24 hour clock format. ',
+    	description => 'User&#39;s preferred format of time display: * *12h* - AM/PM format; * *24h* - 24-hour clock format. ',
     	format => '',
     	read_only => '',
     		},
@@ -207,7 +207,7 @@ __PACKAGE__->method_documentation({
     'phone' => {
     	datatype => 'string',
     	base_name => 'phone',
-    	description => 'User&#x60;s phone number.',
+    	description => 'User&#39;s phone number.',
     	format => '',
     	read_only => '',
     		},
@@ -242,7 +242,7 @@ __PACKAGE__->method_documentation({
     'subaccount_type' => {
     	datatype => 'string',
     	base_name => 'subaccountType',
-    	description => 'Type of account: * **P** for Parent User; * **A** for Administrator Sub-Account; * **U** for Regular User ',
+    	description => 'Type of account: * **P** for Parent User; * **A** for Administrator Sub-Account; * **U** for Regular User. ',
     	format => '',
     	read_only => '',
     		},

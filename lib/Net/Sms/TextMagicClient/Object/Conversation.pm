@@ -167,7 +167,7 @@ __PACKAGE__->method_documentation({
     'message_time' => {
     	datatype => 'DateTime',
     	base_name => 'messageTime',
-    	description => 'Time when message arrived at TextMagic.',
+    	description => 'Time when  the message arrived at TextMagic.',
     	format => '',
     	read_only => '',
     		},
@@ -181,7 +181,7 @@ __PACKAGE__->method_documentation({
     'receiver' => {
     	datatype => 'string',
     	base_name => 'receiver',
-    	description => 'Receiver phone number.',
+    	description => 'Receiver&#39;s phone number.',
     	format => '',
     	read_only => '',
     		},

@@ -156,7 +156,7 @@ __PACKAGE__->method_documentation({
     'next_send' => {
     	datatype => 'DateTime',
     	base_name => 'nextSend',
-    	description => 'Next send date in [ISO 8601](https://en.wikipedia.org/?title&#x3D;ISO_8601) format. ',
+    	description => 'The next send date in [ISO 8601](https://en.wikipedia.org/?title&#x3D;ISO_8601) format. ',
     	format => '',
     	read_only => '',
     		},
@@ -177,14 +177,14 @@ __PACKAGE__->method_documentation({
     'last_sent' => {
     	datatype => 'DateTime',
     	base_name => 'lastSent',
-    	description => 'Date and time when last message has been sent.',
+    	description => 'The date and time when the last message was sent.',
     	format => '',
     	read_only => '',
     		},
     'contact_name' => {
     	datatype => 'string',
     	base_name => 'contactName',
-    	description => 'Aggregated contact information. If the message scheduled to be sent to a single contact, a full name will be returned here. Otherwise, a total amount contacts will be returned.',
+    	description => 'Aggregated contact information. If the message was scheduled to be sent to a single contact, a full name will be returned here. Otherwise, a total amount of contacts will be returned.',
     	format => '',
     	read_only => '',
     		},
@@ -247,7 +247,7 @@ __PACKAGE__->method_documentation({
     'completed' => {
     	datatype => 'boolean',
     	base_name => 'completed',
-    	description => 'Indicates that schedling has been completed.',
+    	description => 'Indicates that scheduling has been completed.',
     	format => '',
     	read_only => '',
     		},

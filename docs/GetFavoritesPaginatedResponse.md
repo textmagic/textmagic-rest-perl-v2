@@ -1,8 +1,8 @@
-# Net::Sms::TextMagicClient::Object::GetFavouritesPaginatedResponse
+# Net::Sms::TextMagicClient::Object::GetFavoritesPaginatedResponse
 
 ## Load the model package
 ```perl
-use Net::Sms::TextMagicClient::Object::GetFavouritesPaginatedResponse;
+use Net::Sms::TextMagicClient::Object::GetFavoritesPaginatedResponse;
 ```
 
 ## Properties

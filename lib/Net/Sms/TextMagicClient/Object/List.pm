@@ -211,7 +211,7 @@ __PACKAGE__->method_documentation({
     'is_default' => {
     	datatype => 'boolean',
     	base_name => 'isDefault',
-    	description => 'Indicates that List is used as a default. All new contacts added via web app will be added in this List by default.',
+    	description => 'Indicates that List is used as a default. All new contacts added via the Web-app will be added in this List by default.',
     	format => '',
     	read_only => '',
     		},

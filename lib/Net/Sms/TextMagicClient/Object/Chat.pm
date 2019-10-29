@@ -162,7 +162,7 @@ __PACKAGE__->method_documentation({
     'phone' => {
     	datatype => 'string',
     	base_name => 'phone',
-    	description => 'Chat partner phone number.',
+    	description => 'Chat partner&#39;s phone number.',
     	format => '',
     	read_only => '',
     		},
@@ -176,7 +176,7 @@ __PACKAGE__->method_documentation({
     'unsubscribed_contact_id' => {
     	datatype => 'int',
     	base_name => 'unsubscribedContactId',
-    	description => 'If this field has a value then it means that chat phone number has been unsubscribed from you and this value is a ID of a Unsubscribed contact entity. See [Get all unsubscribed contacts](http://docs.textmagictesting.com/#operation/getUnsubscribers).',
+    	description => 'If this field has a value, it means that the chat phone number has been unsubscribed from you and this value is an ID of an Unsubscribed contact entity. See [Get all unsubscribed contacts](http://docs.textmagictesting.com/#operation/getUnsubscribers).',
     	format => '',
     	read_only => '',
     		},
@@ -190,7 +190,7 @@ __PACKAGE__->method_documentation({
     'updated_at' => {
     	datatype => 'DateTime',
     	base_name => 'updatedAt',
-    	description => 'Time when last incoming message arrived at this chat.',
+    	description => 'Time when the last incoming message arrived at this chat.',
     	format => '',
     	read_only => '',
     		},
@@ -204,7 +204,7 @@ __PACKAGE__->method_documentation({
     'mute' => {
     	datatype => 'int',
     	base_name => 'mute',
-    	description => 'Indicates when chat is muted.',
+    	description => 'Indicates when the chat is muted.',
     	format => '',
     	read_only => '',
     		},
@@ -218,28 +218,28 @@ __PACKAGE__->method_documentation({
     'direction' => {
     	datatype => 'string',
     	base_name => 'direction',
-    	description => 'Last message type: * **ci** - incoming call * **co** - outgoing call * **i** - incoming message * **o** - outgoing message ',
+    	description => 'Last message type: * **ci** - incoming call; * **co** - outgoing call; * **i** - incoming message; * **o** - outgoing message. ',
     	format => '',
     	read_only => '',
     		},
     'from' => {
     	datatype => 'string',
     	base_name => 'from',
-    	description => 'If filled then value will be used as a sender number for all outgoing messages of a chat.',
+    	description => 'If filled, the value will be used as a sender number for all outgoing messages of a chat.',
     	format => '',
     	read_only => '',
     		},
     'muted_until' => {
     	datatype => 'DateTime',
     	base_name => 'mutedUntil',
-    	description => 'Date and time until chat will be mutted.',
+    	description => 'Date and time until the chat will be muted.',
     	format => '',
     	read_only => '',
     		},
     'time_left_mute' => {
     	datatype => 'int',
     	base_name => 'timeLeftMute',
-    	description => 'Time left till chat will be unmutted (seconds).',
+    	description => 'Time left untill the chat will be unmuted (seconds).',
     	format => '',
     	read_only => '',
     		},

@@ -153,7 +153,7 @@ __PACKAGE__->method_documentation({
     'entity_type' => {
     	datatype => 'string',
     	base_name => 'entityType',
-    	description => 'Entity type which should be marked as **favourite**.',
+    	description => 'Entity type which should be marked as **favorite**.',
     	format => '',
     	read_only => '',
     		},

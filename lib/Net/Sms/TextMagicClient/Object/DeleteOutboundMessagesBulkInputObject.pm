@@ -153,7 +153,7 @@ __PACKAGE__->method_documentation({
     'all' => {
     	datatype => 'int',
     	base_name => 'all',
-    	description => 'Default is 0 (false). If set to 1 all the entities will be removed.',
+    	description => 'Default is 0 (false). If set to 1, all the entities will be removed.',
     	format => '',
     	read_only => '',
     		},

@@ -148,7 +148,7 @@ __PACKAGE__->method_documentation({
     'cost' => {
     	datatype => 'Number',
     	base_name => 'cost',
-    	description => 'Cost to check one number is constant – 0.04 in your account currency.',
+    	description => 'Cost to check that one number is constant – 0.04 in your account currency.',
     	format => '',
     	read_only => '',
     		},

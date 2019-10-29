@@ -146,7 +146,7 @@ __PACKAGE__->method_documentation({
     'code' => {
     	datatype => 'int',
     	base_name => 'code',
-    	description => 'Verification code that was received by the user and entered into the form field.',
+    	description => 'Verification code received by the user and entered into the form field.',
     	format => '',
     	read_only => '',
     		},

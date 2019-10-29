@@ -153,7 +153,7 @@ __PACKAGE__->method_documentation({
     'status' => {
     	datatype => 'string',
     	base_name => 'status',
-    	description => 'Chat status:   * **a** - Active   * **c** - Closed   * **d** - Deleted ',
+    	description => 'Chat status:   * **a** - Active;   * **c** - Closed;   * **d** - Deleted. ',
     	format => '',
     	read_only => '',
     		},

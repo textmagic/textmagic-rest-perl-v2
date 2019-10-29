@@ -262,12 +262,12 @@ sub buy_dedicated_number {
 #
 # Cancel verification process
 # 
-# @param string $verify_id the verifyId that you received in Step 1. (required)
+# @param string $verify_id The verifyId that you received in Step 1. (required)
 {
     my $params = {
     'verify_id' => {
         data_type => 'string',
-        description => 'the verifyId that you received in Step 1.',
+        description => 'The verifyId that you received in Step 1.',
         required => '1',
     },
     };
@@ -2958,9 +2958,9 @@ sub get_all_bulk_sessions {
 # @param string $status Fetch only (a)ctive, (c)losed or (d)eleted chats (optional)
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $order_by Order results by some field. Default is id (optional, default to id)
-# @param int $voice Fetch results with voice calls (optional, default to 0)
-# @param int $flat Should additional contact info be included (optional, default to 0)
+# @param string $order_by Order results by some field. Default is id. (optional, default to id)
+# @param int $voice Fetch results with voice calls. (optional, default to 0)
+# @param int $flat Should additional contact info be included? (optional, default to 0)
 {
     my $params = {
     'status' => {
@@ -2980,17 +2980,17 @@ sub get_all_bulk_sessions {
     },
     'order_by' => {
         data_type => 'string',
-        description => 'Order results by some field. Default is id',
+        description => 'Order results by some field. Default is id.',
         required => '0',
     },
     'voice' => {
         data_type => 'int',
-        description => 'Fetch results with voice calls',
+        description => 'Fetch results with voice calls.',
         required => '0',
     },
     'flat' => {
         data_type => 'int',
-        description => 'Should additional contact info be included',
+        description => 'Should additional contact info be included?',
         required => '0',
     },
     };
@@ -3072,7 +3072,7 @@ sub get_all_chats {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $order_by Order results by some field. Default is id (optional, default to id)
+# @param string $order_by Order results by some field. Default is id. (optional, default to id)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
@@ -3088,7 +3088,7 @@ sub get_all_chats {
     },
     'order_by' => {
         data_type => 'string',
-        description => 'Order results by some field. Default is id',
+        description => 'Order results by some field. Default is id.',
         required => '0',
     },
     'direction' => {
@@ -3318,7 +3318,7 @@ sub get_all_outbound_messages {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $status Fetch schedules with the specific status: a - actual, c - completed, x - all (optional, default to x)
+# @param string $status Fetch schedules with a specific status: a - actual, c - completed, x - all. (optional, default to x)
 # @param string $order_by Order results by some field. Default is id (optional, default to id)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
@@ -3335,7 +3335,7 @@ sub get_all_outbound_messages {
     },
     'status' => {
         data_type => 'string',
-        description => 'Fetch schedules with the specific status: a - actual, c - completed, x - all',
+        description => 'Fetch schedules with a specific status: a - actual, c - completed, x - all.',
         required => '0',
     },
     'order_by' => {
@@ -4116,10 +4116,10 @@ sub get_chat_by_phone {
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
 # @param string $query Find messages by specified search query (optional)
-# @param int $start Return messages since specified timestamp only (optional)
-# @param int $end Return messages up to specified timestamp only (optional)
+# @param int $start Return messages since specified timestamp only. (optional)
+# @param int $end Return messages up to specified timestamp only. (optional)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
-# @param int $voice Fetch results with voice calls (optional, default to 0)
+# @param int $voice Fetch results with voice calls. (optional, default to 0)
 {
     my $params = {
     'id' => {
@@ -4144,12 +4144,12 @@ sub get_chat_by_phone {
     },
     'start' => {
         data_type => 'int',
-        description => 'Return messages since specified timestamp only',
+        description => 'Return messages since specified timestamp only.',
         required => '0',
     },
     'end' => {
         data_type => 'int',
-        description => 'Return messages up to specified timestamp only',
+        description => 'Return messages up to specified timestamp only.',
         required => '0',
     },
     'direction' => {
@@ -4159,7 +4159,7 @@ sub get_chat_by_phone {
     },
     'voice' => {
         data_type => 'int',
-        description => 'Fetch results with voice calls',
+        description => 'Fetch results with voice calls.',
         required => '0',
     },
     };
@@ -5279,7 +5279,7 @@ sub get_dedicated_number {
 }
 
 #
-# get_favourites
+# get_favorites
 #
 # Get favorite contacts and lists
 # 
@@ -5304,15 +5304,15 @@ sub get_dedicated_number {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'get_favourites' } = { 
+    __PACKAGE__->method_documentation->{ 'get_favorites' } = { 
     	summary => 'Get favorite contacts and lists',
         params => $params,
-        returns => 'GetFavouritesPaginatedResponse',
+        returns => 'GetFavoritesPaginatedResponse',
         };
 }
-# @return GetFavouritesPaginatedResponse
+# @return GetFavoritesPaginatedResponse
 #
-sub get_favourites {
+sub get_favorites {
     my ($self, %args) = @_;
 
     # parse inputs
@@ -5356,7 +5356,7 @@ sub get_favourites {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('GetFavouritesPaginatedResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('GetFavoritesPaginatedResponse', $response);
     return $_response_object;
 }
 
@@ -8730,7 +8730,7 @@ sub search_chats_by_ids {
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
 # @param string $query Find chats by specified search query (optional)
-# @param string $order_by Order results by some field. Default is id (optional, default to id)
+# @param string $order_by Order results by some field. Default is id. (optional, default to id)
 {
     my $params = {
     'page' => {
@@ -8750,7 +8750,7 @@ sub search_chats_by_ids {
     },
     'order_by' => {
         data_type => 'string',
-        description => 'Order results by some field. Default is id',
+        description => 'Order results by some field. Default is id.',
         required => '0',
     },
     };
@@ -8826,7 +8826,7 @@ sub search_chats_by_receipent {
 # @param string $ids Find contact by ID(s) (optional)
 # @param int $list_id Find contact by List ID (optional)
 # @param int $include_blocked Should blocked contacts to be included (optional)
-# @param string $query Find contacts by specified search query (optional)
+# @param string $query Find contacts by specified search query. (optional)
 # @param int $local Treat phone number passed in &#39;query&#39; field as local. Default is 0 (optional, default to 0)
 # @param string $country 2-letter ISO country code for local phone numbers, used when &#39;local&#39; is set to true. Default is account country (optional)
 # @param string $order_by Order results by some field. Default is id. (optional, default to id)
@@ -8865,7 +8865,7 @@ sub search_chats_by_receipent {
     },
     'query' => {
         data_type => 'string',
-        description => 'Find contacts by specified search query',
+        description => 'Find contacts by specified search query.',
         required => '0',
     },
     'local' => {
@@ -8994,7 +8994,7 @@ sub search_contacts {
 # @param int $limit The number of results per page. (optional, default to 10)
 # @param string $ids Find message by ID(s). (optional)
 # @param string $query Find recipients by specified search query. (optional)
-# @param string $order_by Order results by some field. Default is id (optional, default to id)
+# @param string $order_by Order results by some field. Default is id. (optional, default to id)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
 # @param int $expand Expand by adding firstName, lastName and contactId. (optional, default to 0)
 {
@@ -9021,7 +9021,7 @@ sub search_contacts {
     },
     'order_by' => {
         data_type => 'string',
-        description => 'Order results by some field. Default is id',
+        description => 'Order results by some field. Default is id.',
         required => '0',
     },
     'direction' => {
@@ -9394,8 +9394,8 @@ sub search_outbound_messages {
 # @param int $limit The number of results per page. (optional, default to 10)
 # @param string $query Find messages by specified search query (optional)
 # @param string $ids Find schedules by ID(s) (optional)
-# @param string $status Fetch schedules with the specific status: a - actual, c - completed, x - all (optional, default to x)
-# @param string $order_by Order results by some field. Default is id (optional, default to id)
+# @param string $status Fetch schedules with a specific status: a - actual, c - completed, x - all. (optional, default to x)
+# @param string $order_by Order results by some field. Default is id. (optional, default to id)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
@@ -9421,12 +9421,12 @@ sub search_outbound_messages {
     },
     'status' => {
         data_type => 'string',
-        description => 'Fetch schedules with the specific status: a - actual, c - completed, x - all',
+        description => 'Fetch schedules with a specific status: a - actual, c - completed, x - all.',
         required => '0',
     },
     'order_by' => {
         data_type => 'string',
-        description => 'Order results by some field. Default is id',
+        description => 'Order results by some field. Default is id.',
         required => '0',
     },
     'direction' => {
