@@ -4680,7 +4680,7 @@ sub get_contact_notes {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param int $shared Should shared contacts to be included (optional, default to 0)
+# @param int $shared Should shared contacts be included? (optional, default to 0)
 # @param string $order_by Order results by some field. Default is id. (optional, default to id)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
@@ -4697,7 +4697,7 @@ sub get_contact_notes {
     },
     'shared' => {
         data_type => 'int',
-        description => 'Should shared contacts to be included',
+        description => 'Should shared contacts be included?',
         required => '0',
     },
     'order_by' => {
@@ -4784,7 +4784,7 @@ sub get_contacts {
 # 
 # @param string $query Find recipients by specified search query. (required)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param int $lists Should lists be returned or not (optional, default to 0)
+# @param int $lists Should lists be returned or not? (optional, default to 0)
 {
     my $params = {
     'query' => {
@@ -4799,7 +4799,7 @@ sub get_contacts {
     },
     'lists' => {
         data_type => 'int',
-        description => 'Should lists be returned or not',
+        description => 'Should lists be returned or not?',
         required => '0',
     },
     };
@@ -8822,13 +8822,13 @@ sub search_chats_by_receipent {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param int $shared Should shared contacts to be included (optional, default to 0)
-# @param string $ids Find contact by ID(s) (optional)
-# @param int $list_id Find contact by List ID (optional)
-# @param int $include_blocked Should blocked contacts to be included (optional)
+# @param int $shared Should shared contacts be included? (optional, default to 0)
+# @param string $ids Find contacts by IDs. (optional)
+# @param int $list_id Find contacts by List ID. (optional)
+# @param int $include_blocked Should blocked contacts be included? (optional)
 # @param string $query Find contacts by specified search query. (optional)
-# @param int $local Treat phone number passed in &#39;query&#39; field as local. Default is 0 (optional, default to 0)
-# @param string $country 2-letter ISO country code for local phone numbers, used when &#39;local&#39; is set to true. Default is account country (optional)
+# @param int $local Treat phone number passed in the \&quot;query\&quot; field as local. Default is 0. (optional, default to 0)
+# @param string $country The 2-letter ISO country code for local phone numbers, used when \&quot;local\&quot; is set to true. Default is the account country. (optional)
 # @param string $order_by Order results by some field. Default is id. (optional, default to id)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
@@ -8845,22 +8845,22 @@ sub search_chats_by_receipent {
     },
     'shared' => {
         data_type => 'int',
-        description => 'Should shared contacts to be included',
+        description => 'Should shared contacts be included?',
         required => '0',
     },
     'ids' => {
         data_type => 'string',
-        description => 'Find contact by ID(s)',
+        description => 'Find contacts by IDs.',
         required => '0',
     },
     'list_id' => {
         data_type => 'int',
-        description => 'Find contact by List ID',
+        description => 'Find contacts by List ID.',
         required => '0',
     },
     'include_blocked' => {
         data_type => 'int',
-        description => 'Should blocked contacts to be included',
+        description => 'Should blocked contacts be included?',
         required => '0',
     },
     'query' => {
@@ -8870,12 +8870,12 @@ sub search_chats_by_receipent {
     },
     'local' => {
         data_type => 'int',
-        description => 'Treat phone number passed in &#39;query&#39; field as local. Default is 0',
+        description => 'Treat phone number passed in the \&quot;query\&quot; field as local. Default is 0.',
         required => '0',
     },
     'country' => {
         data_type => 'string',
-        description => '2-letter ISO country code for local phone numbers, used when &#39;local&#39; is set to true. Default is account country',
+        description => 'The 2-letter ISO country code for local phone numbers, used when \&quot;local\&quot; is set to true. Default is the account country.',
         required => '0',
     },
     'order_by' => {

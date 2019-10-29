@@ -3551,7 +3551,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $shared = 56; # int | Should shared contacts to be included
+my $shared = 56; # int | Should shared contacts be included?
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
@@ -3570,7 +3570,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **shared** | **int**| Should shared contacts to be included | [optional] [default to 0]
+ **shared** | **int**| Should shared contacts be included? | [optional] [default to 0]
  **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
@@ -3594,7 +3594,7 @@ Name | Type | Description  | Notes
 
 Get contacts autocomplete suggestions
 
-Get contacts autocomplete suggestions by given search term
+Get contacts autocomplete suggestions by given search terms.
 
 ### Example 
 ```perl
@@ -3609,7 +3609,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $query = '"A"'; # string | Find recipients by specified search query.
 my $limit = 56; # int | The number of results per page.
-my $lists = 56; # int | Should lists be returned or not
+my $lists = 56; # int | Should lists be returned or not?
 
 eval { 
     my $result = $api_instance->get_contacts_autocomplete(query => $query, limit => $limit, lists => $lists);
@@ -3626,7 +3626,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **string**| Find recipients by specified search query. | 
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **lists** | **int**| Should lists be returned or not | [optional] [default to 0]
+ **lists** | **int**| Should lists be returned or not? | [optional] [default to 0]
 
 ### Return type
 
@@ -6292,13 +6292,13 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $shared = 56; # int | Should shared contacts to be included
-my $ids = 'ids_example'; # string | Find contact by ID(s)
-my $list_id = 56; # int | Find contact by List ID
-my $include_blocked = 56; # int | Should blocked contacts to be included
+my $shared = 56; # int | Should shared contacts be included?
+my $ids = 'ids_example'; # string | Find contacts by IDs.
+my $list_id = 56; # int | Find contacts by List ID.
+my $include_blocked = 56; # int | Should blocked contacts be included?
 my $query = 'query_example'; # string | Find contacts by specified search query.
-my $local = 56; # int | Treat phone number passed in 'query' field as local. Default is 0
-my $country = 'country_example'; # string | 2-letter ISO country code for local phone numbers, used when 'local' is set to true. Default is account country
+my $local = 56; # int | Treat phone number passed in the \"query\" field as local. Default is 0.
+my $country = 'country_example'; # string | The 2-letter ISO country code for local phone numbers, used when \"local\" is set to true. Default is the account country.
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
@@ -6317,13 +6317,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **shared** | **int**| Should shared contacts to be included | [optional] [default to 0]
- **ids** | **string**| Find contact by ID(s) | [optional] 
- **list_id** | **int**| Find contact by List ID | [optional] 
- **include_blocked** | **int**| Should blocked contacts to be included | [optional] 
+ **shared** | **int**| Should shared contacts be included? | [optional] [default to 0]
+ **ids** | **string**| Find contacts by IDs. | [optional] 
+ **list_id** | **int**| Find contacts by List ID. | [optional] 
+ **include_blocked** | **int**| Should blocked contacts be included? | [optional] 
  **query** | **string**| Find contacts by specified search query. | [optional] 
- **local** | **int**| Treat phone number passed in &#39;query&#39; field as local. Default is 0 | [optional] [default to 0]
- **country** | **string**| 2-letter ISO country code for local phone numbers, used when &#39;local&#39; is set to true. Default is account country | [optional] 
+ **local** | **int**| Treat phone number passed in the \&quot;query\&quot; field as local. Default is 0. | [optional] [default to 0]
+ **country** | **string**| The 2-letter ISO country code for local phone numbers, used when \&quot;local\&quot; is set to true. Default is the account country. | [optional] 
  **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 

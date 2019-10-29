@@ -166,7 +166,7 @@ __PACKAGE__->method_documentation({
     'blocked' => {
     	datatype => 'boolean',
     	base_name => 'blocked',
-    	description => 'Is the Contact blocked? [Custom fields list](http://docs.textmagictesting.com/#operation/getBlockedContacts).',
+    	description => 'Is the Contact blocked? [Blocked contacts](http://docs.textmagictesting.com/#operation/getBlockedContacts).',
     	format => '',
     	read_only => '',
     		},

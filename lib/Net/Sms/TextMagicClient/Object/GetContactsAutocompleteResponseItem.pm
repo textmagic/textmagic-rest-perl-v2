@@ -146,21 +146,21 @@ __PACKAGE__->method_documentation({
     'entity_id' => {
     	datatype => 'int',
     	base_name => 'entityId',
-    	description => 'Id of entity. 0 if object is a Reply',
+    	description => 'Id of entity. 0 if object is a reply.',
     	format => '',
     	read_only => '',
     		},
     'entity_type' => {
     	datatype => 'string',
     	base_name => 'entityType',
-    	description => 'Entry type: * **contact** if it is related to a contact * **list** if it is related to a contact list * **reply** if it is related to an incoming message ',
+    	description => 'Entry type: * **contact** if it is related to a contact; * **list** if it is related to a contact list; * **reply** if it is related to an incoming message. ',
     	format => '',
     	read_only => '',
     		},
     'value' => {
     	datatype => 'string',
     	base_name => 'value',
-    	description => 'Id of contact/list if entityType is contact/list OR phone number if entityType is reply.',
+    	description => 'ID of the contact/list if entityType is contact/list OR phone number if entityType is reply.',
     	format => '',
     	read_only => '',
     		},
@@ -174,7 +174,7 @@ __PACKAGE__->method_documentation({
     'shared_by' => {
     	datatype => 'string',
     	base_name => 'sharedBy',
-    	description => 'If contact or list was shared by another sub-account then name if this user will be shown.',
+    	description => 'If contact or list was shared by another sub-account, the name of this user will be shown.',
     	format => '',
     	read_only => '',
     		},
@@ -202,7 +202,7 @@ __PACKAGE__->method_documentation({
     'user_id' => {
     	datatype => 'int',
     	base_name => 'userId',
-    	description => 'Owner id of the contact/list (if it was shared).',
+    	description => 'Owner ID of the contact/list (if it was shared).',
     	format => '',
     	read_only => '',
     		},
