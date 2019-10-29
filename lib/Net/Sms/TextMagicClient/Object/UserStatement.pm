@@ -181,14 +181,14 @@ __PACKAGE__->method_documentation({
     'type' => {
     	datatype => 'string',
     	base_name => 'type',
-    	description => 'Type of statement (what you have been charged for): *   **sms** for sending SMS *   **number** for renewing a dedicated number *   **schedule** for scheduling text messages *   **topup** for adding credits to your account ',
+    	description => 'Type of statement (what you have been charged for): *   **sms** - for sending SMS *   **number** - for renewing a dedicated number; *   **schedule** - for scheduling text messages; *   **topup** - for adding credits to your account. ',
     	format => '',
     	read_only => '',
     		},
     'value' => {
     	datatype => 'string',
     	base_name => 'value',
-    	description => 'Value differs by **type**: *   for **sms**, it is the sent messages amount *   for **number**, it is a dedicated phone number *   for **schedule**, it is a scheduled messages amount *   for **top-up**, it is an invoice ID ',
+    	description => 'Value differs by **type**: *   for **sms**, it is the sent messages amount; *   for **number**, it is a dedicated phone number; *   for **schedule**, it is a scheduled messages amount; *   for **top-up**, it is an invoice ID. ',
     	format => '',
     	read_only => '',
     		},

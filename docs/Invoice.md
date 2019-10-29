@@ -9,8 +9,8 @@ use Net::Sms::TextMagicClient::Object::Invoice;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | The invoice ID. | 
-**bundle** | **int** | Top up amount. | 
-**currency** | **string** | Top up currency. | 
+**bundle** | **int** | Top-up amount. | 
+**currency** | **string** | Top-up currency. | 
 **vat** | **double** | VAT charged (if any). | 
 **payment_method** | **string** | Payment method description. | 
 

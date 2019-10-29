@@ -154,7 +154,7 @@ __PACKAGE__->method_documentation({
     'display_time_format' => {
     	datatype => 'string',
     	base_name => 'displayTimeFormat',
-    	description => 'Format for representation of time',
+    	description => 'Format for representation of time.',
     	format => '',
     	read_only => '',
     		},
@@ -175,7 +175,7 @@ __PACKAGE__->method_documentation({
     'status' => {
     	datatype => 'string',
     	base_name => 'status',
-    	description => '*   **P** for Pending. This Sender ID is being reviewed by our support team. *   **R** for Rejected. Our support team rejected your application for this Sender ID. *   **A** for Active. ',
+    	description => '*   **P** for Pending - this Sender ID is being reviewed by our support team; *   **R** for Rejected - our support team rejected your application for this Sender ID; *   **A** for Active. ',
     	format => '',
     	read_only => '',
     		},

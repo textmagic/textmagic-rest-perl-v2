@@ -9,7 +9,7 @@ use Net::Sms::TextMagicClient::Object::UsersInbound;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Dedicated number ID. | 
-**display_time_format** | **string** | Format for representation of time | [optional] 
+**display_time_format** | **string** | Format for representation of time. | [optional] 
 **phone** | **string** | Dedicated phone number. | [optional] 
 **user** | [**User**](User.md) |  | 
 **purchased_at** | **DateTime** | Time when the dedicated number was purchased. | 

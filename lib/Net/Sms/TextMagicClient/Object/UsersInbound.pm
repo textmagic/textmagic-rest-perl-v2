@@ -155,7 +155,7 @@ __PACKAGE__->method_documentation({
     'display_time_format' => {
     	datatype => 'string',
     	base_name => 'displayTimeFormat',
-    	description => 'Format for representation of time',
+    	description => 'Format for representation of time.',
     	format => '',
     	read_only => '',
     		},

@@ -188,7 +188,7 @@ __PACKAGE__->method_documentation({
     'timezone' => {
     	datatype => 'int',
     	base_name => 'timezone',
-    	description => 'The timezome internal id. See [Get timezones](http://docs.textmagictesting.com/#operation/getTimezones).',
+    	description => 'The timezome internal ID. See [Get timezones](http://docs.textmagictesting.com/#operation/getTimezones).',
     	format => '',
     	read_only => '',
     		},

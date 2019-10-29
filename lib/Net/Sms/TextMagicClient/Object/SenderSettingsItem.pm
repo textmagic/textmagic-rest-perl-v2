@@ -153,7 +153,7 @@ __PACKAGE__->method_documentation({
     'phone' => {
     	datatype => 'string',
     	base_name => 'phone',
-    	description => 'Phone enabled for sending to specified country',
+    	description => 'Phone enabled for sending to a specified country',
     	format => '',
     	read_only => '',
     		},

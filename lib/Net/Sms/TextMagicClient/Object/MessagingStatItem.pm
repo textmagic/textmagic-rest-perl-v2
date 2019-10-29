@@ -153,7 +153,7 @@ __PACKAGE__->method_documentation({
     'date' => {
     	datatype => 'DateTime',
     	base_name => 'date',
-    	description => 'Time interval start, empty if the **by** parameter was set to **off**. ',
+    	description => 'Time interval start: empty if the **by** parameter was set to **off**. ',
     	format => '',
     	read_only => '',
     		},
@@ -188,7 +188,7 @@ __PACKAGE__->method_documentation({
     'messages_sent_accepted' => {
     	datatype => 'int',
     	base_name => 'messagesSentAccepted',
-    	description => 'Messages accepted for delivery (in queue), but not yet delivered.',
+    	description => 'Messages accepted for delivery (in queue) but not yet delivered.',
     	format => '',
     	read_only => '',
     		},
@@ -202,7 +202,7 @@ __PACKAGE__->method_documentation({
     'messages_sent_failed' => {
     	datatype => 'int',
     	base_name => 'messagesSentFailed',
-    	description => 'Messages that have failed for whatever reason, e.g. the destination phone was switched off for 48 hours or the recipient phone account is out of service.',
+    	description => 'Messages that have failed for whatever reason, e.g. the destination phone was switched off for 48 hours or the recipient&#39;s phone account is out of service.',
     	format => '',
     	read_only => '',
     		},

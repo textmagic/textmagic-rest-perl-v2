@@ -5285,7 +5285,7 @@ sub get_dedicated_number {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $query Find contacts or lists by specified search query (optional)
+# @param string $query Find contacts or lists by specified search query. (optional)
 {
     my $params = {
     'page' => {
@@ -5300,7 +5300,7 @@ sub get_dedicated_number {
     },
     'query' => {
         data_type => 'string',
-        description => 'Find contacts or lists by specified search query',
+        description => 'Find contacts or lists by specified search query.',
         required => '0',
     },
     };
@@ -6678,14 +6678,14 @@ sub get_messaging_counters {
 #
 # Get messaging statistics
 # 
-# @param string $by *   **off** to get total values per specified time interval *   **day** to show values grouped by day *   **month** to show values grouped by month *   **year** to show values grouped by year  (optional, default to off)
+# @param string $by *   **off** - to get total values per specified time interval; *   **day** - to show values grouped by day; *   **month** - to show values grouped by month; *   **year** - to show values grouped by year.  (optional, default to off)
 # @param int $start Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is 7 days prior.  (optional)
 # @param int $end Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is today.  (optional)
 {
     my $params = {
     'by' => {
         data_type => 'string',
-        description => '*   **off** to get total values per specified time interval *   **day** to show values grouped by day *   **month** to show values grouped by month *   **year** to show values grouped by year ',
+        description => '*   **off** - to get total values per specified time interval; *   **day** - to show values grouped by day; *   **month** - to show values grouped by month; *   **year** - to show values grouped by year. ',
         required => '0',
     },
     'start' => {
@@ -7354,7 +7354,7 @@ sub get_subaccount {
 #
 # get_subaccounts
 #
-# Get sub-accounts list
+# Get a sub-accounts list
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
@@ -7372,7 +7372,7 @@ sub get_subaccount {
     },
     };
     __PACKAGE__->method_documentation->{ 'get_subaccounts' } = { 
-    	summary => 'Get sub-accounts list',
+    	summary => 'Get a sub-accounts list',
         params => $params,
         returns => 'User',
         };
@@ -7425,7 +7425,7 @@ sub get_subaccounts {
 #
 # get_subaccounts_with_tokens
 #
-# Get all sub-accounts with their REST API tokens associated with app name
+# Get all sub-accounts with their REST API tokens associated with a specified app name
 # 
 # @param GetSubaccountsWithTokensInputObject $get_subaccounts_with_tokens_input_object  (required)
 # @param Number $page Fetch specified results page. (optional, default to 1)
@@ -7449,7 +7449,7 @@ sub get_subaccounts {
     },
     };
     __PACKAGE__->method_documentation->{ 'get_subaccounts_with_tokens' } = { 
-    	summary => 'Get all sub-accounts with their REST API tokens associated with app name',
+    	summary => 'Get all sub-accounts with their REST API tokens associated with a specified app name',
         params => $params,
         returns => 'GetSubaccountsWithTokensResponse',
         };
@@ -7581,12 +7581,12 @@ sub get_template {
 #
 # Get timezones
 # 
-# @param int $full Return full info about timezones in array (0 or 1). Default is 0 (optional, default to 0)
+# @param int $full Return full info about timezones in array (0 or 1). Default is 0. (optional, default to 0)
 {
     my $params = {
     'full' => {
         data_type => 'int',
-        description => 'Return full info about timezones in array (0 or 1). Default is 0',
+        description => 'Return full info about timezones in array (0 or 1). Default is 0.',
         required => '0',
     },
     };
@@ -10926,12 +10926,12 @@ sub update_template {
 #
 # Upload an avatar
 # 
-# @param File $image User avatar. Should be PNG or JPG file not more than 10 MB (required)
+# @param File $image User avatar. Should be a PNG or JPG file not more than 10 MB. (required)
 {
     my $params = {
     'image' => {
         data_type => 'File',
-        description => 'User avatar. Should be PNG or JPG file not more than 10 MB',
+        description => 'User avatar. Should be a PNG or JPG file not more than 10 MB.',
         required => '1',
     },
     };

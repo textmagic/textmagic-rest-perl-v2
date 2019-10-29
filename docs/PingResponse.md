@@ -9,7 +9,7 @@ use Net::Sms::TextMagicClient::Object::PingResponse;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ping** | **string** | Pong. | 
-**utc_date_time** | **string** | Current date time | 
+**utc_date_time** | **string** | Current date and time. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

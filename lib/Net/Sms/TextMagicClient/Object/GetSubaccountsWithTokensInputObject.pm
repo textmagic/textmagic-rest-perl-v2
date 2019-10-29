@@ -146,14 +146,14 @@ __PACKAGE__->method_documentation({
     'app_name' => {
     	datatype => 'string',
     	base_name => 'appName',
-    	description => 'Application name',
+    	description => 'Application name.',
     	format => '',
     	read_only => '',
     		},
     'password' => {
     	datatype => 'string',
     	base_name => 'password',
-    	description => 'Your account password',
+    	description => 'Your account password.',
     	format => '',
     	read_only => '',
     		},

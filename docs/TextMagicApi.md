@@ -107,8 +107,8 @@ Method | HTTP request | Description
 [**get_sender_settings**](TextMagicApi.md#get_sender_settings) | **GET** /api/v2/sender/settings/normalized | Get current sender settings
 [**get_spending_stat**](TextMagicApi.md#get_spending_stat) | **GET** /api/v2/stats/spending | Get spending statistics
 [**get_subaccount**](TextMagicApi.md#get_subaccount) | **GET** /api/v2/subaccounts/{id} | Get sub-account information
-[**get_subaccounts**](TextMagicApi.md#get_subaccounts) | **GET** /api/v2/subaccounts | Get sub-accounts list
-[**get_subaccounts_with_tokens**](TextMagicApi.md#get_subaccounts_with_tokens) | **POST** /api/v2/subaccounts/tokens/list | Get all sub-accounts with their REST API tokens associated with app name
+[**get_subaccounts**](TextMagicApi.md#get_subaccounts) | **GET** /api/v2/subaccounts | Get a sub-accounts list
+[**get_subaccounts_with_tokens**](TextMagicApi.md#get_subaccounts_with_tokens) | **POST** /api/v2/subaccounts/tokens/list | Get all sub-accounts with their REST API tokens associated with a specified app name
 [**get_template**](TextMagicApi.md#get_template) | **GET** /api/v2/templates/{id} | Get a template&#x60;s details
 [**get_timezones**](TextMagicApi.md#get_timezones) | **GET** /api/v2/timezones | Get timezones
 [**get_unread_messages_total**](TextMagicApi.md#get_unread_messages_total) | **GET** /api/v2/chats/unread/count | Get unread messages number
@@ -3965,7 +3965,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $query = '"A"'; # string | Find contacts or lists by specified search query
+my $query = '"A"'; # string | Find contacts or lists by specified search query.
 
 eval { 
     my $result = $api_instance->get_favorites(page => $page, limit => $limit, query => $query);
@@ -3982,7 +3982,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **query** | **string**| Find contacts or lists by specified search query | [optional] 
+ **query** | **string**| Find contacts or lists by specified search query. | [optional] 
 
 ### Return type
 
@@ -4751,7 +4751,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     password => 'YOUR_PASSWORD',
 );
 
-my $by = '"off"'; # string | *   **off** to get total values per specified time interval *   **day** to show values grouped by day *   **month** to show values grouped by month *   **year** to show values grouped by year 
+my $by = '"off"'; # string | *   **off** - to get total values per specified time interval; *   **day** - to show values grouped by day; *   **month** - to show values grouped by month; *   **year** - to show values grouped by year. 
 my $start = 1430438400; # int | Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is 7 days prior. 
 my $end = 1431648000; # int | Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is today. 
 
@@ -4768,7 +4768,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **by** | **string**| *   **off** to get total values per specified time interval *   **day** to show values grouped by day *   **month** to show values grouped by month *   **year** to show values grouped by year  | [optional] [default to off]
+ **by** | **string**| *   **off** - to get total values per specified time interval; *   **day** - to show values grouped by day; *   **month** - to show values grouped by month; *   **year** - to show values grouped by year.  | [optional] [default to off]
  **start** | **int**| Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is 7 days prior.  | [optional] 
  **end** | **int**| Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is today.  | [optional] 
 
@@ -5206,7 +5206,7 @@ Name | Type | Description  | Notes
 # **get_subaccounts**
 > User get_subaccounts(page => $page, limit => $limit)
 
-Get sub-accounts list
+Get a sub-accounts list
 
 
 
@@ -5258,7 +5258,7 @@ Name | Type | Description  | Notes
 # **get_subaccounts_with_tokens**
 > GetSubaccountsWithTokensResponse get_subaccounts_with_tokens(get_subaccounts_with_tokens_input_object => $get_subaccounts_with_tokens_input_object, page => $page, limit => $limit)
 
-Get all sub-accounts with their REST API tokens associated with app name
+Get all sub-accounts with their REST API tokens associated with a specified app name
 
 Get all sub-accounts with their REST API tokens associated with specified app name. When more than one token related to app name, last key will be returned.
 
@@ -5377,7 +5377,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     password => 'YOUR_PASSWORD',
 );
 
-my $full = 56; # int | Return full info about timezones in array (0 or 1). Default is 0
+my $full = 56; # int | Return full info about timezones in array (0 or 1). Default is 0.
 
 eval { 
     my $result = $api_instance->get_timezones(full => $full);
@@ -5392,7 +5392,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **full** | **int**| Return full info about timezones in array (0 or 1). Default is 0 | [optional] [default to 0]
+ **full** | **int**| Return full info about timezones in array (0 or 1). Default is 0. | [optional] [default to 0]
 
 ### Return type
 
@@ -5918,7 +5918,7 @@ void (empty response body)
 
 Ping
 
-Make a simple ping request
+Make a simple ping request.
 
 ### Example 
 ```perl
@@ -7624,7 +7624,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     password => 'YOUR_PASSWORD',
 );
 
-my $image = '/path/to/file.txt'; # File | User avatar. Should be PNG or JPG file not more than 10 MB
+my $image = '/path/to/file.txt'; # File | User avatar. Should be a PNG or JPG file not more than 10 MB.
 
 eval { 
     $api_instance->upload_avatar(image => $image);
@@ -7638,7 +7638,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **image** | **File**| User avatar. Should be PNG or JPG file not more than 10 MB | 
+ **image** | **File**| User avatar. Should be a PNG or JPG file not more than 10 MB. | 
 
 ### Return type
 

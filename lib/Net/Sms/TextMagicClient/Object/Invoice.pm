@@ -153,14 +153,14 @@ __PACKAGE__->method_documentation({
     'bundle' => {
     	datatype => 'int',
     	base_name => 'bundle',
-    	description => 'Top up amount.',
+    	description => 'Top-up amount.',
     	format => '',
     	read_only => '',
     		},
     'currency' => {
     	datatype => 'string',
     	base_name => 'currency',
-    	description => 'Top up currency.',
+    	description => 'Top-up currency.',
     	format => '',
     	read_only => '',
     		},

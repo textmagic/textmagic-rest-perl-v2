@@ -153,7 +153,7 @@ __PACKAGE__->method_documentation({
     'utc_date_time' => {
     	datatype => 'string',
     	base_name => 'utcDateTime',
-    	description => 'Current date time',
+    	description => 'Current date and time.',
     	format => '',
     	read_only => '',
     		},

@@ -146,7 +146,7 @@ __PACKAGE__->method_documentation({
     'email' => {
     	datatype => 'string',
     	base_name => 'email',
-    	description => 'Invitation email will be sent to this email address.',
+    	description => 'The invitation email will be sent to this email address.',
     	format => '',
     	read_only => '',
     		},
