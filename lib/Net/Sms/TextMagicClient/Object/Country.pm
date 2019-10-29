@@ -146,7 +146,7 @@ __PACKAGE__->method_documentation({
     'id' => {
     	datatype => 'string',
     	base_name => 'id',
-    	description => 'Two-letter ISO country ID.',
+    	description => 'The 2-letter ISO country ID.',
     	format => '',
     	read_only => '',
     		},

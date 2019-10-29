@@ -148,7 +148,7 @@ __PACKAGE__->method_documentation({
     'total' => {
     	datatype => 'Number',
     	base_name => 'total',
-    	description => 'Total price of the mesasge.',
+    	description => 'Total price of the message.',
     	format => '',
     	read_only => '',
     		},

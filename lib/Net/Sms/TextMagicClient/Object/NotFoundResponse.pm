@@ -153,7 +153,7 @@ __PACKAGE__->method_documentation({
     'message' => {
     	datatype => 'string',
     	base_name => 'message',
-    	description => 'Brief error message. You could display this message to your user or save it in a log.',
+    	description => 'A Brief error message. You could display this message to your user or save it in a log.',
     	format => '',
     	read_only => '',
     		},

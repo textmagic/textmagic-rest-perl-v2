@@ -167,7 +167,7 @@ __PACKAGE__->method_documentation({
     'allow_dedicated' => {
     	datatype => 'boolean',
     	base_name => 'allowDedicated',
-    	description => '',
+    	description => 'Is allowed to use a dedicated number?',
     	format => '',
     	read_only => '',
     		},

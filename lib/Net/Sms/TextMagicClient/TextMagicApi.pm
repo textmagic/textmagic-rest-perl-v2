@@ -3236,7 +3236,7 @@ sub get_all_message_sessions {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param int $last_id Filter results by ID, selecting all values lesser than the specified ID. Note that \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified (optional)
+# @param int $last_id Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified (optional)
 {
     my $params = {
     'page' => {
@@ -3251,7 +3251,7 @@ sub get_all_message_sessions {
     },
     'last_id' => {
         data_type => 'int',
-        description => 'Filter results by ID, selecting all values lesser than the specified ID. Note that \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified',
+        description => 'Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified',
         required => '0',
     },
     };
@@ -3578,12 +3578,12 @@ sub get_available_dedicated_numbers {
 #
 # Get available sender settings
 # 
-# @param string $country Two-letter ISO country ID. If not specified, it returns all the available sender settings. (optional)
+# @param string $country The 2-letter ISO country ID. If not specified, it returns all the available sender settings. (optional)
 {
     my $params = {
     'country' => {
         data_type => 'string',
-        description => 'Two-letter ISO country ID. If not specified, it returns all the available sender settings.',
+        description => 'The 2-letter ISO country ID. If not specified, it returns all the available sender settings.',
         required => '0',
     },
     };
@@ -5892,21 +5892,21 @@ sub get_lists_of_contact {
 # 
 # @param string $text Message text. Required if **template_id** is not set. (optional)
 # @param int $template_id Template used instead of message text. Required if **text** is not set. (optional)
-# @param int $sending_time DEPRECATED, consider using sendingDateTime and sendingTimezone parameters instead: Optional (required with rrule set). Message sending time in unix timestamp format. Default is now. (optional)
-# @param string $sending_date_time Sending time in Y-m-d H:i:s format (e.g. 2016-05-27 13:02:33). This time is relative to sendingTimezone. (optional)
-# @param string $sending_timezone ID or ISO-name of timezone used for sending when sendingDateTime parameter is set. E.g. if you specify sendingDateTime &#x3D; \\\&quot;2016-05-27 13:02:33\\\&quot; and sendingTimezone &#x3D; \\\&quot;America/Buenos_Aires\\\&quot;, your message will be sent at May 27, 2016 13:02:33 Buenos Aires time, or 16:02:33 UTC. Default is account timezone. (optional)
-# @param string $contacts Comma separated array of contact resources id message will be sent to. (optional)
-# @param string $lists Comma separated array of list resources id message will be sent to. (optional)
-# @param string $phones Comma separated array of E.164 phone numbers message will be sent to. (optional)
+# @param int $sending_time DEPRECATED, consider using sendingDateTime and sendingTimezone parameters instead: Optional (required with rrule set). Message sending time is in unix timestamp format. Default is now. (optional)
+# @param string $sending_date_time Sending time is in Y-m-d H:i:s format (e.g. 2016-05-27 13:02:33). This time is relative to the sendingTimezone. (optional)
+# @param string $sending_timezone The ID or ISO-name of the timezone used for sending when the sendingDateTime parameter is set, e.g. if you specify sendingDateTime &#x3D; \\\&quot;2016-05-27 13:02:33\\\&quot; and sendingTimezone &#x3D; \\\&quot;America/Buenos_Aires\\\&quot;, your message will be sent on May 27, 2016 13:02:33 Buenos Aires time, or 16:02:33 UTC. Default is the account timezone. (optional)
+# @param string $contacts Comma-separated array of contact resources id message will be sent to. (optional)
+# @param string $lists Comma-separated array of list resources id message will be sent to. (optional)
+# @param string $phones Comma-separated array of E.164 phone numbers message will be sent to. (optional)
 # @param int $cut_extra Should sending method cut extra characters which not fit supplied partsCount or return 400 Bad request response instead. (optional, default to 0)
-# @param int $parts_count Maximum message parts count (TextMagic allows sending 1 to 6 message parts). (optional, default to 6)
+# @param int $parts_count Maximum message parts count (TextMagic allows sending of 1 to 6 message parts). (optional, default to 6)
 # @param int $reference_id Custom message reference id which can be used in your application infrastructure. (optional)
-# @param string $from One of allowed Sender ID (phone number or alphanumeric sender ID). If specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs). (optional)
-# @param string $rule iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details. (optional)
-# @param int $create_chat Should sending method try to create new Chat(if not exist) with specified recipients. (optional, default to 0)
+# @param string $from One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs). (optional)
+# @param string $rule An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details. (optional)
+# @param int $create_chat Should the sending method try to create new Chat(if not exist) with specified recipients? (optional, default to 0)
 # @param int $tts Send Text to Speech message. (optional, default to 0)
-# @param int $local Treat phone numbers passed in \\&#39;phones\\&#39; field as local. (optional, default to 0)
-# @param string $local_country 2-letter ISO country code for local phone numbers, used when \\&#39;local\\&#39; is set to true. Default is account country. (optional)
+# @param int $local Treat phone numbers passed in the \\&#39;phones\\&#39; field as local. (optional, default to 0)
+# @param string $local_country The 2-letter ISO country code for local phone numbers, used when \\&#39;local\\&#39; is set to true. Default is the account country. (optional)
 {
     my $params = {
     'text' => {
@@ -5921,32 +5921,32 @@ sub get_lists_of_contact {
     },
     'sending_time' => {
         data_type => 'int',
-        description => 'DEPRECATED, consider using sendingDateTime and sendingTimezone parameters instead: Optional (required with rrule set). Message sending time in unix timestamp format. Default is now.',
+        description => 'DEPRECATED, consider using sendingDateTime and sendingTimezone parameters instead: Optional (required with rrule set). Message sending time is in unix timestamp format. Default is now.',
         required => '0',
     },
     'sending_date_time' => {
         data_type => 'string',
-        description => 'Sending time in Y-m-d H:i:s format (e.g. 2016-05-27 13:02:33). This time is relative to sendingTimezone.',
+        description => 'Sending time is in Y-m-d H:i:s format (e.g. 2016-05-27 13:02:33). This time is relative to the sendingTimezone.',
         required => '0',
     },
     'sending_timezone' => {
         data_type => 'string',
-        description => 'ID or ISO-name of timezone used for sending when sendingDateTime parameter is set. E.g. if you specify sendingDateTime &#x3D; \\\&quot;2016-05-27 13:02:33\\\&quot; and sendingTimezone &#x3D; \\\&quot;America/Buenos_Aires\\\&quot;, your message will be sent at May 27, 2016 13:02:33 Buenos Aires time, or 16:02:33 UTC. Default is account timezone.',
+        description => 'The ID or ISO-name of the timezone used for sending when the sendingDateTime parameter is set, e.g. if you specify sendingDateTime &#x3D; \\\&quot;2016-05-27 13:02:33\\\&quot; and sendingTimezone &#x3D; \\\&quot;America/Buenos_Aires\\\&quot;, your message will be sent on May 27, 2016 13:02:33 Buenos Aires time, or 16:02:33 UTC. Default is the account timezone.',
         required => '0',
     },
     'contacts' => {
         data_type => 'string',
-        description => 'Comma separated array of contact resources id message will be sent to.',
+        description => 'Comma-separated array of contact resources id message will be sent to.',
         required => '0',
     },
     'lists' => {
         data_type => 'string',
-        description => 'Comma separated array of list resources id message will be sent to.',
+        description => 'Comma-separated array of list resources id message will be sent to.',
         required => '0',
     },
     'phones' => {
         data_type => 'string',
-        description => 'Comma separated array of E.164 phone numbers message will be sent to.',
+        description => 'Comma-separated array of E.164 phone numbers message will be sent to.',
         required => '0',
     },
     'cut_extra' => {
@@ -5956,7 +5956,7 @@ sub get_lists_of_contact {
     },
     'parts_count' => {
         data_type => 'int',
-        description => 'Maximum message parts count (TextMagic allows sending 1 to 6 message parts).',
+        description => 'Maximum message parts count (TextMagic allows sending of 1 to 6 message parts).',
         required => '0',
     },
     'reference_id' => {
@@ -5966,17 +5966,17 @@ sub get_lists_of_contact {
     },
     'from' => {
         data_type => 'string',
-        description => 'One of allowed Sender ID (phone number or alphanumeric sender ID). If specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs).',
+        description => 'One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs).',
         required => '0',
     },
     'rule' => {
         data_type => 'string',
-        description => 'iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details.',
+        description => 'An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details.',
         required => '0',
     },
     'create_chat' => {
         data_type => 'int',
-        description => 'Should sending method try to create new Chat(if not exist) with specified recipients.',
+        description => 'Should the sending method try to create new Chat(if not exist) with specified recipients?',
         required => '0',
     },
     'tts' => {
@@ -5986,12 +5986,12 @@ sub get_lists_of_contact {
     },
     'local' => {
         data_type => 'int',
-        description => 'Treat phone numbers passed in \\&#39;phones\\&#39; field as local.',
+        description => 'Treat phone numbers passed in the \\&#39;phones\\&#39; field as local.',
         required => '0',
     },
     'local_country' => {
         data_type => 'string',
-        description => '2-letter ISO country code for local phone numbers, used when \\&#39;local\\&#39; is set to true. Default is account country.',
+        description => 'The 2-letter ISO country code for local phone numbers, used when \\&#39;local\\&#39; is set to true. Default is the account country.',
         required => '0',
     },
     };
@@ -6126,69 +6126,69 @@ sub get_message_preview {
 #
 # Check message price
 # 
-# @param int $include_blocked Should we show pricing for the blocked contacts. (optional, default to 0)
-# @param string $text Message text. Required if **template_id** is not set. (optional)
-# @param int $template_id Template used instead of message text. Required if **text** is not set. (optional)
-# @param int $sending_time DEPRECATED, consider using sendingDateTime and sendingTimezone parameters instead: Optional (required with rrule set). Message sending time in unix timestamp format. Default is now. (optional)
-# @param string $sending_date_time Sending time in Y-m-d H:i:s format (e.g. 2016-05-27 13:02:33). This time is relative to sendingTimezone. (optional)
-# @param string $sending_timezone ID or ISO-name of timezone used for sending when sendingDateTime parameter is set. E.g. if you specify sendingDateTime &#x3D; \\\&quot;2016-05-27 13:02:33\\\&quot; and sendingTimezone &#x3D; \\\&quot;America/Buenos_Aires\\\&quot;, your message will be sent at May 27, 2016 13:02:33 Buenos Aires time, or 16:02:33 UTC. Default is account timezone. (optional)
-# @param string $contacts Comma separated array of contact resources id message will be sent to. (optional)
-# @param string $lists Comma separated array of list resources id message will be sent to. (optional)
-# @param string $phones Comma separated array of E.164 phone numbers message will be sent to. (optional)
+# @param int $include_blocked Should we show the pricing for blocked contacts? (optional, default to 0)
+# @param string $text Message text. Required if the **template_id** is not set. (optional)
+# @param int $template_id Template used instead of message text. Required if the **text** is not set. (optional)
+# @param int $sending_time DEPRECATED, consider using the sendingDateTime and sendingTimezone parameters instead: optional (required with rrule set). Message sending time is in unix timestamp format. Default is now. (optional)
+# @param string $sending_date_time Sending time is in Y-m-d H:i:s format (e.g. 2016-05-27 13:02:33). This time is relative to the sendingTimezone. (optional)
+# @param string $sending_timezone The ID or ISO-name of the timezone used for sending when sendingDateTime parameter is set, e.g. if you specify sendingDateTime &#x3D; \\\&quot;2016-05-27 13:02:33\\\&quot; and sendingTimezone &#x3D; \\\&quot;America/Buenos_Aires\\\&quot;, your message will be sent on May 27, 2016 13:02:33 Buenos Aires time, or 16:02:33 UTC. Default is the account timezone. (optional)
+# @param string $contacts Comma-separated array of contact resources id message will be sent to. (optional)
+# @param string $lists Comma-separated array of list resources id message will be sent to. (optional)
+# @param string $phones Comma-separated array of E.164 phone numbers message will be sent to. (optional)
 # @param int $cut_extra Should sending method cut extra characters which not fit supplied partsCount or return 400 Bad request response instead. (optional, default to 0)
 # @param int $parts_count Maximum message parts count (TextMagic allows sending 1 to 6 message parts). (optional, default to 6)
 # @param int $reference_id Custom message reference id which can be used in your application infrastructure. (optional)
-# @param string $from One of allowed Sender ID (phone number or alphanumeric sender ID). If specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs). (optional)
-# @param string $rule iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details. (optional)
-# @param int $create_chat Should sending method try to create new Chat(if not exist) with specified recipients. (optional, default to 0)
-# @param int $tts Send Text to Speech message. (optional, default to 0)
-# @param int $local Treat phone numbers passed in \\&#39;phones\\&#39; field as local. (optional, default to 0)
-# @param string $local_country 2-letter ISO country code for local phone numbers, used when \\&#39;local\\&#39; is set to true. Default is account country. (optional)
+# @param string $from One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs). (optional)
+# @param string $rule An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details. (optional)
+# @param int $create_chat Should the sending method try to create new Chat (if not exist) with specified recipients? (optional, default to 0)
+# @param int $tts Send a Text to Speech message. (optional, default to 0)
+# @param int $local Treat phone numbers passed in the \\&#39;phones\\&#39; field as local. (optional, default to 0)
+# @param string $local_country The 2-letter ISO country code for local phone numbers, used when \\&#39;local\\&#39; is set to true. Default is the account country. (optional)
 {
     my $params = {
     'include_blocked' => {
         data_type => 'int',
-        description => 'Should we show pricing for the blocked contacts.',
+        description => 'Should we show the pricing for blocked contacts?',
         required => '0',
     },
     'text' => {
         data_type => 'string',
-        description => 'Message text. Required if **template_id** is not set.',
+        description => 'Message text. Required if the **template_id** is not set.',
         required => '0',
     },
     'template_id' => {
         data_type => 'int',
-        description => 'Template used instead of message text. Required if **text** is not set.',
+        description => 'Template used instead of message text. Required if the **text** is not set.',
         required => '0',
     },
     'sending_time' => {
         data_type => 'int',
-        description => 'DEPRECATED, consider using sendingDateTime and sendingTimezone parameters instead: Optional (required with rrule set). Message sending time in unix timestamp format. Default is now.',
+        description => 'DEPRECATED, consider using the sendingDateTime and sendingTimezone parameters instead: optional (required with rrule set). Message sending time is in unix timestamp format. Default is now.',
         required => '0',
     },
     'sending_date_time' => {
         data_type => 'string',
-        description => 'Sending time in Y-m-d H:i:s format (e.g. 2016-05-27 13:02:33). This time is relative to sendingTimezone.',
+        description => 'Sending time is in Y-m-d H:i:s format (e.g. 2016-05-27 13:02:33). This time is relative to the sendingTimezone.',
         required => '0',
     },
     'sending_timezone' => {
         data_type => 'string',
-        description => 'ID or ISO-name of timezone used for sending when sendingDateTime parameter is set. E.g. if you specify sendingDateTime &#x3D; \\\&quot;2016-05-27 13:02:33\\\&quot; and sendingTimezone &#x3D; \\\&quot;America/Buenos_Aires\\\&quot;, your message will be sent at May 27, 2016 13:02:33 Buenos Aires time, or 16:02:33 UTC. Default is account timezone.',
+        description => 'The ID or ISO-name of the timezone used for sending when sendingDateTime parameter is set, e.g. if you specify sendingDateTime &#x3D; \\\&quot;2016-05-27 13:02:33\\\&quot; and sendingTimezone &#x3D; \\\&quot;America/Buenos_Aires\\\&quot;, your message will be sent on May 27, 2016 13:02:33 Buenos Aires time, or 16:02:33 UTC. Default is the account timezone.',
         required => '0',
     },
     'contacts' => {
         data_type => 'string',
-        description => 'Comma separated array of contact resources id message will be sent to.',
+        description => 'Comma-separated array of contact resources id message will be sent to.',
         required => '0',
     },
     'lists' => {
         data_type => 'string',
-        description => 'Comma separated array of list resources id message will be sent to.',
+        description => 'Comma-separated array of list resources id message will be sent to.',
         required => '0',
     },
     'phones' => {
         data_type => 'string',
-        description => 'Comma separated array of E.164 phone numbers message will be sent to.',
+        description => 'Comma-separated array of E.164 phone numbers message will be sent to.',
         required => '0',
     },
     'cut_extra' => {
@@ -6208,32 +6208,32 @@ sub get_message_preview {
     },
     'from' => {
         data_type => 'string',
-        description => 'One of allowed Sender ID (phone number or alphanumeric sender ID). If specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs).',
+        description => 'One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs).',
         required => '0',
     },
     'rule' => {
         data_type => 'string',
-        description => 'iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details.',
+        description => 'An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details.',
         required => '0',
     },
     'create_chat' => {
         data_type => 'int',
-        description => 'Should sending method try to create new Chat(if not exist) with specified recipients.',
+        description => 'Should the sending method try to create new Chat (if not exist) with specified recipients?',
         required => '0',
     },
     'tts' => {
         data_type => 'int',
-        description => 'Send Text to Speech message.',
+        description => 'Send a Text to Speech message.',
         required => '0',
     },
     'local' => {
         data_type => 'int',
-        description => 'Treat phone numbers passed in \\&#39;phones\\&#39; field as local.',
+        description => 'Treat phone numbers passed in the \\&#39;phones\\&#39; field as local.',
         required => '0',
     },
     'local_country' => {
         data_type => 'string',
-        description => '2-letter ISO country code for local phone numbers, used when \\&#39;local\\&#39; is set to true. Default is account country.',
+        description => 'The 2-letter ISO country code for local phone numbers, used when \\&#39;local\\&#39; is set to true. Default is the account country.',
         required => '0',
     },
     };

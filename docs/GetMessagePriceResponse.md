@@ -8,7 +8,7 @@ use Net::Sms::TextMagicClient::Object::GetMessagePriceResponse;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total** | [**Number**](Number.md) | Total price of the mesasge. | 
+**total** | [**Number**](Number.md) | Total price of the message. | 
 **parts** | **int** | Message parts (multiples of 160 characters) count. | 
 **countries** | [**ARRAY[GetMessagePriceResponseCountriesItem]**](GetMessagePriceResponseCountriesItem.md) |  | 
 

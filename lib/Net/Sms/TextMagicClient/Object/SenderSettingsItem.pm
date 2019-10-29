@@ -146,7 +146,7 @@ __PACKAGE__->method_documentation({
     'country' => {
     	datatype => 'string',
     	base_name => 'country',
-    	description => 'Two-letter ISO country code of the recipient phone number. ',
+    	description => 'The 2-letter ISO country code of the recipient phone number. ',
     	format => '',
     	read_only => '',
     		},

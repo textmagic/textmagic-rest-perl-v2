@@ -146,14 +146,14 @@ __PACKAGE__->method_documentation({
     'common' => {
     	datatype => 'ARRAY[string]',
     	base_name => 'common',
-    	description => 'Array of messages with errors related to the entire request. For example, you did not specify either the **text** or **templateId** when [sending the message](http://docs.textmagictesting.com/#tag/Outbound-Messages). ',
+    	description => 'Array of messages with errors related to the entire request. For example, you did not specify either the **text** or the **templateId** when [sending the message](http://docs.textmagictesting.com/#tag/Outbound-Messages). ',
     	format => '',
     	read_only => '',
     		},
     'fields' => {
     	datatype => 'object',
     	base_name => 'fields',
-    	description => 'Associative array. The keys are the POST/PUT parameters names and the values are arrays with error messages for these parameters. ',
+    	description => 'Associative array. The keys are the POST/PUT parameter names and the values are arrays with error messages for these parameters. ',
     	format => '',
     	read_only => '',
     		},

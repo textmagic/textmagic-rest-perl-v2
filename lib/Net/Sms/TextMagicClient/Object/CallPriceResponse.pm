@@ -168,7 +168,7 @@ __PACKAGE__->method_documentation({
     'country' => {
     	datatype => 'string',
     	base_name => 'country',
-    	description => '2-letter ISO country code for local phone numbers, used when local is  set to true. Default is account country',
+    	description => 'The 2-letter ISO country code for local phone numbers, used when local is  set to true. Default is account country',
     	format => '',
     	read_only => '',
     		},
