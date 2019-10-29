@@ -39,8 +39,8 @@ Method | HTTP request | Description
 [**delete_inbound_message**](TextMagicApi.md#delete_inbound_message) | **DELETE** /api/v2/replies/{id} | Delete a single inbound message
 [**delete_inbound_messages_bulk**](TextMagicApi.md#delete_inbound_messages_bulk) | **POST** /api/v2/replies/delete | Delete inbound messages (bulk)
 [**delete_list**](TextMagicApi.md#delete_list) | **DELETE** /api/v2/lists/{id} | Delete a list
-[**delete_list_avatar**](TextMagicApi.md#delete_list_avatar) | **DELETE** /api/v2/lists/{id}/avatar | Delete an avatar for the list
-[**delete_list_contacts_bulk**](TextMagicApi.md#delete_list_contacts_bulk) | **POST** /api/v2/lists/{id}/contacts/delete | Delete contacts from list (bulk)
+[**delete_list_avatar**](TextMagicApi.md#delete_list_avatar) | **DELETE** /api/v2/lists/{id}/avatar | Delete an avatar for a list
+[**delete_list_contacts_bulk**](TextMagicApi.md#delete_list_contacts_bulk) | **POST** /api/v2/lists/{id}/contacts/delete | Delete contacts from a list (bulk)
 [**delete_lists_bulk**](TextMagicApi.md#delete_lists_bulk) | **POST** /api/v2/lists/delete | Delete lists (bulk)
 [**delete_message_session**](TextMagicApi.md#delete_message_session) | **DELETE** /api/v2/sessions/{id} | Delete a session
 [**delete_message_sessions_bulk**](TextMagicApi.md#delete_message_sessions_bulk) | **POST** /api/v2/sessions/delete | Delete sessions (bulk)
@@ -89,7 +89,7 @@ Method | HTTP request | Description
 [**get_inbound_messages_notification_settings**](TextMagicApi.md#get_inbound_messages_notification_settings) | **GET** /api/v2/user/notification/inbound | Get inbound messages notification settings
 [**get_invoices**](TextMagicApi.md#get_invoices) | **GET** /api/v2/invoices | Get all invoices
 [**get_list**](TextMagicApi.md#get_list) | **GET** /api/v2/lists/{id} | Get the details of a specific list
-[**get_list_contacts_ids**](TextMagicApi.md#get_list_contacts_ids) | **GET** /api/v2/lists/{id}/contacts/ids | Get all contacts IDs in a list
+[**get_list_contacts_ids**](TextMagicApi.md#get_list_contacts_ids) | **GET** /api/v2/lists/{id}/contacts/ids | Get all contact IDs in a list
 [**get_lists**](TextMagicApi.md#get_lists) | **GET** /api/v2/lists | Get all lists
 [**get_lists_of_contact**](TextMagicApi.md#get_lists_of_contact) | **GET** /api/v2/contacts/{id}/lists | Get a contact&#39;s lists
 [**get_message_preview**](TextMagicApi.md#get_message_preview) | **GET** /api/v2/messages/preview | Preview message
@@ -155,7 +155,7 @@ Method | HTTP request | Description
 [**update_template**](TextMagicApi.md#update_template) | **PUT** /api/v2/templates/{id} | Update a template
 [**upload_avatar**](TextMagicApi.md#upload_avatar) | **POST** /api/v2/user/avatar | Upload an avatar
 [**upload_contact_avatar**](TextMagicApi.md#upload_contact_avatar) | **POST** /api/v2/contacts/{id}/avatar | Upload an avatar
-[**upload_list_avatar**](TextMagicApi.md#upload_list_avatar) | **POST** /api/v2/lists/{id}/avatar | Add an avatar for the list
+[**upload_list_avatar**](TextMagicApi.md#upload_list_avatar) | **POST** /api/v2/lists/{id}/avatar | Add an avatar for a list
 [**upload_message_attachment**](TextMagicApi.md#upload_message_attachment) | **POST** /api/v2/messages/attachment | Upload message attachment
 
 
@@ -1589,7 +1589,7 @@ void (empty response body)
 
 Delete a list
 
-This command has no parameters. If successful, this command will return the standard delete response (204 No Content), otherwise a standard error response will be returned.  When you delete a list, the contacts in it are deleted as well unless they were saved in other list.
+This command has no parameters. If successful, this command will return the standard delete response (204 No Content); otherwise, a standard error response will be returned.  When you delete a list, the contacts in it are deleted as well, unless they were saved in another list.
 
 ### Example 
 ```perl
@@ -1636,9 +1636,9 @@ void (empty response body)
 # **delete_list_avatar**
 > delete_list_avatar(id => $id)
 
-Delete an avatar for the list
+Delete an avatar for a list
 
-
+Delete an avatar for a list
 
 ### Example 
 ```perl
@@ -1685,9 +1685,9 @@ void (empty response body)
 # **delete_list_contacts_bulk**
 > delete_list_contacts_bulk(delete_list_contacts_bulk_input_object => $delete_list_contacts_bulk_input_object, id => $id)
 
-Delete contacts from list (bulk)
+Delete contacts from a list (bulk)
 
-
+Delete contacts from a list (bulk)
 
 ### Example 
 ```perl
@@ -3648,7 +3648,7 @@ Name | Type | Description  | Notes
 
 Get all contacts in a list
 
-A useful synonym for \"contacts/search\" command with provided \"listId\" parameter.
+A useful synonym for the \"contacts/search\" command with the provided \"listId\" parameter.
 
 ### Example 
 ```perl
@@ -3661,10 +3661,10 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     password => 'YOUR_PASSWORD',
 );
 
-my $id = 1; # int | Given group Id.
+my $id = 1; # int | Given group ID.
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
+my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
@@ -3680,10 +3680,10 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Given group Id. | 
+ **id** | **int**| Given group ID. | 
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
 ### Return type
@@ -4200,7 +4200,7 @@ Name | Type | Description  | Notes
 # **get_list_contacts_ids**
 > GetListContactsIdsResponse get_list_contacts_ids(id => $id)
 
-Get all contacts IDs in a list
+Get all contact IDs in a list
 
 
 
@@ -7710,9 +7710,9 @@ Name | Type | Description  | Notes
 # **upload_list_avatar**
 > ResourceLinkResponse upload_list_avatar(image => $image, id => $id)
 
-Add an avatar for the list
+Add an avatar for a list
 
-
+Add an avatar for a list
 
 ### Example 
 ```perl
@@ -7725,7 +7725,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     password => 'YOUR_PASSWORD',
 );
 
-my $image = '/path/to/file.txt'; # File | List avatar. Should be PNG or JPG file not more than 10 MB
+my $image = '/path/to/file.txt'; # File | List avatar. Should be a PNG or JPG file not more than 10 MB.
 my $id = 1; # int | 
 
 eval { 
@@ -7741,7 +7741,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **image** | **File**| List avatar. Should be PNG or JPG file not more than 10 MB | 
+ **image** | **File**| List avatar. Should be a PNG or JPG file not more than 10 MB. | 
  **id** | **int**|  | 
 
 ### Return type

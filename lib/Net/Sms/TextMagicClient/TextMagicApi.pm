@@ -1975,7 +1975,7 @@ sub delete_list {
 #
 # delete_list_avatar
 #
-# Delete an avatar for the list
+# Delete an avatar for a list
 # 
 # @param int $id  (required)
 {
@@ -1987,7 +1987,7 @@ sub delete_list {
     },
     };
     __PACKAGE__->method_documentation->{ 'delete_list_avatar' } = { 
-    	summary => 'Delete an avatar for the list',
+    	summary => 'Delete an avatar for a list',
         params => $params,
         returns => undef,
         };
@@ -2038,7 +2038,7 @@ sub delete_list_avatar {
 #
 # delete_list_contacts_bulk
 #
-# Delete contacts from list (bulk)
+# Delete contacts from a list (bulk)
 # 
 # @param DeleteListContactsBulkInputObject $delete_list_contacts_bulk_input_object  (required)
 # @param int $id  (required)
@@ -2056,7 +2056,7 @@ sub delete_list_avatar {
     },
     };
     __PACKAGE__->method_documentation->{ 'delete_list_contacts_bulk' } = { 
-    	summary => 'Delete contacts from list (bulk)',
+    	summary => 'Delete contacts from a list (bulk)',
         params => $params,
         returns => undef,
         };
@@ -4869,16 +4869,16 @@ sub get_contacts_autocomplete {
 #
 # Get all contacts in a list
 # 
-# @param int $id Given group Id. (required)
+# @param int $id Given group ID. (required)
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $order_by Order results by some field. Default is id (optional, default to id)
+# @param string $order_by Order results by some field. Default is id. (optional, default to id)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
     'id' => {
         data_type => 'int',
-        description => 'Given group Id.',
+        description => 'Given group ID.',
         required => '1',
     },
     'page' => {
@@ -4893,7 +4893,7 @@ sub get_contacts_autocomplete {
     },
     'order_by' => {
         data_type => 'string',
-        description => 'Order results by some field. Default is id',
+        description => 'Order results by some field. Default is id.',
         required => '0',
     },
     'direction' => {
@@ -5617,7 +5617,7 @@ sub get_list {
 #
 # get_list_contacts_ids
 #
-# Get all contacts IDs in a list
+# Get all contact IDs in a list
 # 
 # @param int $id  (required)
 {
@@ -5629,7 +5629,7 @@ sub get_list {
     },
     };
     __PACKAGE__->method_documentation->{ 'get_list_contacts_ids' } = { 
-    	summary => 'Get all contacts IDs in a list',
+    	summary => 'Get all contact IDs in a list',
         params => $params,
         returns => 'GetListContactsIdsResponse',
         };
@@ -11070,15 +11070,15 @@ sub upload_contact_avatar {
 #
 # upload_list_avatar
 #
-# Add an avatar for the list
+# Add an avatar for a list
 # 
-# @param File $image List avatar. Should be PNG or JPG file not more than 10 MB (required)
+# @param File $image List avatar. Should be a PNG or JPG file not more than 10 MB. (required)
 # @param int $id  (required)
 {
     my $params = {
     'image' => {
         data_type => 'File',
-        description => 'List avatar. Should be PNG or JPG file not more than 10 MB',
+        description => 'List avatar. Should be a PNG or JPG file not more than 10 MB.',
         required => '1',
     },
     'id' => {
@@ -11088,7 +11088,7 @@ sub upload_contact_avatar {
     },
     };
     __PACKAGE__->method_documentation->{ 'upload_list_avatar' } = { 
-    	summary => 'Add an avatar for the list',
+    	summary => 'Add an avatar for a list',
         params => $params,
         returns => 'ResourceLinkResponse',
         };
