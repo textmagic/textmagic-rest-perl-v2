@@ -3073,7 +3073,7 @@ sub get_all_chats {
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
 # @param string $order_by Order results by some field. Default is id (optional, default to id)
-# @param string $direction Order direction. Default is desc (optional, default to desc)
+# @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
     'page' => {
@@ -3093,7 +3093,7 @@ sub get_all_chats {
     },
     'direction' => {
         data_type => 'string',
-        description => 'Order direction. Default is desc',
+        description => 'Order direction. Default is desc.',
         required => '0',
     },
     };
@@ -3320,7 +3320,7 @@ sub get_all_outbound_messages {
 # @param int $limit The number of results per page. (optional, default to 10)
 # @param string $status Fetch schedules with the specific status: a - actual, c - completed, x - all (optional, default to x)
 # @param string $order_by Order results by some field. Default is id (optional, default to id)
-# @param string $direction Order direction. Default is desc (optional, default to desc)
+# @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
     'page' => {
@@ -3345,7 +3345,7 @@ sub get_all_outbound_messages {
     },
     'direction' => {
         data_type => 'string',
-        description => 'Order direction. Default is desc',
+        description => 'Order direction. Default is desc.',
         required => '0',
     },
     };
@@ -3738,9 +3738,9 @@ sub get_balance_notification_settings {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $query Find blocked contacts by specified search query (optional)
-# @param string $order_by Order results by some field. Default is id (optional, default to id)
-# @param string $direction Order direction. Default is desc (optional, default to desc)
+# @param string $query Find blocked contacts by specified search query. (optional)
+# @param string $order_by Order results by some field. Default is id. (optional, default to id)
+# @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
     'page' => {
@@ -3755,17 +3755,17 @@ sub get_balance_notification_settings {
     },
     'query' => {
         data_type => 'string',
-        description => 'Find blocked contacts by specified search query',
+        description => 'Find blocked contacts by specified search query.',
         required => '0',
     },
     'order_by' => {
         data_type => 'string',
-        description => 'Order results by some field. Default is id',
+        description => 'Order results by some field. Default is id.',
         required => '0',
     },
     'direction' => {
         data_type => 'string',
-        description => 'Order direction. Default is desc',
+        description => 'Order direction. Default is desc.',
         required => '0',
     },
     };
@@ -4118,7 +4118,7 @@ sub get_chat_by_phone {
 # @param string $query Find messages by specified search query (optional)
 # @param int $start Return messages since specified timestamp only (optional)
 # @param int $end Return messages up to specified timestamp only (optional)
-# @param string $direction Order direction. Default is desc (optional, default to desc)
+# @param string $direction Order direction. Default is desc. (optional, default to desc)
 # @param int $voice Fetch results with voice calls (optional, default to 0)
 {
     my $params = {
@@ -4154,7 +4154,7 @@ sub get_chat_by_phone {
     },
     'direction' => {
         data_type => 'string',
-        description => 'Order direction. Default is desc',
+        description => 'Order direction. Default is desc.',
         required => '0',
     },
     'voice' => {
@@ -4681,8 +4681,8 @@ sub get_contact_notes {
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
 # @param int $shared Should shared contacts to be included (optional, default to 0)
-# @param string $order_by Order results by some field. Default is id (optional, default to id)
-# @param string $direction Order direction. Default is desc (optional, default to desc)
+# @param string $order_by Order results by some field. Default is id. (optional, default to id)
+# @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
     'page' => {
@@ -4702,12 +4702,12 @@ sub get_contact_notes {
     },
     'order_by' => {
         data_type => 'string',
-        description => 'Order results by some field. Default is id',
+        description => 'Order results by some field. Default is id.',
         required => '0',
     },
     'direction' => {
         data_type => 'string',
-        description => 'Order direction. Default is desc',
+        description => 'Order direction. Default is desc.',
         required => '0',
     },
     };
@@ -4782,14 +4782,14 @@ sub get_contacts {
 #
 # Get contacts autocomplete suggestions
 # 
-# @param string $query Find recipients by specified search query (required)
+# @param string $query Find recipients by specified search query. (required)
 # @param int $limit The number of results per page. (optional, default to 10)
 # @param int $lists Should lists be returned or not (optional, default to 0)
 {
     my $params = {
     'query' => {
         data_type => 'string',
-        description => 'Find recipients by specified search query',
+        description => 'Find recipients by specified search query.',
         required => '1',
     },
     'limit' => {
@@ -4873,7 +4873,7 @@ sub get_contacts_autocomplete {
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
 # @param string $order_by Order results by some field. Default is id (optional, default to id)
-# @param string $direction Order direction. Default is desc (optional, default to desc)
+# @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
     'id' => {
@@ -4898,7 +4898,7 @@ sub get_contacts_autocomplete {
     },
     'direction' => {
         data_type => 'string',
-        description => 'Order direction. Default is desc',
+        description => 'Order direction. Default is desc.',
         required => '0',
     },
     };
@@ -5688,8 +5688,8 @@ sub get_list_contacts_ids {
 # 
 # @param int $page The current fetched page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $order_by Order results by some field. Default is id (optional, default to id)
-# @param string $direction Order direction. Default is desc (optional, default to desc)
+# @param string $order_by Order results by some field. Default is id. (optional, default to id)
+# @param string $direction Order direction. Default is desc. (optional, default to desc)
 # @param int $favorite_only Return only favorite lists (optional, default to 0)
 # @param int $only_mine Return only current user lists (optional, default to 0)
 {
@@ -5706,12 +5706,12 @@ sub get_list_contacts_ids {
     },
     'order_by' => {
         data_type => 'string',
-        description => 'Order results by some field. Default is id',
+        description => 'Order results by some field. Default is id.',
         required => '0',
     },
     'direction' => {
         data_type => 'string',
-        description => 'Order direction. Default is desc',
+        description => 'Order direction. Default is desc.',
         required => '0',
     },
     'favorite_only' => {
@@ -5904,7 +5904,7 @@ sub get_lists_of_contact {
 # @param string $from One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs). (optional)
 # @param string $rule An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details. (optional)
 # @param int $create_chat Should the sending method try to create new Chat(if not exist) with specified recipients? (optional, default to 0)
-# @param int $tts Send Text to Speech message. (optional, default to 0)
+# @param int $tts Send Text-to-Speech message. (optional, default to 0)
 # @param int $local Treat phone numbers passed in the \\&#39;phones\\&#39; field as local. (optional, default to 0)
 # @param string $local_country The 2-letter ISO country code for local phone numbers, used when \\&#39;local\\&#39; is set to true. Default is the account country. (optional)
 {
@@ -5981,7 +5981,7 @@ sub get_lists_of_contact {
     },
     'tts' => {
         data_type => 'int',
-        description => 'Send Text to Speech message.',
+        description => 'Send Text-to-Speech message.',
         required => '0',
     },
     'local' => {
@@ -6141,7 +6141,7 @@ sub get_message_preview {
 # @param string $from One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs). (optional)
 # @param string $rule An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details. (optional)
 # @param int $create_chat Should the sending method try to create new Chat (if not exist) with specified recipients? (optional, default to 0)
-# @param int $tts Send a Text to Speech message. (optional, default to 0)
+# @param int $tts Send a Text-to-Speech message. (optional, default to 0)
 # @param int $local Treat phone numbers passed in the \\&#39;phones\\&#39; field as local. (optional, default to 0)
 # @param string $local_country The 2-letter ISO country code for local phone numbers, used when \\&#39;local\\&#39; is set to true. Default is the account country. (optional)
 {
@@ -6223,7 +6223,7 @@ sub get_message_preview {
     },
     'tts' => {
         data_type => 'int',
-        description => 'Send a Text to Speech message.',
+        description => 'Send a Text-to-Speech message.',
         required => '0',
     },
     'local' => {
@@ -6831,7 +6831,7 @@ sub get_outbound_message {
 # @param int $last_id Filter results by ID, selecting all values lesser than the specified ID. (optional)
 # @param string $query Find message by specified search query (optional)
 # @param string $order_by Order results by some field. Default is id (optional, default to id)
-# @param string $direction Order direction. Default is desc (optional, default to desc)
+# @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
     'limit' => {
@@ -6856,7 +6856,7 @@ sub get_outbound_message {
     },
     'direction' => {
         data_type => 'string',
-        description => 'Order direction. Default is desc',
+        description => 'Order direction. Default is desc.',
         required => '0',
     },
     };
@@ -8829,8 +8829,8 @@ sub search_chats_by_receipent {
 # @param string $query Find contacts by specified search query (optional)
 # @param int $local Treat phone number passed in &#39;query&#39; field as local. Default is 0 (optional, default to 0)
 # @param string $country 2-letter ISO country code for local phone numbers, used when &#39;local&#39; is set to true. Default is account country (optional)
-# @param string $order_by Order results by some field. Default is id (optional, default to id)
-# @param string $direction Order direction. Default is desc (optional, default to desc)
+# @param string $order_by Order results by some field. Default is id. (optional, default to id)
+# @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
     'page' => {
@@ -8880,12 +8880,12 @@ sub search_chats_by_receipent {
     },
     'order_by' => {
         data_type => 'string',
-        description => 'Order results by some field. Default is id',
+        description => 'Order results by some field. Default is id.',
         required => '0',
     },
     'direction' => {
         data_type => 'string',
-        description => 'Order direction. Default is desc',
+        description => 'Order direction. Default is desc.',
         required => '0',
     },
     };
@@ -8992,11 +8992,11 @@ sub search_contacts {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $ids Find message by ID(s) (optional)
-# @param string $query Find recipients by specified search query (optional)
+# @param string $ids Find message by ID(s). (optional)
+# @param string $query Find recipients by specified search query. (optional)
 # @param string $order_by Order results by some field. Default is id (optional, default to id)
-# @param string $direction Order direction. Default is desc (optional, default to desc)
-# @param int $expand Expand by adding firstName, lastName and contactId (optional, default to 0)
+# @param string $direction Order direction. Default is desc. (optional, default to desc)
+# @param int $expand Expand by adding firstName, lastName and contactId. (optional, default to 0)
 {
     my $params = {
     'page' => {
@@ -9011,12 +9011,12 @@ sub search_contacts {
     },
     'ids' => {
         data_type => 'string',
-        description => 'Find message by ID(s)',
+        description => 'Find message by ID(s).',
         required => '0',
     },
     'query' => {
         data_type => 'string',
-        description => 'Find recipients by specified search query',
+        description => 'Find recipients by specified search query.',
         required => '0',
     },
     'order_by' => {
@@ -9026,12 +9026,12 @@ sub search_contacts {
     },
     'direction' => {
         data_type => 'string',
-        description => 'Order direction. Default is desc',
+        description => 'Order direction. Default is desc.',
         required => '0',
     },
     'expand' => {
         data_type => 'int',
-        description => 'Expand by adding firstName, lastName and contactId',
+        description => 'Expand by adding firstName, lastName and contactId.',
         required => '0',
     },
     };
@@ -9123,7 +9123,7 @@ sub search_inbound_messages {
 # @param int $only_mine Return only current user lists (optional, default to 0)
 # @param int $only_default Return only default lists (optional, default to 0)
 # @param string $order_by Order results by some field. Default is id (optional, default to id)
-# @param string $direction Order direction. Default is desc (optional, default to desc)
+# @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
     'page' => {
@@ -9163,7 +9163,7 @@ sub search_inbound_messages {
     },
     'direction' => {
         data_type => 'string',
-        description => 'Order direction. Default is desc',
+        description => 'Order direction. Default is desc.',
         required => '0',
     },
     };
@@ -9255,12 +9255,12 @@ sub search_lists {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param int $last_id Filter results by ID, selecting all values lesser than the specified ID. Note that \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified (optional)
-# @param string $ids Find message by ID(s) (optional)
-# @param int $session_id Find messages by session ID (optional)
-# @param string $statuses Find messages by status (optional)
-# @param int $include_deleted Search also in deleted messages (optional, default to 0)
-# @param string $query Find messages by specified search query (optional)
+# @param int $last_id Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified (optional)
+# @param string $ids Find message by ID(s). (optional)
+# @param int $session_id Find messages by session ID. (optional)
+# @param string $statuses Find messages by status. (optional)
+# @param int $include_deleted Search also in deleted messages. (optional, default to 0)
+# @param string $query Find messages by specified search query. (optional)
 {
     my $params = {
     'page' => {
@@ -9275,32 +9275,32 @@ sub search_lists {
     },
     'last_id' => {
         data_type => 'int',
-        description => 'Filter results by ID, selecting all values lesser than the specified ID. Note that \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified',
+        description => 'Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified',
         required => '0',
     },
     'ids' => {
         data_type => 'string',
-        description => 'Find message by ID(s)',
+        description => 'Find message by ID(s).',
         required => '0',
     },
     'session_id' => {
         data_type => 'int',
-        description => 'Find messages by session ID',
+        description => 'Find messages by session ID.',
         required => '0',
     },
     'statuses' => {
         data_type => 'string',
-        description => 'Find messages by status',
+        description => 'Find messages by status.',
         required => '0',
     },
     'include_deleted' => {
         data_type => 'int',
-        description => 'Search also in deleted messages',
+        description => 'Search also in deleted messages.',
         required => '0',
     },
     'query' => {
         data_type => 'string',
-        description => 'Find messages by specified search query',
+        description => 'Find messages by specified search query.',
         required => '0',
     },
     };
@@ -9396,7 +9396,7 @@ sub search_outbound_messages {
 # @param string $ids Find schedules by ID(s) (optional)
 # @param string $status Fetch schedules with the specific status: a - actual, c - completed, x - all (optional, default to x)
 # @param string $order_by Order results by some field. Default is id (optional, default to id)
-# @param string $direction Order direction. Default is desc (optional, default to desc)
+# @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
     'page' => {
@@ -9431,7 +9431,7 @@ sub search_outbound_messages {
     },
     'direction' => {
         data_type => 'string',
-        description => 'Order direction. Default is desc',
+        description => 'Order direction. Default is desc.',
         required => '0',
     },
     };

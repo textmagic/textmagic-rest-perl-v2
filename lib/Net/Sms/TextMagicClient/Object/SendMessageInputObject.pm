@@ -146,14 +146,14 @@ __PACKAGE__->method_documentation({
     'text' => {
     	datatype => 'string',
     	base_name => 'text',
-    	description => 'Message text. Required if **template_id** is not set.',
+    	description => 'Message text. Required if the **template_id** is not set.',
     	format => '',
     	read_only => '',
     		},
     'template_id' => {
     	datatype => 'int',
     	base_name => 'templateId',
-    	description => 'Template used instead of message text. Required if **text** is not set.',
+    	description => 'Template used instead of message text. Required if the **text** is not set.',
     	format => '',
     	read_only => '',
     		},
@@ -244,7 +244,7 @@ __PACKAGE__->method_documentation({
     'tts' => {
     	datatype => 'boolean',
     	base_name => 'tts',
-    	description => 'Send a Text to Speech message.',
+    	description => 'Send a Text-to-Speech message.',
     	format => '',
     	read_only => '',
     		},

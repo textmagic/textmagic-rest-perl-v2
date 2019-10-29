@@ -1934,7 +1934,7 @@ void (empty response body)
 
 Delete messages (bulk)
 
-Delete outbound messages by given ID(s) or delete all outbound messages.
+Delete outbound messages by the given ID(s) or delete all outbound messages.
 
 ### Example 
 ```perl
@@ -2458,7 +2458,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
-my $direction = 'direction_example'; # string | Order direction. Default is desc
+my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
     my $result = $api_instance->get_all_inbound_messages(page => $page, limit => $limit, order_by => $order_by, direction => $direction);
@@ -2476,7 +2476,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc | [optional] [default to desc]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
 ### Return type
 
@@ -2621,7 +2621,7 @@ my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
 my $status = 'status_example'; # string | Fetch schedules with the specific status: a - actual, c - completed, x - all
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
-my $direction = 'direction_example'; # string | Order direction. Default is desc
+my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
     my $result = $api_instance->get_all_scheduled_messages(page => $page, limit => $limit, status => $status, order_by => $order_by, direction => $direction);
@@ -2640,7 +2640,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **status** | **string**| Fetch schedules with the specific status: a - actual, c - completed, x - all | [optional] [default to x]
  **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc | [optional] [default to desc]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
 ### Return type
 
@@ -2925,9 +2925,9 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $query = 'query_example'; # string | Find blocked contacts by specified search query
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
-my $direction = 'direction_example'; # string | Order direction. Default is desc
+my $query = 'query_example'; # string | Find blocked contacts by specified search query.
+my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
+my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
     my $result = $api_instance->get_blocked_contacts(page => $page, limit => $limit, query => $query, order_by => $order_by, direction => $direction);
@@ -2944,9 +2944,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **query** | **string**| Find blocked contacts by specified search query | [optional] 
- **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc | [optional] [default to desc]
+ **query** | **string**| Find blocked contacts by specified search query. | [optional] 
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
 ### Return type
 
@@ -3187,7 +3187,7 @@ my $limit = 56; # int | The number of results per page.
 my $query = 'query_example'; # string | Find messages by specified search query
 my $start = 56; # int | Return messages since specified timestamp only
 my $end = 56; # int | Return messages up to specified timestamp only
-my $direction = 'direction_example'; # string | Order direction. Default is desc
+my $direction = 'direction_example'; # string | Order direction. Default is desc.
 my $voice = 56; # int | Fetch results with voice calls
 
 eval { 
@@ -3209,7 +3209,7 @@ Name | Type | Description  | Notes
  **query** | **string**| Find messages by specified search query | [optional] 
  **start** | **int**| Return messages since specified timestamp only | [optional] 
  **end** | **int**| Return messages up to specified timestamp only | [optional] 
- **direction** | **string**| Order direction. Default is desc | [optional] [default to desc]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
  **voice** | **int**| Fetch results with voice calls | [optional] [default to 0]
 
 ### Return type
@@ -3552,8 +3552,8 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
 my $shared = 56; # int | Should shared contacts to be included
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
-my $direction = 'direction_example'; # string | Order direction. Default is desc
+my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
+my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
     my $result = $api_instance->get_contacts(page => $page, limit => $limit, shared => $shared, order_by => $order_by, direction => $direction);
@@ -3571,8 +3571,8 @@ Name | Type | Description  | Notes
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **shared** | **int**| Should shared contacts to be included | [optional] [default to 0]
- **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc | [optional] [default to desc]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
 ### Return type
 
@@ -3607,7 +3607,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     password => 'YOUR_PASSWORD',
 );
 
-my $query = '"A"'; # string | Find recipients by specified search query
+my $query = '"A"'; # string | Find recipients by specified search query.
 my $limit = 56; # int | The number of results per page.
 my $lists = 56; # int | Should lists be returned or not
 
@@ -3624,7 +3624,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query** | **string**| Find recipients by specified search query | 
+ **query** | **string**| Find recipients by specified search query. | 
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **lists** | **int**| Should lists be returned or not | [optional] [default to 0]
 
@@ -3665,7 +3665,7 @@ my $id = 1; # int | Given group Id.
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
-my $direction = 'direction_example'; # string | Order direction. Default is desc
+my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
     my $result = $api_instance->get_contacts_by_list_id(id => $id, page => $page, limit => $limit, order_by => $order_by, direction => $direction);
@@ -3684,7 +3684,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc | [optional] [default to desc]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
 ### Return type
 
@@ -4267,8 +4267,8 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | The current fetched page.
 my $limit = 56; # int | The number of results per page.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
-my $direction = 'direction_example'; # string | Order direction. Default is desc
+my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
+my $direction = 'direction_example'; # string | Order direction. Default is desc.
 my $favorite_only = 56; # int | Return only favorite lists
 my $only_mine = 56; # int | Return only current user lists
 
@@ -4287,8 +4287,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| The current fetched page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc | [optional] [default to desc]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
  **favorite_only** | **int**| Return only favorite lists | [optional] [default to 0]
  **only_mine** | **int**| Return only current user lists | [optional] [default to 0]
 
@@ -4366,7 +4366,7 @@ Name | Type | Description  | Notes
 
 Preview message
 
-Get messages preview (with tags merged) up to 100 messages per session.
+Get a messages preview (with tags merged) of up to 100 messages per session.
 
 ### Example 
 ```perl
@@ -4393,7 +4393,7 @@ my $reference_id = 1; # int | Custom message reference id which can be used in y
 my $from = '"Test Sender ID"'; # string | One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs).
 my $rule = '"FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1;COUNT=1"'; # string | An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details.
 my $create_chat = 56; # int | Should the sending method try to create new Chat(if not exist) with specified recipients?
-my $tts = 56; # int | Send Text to Speech message.
+my $tts = 56; # int | Send Text-to-Speech message.
 my $local = 56; # int | Treat phone numbers passed in the \\'phones\\' field as local.
 my $local_country = '"US"'; # string | The 2-letter ISO country code for local phone numbers, used when \\'local\\' is set to true. Default is the account country.
 
@@ -4424,7 +4424,7 @@ Name | Type | Description  | Notes
  **from** | **string**| One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs). | [optional] 
  **rule** | **string**| An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details. | [optional] 
  **create_chat** | **int**| Should the sending method try to create new Chat(if not exist) with specified recipients? | [optional] [default to 0]
- **tts** | **int**| Send Text to Speech message. | [optional] [default to 0]
+ **tts** | **int**| Send Text-to-Speech message. | [optional] [default to 0]
  **local** | **int**| Treat phone numbers passed in the \\&#39;phones\\&#39; field as local. | [optional] [default to 0]
  **local_country** | **string**| The 2-letter ISO country code for local phone numbers, used when \\&#39;local\\&#39; is set to true. Default is the account country. | [optional] 
 
@@ -4476,7 +4476,7 @@ my $reference_id = 1; # int | Custom message reference id which can be used in y
 my $from = '"Test Sender ID"'; # string | One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs).
 my $rule = '"FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1;COUNT=1"'; # string | An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details.
 my $create_chat = 56; # int | Should the sending method try to create new Chat (if not exist) with specified recipients?
-my $tts = 56; # int | Send a Text to Speech message.
+my $tts = 56; # int | Send a Text-to-Speech message.
 my $local = 56; # int | Treat phone numbers passed in the \\'phones\\' field as local.
 my $local_country = '"US"'; # string | The 2-letter ISO country code for local phone numbers, used when \\'local\\' is set to true. Default is the account country.
 
@@ -4508,7 +4508,7 @@ Name | Type | Description  | Notes
  **from** | **string**| One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs). | [optional] 
  **rule** | **string**| An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details. | [optional] 
  **create_chat** | **int**| Should the sending method try to create new Chat (if not exist) with specified recipients? | [optional] [default to 0]
- **tts** | **int**| Send a Text to Speech message. | [optional] [default to 0]
+ **tts** | **int**| Send a Text-to-Speech message. | [optional] [default to 0]
  **local** | **int**| Treat phone numbers passed in the \\&#39;phones\\&#39; field as local. | [optional] [default to 0]
  **local_country** | **string**| The 2-letter ISO country code for local phone numbers, used when \\&#39;local\\&#39; is set to true. Default is the account country. | [optional] 
 
@@ -4842,7 +4842,7 @@ Name | Type | Description  | Notes
 
 Get history
 
-Get outbound messages history.
+Get the outbound messages history.
 
 ### Example 
 ```perl
@@ -4859,7 +4859,7 @@ my $limit = 56; # int | The number of results per page.
 my $last_id = 56; # int | Filter results by ID, selecting all values lesser than the specified ID.
 my $query = 'query_example'; # string | Find message by specified search query
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
-my $direction = 'direction_example'; # string | Order direction. Default is desc
+my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
     my $result = $api_instance->get_outbound_messages_history(limit => $limit, last_id => $last_id, query => $query, order_by => $order_by, direction => $direction);
@@ -4878,7 +4878,7 @@ Name | Type | Description  | Notes
  **last_id** | **int**| Filter results by ID, selecting all values lesser than the specified ID. | [optional] 
  **query** | **string**| Find message by specified search query | [optional] 
  **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc | [optional] [default to desc]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
 ### Return type
 
@@ -6299,8 +6299,8 @@ my $include_blocked = 56; # int | Should blocked contacts to be included
 my $query = 'query_example'; # string | Find contacts by specified search query
 my $local = 56; # int | Treat phone number passed in 'query' field as local. Default is 0
 my $country = 'country_example'; # string | 2-letter ISO country code for local phone numbers, used when 'local' is set to true. Default is account country
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
-my $direction = 'direction_example'; # string | Order direction. Default is desc
+my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
+my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
     my $result = $api_instance->search_contacts(page => $page, limit => $limit, shared => $shared, ids => $ids, list_id => $list_id, include_blocked => $include_blocked, query => $query, local => $local, country => $country, order_by => $order_by, direction => $direction);
@@ -6324,8 +6324,8 @@ Name | Type | Description  | Notes
  **query** | **string**| Find contacts by specified search query | [optional] 
  **local** | **int**| Treat phone number passed in &#39;query&#39; field as local. Default is 0 | [optional] [default to 0]
  **country** | **string**| 2-letter ISO country code for local phone numbers, used when &#39;local&#39; is set to true. Default is account country | [optional] 
- **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc | [optional] [default to desc]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
 ### Return type
 
@@ -6362,11 +6362,11 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $ids = 'ids_example'; # string | Find message by ID(s)
-my $query = 'query_example'; # string | Find recipients by specified search query
+my $ids = 'ids_example'; # string | Find message by ID(s).
+my $query = 'query_example'; # string | Find recipients by specified search query.
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
-my $direction = 'direction_example'; # string | Order direction. Default is desc
-my $expand = 56; # int | Expand by adding firstName, lastName and contactId
+my $direction = 'direction_example'; # string | Order direction. Default is desc.
+my $expand = 56; # int | Expand by adding firstName, lastName and contactId.
 
 eval { 
     my $result = $api_instance->search_inbound_messages(page => $page, limit => $limit, ids => $ids, query => $query, order_by => $order_by, direction => $direction, expand => $expand);
@@ -6383,11 +6383,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **ids** | **string**| Find message by ID(s) | [optional] 
- **query** | **string**| Find recipients by specified search query | [optional] 
+ **ids** | **string**| Find message by ID(s). | [optional] 
+ **query** | **string**| Find recipients by specified search query. | [optional] 
  **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc | [optional] [default to desc]
- **expand** | **int**| Expand by adding firstName, lastName and contactId | [optional] [default to 0]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
+ **expand** | **int**| Expand by adding firstName, lastName and contactId. | [optional] [default to 0]
 
 ### Return type
 
@@ -6429,7 +6429,7 @@ my $query = '"A"'; # string | Find lists by specified search query
 my $only_mine = 56; # int | Return only current user lists
 my $only_default = 56; # int | Return only default lists
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
-my $direction = 'direction_example'; # string | Order direction. Default is desc
+my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
     my $result = $api_instance->search_lists(page => $page, limit => $limit, ids => $ids, query => $query, only_mine => $only_mine, only_default => $only_default, order_by => $order_by, direction => $direction);
@@ -6451,7 +6451,7 @@ Name | Type | Description  | Notes
  **only_mine** | **int**| Return only current user lists | [optional] [default to 0]
  **only_default** | **int**| Return only default lists | [optional] [default to 0]
  **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc | [optional] [default to desc]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
 ### Return type
 
@@ -6488,12 +6488,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $last_id = 56; # int | Filter results by ID, selecting all values lesser than the specified ID. Note that \\'page\\' parameter is ignored when \\'lastId\\' is specified
-my $ids = 'ids_example'; # string | Find message by ID(s)
-my $session_id = 56; # int | Find messages by session ID
-my $statuses = '"q"'; # string | Find messages by status
-my $include_deleted = 56; # int | Search also in deleted messages
-my $query = 'query_example'; # string | Find messages by specified search query
+my $last_id = 56; # int | Filter results by ID, selecting all values lesser than the specified ID. Note that the \\'page\\' parameter is ignored when \\'lastId\\' is specified
+my $ids = 'ids_example'; # string | Find message by ID(s).
+my $session_id = 56; # int | Find messages by session ID.
+my $statuses = '"q"'; # string | Find messages by status.
+my $include_deleted = 56; # int | Search also in deleted messages.
+my $query = 'query_example'; # string | Find messages by specified search query.
 
 eval { 
     my $result = $api_instance->search_outbound_messages(page => $page, limit => $limit, last_id => $last_id, ids => $ids, session_id => $session_id, statuses => $statuses, include_deleted => $include_deleted, query => $query);
@@ -6510,12 +6510,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **last_id** | **int**| Filter results by ID, selecting all values lesser than the specified ID. Note that \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified | [optional] 
- **ids** | **string**| Find message by ID(s) | [optional] 
- **session_id** | **int**| Find messages by session ID | [optional] 
- **statuses** | **string**| Find messages by status | [optional] 
- **include_deleted** | **int**| Search also in deleted messages | [optional] [default to 0]
- **query** | **string**| Find messages by specified search query | [optional] 
+ **last_id** | **int**| Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified | [optional] 
+ **ids** | **string**| Find message by ID(s). | [optional] 
+ **session_id** | **int**| Find messages by session ID. | [optional] 
+ **statuses** | **string**| Find messages by status. | [optional] 
+ **include_deleted** | **int**| Search also in deleted messages. | [optional] [default to 0]
+ **query** | **string**| Find messages by specified search query. | [optional] 
 
 ### Return type
 
@@ -6556,7 +6556,7 @@ my $query = 'query_example'; # string | Find messages by specified search query
 my $ids = 'ids_example'; # string | Find schedules by ID(s)
 my $status = 'status_example'; # string | Fetch schedules with the specific status: a - actual, c - completed, x - all
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
-my $direction = 'direction_example'; # string | Order direction. Default is desc
+my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
     my $result = $api_instance->search_scheduled_messages(page => $page, limit => $limit, query => $query, ids => $ids, status => $status, order_by => $order_by, direction => $direction);
@@ -6577,7 +6577,7 @@ Name | Type | Description  | Notes
  **ids** | **string**| Find schedules by ID(s) | [optional] 
  **status** | **string**| Fetch schedules with the specific status: a - actual, c - completed, x - all | [optional] [default to x]
  **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc | [optional] [default to desc]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
 ### Return type
 

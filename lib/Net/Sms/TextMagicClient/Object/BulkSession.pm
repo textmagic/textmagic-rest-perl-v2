@@ -154,14 +154,14 @@ __PACKAGE__->method_documentation({
     'status' => {
     	datatype => 'string',
     	base_name => 'status',
-    	description => '* **n** - bulk session is just created * **w** - work in progress * **f** - failed * **c** - completed with success * **s** - suspended ',
+    	description => '* **n** – bulk session is just created * **w** - work in progress * **f** - failed * **c** - completed with success * **s** - suspended ',
     	format => '',
     	read_only => '',
     		},
     'items_processed' => {
     	datatype => 'int',
     	base_name => 'itemsProcessed',
-    	description => 'Amount of messages which is already processed.',
+    	description => 'Amount of messages already processed.',
     	format => '',
     	read_only => '',
     		},

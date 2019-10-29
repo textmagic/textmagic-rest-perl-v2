@@ -9,8 +9,8 @@ use Net::Sms::TextMagicClient::Object::BulkSession;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Bulk Session ID. | 
-**status** | **string** | * **n** - bulk session is just created * **w** - work in progress * **f** - failed * **c** - completed with success * **s** - suspended  | 
-**items_processed** | **int** | Amount of messages which is already processed. | 
+**status** | **string** | * **n** – bulk session is just created * **w** - work in progress * **f** - failed * **c** - completed with success * **s** - suspended  | 
+**items_processed** | **int** | Amount of messages already processed. | 
 **items_total** | **int** | Total amount of messages to be processed. | 
 **created_at** | **DateTime** | Creation date and time of a Bulk Session. | 
 **session** | [**MessageSession**](MessageSession.md) |  | 

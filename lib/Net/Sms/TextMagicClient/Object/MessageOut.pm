@@ -279,7 +279,7 @@ __PACKAGE__->method_documentation({
     'from_number' => {
     	datatype => 'string',
     	base_name => 'fromNumber',
-    	description => 'Phone number used to send the SMS.',
+    	description => 'The Phone number used to send the SMS.',
     	format => '',
     	read_only => '',
     		},

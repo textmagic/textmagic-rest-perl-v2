@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **price** | **double** | Message price. | [optional] 
 **parts_count** | **int** | Message parts (multiples of 160 characters) count. | 
 **from_email** | **string** | The user email which this message came from. For Email2SMS and Distribution Lists the message will come from an original email address; in other cases, it will come from an account email address. | [optional] 
-**from_number** | **string** | Phone number used to send the SMS. | [optional] 
+**from_number** | **string** | The Phone number used to send the SMS. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
