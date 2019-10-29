@@ -158,7 +158,7 @@ __PACKAGE__->method_documentation({
     'display_time_format' => {
     	datatype => 'string',
     	base_name => 'displayTimeFormat',
-    	description => 'User&#39;s prefered format of time display * *12h* - AM/PM format * *24h* - 24 hour clock format ',
+    	description => 'User&#39;s preferred format of time display: * *12h* – AM/PM format; * *24h* – 24 hour clock format. ',
     	format => '',
     	read_only => '',
     		},
@@ -193,7 +193,7 @@ __PACKAGE__->method_documentation({
     'status' => {
     	datatype => 'string',
     	base_name => 'status',
-    	description => 'Current account status: * **A** for Active * **T** for Trial. ',
+    	description => 'Current account status: * **A** for Active; * **T** for Trial. ',
     	format => '',
     	read_only => '',
     		},
@@ -207,7 +207,7 @@ __PACKAGE__->method_documentation({
     'phone' => {
     	datatype => 'string',
     	base_name => 'phone',
-    	description => 'User phone number',
+    	description => 'User&#x60;s phone number.',
     	format => '',
     	read_only => '',
     		},
@@ -242,21 +242,21 @@ __PACKAGE__->method_documentation({
     'subaccount_type' => {
     	datatype => 'string',
     	base_name => 'subaccountType',
-    	description => 'Type of account: * **P** for Parent User * **A** for Administrator Sub-Account * **U** for Regular User ',
+    	description => 'Type of account: * **P** for Parent User; * **A** for Administrator Sub-Account; * **U** for Regular User ',
     	format => '',
     	read_only => '',
     		},
     'email_accepted' => {
     	datatype => 'boolean',
     	base_name => 'emailAccepted',
-    	description => 'Is account has confirmed Email.',
+    	description => 'Does the account have a confirmed email?',
     	format => '',
     	read_only => '',
     		},
     'phone_accepted' => {
     	datatype => 'boolean',
     	base_name => 'phoneAccepted',
-    	description => 'Is account has confirmed Phone number.',
+    	description => 'Does the account have a confirmed phone number?',
     	format => '',
     	read_only => '',
     		},

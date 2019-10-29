@@ -160,7 +160,7 @@ __PACKAGE__->method_documentation({
     'receiver' => {
     	datatype => 'string',
     	base_name => 'receiver',
-    	description => 'Recipient phone number.',
+    	description => 'Recipient&#x60;s phone number.',
     	format => '',
     	read_only => '',
     		},
@@ -188,7 +188,7 @@ __PACKAGE__->method_documentation({
     'session_id' => {
     	datatype => 'int',
     	base_name => 'sessionId',
-    	description => 'Message Session ID of a Message.',
+    	description => 'Message Session ID of a message.',
     	format => '',
     	read_only => '',
     		},
@@ -251,7 +251,7 @@ __PACKAGE__->method_documentation({
     'phone' => {
     	datatype => 'string',
     	base_name => 'phone',
-    	description => 'Receipent phone number.',
+    	description => 'Receipent&#x60;s phone number.',
     	format => '',
     	read_only => '',
     		},
@@ -272,7 +272,7 @@ __PACKAGE__->method_documentation({
     'from_email' => {
     	datatype => 'string',
     	base_name => 'fromEmail',
-    	description => 'The user email which this message came from. For Email2SMS and Distribution Lists the message will come from an original email address; in other cases, it will come from an account email address.',
+    	description => 'The user email which this message came from. For Email2SMS and Distribution Lists the messages, it is an original email address - in other cases, it is an account email address.',
     	format => '',
     	read_only => '',
     		},

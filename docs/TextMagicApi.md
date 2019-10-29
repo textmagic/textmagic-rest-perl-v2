@@ -94,9 +94,9 @@ Method | HTTP request | Description
 [**get_lists_of_contact**](TextMagicApi.md#get_lists_of_contact) | **GET** /api/v2/contacts/{id}/lists | Get contact&#39;s lists
 [**get_message_preview**](TextMagicApi.md#get_message_preview) | **GET** /api/v2/messages/preview | Preview message
 [**get_message_price**](TextMagicApi.md#get_message_price) | **GET** /api/v2/messages/price/normalized | Check message price
-[**get_message_session**](TextMagicApi.md#get_message_session) | **GET** /api/v2/sessions/{id} | Get a session details
-[**get_message_session_stat**](TextMagicApi.md#get_message_session_stat) | **GET** /api/v2/sessions/{id}/stat | Get a session statistics
-[**get_messages_by_session_id**](TextMagicApi.md#get_messages_by_session_id) | **GET** /api/v2/sessions/{id}/messages | Get a session messages
+[**get_message_session**](TextMagicApi.md#get_message_session) | **GET** /api/v2/sessions/{id} | Get a session&#x60;s details
+[**get_message_session_stat**](TextMagicApi.md#get_message_session_stat) | **GET** /api/v2/sessions/{id}/stat | Get a session&#x60;s statistics
+[**get_messages_by_session_id**](TextMagicApi.md#get_messages_by_session_id) | **GET** /api/v2/sessions/{id}/messages | Get a session&#x60;s messages
 [**get_messaging_counters**](TextMagicApi.md#get_messaging_counters) | **GET** /api/v2/stats/messaging/data | Get sent/received messages counters values
 [**get_messaging_stat**](TextMagicApi.md#get_messaging_stat) | **GET** /api/v2/stats/messaging | Get messaging statistics
 [**get_outbound_message**](TextMagicApi.md#get_outbound_message) | **GET** /api/v2/messages/{id} | Get a single message
@@ -109,7 +109,7 @@ Method | HTTP request | Description
 [**get_subaccount**](TextMagicApi.md#get_subaccount) | **GET** /api/v2/subaccounts/{id} | Get sub-account information
 [**get_subaccounts**](TextMagicApi.md#get_subaccounts) | **GET** /api/v2/subaccounts | Get sub-accounts list
 [**get_subaccounts_with_tokens**](TextMagicApi.md#get_subaccounts_with_tokens) | **POST** /api/v2/subaccounts/tokens/list | Get all sub-accounts with their REST API tokens associated with app name
-[**get_template**](TextMagicApi.md#get_template) | **GET** /api/v2/templates/{id} | Get a template details
+[**get_template**](TextMagicApi.md#get_template) | **GET** /api/v2/templates/{id} | Get a template&#x60;s details
 [**get_timezones**](TextMagicApi.md#get_timezones) | **GET** /api/v2/timezones | Get timezones
 [**get_unread_messages_total**](TextMagicApi.md#get_unread_messages_total) | **GET** /api/v2/chats/unread/count | Get unread messages number
 [**get_unsubscribed_contact**](TextMagicApi.md#get_unsubscribed_contact) | **GET** /api/v2/unsubscribers/{id} | Get the details of a specific unsubscribed contact
@@ -465,7 +465,7 @@ Name | Type | Description  | Notes
 
 Close chats (bulk)
 
-Close chats by chat ids or close all chats
+Close chats by chat IDs or close all chats
 
 ### Example 
 ```perl
@@ -995,7 +995,7 @@ void (empty response body)
 
 Delete chat messages by ID(s)
 
-Delete messages from chat by given messages ID(s).
+Delete messages from chat by given message IDs.
 
 ### Example 
 ```perl
@@ -1046,7 +1046,7 @@ void (empty response body)
 
 Delete chats (bulk)
 
-Delete chats by given ID(s) or delete all chats.
+Delete chats by given IDs or delete all chats.
 
 ### Example 
 ```perl
@@ -1836,7 +1836,7 @@ void (empty response body)
 
 Delete sessions (bulk)
 
-Delete messages sessions, together with all nested messages, by given ID(s) or delete all messages sessions.
+Delete message sessions, together with all nested messages, by given ID(s) or delete all message sessions.
 
 ### Example 
 ```perl
@@ -2179,7 +2179,7 @@ void (empty response body)
 
 Delete templates (bulk)
 
-Delete template by given ID(s) or delete all templates.
+Delete templates by given IDs or delete all templates.
 
 ### Example 
 ```perl
@@ -4269,8 +4269,8 @@ my $page = 56; # int | The current fetched page.
 my $limit = 56; # int | The number of results per page.
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
-my $favorite_only = 56; # int | Return only favorite lists
-my $only_mine = 56; # int | Return only current user lists
+my $favorite_only = 56; # int | Return only favorited lists.
+my $only_mine = 56; # int | Return only current user lists.
 
 eval { 
     my $result = $api_instance->get_lists(page => $page, limit => $limit, order_by => $order_by, direction => $direction, favorite_only => $favorite_only, only_mine => $only_mine);
@@ -4289,8 +4289,8 @@ Name | Type | Description  | Notes
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
- **favorite_only** | **int**| Return only favorite lists | [optional] [default to 0]
- **only_mine** | **int**| Return only current user lists | [optional] [default to 0]
+ **favorite_only** | **int**| Return only favorited lists. | [optional] [default to 0]
+ **only_mine** | **int**| Return only current user lists. | [optional] [default to 0]
 
 ### Return type
 
@@ -4530,9 +4530,9 @@ Name | Type | Description  | Notes
 # **get_message_session**
 > MessageSession get_message_session(id => $id)
 
-Get a session details
+Get a session`s details
 
-Get a specific session’s details
+Get a specific session’s details.
 
 ### Example 
 ```perl
@@ -4545,7 +4545,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     password => 'YOUR_PASSWORD',
 );
 
-my $id = 1; # int | a session ID
+my $id = 1; # int | Session ID.
 
 eval { 
     my $result = $api_instance->get_message_session(id => $id);
@@ -4560,7 +4560,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| a session ID | 
+ **id** | **int**| Session ID. | 
 
 ### Return type
 
@@ -4580,7 +4580,7 @@ Name | Type | Description  | Notes
 # **get_message_session_stat**
 > GetMessageSessionStatResponse get_message_session_stat(id => $id, include_deleted => $include_deleted)
 
-Get a session statistics
+Get a session`s statistics
 
 
 
@@ -4596,7 +4596,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 );
 
 my $id = 1; # int | 
-my $include_deleted = 56; # int | Search also in deleted messages
+my $include_deleted = 56; # int | Search also in deleted messages.
 
 eval { 
     my $result = $api_instance->get_message_session_stat(id => $id, include_deleted => $include_deleted);
@@ -4612,7 +4612,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **include_deleted** | **int**| Search also in deleted messages | [optional] [default to 0]
+ **include_deleted** | **int**| Search also in deleted messages. | [optional] [default to 0]
 
 ### Return type
 
@@ -4632,9 +4632,9 @@ Name | Type | Description  | Notes
 # **get_messages_by_session_id**
 > GetMessagesBySessionIdPaginatedResponse get_messages_by_session_id(id => $id, page => $page, limit => $limit, statuses => $statuses, include_deleted => $include_deleted)
 
-Get a session messages
+Get a session`s messages
 
-A useful synonym for \"messages/search\" command with provided \"sessionId\" parameter.
+A useful synonym for the \"messages/search\" command with the provided \"sessionId\" parameter.
 
 ### Example 
 ```perl
@@ -4650,8 +4650,8 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 my $id = 1; # int | 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $statuses = 'statuses_example'; # string | Find messages by status
-my $include_deleted = 56; # int | Search also in deleted messages
+my $statuses = 'statuses_example'; # string | Find messages by status.
+my $include_deleted = 56; # int | Search also in deleted messages.
 
 eval { 
     my $result = $api_instance->get_messages_by_session_id(id => $id, page => $page, limit => $limit, statuses => $statuses, include_deleted => $include_deleted);
@@ -4669,8 +4669,8 @@ Name | Type | Description  | Notes
  **id** | **int**|  | 
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **statuses** | **string**| Find messages by status | [optional] 
- **include_deleted** | **int**| Search also in deleted messages | [optional] [default to 0]
+ **statuses** | **string**| Find messages by status. | [optional] 
+ **include_deleted** | **int**| Search also in deleted messages. | [optional] [default to 0]
 
 ### Return type
 
@@ -5312,7 +5312,7 @@ Name | Type | Description  | Notes
 # **get_template**
 > MessageTemplate get_template(id => $id)
 
-Get a template details
+Get a template`s details
 
 Get a single template.
 
@@ -5721,7 +5721,7 @@ void (empty response body)
 
 Mark chats as read (bulk)
 
-Mark several chats as read by chat ids or mark all chats as read
+Mark several chats as read by chat IDs or mark all chats as read
 
 ### Example 
 ```perl
@@ -5770,7 +5770,7 @@ void (empty response body)
 
 Mark chats as unread (bulk)
 
-Mark several chats as UNread by chat ids or mark all chats as UNread
+Mark several chats as UNread by chat IDs or mark all chats as UNread
 
 ### Example 
 ```perl
@@ -5869,7 +5869,7 @@ Name | Type | Description  | Notes
 
 Mute chats (bulk)
 
-Mute several chats by chat ids or mute all chats
+Mute several chats by chat IDs or mute all chats
 
 ### Example 
 ```perl
@@ -5964,7 +5964,7 @@ This endpoint does not need any parameter.
 
 Reopen chats (bulk)
 
-Reopen chats by chat ids or reopen all chats
+Reopen chats by chat IDs or reopen all chats
 
 ### Example 
 ```perl
@@ -6614,9 +6614,9 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $ids = 'ids_example'; # string | Find template by ID(s)
-my $name = 'name_example'; # string | Find template by name
-my $content = 'content_example'; # string | Find template by content
+my $ids = 'ids_example'; # string | Find template by ID(s).
+my $name = 'name_example'; # string | Find template by name.
+my $content = 'content_example'; # string | Find template by content.
 
 eval { 
     my $result = $api_instance->search_templates(page => $page, limit => $limit, ids => $ids, name => $name, content => $content);
@@ -6633,9 +6633,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **ids** | **string**| Find template by ID(s) | [optional] 
- **name** | **string**| Find template by name | [optional] 
- **content** | **string**| Find template by content | [optional] 
+ **ids** | **string**| Find template by ID(s). | [optional] 
+ **name** | **string**| Find template by name. | [optional] 
+ **content** | **string**| Find template by content. | [optional] 
 
 ### Return type
 
@@ -6905,7 +6905,7 @@ void (empty response body)
 
 Unmute chats (bulk)
 
-Unmute several chats by chat ids or unmute all chats
+Unmute several chats by chat IDs or unmute all chats
 
 ### Example 
 ```perl

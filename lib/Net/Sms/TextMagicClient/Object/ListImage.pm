@@ -146,7 +146,7 @@ __PACKAGE__->method_documentation({
     'href' => {
     	datatype => 'string',
     	base_name => 'href',
-    	description => 'URI of a list avatar.',
+    	description => 'The URI of a list avatar.',
     	format => '',
     	read_only => '',
     		},

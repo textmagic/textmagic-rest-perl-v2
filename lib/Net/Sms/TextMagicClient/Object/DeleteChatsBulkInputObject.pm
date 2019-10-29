@@ -160,7 +160,7 @@ __PACKAGE__->method_documentation({
     'status' => {
     	datatype => 'string',
     	base_name => 'status',
-    	description => 'Default is empty string. If set then all entities with specified status will be affected.',
+    	description => 'Default is empty string. If set, all entities with specified status will be affected.',
     	format => '',
     	read_only => '',
     		},

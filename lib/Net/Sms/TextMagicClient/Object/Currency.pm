@@ -146,7 +146,7 @@ __PACKAGE__->method_documentation({
     'id' => {
     	datatype => 'string',
     	base_name => 'id',
-    	description => 'Three-letter ISO currency ID.',
+    	description => 'The 3-letter ISO currency ID.',
     	format => '',
     	read_only => '',
     		},

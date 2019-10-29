@@ -169,7 +169,7 @@ __PACKAGE__->method_documentation({
     'favorited' => {
     	datatype => 'boolean',
     	base_name => 'favorited',
-    	description => 'Is the List favourite? [Custom fields list](http://docs.textmagictesting.com/#operation/getFavourites).',
+    	description => 'Is the List favorited? See [Favorites list](http://docs.textmagictesting.com/#operation/getFavourites).',
     	format => '',
     	read_only => '',
     		},
@@ -211,7 +211,7 @@ __PACKAGE__->method_documentation({
     'is_default' => {
     	datatype => 'boolean',
     	base_name => 'isDefault',
-    	description => 'Indicates that List is used as a default. All new contacts that added via Web-app will be added in this List by default.',
+    	description => 'Indicates that List is used as a default. All new contacts added via web app will be added in this List by default.',
     	format => '',
     	read_only => '',
     		},

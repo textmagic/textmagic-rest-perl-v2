@@ -160,14 +160,14 @@ __PACKAGE__->method_documentation({
     'dst' => {
     	datatype => 'int',
     	base_name => 'dst',
-    	description => 'Is Daylight saving time used in this timezone?',
+    	description => 'Is daylight saving time used in this timezone?',
     	format => '',
     	read_only => '',
     		},
     'offset' => {
     	datatype => 'int',
     	base_name => 'offset',
-    	description => 'Offset from UTC time in seconds. In this example it is 21600/60/60&#x3D;6 hours.',
+    	description => 'Offset from UTC time in seconds. In this example, it is 21600/60/60&#x3D;6 hours.',
     	format => '',
     	read_only => '',
     		},

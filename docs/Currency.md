@@ -8,7 +8,7 @@ use Net::Sms::TextMagicClient::Object::Currency;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Three-letter ISO currency ID. | 
+**id** | **string** | The 3-letter ISO currency ID. | 
 **unicode_symbol** | **string** | Unicode-compatible currency symbol. | 
 **html_symbol** | **string** | HTML-compatible currency symbol. | 
 

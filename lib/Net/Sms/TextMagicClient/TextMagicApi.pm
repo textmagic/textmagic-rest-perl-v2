@@ -5690,8 +5690,8 @@ sub get_list_contacts_ids {
 # @param int $limit The number of results per page. (optional, default to 10)
 # @param string $order_by Order results by some field. Default is id. (optional, default to id)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
-# @param int $favorite_only Return only favorite lists (optional, default to 0)
-# @param int $only_mine Return only current user lists (optional, default to 0)
+# @param int $favorite_only Return only favorited lists. (optional, default to 0)
+# @param int $only_mine Return only current user lists. (optional, default to 0)
 {
     my $params = {
     'page' => {
@@ -5716,12 +5716,12 @@ sub get_list_contacts_ids {
     },
     'favorite_only' => {
         data_type => 'int',
-        description => 'Return only favorite lists',
+        description => 'Return only favorited lists.',
         required => '0',
     },
     'only_mine' => {
         data_type => 'int',
-        description => 'Return only current user lists',
+        description => 'Return only current user lists.',
         required => '0',
     },
     };
@@ -6371,19 +6371,19 @@ sub get_message_price {
 #
 # get_message_session
 #
-# Get a session details
+# Get a session`s details
 # 
-# @param int $id a session ID (required)
+# @param int $id Session ID. (required)
 {
     my $params = {
     'id' => {
         data_type => 'int',
-        description => 'a session ID',
+        description => 'Session ID.',
         required => '1',
     },
     };
     __PACKAGE__->method_documentation->{ 'get_message_session' } = { 
-    	summary => 'Get a session details',
+    	summary => 'Get a session&#x60;s details',
         params => $params,
         returns => 'MessageSession',
         };
@@ -6438,10 +6438,10 @@ sub get_message_session {
 #
 # get_message_session_stat
 #
-# Get a session statistics
+# Get a session`s statistics
 # 
 # @param int $id  (required)
-# @param int $include_deleted Search also in deleted messages (optional, default to 0)
+# @param int $include_deleted Search also in deleted messages. (optional, default to 0)
 {
     my $params = {
     'id' => {
@@ -6451,12 +6451,12 @@ sub get_message_session {
     },
     'include_deleted' => {
         data_type => 'int',
-        description => 'Search also in deleted messages',
+        description => 'Search also in deleted messages.',
         required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'get_message_session_stat' } = { 
-    	summary => 'Get a session statistics',
+    	summary => 'Get a session&#x60;s statistics',
         params => $params,
         returns => 'GetMessageSessionStatResponse',
         };
@@ -6516,13 +6516,13 @@ sub get_message_session_stat {
 #
 # get_messages_by_session_id
 #
-# Get a session messages
+# Get a session`s messages
 # 
 # @param int $id  (required)
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $statuses Find messages by status (optional)
-# @param int $include_deleted Search also in deleted messages (optional, default to 0)
+# @param string $statuses Find messages by status. (optional)
+# @param int $include_deleted Search also in deleted messages. (optional, default to 0)
 {
     my $params = {
     'id' => {
@@ -6542,17 +6542,17 @@ sub get_message_session_stat {
     },
     'statuses' => {
         data_type => 'string',
-        description => 'Find messages by status',
+        description => 'Find messages by status.',
         required => '0',
     },
     'include_deleted' => {
         data_type => 'int',
-        description => 'Search also in deleted messages',
+        description => 'Search also in deleted messages.',
         required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'get_messages_by_session_id' } = { 
-    	summary => 'Get a session messages',
+    	summary => 'Get a session&#x60;s messages',
         params => $params,
         returns => 'GetMessagesBySessionIdPaginatedResponse',
         };
@@ -7512,7 +7512,7 @@ sub get_subaccounts_with_tokens {
 #
 # get_template
 #
-# Get a template details
+# Get a template`s details
 # 
 # @param int $id  (required)
 {
@@ -7524,7 +7524,7 @@ sub get_subaccounts_with_tokens {
     },
     };
     __PACKAGE__->method_documentation->{ 'get_template' } = { 
-    	summary => 'Get a template details',
+    	summary => 'Get a template&#x60;s details',
         params => $params,
         returns => 'MessageTemplate',
         };
@@ -9518,9 +9518,9 @@ sub search_scheduled_messages {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $ids Find template by ID(s) (optional)
-# @param string $name Find template by name (optional)
-# @param string $content Find template by content (optional)
+# @param string $ids Find template by ID(s). (optional)
+# @param string $name Find template by name. (optional)
+# @param string $content Find template by content. (optional)
 {
     my $params = {
     'page' => {
@@ -9535,17 +9535,17 @@ sub search_scheduled_messages {
     },
     'ids' => {
         data_type => 'string',
-        description => 'Find template by ID(s)',
+        description => 'Find template by ID(s).',
         required => '0',
     },
     'name' => {
         data_type => 'string',
-        description => 'Find template by name',
+        description => 'Find template by name.',
         required => '0',
     },
     'content' => {
         data_type => 'string',
-        description => 'Find template by content',
+        description => 'Find template by content.',
         required => '0',
     },
     };

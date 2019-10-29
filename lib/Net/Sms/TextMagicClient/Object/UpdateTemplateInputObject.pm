@@ -146,14 +146,14 @@ __PACKAGE__->method_documentation({
     'name' => {
     	datatype => 'string',
     	base_name => 'name',
-    	description => 'Template name',
+    	description => 'Template name.',
     	format => '',
     	read_only => '',
     		},
     'content' => {
     	datatype => 'string',
     	base_name => 'content',
-    	description => 'Template text. May contain tags inside braces. See [Get timezones](http://docs.textmagictesting.com/#section/Custom-fields-list-(Merge-tags)).',
+    	description => 'Template text. May contain tags inside braces. See [Custom fields list](http://docs.textmagictesting.com/#section/Custom-fields-list-(Merge-tags)).',
     	format => '',
     	read_only => '',
     		},
