@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **first_name** | **string** | Contact first name. | [optional] 
 **last_name** | **string** | Contact last name. | [optional] 
-**phone** | **string** | Phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164). | 
+**phone** | **string** | Phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164). | [optional] 
 **email** | **string** | Contact email address. | [optional] 
 **company_name** | **string** | Contact company name. | [optional] 
-**lists** | **string** | Comma-separated [list](http://docs.textmagictesting.com/#section/Lists) ID. Each contact must be assigned to at least one list. | 
+**lists** | **string** | Comma-separated [list](http://docs.textmagictesting.com/#section/Lists) ID. Each contact must be assigned to at least one list. | [optional] 
 **favorited** | **boolean** | Is the contact marked as favorite? | [optional] 
 **blocked** | **boolean** | Is the contact blocked for outgoing and incoming messaging? | [optional] 
 **type** | **int** | Force type of phone. Possible values: 0 is landline; 1 is mobile; default is -1 (auto-detection). | [optional] 

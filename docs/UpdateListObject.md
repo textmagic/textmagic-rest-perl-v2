@@ -8,7 +8,7 @@ use Net::Sms::TextMagicClient::Object::UpdateListObject;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | List name. | 
+**name** | **string** | List name. | [optional] 
 **shared** | **boolean** | Make this list shared or not? | [optional] [default to false]
 **favorited** | **boolean** | Is list favorited. | [optional] [default to false]
 **is_default** | **boolean** | Is list default for new contacts (web only). | [optional] [default to false]
