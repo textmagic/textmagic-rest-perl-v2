@@ -146,7 +146,7 @@ __PACKAGE__->method_documentation({
     'dedicated' => {
     	datatype => 'ARRAY[string]',
     	base_name => 'dedicated',
-    	description => 'Array of dedicated numbers strings.',
+    	description => 'Array of dedicated number strings.',
     	format => '',
     	read_only => '',
     		},
@@ -160,7 +160,7 @@ __PACKAGE__->method_documentation({
     'shared' => {
     	datatype => 'ARRAY[string]',
     	base_name => 'shared',
-    	description => 'Array of shared numbers strings.',
+    	description => 'Array of shared number strings.',
     	format => '',
     	read_only => '',
     		},

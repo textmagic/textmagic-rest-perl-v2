@@ -160,7 +160,7 @@ __PACKAGE__->method_documentation({
     'for' => {
     	datatype => 'int',
     	base_name => 'for',
-    	description => 'Mute for N hours',
+    	description => 'Mute for N hours.',
     	format => '',
     	read_only => '',
     		},

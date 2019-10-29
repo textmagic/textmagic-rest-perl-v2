@@ -190,7 +190,7 @@ __PACKAGE__->method_documentation({
     'status' => {
     	datatype => 'string',
     	base_name => 'status',
-    	description => 'Number status: *   **U** for Unused. No messages have been sent from (or received to) this number. *   **A** for Active. ',
+    	description => 'Number status: *   **U** for Unused. No messages have been sent from (or received to) this number; *   **A** for Active. ',
     	format => '',
     	read_only => '',
     		},

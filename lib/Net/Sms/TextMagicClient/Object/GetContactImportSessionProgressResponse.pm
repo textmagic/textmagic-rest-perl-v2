@@ -146,14 +146,14 @@ __PACKAGE__->method_documentation({
     'status' => {
     	datatype => 'int',
     	base_name => 'status',
-    	description => 'Session status: * **1** if session has been initialized but not yet started * **3** if session is being processed * **4** if session has errors * **5** if session completed successfully ',
+    	description => 'Session status: * **1** - if session has been initialized but not yet started; * **3** - if session is being processed; * **4** - if session has errors; * **5** - if session completed successfully. ',
     	format => '',
     	read_only => '',
     		},
     'processed' => {
     	datatype => 'int',
     	base_name => 'processed',
-    	description => 'How many contacts have been imported.',
+    	description => 'How many contacts have been imported?',
     	format => '',
     	read_only => '',
     		},

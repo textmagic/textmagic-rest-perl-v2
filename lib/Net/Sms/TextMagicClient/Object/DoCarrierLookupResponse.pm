@@ -148,7 +148,7 @@ __PACKAGE__->method_documentation({
     'cost' => {
     	datatype => 'Number',
     	base_name => 'cost',
-    	description => 'Cost to check that one number is constant – 0.04 in your account currency.',
+    	description => 'The cost to check that one number is constant – 0.04 in your account currency.',
     	format => '',
     	read_only => '',
     		},
@@ -190,7 +190,7 @@ __PACKAGE__->method_documentation({
     'valid' => {
     	datatype => 'boolean',
     	base_name => 'valid',
-    	description => 'The field shows if entered phone number is valid or not.',
+    	description => 'This field shows whether the entered phone number is valid or not.',
     	format => '',
     	read_only => '',
     		},

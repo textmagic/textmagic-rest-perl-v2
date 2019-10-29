@@ -1725,7 +1725,7 @@ sub delete_custom_field {
 #
 # delete_dedicated_number
 #
-# Cancel dedicated number subscription
+# Cancel a dedicated number subscription
 # 
 # @param int $id  (required)
 {
@@ -1737,7 +1737,7 @@ sub delete_custom_field {
     },
     };
     __PACKAGE__->method_documentation->{ 'delete_dedicated_number' } = { 
-    	summary => 'Cancel dedicated number subscription',
+    	summary => 'Cancel a dedicated number subscription',
         params => $params,
         returns => undef,
         };
@@ -2740,7 +2740,7 @@ sub delete_templates_bulk {
 # Carrier Lookup
 # 
 # @param string $phone Phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164) or in [National format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers).  (required)
-# @param string $country This option must be specified only if the phone number in a **[National format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers)**.  (optional)
+# @param string $country This option must be specified only if the phone number is in a **[National format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers)**.  (optional)
 {
     my $params = {
     'phone' => {
@@ -2750,7 +2750,7 @@ sub delete_templates_bulk {
     },
     'country' => {
         data_type => 'string',
-        description => 'This option must be specified only if the phone number in a **[National format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers)**. ',
+        description => 'This option must be specified only if the phone number is in a **[National format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers)**. ',
         required => '0',
     },
     };
@@ -3491,19 +3491,19 @@ sub get_all_templates {
 #
 # Find dedicated numbers available for purchase
 # 
-# @param string $country Two-letter dedicated number country ISO code. (required)
-# @param int $prefix Desired number prefix. Should include country code (i.e. 447 for UK phone number format). Leave blank to get all the available numbers for the specified country. (optional)
+# @param string $country The 2-letter dedicated number country ISO code. (required)
+# @param int $prefix Desired number prefix. Should include the country code (i.e. 447 for UK phone number format). Leave blank to get all the available numbers for the specified country. (optional)
 # @param int $tollfree Should we show only tollfree numbers (tollfree available only for US). (optional, default to 0)
 {
     my $params = {
     'country' => {
         data_type => 'string',
-        description => 'Two-letter dedicated number country ISO code.',
+        description => 'The 2-letter dedicated number country ISO code.',
         required => '1',
     },
     'prefix' => {
         data_type => 'int',
-        description => 'Desired number prefix. Should include country code (i.e. 447 for UK phone number format). Leave blank to get all the available numbers for the specified country.',
+        description => 'Desired number prefix. Should include the country code (i.e. 447 for UK phone number format). Leave blank to get all the available numbers for the specified country.',
         required => '0',
     },
     'tollfree' => {
@@ -4587,7 +4587,7 @@ sub get_contact_note {
 #
 # get_contact_notes
 #
-# Fetch notes assigned to the given contact.
+# Fetch notes assigned to a given contact
 # 
 # @param int $id  (required)
 # @param int $page Fetch specified results page. (optional, default to 1)
@@ -4611,7 +4611,7 @@ sub get_contact_note {
     },
     };
     __PACKAGE__->method_documentation->{ 'get_contact_notes' } = { 
-    	summary => 'Fetch notes assigned to the given contact.',
+    	summary => 'Fetch notes assigned to a given contact',
         params => $params,
         returns => 'GetContactNotesPaginatedResponse',
         };
@@ -7136,12 +7136,12 @@ sub get_sender_ids {
 #
 # Get current sender settings
 # 
-# @param string $country Return sender settings enabled for sending to specified country. Two upper case characters (optional)
+# @param string $country Return sender settings enabled for sending to a specified country. Should be 2 upper-case characters. (optional)
 {
     my $params = {
     'country' => {
         data_type => 'string',
-        description => 'Return sender settings enabled for sending to specified country. Two upper case characters',
+        description => 'Return sender settings enabled for sending to a specified country. Should be 2 upper-case characters.',
         required => '0',
     },
     };
@@ -7830,7 +7830,7 @@ sub get_unsubscribers {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param int $survey_id Fetch only that numbers which are ready for the survey (optional)
+# @param int $survey_id Fetch only those numbers that are ready for the survey. (optional)
 {
     my $params = {
     'page' => {
@@ -7845,7 +7845,7 @@ sub get_unsubscribers {
     },
     'survey_id' => {
         data_type => 'int',
-        description => 'Fetch only that numbers which are ready for the survey',
+        description => 'Fetch only those numbers that are ready for the survey.',
         required => '0',
     },
     };
@@ -7911,7 +7911,7 @@ sub get_user_dedicated_numbers {
 # Import contacts
 # 
 # @param File $file File containing contacts in csv or xls(x) formats (required)
-# @param string $column Import file column mapping. String must contain substrings of mapping in format &#x60;columnNumber:field&#x60; glued by &#x60;;&#x60;. For example: &#x60;0:firstName;1:lastName;3:phone;4:email&#x60; where value before &#x60;:&#x60; is a number of column in file, value after &#x60;:&#x60; is a field of newly created contact or ID of custom field. Numbers of columns begins from zero. Allowed built-in contact fields: &#x60;firstName&#x60;, &#x60;lastName&#x60;, &#x60;phone&#x60;, &#x60;email&#x60;. Existing of &#x60;phone&#x60; mapping is required.  (required)
+# @param string $column Import file column mapping. The string must contain sub-strings of mapping in format &#x60;columnNumber:field&#x60; glued by &#x60;;&#x60;. For example: &#x60;0:firstName;1:lastName;3:phone;4:email&#x60; where the value before &#x60;:&#x60; is a number of the column in the file, and the value after &#x60;:&#x60; is a field of the newly created contact or the ID of a custom field. Numbers of columns begin from zero. Allowed built-in contact fields are: &#x60;firstName&#x60;, &#x60;lastName&#x60;, &#x60;phone&#x60;, &#x60;email&#x60;. Existing of &#x60;phone&#x60; mapping is required.  (required)
 # @param int $list_id List ID contacts will be imported to. Ignored if &#x60;listName&#x60; is specified.  (optional)
 # @param string $list_name List name. This list will be created during import. If such name is already taken, an ordinal (1, 2, ...) will be added to the end. Ignored if &#x60;listId&#x60; is specified.  (optional)
 {
@@ -7923,7 +7923,7 @@ sub get_user_dedicated_numbers {
     },
     'column' => {
         data_type => 'string',
-        description => 'Import file column mapping. String must contain substrings of mapping in format &#x60;columnNumber:field&#x60; glued by &#x60;;&#x60;. For example: &#x60;0:firstName;1:lastName;3:phone;4:email&#x60; where value before &#x60;:&#x60; is a number of column in file, value after &#x60;:&#x60; is a field of newly created contact or ID of custom field. Numbers of columns begins from zero. Allowed built-in contact fields: &#x60;firstName&#x60;, &#x60;lastName&#x60;, &#x60;phone&#x60;, &#x60;email&#x60;. Existing of &#x60;phone&#x60; mapping is required. ',
+        description => 'Import file column mapping. The string must contain sub-strings of mapping in format &#x60;columnNumber:field&#x60; glued by &#x60;;&#x60;. For example: &#x60;0:firstName;1:lastName;3:phone;4:email&#x60; where the value before &#x60;:&#x60; is a number of the column in the file, and the value after &#x60;:&#x60; is a field of the newly created contact or the ID of a custom field. Numbers of columns begin from zero. Allowed built-in contact fields are: &#x60;firstName&#x60;, &#x60;lastName&#x60;, &#x60;phone&#x60;, &#x60;email&#x60;. Existing of &#x60;phone&#x60; mapping is required. ',
         required => '1',
     },
     'list_id' => {
@@ -10988,13 +10988,13 @@ sub upload_avatar {
 #
 # Upload an avatar
 # 
-# @param File $image Contact avatar. Should be PNG or JPG file not more than 10 MB (required)
+# @param File $image Contact avatar. Should be a PNG or JPG file not more than 10 MB. (required)
 # @param int $id  (required)
 {
     my $params = {
     'image' => {
         data_type => 'File',
-        description => 'Contact avatar. Should be PNG or JPG file not more than 10 MB',
+        description => 'Contact avatar. Should be a PNG or JPG file not more than 10 MB.',
         required => '1',
     },
     'id' => {

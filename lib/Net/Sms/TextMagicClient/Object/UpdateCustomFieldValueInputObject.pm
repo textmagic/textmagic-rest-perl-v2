@@ -146,14 +146,14 @@ __PACKAGE__->method_documentation({
     'contact_id' => {
     	datatype => 'int',
     	base_name => 'contactId',
-    	description => 'Contact ID. See [Contact](http://docs.textmagictesting.com/#tag/Contacts) ',
+    	description => 'Contact ID. See [Contact](http://docs.textmagictesting.com/#tag/Contacts). ',
     	format => '',
     	read_only => '',
     		},
     'value' => {
     	datatype => 'string',
     	base_name => 'value',
-    	description => 'Custom field value. Note that this value is not parsed in any way. It is stored and used in tags exactly as you send it.',
+    	description => 'Custom field value. Note that this value is not parsed in any way; it is stored and used in tags exactly as you send it.',
     	format => '',
     	read_only => '',
     		},
