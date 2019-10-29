@@ -153,7 +153,7 @@ __PACKAGE__->method_documentation({
     'block_incoming' => {
     	datatype => 'int',
     	base_name => 'blockIncoming',
-    	description => 'If set to 1 incoming messages from this number will be blocked.',
+    	description => 'If set to 1, incoming messages from this number will be blocked.',
     	format => '',
     	read_only => '',
     		},

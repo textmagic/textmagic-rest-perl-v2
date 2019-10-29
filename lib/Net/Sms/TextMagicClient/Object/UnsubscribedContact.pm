@@ -160,7 +160,7 @@ __PACKAGE__->method_documentation({
     'unsubscribe_time' => {
     	datatype => 'DateTime',
     	base_name => 'unsubscribeTime',
-    	description => 'Time when contact has been opted-out.',
+    	description => 'Time when contact was opted-out.',
     	format => '',
     	read_only => '',
     		},

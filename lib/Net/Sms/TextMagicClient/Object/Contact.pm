@@ -159,7 +159,7 @@ __PACKAGE__->method_documentation({
     'favorited' => {
     	datatype => 'boolean',
     	base_name => 'favorited',
-    	description => 'Is the Contact favorite? [Custom fields list](http://docs.textmagictesting.com/#operation/getFavorites).',
+    	description => 'Is the Contact favorite? [Favorite list](http://docs.textmagictesting.com/#operation/getFavorites).',
     	format => '',
     	read_only => '',
     		},

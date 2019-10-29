@@ -134,7 +134,7 @@ sub assign_contacts_to_list {
 #
 # block_contact
 #
-# Block contact by phone number
+# Block a contact by phone number
 # 
 # @param BlockContactInputObject $block_contact_input_object  (required)
 {
@@ -146,7 +146,7 @@ sub assign_contacts_to_list {
     },
     };
     __PACKAGE__->method_documentation->{ 'block_contact' } = { 
-    	summary => 'Block contact by phone number',
+    	summary => 'Block a contact by phone number',
         params => $params,
         returns => 'ResourceLinkResponse',
         };
@@ -4256,12 +4256,12 @@ sub get_chat_messages {
 #
 # Get the details of a specific contact
 # 
-# @param int $id The contact id (required)
+# @param int $id Contact ID. (required)
 {
     my $params = {
     'id' => {
         data_type => 'int',
-        description => 'The contact id',
+        description => 'Contact ID.',
         required => '1',
     },
     };
@@ -4388,19 +4388,19 @@ sub get_contact_by_phone {
 #
 # get_contact_if_blocked
 #
-# Check is that phone number blocked
+# Check if a phone number is blocked
 # 
-# @param string $phone Phone number to check (required)
+# @param string $phone Phone number to check. (required)
 {
     my $params = {
     'phone' => {
         data_type => 'string',
-        description => 'Phone number to check',
+        description => 'Phone number to check.',
         required => '1',
     },
     };
     __PACKAGE__->method_documentation->{ 'get_contact_if_blocked' } = { 
-    	summary => 'Check is that phone number blocked',
+    	summary => 'Check if a phone number is blocked',
         params => $params,
         returns => 'Contact',
         };
@@ -7910,15 +7910,15 @@ sub get_user_dedicated_numbers {
 #
 # Import contacts
 # 
-# @param File $file File containing contacts in csv or xls(x) formats (required)
+# @param File $file File containing contacts in csv or xls(x) formats. (required)
 # @param string $column Import file column mapping. The string must contain sub-strings of mapping in format &#x60;columnNumber:field&#x60; glued by &#x60;;&#x60;. For example: &#x60;0:firstName;1:lastName;3:phone;4:email&#x60; where the value before &#x60;:&#x60; is a number of the column in the file, and the value after &#x60;:&#x60; is a field of the newly created contact or the ID of a custom field. Numbers of columns begin from zero. Allowed built-in contact fields are: &#x60;firstName&#x60;, &#x60;lastName&#x60;, &#x60;phone&#x60;, &#x60;email&#x60;. Existing of &#x60;phone&#x60; mapping is required.  (required)
-# @param int $list_id List ID contacts will be imported to. Ignored if &#x60;listName&#x60; is specified.  (optional)
+# @param int $list_id List that ID contacts will be imported to. Ignored if &#x60;listName&#x60; is specified.  (optional)
 # @param string $list_name List name. This list will be created during import. If such name is already taken, an ordinal (1, 2, ...) will be added to the end. Ignored if &#x60;listId&#x60; is specified.  (optional)
 {
     my $params = {
     'file' => {
         data_type => 'File',
-        description => 'File containing contacts in csv or xls(x) formats',
+        description => 'File containing contacts in csv or xls(x) formats.',
         required => '1',
     },
     'column' => {
@@ -7928,7 +7928,7 @@ sub get_user_dedicated_numbers {
     },
     'list_id' => {
         data_type => 'int',
-        description => 'List ID contacts will be imported to. Ignored if &#x60;listName&#x60; is specified. ',
+        description => 'List that ID contacts will be imported to. Ignored if &#x60;listName&#x60; is specified. ',
         required => '0',
     },
     'list_name' => {
@@ -9813,7 +9813,7 @@ sub set_chat_status {
 #
 # unblock_contact
 #
-# Unblock contact by phone number.
+# Unblock a contact by phone number
 # 
 # @param UnblockContactInputObject $unblock_contact_input_object  (required)
 {
@@ -9825,7 +9825,7 @@ sub set_chat_status {
     },
     };
     __PACKAGE__->method_documentation->{ 'unblock_contact' } = { 
-    	summary => 'Unblock contact by phone number.',
+    	summary => 'Unblock a contact by phone number',
         params => $params,
         returns => undef,
         };
