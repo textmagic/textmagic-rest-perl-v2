@@ -5799,7 +5799,7 @@ sub get_lists {
 #
 # get_lists_of_contact
 #
-# Get contact's lists
+# Get a contact's lists
 # 
 # @param int $id  (required)
 # @param int $page Fetch specified results page. (optional, default to 1)
@@ -5823,7 +5823,7 @@ sub get_lists {
     },
     };
     __PACKAGE__->method_documentation->{ 'get_lists_of_contact' } = { 
-    	summary => 'Get contact&#39;s lists',
+    	summary => 'Get a contact&#39;s lists',
         params => $params,
         returns => 'GetListsOfContactPaginatedResponse',
         };
@@ -9118,11 +9118,11 @@ sub search_inbound_messages {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $ids Find lists by ID(s) (optional)
-# @param string $query Find lists by specified search query (optional)
-# @param int $only_mine Return only current user lists (optional, default to 0)
-# @param int $only_default Return only default lists (optional, default to 0)
-# @param string $order_by Order results by some field. Default is id (optional, default to id)
+# @param string $ids Find lists by IDs. (optional)
+# @param string $query Find lists by specified search query. (optional)
+# @param int $only_mine Return only current user lists. (optional, default to 0)
+# @param int $only_default Return only default lists. (optional, default to 0)
+# @param string $order_by Order results by some field. Default is id. (optional, default to id)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
@@ -9138,27 +9138,27 @@ sub search_inbound_messages {
     },
     'ids' => {
         data_type => 'string',
-        description => 'Find lists by ID(s)',
+        description => 'Find lists by IDs.',
         required => '0',
     },
     'query' => {
         data_type => 'string',
-        description => 'Find lists by specified search query',
+        description => 'Find lists by specified search query.',
         required => '0',
     },
     'only_mine' => {
         data_type => 'int',
-        description => 'Return only current user lists',
+        description => 'Return only current user lists.',
         required => '0',
     },
     'only_default' => {
         data_type => 'int',
-        description => 'Return only default lists',
+        description => 'Return only default lists.',
         required => '0',
     },
     'order_by' => {
         data_type => 'string',
-        description => 'Order results by some field. Default is id',
+        description => 'Order results by some field. Default is id.',
         required => '0',
     },
     'direction' => {
