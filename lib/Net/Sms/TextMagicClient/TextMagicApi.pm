@@ -8565,7 +8565,7 @@ sub request_sender_id {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $query Find chats by specified search query (optional)
+# @param string $query Find chats by specified search query. (optional)
 {
     my $params = {
     'page' => {
@@ -8580,7 +8580,7 @@ sub request_sender_id {
     },
     'query' => {
         data_type => 'string',
-        description => 'Find chats by specified search query',
+        description => 'Find chats by specified search query.',
         required => '0',
     },
     };
@@ -8647,7 +8647,7 @@ sub search_chats {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $ids Find chats by ID(s) (optional)
+# @param string $ids Find chats by ID(s). (optional)
 {
     my $params = {
     'page' => {
@@ -8662,7 +8662,7 @@ sub search_chats {
     },
     'ids' => {
         data_type => 'string',
-        description => 'Find chats by ID(s)',
+        description => 'Find chats by ID(s).',
         required => '0',
     },
     };

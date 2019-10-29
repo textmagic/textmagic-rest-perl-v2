@@ -153,7 +153,7 @@ __PACKAGE__->method_documentation({
     'role' => {
     	datatype => 'string',
     	base_name => 'role',
-    	description => 'Type of account: *   **A** for Administrator sub-account *   **U** for Regular User ',
+    	description => 'Type of account: *   **A** for Administrator sub-account; *   **U** for Regular User. ',
     	format => '',
     	read_only => '',
     		},

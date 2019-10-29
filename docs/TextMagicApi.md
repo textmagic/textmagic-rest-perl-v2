@@ -5414,7 +5414,7 @@ Name | Type | Description  | Notes
 
 Get unread messages number
 
-Get total amount of unread messages in the current user chats.
+Get the total amount of unread messages in the current user chats.
 
 ### Example 
 ```perl
@@ -6128,7 +6128,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $query = 'query_example'; # string | Find chats by specified search query
+my $query = 'query_example'; # string | Find chats by specified search query.
 
 eval { 
     my $result = $api_instance->search_chats(page => $page, limit => $limit, query => $query);
@@ -6145,7 +6145,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **query** | **string**| Find chats by specified search query | [optional] 
+ **query** | **string**| Find chats by specified search query. | [optional] 
 
 ### Return type
 
@@ -6182,7 +6182,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $ids = 'ids_example'; # string | Find chats by ID(s)
+my $ids = 'ids_example'; # string | Find chats by ID(s).
 
 eval { 
     my $result = $api_instance->search_chats_by_ids(page => $page, limit => $limit, ids => $ids);
@@ -6199,7 +6199,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **ids** | **string**| Find chats by ID(s) | [optional] 
+ **ids** | **string**| Find chats by ID(s). | [optional] 
 
 ### Return type
 
@@ -6757,7 +6757,7 @@ Name | Type | Description  | Notes
 
 Change chat status
 
-Set status of the chat given by ID.
+Set the status of the chat given by ID.
 
 ### Example 
 ```perl

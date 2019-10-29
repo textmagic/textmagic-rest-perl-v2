@@ -185,7 +185,7 @@ __PACKAGE__->method_documentation({
     'status' => {
     	datatype => 'string',
     	base_name => 'status',
-    	description => 'Current account status: * **A** for Active * **T** for Trial. ',
+    	description => 'Current account status: * **A** for Active; * **T** for Trial. ',
     	format => '',
     	read_only => '',
     		},
@@ -234,7 +234,7 @@ __PACKAGE__->method_documentation({
     'subaccount_type' => {
     	datatype => 'string',
     	base_name => 'subaccountType',
-    	description => 'Type of account: *   **A** for Administrator sub-account *   **U** for Regular User ',
+    	description => 'Type of account: *   **A** for Administrator sub-account; *   **U** for Regular User. ',
     	format => '',
     	read_only => '',
     		},

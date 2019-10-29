@@ -13,14 +13,14 @@ Name | Type | Description | Notes
 **first_name** | **string** | Account first name. | 
 **last_name** | **string** | Account last name. | 
 **email** | **string** | Account Email address. | 
-**status** | **string** | Current account status: * **A** for Active * **T** for Trial.  | 
+**status** | **string** | Current account status: * **A** for Active; * **T** for Trial.  | 
 **balance** | **double** | Account balance (in account currency). | 
 **phone** | **string** | Contact phone number. | 
 **company** | **string** | Account company name. | 
 **currency** | [**Currency**](Currency.md) |  | 
 **country** | [**Country**](Country.md) |  | 
 **timezone** | [**Timezone**](Timezone.md) |  | 
-**subaccount_type** | **string** | Type of account: *   **A** for Administrator sub-account *   **U** for Regular User  | 
+**subaccount_type** | **string** | Type of account: *   **A** for Administrator sub-account; *   **U** for Regular User.  | 
 **email_accepted** | **boolean** | Does the account have a confirmed Email?. | 
 **phone_accepted** | **boolean** | Does the account have a confirmed Phone Number?. | 
 **avatar** | [**UserImage**](UserImage.md) |  | 
