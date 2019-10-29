@@ -160,7 +160,7 @@ __PACKAGE__->method_documentation({
     'deliverability' => {
     	datatype => 'string',
     	base_name => 'deliverability',
-    	description => 'The delivery status of the email address is&#x60;deliverable&#x60;, &#x60;undeliverable&#x60;  or &#x60;unknown&#x60;.',
+    	description => 'The delivery status of the email address is&#x60;deliverable&#x60;, &#x60;undeliverable&#x60;. or &#x60;unknown&#x60;.',
     	format => '',
     	read_only => '',
     		},
@@ -202,7 +202,7 @@ __PACKAGE__->method_documentation({
     'email_role' => {
     	datatype => 'string',
     	base_name => 'emailRole',
-    	description => 'Checks the mailbox part of the email to see whether it matches a specific role type (‘admin’, ‘sales’, ‘webmaster’)',
+    	description => 'Checks the mailbox part of the email to see whether it matches a specific role type (‘admin’, ‘sales’, ‘webmaster’).',
     	format => '',
     	read_only => '',
     		},

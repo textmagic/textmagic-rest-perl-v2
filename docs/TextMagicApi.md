@@ -2395,7 +2395,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     password => 'YOUR_PASSWORD',
 );
 
-my $status = '"a"'; # string | Fetch only (a)ctive, (c)losed or (d)eleted chats
+my $status = '"a"'; # string | Fetch only (a)ctive, (c)losed or (d)eleted chats.
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
@@ -2415,7 +2415,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **string**| Fetch only (a)ctive, (c)losed or (d)eleted chats | [optional] 
+ **status** | **string**| Fetch only (a)ctive, (c)losed or (d)eleted chats. | [optional] 
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
@@ -2565,7 +2565,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $last_id = 56; # int | Filter results by ID, selecting all values lesser than the specified ID. Note that the \\'page\\' parameter is ignored when \\'lastId\\' is specified
+my $last_id = 56; # int | Filter results by ID, selecting all values lesser than the specified ID. Note that the \\'page\\' parameter is ignored when \\'lastId\\' is specified.
 
 eval { 
     my $result = $api_instance->get_all_outbound_messages(page => $page, limit => $limit, last_id => $last_id);
@@ -2582,7 +2582,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **last_id** | **int**| Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified | [optional] 
+ **last_id** | **int**| Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified. | [optional] 
 
 ### Return type
 
@@ -2620,7 +2620,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
 my $status = 'status_example'; # string | Fetch schedules with a specific status: a - actual, c - completed, x - all.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
+my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
@@ -2639,7 +2639,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **status** | **string**| Fetch schedules with a specific status: a - actual, c - completed, x - all. | [optional] [default to x]
- **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
 ### Return type
@@ -3128,8 +3128,8 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 );
 
 my $phone = '"447860021130"'; # string | 
-my $upsert = 56; # int | Create a new chat if not found
-my $reopen = 56; # int | Reopen chat if found or do not change status
+my $upsert = 56; # int | Create a new chat if not found.
+my $reopen = 56; # int | Reopen chat if found or do not change status.
 
 eval { 
     my $result = $api_instance->get_chat_by_phone(phone => $phone, upsert => $upsert, reopen => $reopen);
@@ -3145,8 +3145,8 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **phone** | **string**|  | 
- **upsert** | **int**| Create a new chat if not found | [optional] [default to 0]
- **reopen** | **int**| Reopen chat if found or do not change status | [optional] [default to 0]
+ **upsert** | **int**| Create a new chat if not found. | [optional] [default to 0]
+ **reopen** | **int**| Reopen chat if found or do not change status. | [optional] [default to 0]
 
 ### Return type
 
@@ -3184,7 +3184,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 my $id = 1; # int | 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $query = 'query_example'; # string | Find messages by specified search query
+my $query = 'query_example'; # string | Find messages by specified search query.
 my $start = 56; # int | Return messages since specified timestamp only.
 my $end = 56; # int | Return messages up to specified timestamp only.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
@@ -3206,7 +3206,7 @@ Name | Type | Description  | Notes
  **id** | **int**|  | 
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **query** | **string**| Find messages by specified search query | [optional] 
+ **query** | **string**| Find messages by specified search query. | [optional] 
  **start** | **int**| Return messages since specified timestamp only. | [optional] 
  **end** | **int**| Return messages up to specified timestamp only. | [optional] 
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
@@ -4857,8 +4857,8 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $limit = 56; # int | The number of results per page.
 my $last_id = 56; # int | Filter results by ID, selecting all values lesser than the specified ID.
-my $query = 'query_example'; # string | Find message by specified search query
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id
+my $query = 'query_example'; # string | Find message by specified search query.
+my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
@@ -4876,8 +4876,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **last_id** | **int**| Filter results by ID, selecting all values lesser than the specified ID. | [optional] 
- **query** | **string**| Find message by specified search query | [optional] 
- **order_by** | **string**| Order results by some field. Default is id | [optional] [default to id]
+ **query** | **string**| Find message by specified search query. | [optional] 
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
 
 ### Return type
@@ -6236,7 +6236,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $query = 'query_example'; # string | Find chats by specified search query
+my $query = 'query_example'; # string | Find chats by specified search query.
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
 
 eval { 
@@ -6254,7 +6254,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **query** | **string**| Find chats by specified search query | [optional] 
+ **query** | **string**| Find chats by specified search query. | [optional] 
  **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
 
 ### Return type
@@ -6488,7 +6488,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $last_id = 56; # int | Filter results by ID, selecting all values lesser than the specified ID. Note that the \\'page\\' parameter is ignored when \\'lastId\\' is specified
+my $last_id = 56; # int | Filter results by ID, selecting all values lesser than the specified ID. Note that the \\'page\\' parameter is ignored when \\'lastId\\' is specified.
 my $ids = 'ids_example'; # string | Find message by ID(s).
 my $session_id = 56; # int | Find messages by session ID.
 my $statuses = '"q"'; # string | Find messages by status.
@@ -6510,7 +6510,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **last_id** | **int**| Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified | [optional] 
+ **last_id** | **int**| Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified. | [optional] 
  **ids** | **string**| Find message by ID(s). | [optional] 
  **session_id** | **int**| Find messages by session ID. | [optional] 
  **statuses** | **string**| Find messages by status. | [optional] 
@@ -6552,8 +6552,8 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
 
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
-my $query = 'query_example'; # string | Find messages by specified search query
-my $ids = 'ids_example'; # string | Find schedules by ID(s)
+my $query = 'query_example'; # string | Find messages by specified search query.
+my $ids = 'ids_example'; # string | Find schedules by ID(s).
 my $status = 'status_example'; # string | Fetch schedules with a specific status: a - actual, c - completed, x - all.
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
@@ -6573,8 +6573,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **query** | **string**| Find messages by specified search query | [optional] 
- **ids** | **string**| Find schedules by ID(s) | [optional] 
+ **query** | **string**| Find messages by specified search query. | [optional] 
+ **ids** | **string**| Find schedules by ID(s). | [optional] 
  **status** | **string**| Fetch schedules with a specific status: a - actual, c - completed, x - all. | [optional] [default to x]
  **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
@@ -7777,7 +7777,7 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     password => 'YOUR_PASSWORD',
 );
 
-my $file = '/path/to/file.txt'; # File | Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx & .vcf file formats
+my $file = '/path/to/file.txt'; # File | Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx & .vcf file formats.
 
 eval { 
     my $result = $api_instance->upload_message_attachment(file => $file);
@@ -7792,7 +7792,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **File**| Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats | 
+ **file** | **File**| Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats. | 
 
 ### Return type
 

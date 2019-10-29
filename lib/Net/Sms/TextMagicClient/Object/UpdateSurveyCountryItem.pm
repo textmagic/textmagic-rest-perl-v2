@@ -146,14 +146,14 @@ __PACKAGE__->method_documentation({
     'country' => {
     	datatype => 'string',
     	base_name => 'country',
-    	description => 'The 2-letter ISO country code',
+    	description => 'The 2-letter ISO country code.',
     	format => '',
     	read_only => '',
     		},
     'user_inbound_id' => {
     	datatype => 'int',
     	base_name => 'userInboundId',
-    	description => 'User inbound phone ID',
+    	description => 'User inbound phone ID.',
     	format => '',
     	read_only => '',
     		},

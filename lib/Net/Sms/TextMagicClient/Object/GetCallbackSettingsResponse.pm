@@ -160,7 +160,7 @@ __PACKAGE__->method_documentation({
     'format' => {
     	datatype => 'string',
     	base_name => 'format',
-    	description => 'Desired callback data format. m - multipart/form-data, u - application/x-www-form-urlencoded, j - application/json',
+    	description => 'Desired callback data format. m - multipart/form-data, u - application/x-www-form-urlencoded, j - application/json.',
     	format => '',
     	read_only => '',
     		},

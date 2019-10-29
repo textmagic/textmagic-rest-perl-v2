@@ -2955,7 +2955,7 @@ sub get_all_bulk_sessions {
 #
 # Get all chats
 # 
-# @param string $status Fetch only (a)ctive, (c)losed or (d)eleted chats (optional)
+# @param string $status Fetch only (a)ctive, (c)losed or (d)eleted chats. (optional)
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
 # @param string $order_by Order results by some field. Default is id. (optional, default to id)
@@ -2965,7 +2965,7 @@ sub get_all_bulk_sessions {
     my $params = {
     'status' => {
         data_type => 'string',
-        description => 'Fetch only (a)ctive, (c)losed or (d)eleted chats',
+        description => 'Fetch only (a)ctive, (c)losed or (d)eleted chats.',
         required => '0',
     },
     'page' => {
@@ -3236,7 +3236,7 @@ sub get_all_message_sessions {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param int $last_id Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified (optional)
+# @param int $last_id Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified. (optional)
 {
     my $params = {
     'page' => {
@@ -3251,7 +3251,7 @@ sub get_all_message_sessions {
     },
     'last_id' => {
         data_type => 'int',
-        description => 'Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified',
+        description => 'Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified.',
         required => '0',
     },
     };
@@ -3319,7 +3319,7 @@ sub get_all_outbound_messages {
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
 # @param string $status Fetch schedules with a specific status: a - actual, c - completed, x - all. (optional, default to x)
-# @param string $order_by Order results by some field. Default is id (optional, default to id)
+# @param string $order_by Order results by some field. Default is id. (optional, default to id)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
@@ -3340,7 +3340,7 @@ sub get_all_outbound_messages {
     },
     'order_by' => {
         data_type => 'string',
-        description => 'Order results by some field. Default is id',
+        description => 'Order results by some field. Default is id.',
         required => '0',
     },
     'direction' => {
@@ -4024,8 +4024,8 @@ sub get_chat {
 # Find chats by phone
 # 
 # @param string $phone  (required)
-# @param int $upsert Create a new chat if not found (optional, default to 0)
-# @param int $reopen Reopen chat if found or do not change status (optional, default to 0)
+# @param int $upsert Create a new chat if not found. (optional, default to 0)
+# @param int $reopen Reopen chat if found or do not change status. (optional, default to 0)
 {
     my $params = {
     'phone' => {
@@ -4035,12 +4035,12 @@ sub get_chat {
     },
     'upsert' => {
         data_type => 'int',
-        description => 'Create a new chat if not found',
+        description => 'Create a new chat if not found.',
         required => '0',
     },
     'reopen' => {
         data_type => 'int',
-        description => 'Reopen chat if found or do not change status',
+        description => 'Reopen chat if found or do not change status.',
         required => '0',
     },
     };
@@ -4115,7 +4115,7 @@ sub get_chat_by_phone {
 # @param int $id  (required)
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $query Find messages by specified search query (optional)
+# @param string $query Find messages by specified search query. (optional)
 # @param int $start Return messages since specified timestamp only. (optional)
 # @param int $end Return messages up to specified timestamp only. (optional)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
@@ -4139,7 +4139,7 @@ sub get_chat_by_phone {
     },
     'query' => {
         data_type => 'string',
-        description => 'Find messages by specified search query',
+        description => 'Find messages by specified search query.',
         required => '0',
     },
     'start' => {
@@ -6829,8 +6829,8 @@ sub get_outbound_message {
 # 
 # @param int $limit The number of results per page. (optional, default to 10)
 # @param int $last_id Filter results by ID, selecting all values lesser than the specified ID. (optional)
-# @param string $query Find message by specified search query (optional)
-# @param string $order_by Order results by some field. Default is id (optional, default to id)
+# @param string $query Find message by specified search query. (optional)
+# @param string $order_by Order results by some field. Default is id. (optional, default to id)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
 {
     my $params = {
@@ -6846,12 +6846,12 @@ sub get_outbound_message {
     },
     'query' => {
         data_type => 'string',
-        description => 'Find message by specified search query',
+        description => 'Find message by specified search query.',
         required => '0',
     },
     'order_by' => {
         data_type => 'string',
-        description => 'Order results by some field. Default is id',
+        description => 'Order results by some field. Default is id.',
         required => '0',
     },
     'direction' => {
@@ -8729,7 +8729,7 @@ sub search_chats_by_ids {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $query Find chats by specified search query (optional)
+# @param string $query Find chats by specified search query. (optional)
 # @param string $order_by Order results by some field. Default is id. (optional, default to id)
 {
     my $params = {
@@ -8745,7 +8745,7 @@ sub search_chats_by_ids {
     },
     'query' => {
         data_type => 'string',
-        description => 'Find chats by specified search query',
+        description => 'Find chats by specified search query.',
         required => '0',
     },
     'order_by' => {
@@ -9255,7 +9255,7 @@ sub search_lists {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param int $last_id Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified (optional)
+# @param int $last_id Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified. (optional)
 # @param string $ids Find message by ID(s). (optional)
 # @param int $session_id Find messages by session ID. (optional)
 # @param string $statuses Find messages by status. (optional)
@@ -9275,7 +9275,7 @@ sub search_lists {
     },
     'last_id' => {
         data_type => 'int',
-        description => 'Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified',
+        description => 'Filter results by ID, selecting all values lesser than the specified ID. Note that the \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified.',
         required => '0',
     },
     'ids' => {
@@ -9392,8 +9392,8 @@ sub search_outbound_messages {
 # 
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
-# @param string $query Find messages by specified search query (optional)
-# @param string $ids Find schedules by ID(s) (optional)
+# @param string $query Find messages by specified search query. (optional)
+# @param string $ids Find schedules by ID(s). (optional)
 # @param string $status Fetch schedules with a specific status: a - actual, c - completed, x - all. (optional, default to x)
 # @param string $order_by Order results by some field. Default is id. (optional, default to id)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
@@ -9411,12 +9411,12 @@ sub search_outbound_messages {
     },
     'query' => {
         data_type => 'string',
-        description => 'Find messages by specified search query',
+        description => 'Find messages by specified search query.',
         required => '0',
     },
     'ids' => {
         data_type => 'string',
-        description => 'Find schedules by ID(s)',
+        description => 'Find schedules by ID(s).',
         required => '0',
     },
     'status' => {
@@ -11156,12 +11156,12 @@ sub upload_list_avatar {
 #
 # Upload message attachment
 # 
-# @param File $file Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats (required)
+# @param File $file Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats. (required)
 {
     my $params = {
     'file' => {
         data_type => 'File',
-        description => 'Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats',
+        description => 'Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats.',
         required => '1',
     },
     };

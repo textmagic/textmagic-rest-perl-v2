@@ -146,14 +146,14 @@ __PACKAGE__->method_documentation({
     'ids' => {
     	datatype => 'string',
     	base_name => 'ids',
-    	description => 'Entity ID(s), separated by comma',
+    	description => 'Entity ID(s), separated by comma.',
     	format => '',
     	read_only => '',
     		},
     'all' => {
     	datatype => 'boolean',
     	base_name => 'all',
-    	description => 'Entity ID(s), separated by comma',
+    	description => 'Entity ID(s), separated by comma.',
     	format => '',
     	read_only => '',
     		},
