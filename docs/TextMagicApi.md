@@ -5,7 +5,7 @@
 use Net::Sms::TextMagicClient::Object::TextMagicApi;
 ```
 
-All URIs are relative to *http://rest.textmagic.com*
+All URIs are relative to *https://rest.textmagic.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
