@@ -19,7 +19,7 @@ perl Makefile.pl && \
 make && \
 make install && \
 cpanm --installdeps .
-```\
+```
 
 ## Usage Example
 
