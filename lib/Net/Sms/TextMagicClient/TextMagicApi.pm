@@ -5901,7 +5901,7 @@ sub get_lists_of_contact {
 # @param int $cut_extra Should sending method cut extra characters which not fit supplied partsCount or return 400 Bad request response instead. (optional, default to 0)
 # @param int $parts_count Maximum message parts count (TextMagic allows sending of 1 to 6 message parts). (optional, default to 6)
 # @param int $reference_id Custom message reference id which can be used in your application infrastructure. (optional)
-# @param string $from One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs). (optional)
+# @param string $from One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](https://docs.textmagic.com/#tag/Sender-IDs). (optional)
 # @param string $rule An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details. (optional)
 # @param int $create_chat Should the sending method try to create new Chat(if not exist) with specified recipients? (optional, default to 0)
 # @param int $tts Send Text-to-Speech message. (optional, default to 0)
@@ -5966,7 +5966,7 @@ sub get_lists_of_contact {
     },
     'from' => {
         data_type => 'string',
-        description => 'One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs).',
+        description => 'One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](https://docs.textmagic.com/#tag/Sender-IDs).',
         required => '0',
     },
     'rule' => {
@@ -6138,7 +6138,7 @@ sub get_message_preview {
 # @param int $cut_extra Should sending method cut extra characters which not fit supplied partsCount or return 400 Bad request response instead. (optional, default to 0)
 # @param int $parts_count Maximum message parts count (TextMagic allows sending 1 to 6 message parts). (optional, default to 6)
 # @param int $reference_id Custom message reference id which can be used in your application infrastructure. (optional)
-# @param string $from One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs). (optional)
+# @param string $from One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](https://docs.textmagic.com/#tag/Sender-IDs). (optional)
 # @param string $rule An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details. (optional)
 # @param int $create_chat Should the sending method try to create new Chat (if not exist) with specified recipients? (optional, default to 0)
 # @param int $tts Send a Text-to-Speech message. (optional, default to 0)
@@ -6208,7 +6208,7 @@ sub get_message_preview {
     },
     'from' => {
         data_type => 'string',
-        description => 'One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](http://docs.textmagictesting.com/#tag/Sender-IDs).',
+        description => 'One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](https://docs.textmagic.com/#tag/Sender-IDs).',
         required => '0',
     },
     'rule' => {

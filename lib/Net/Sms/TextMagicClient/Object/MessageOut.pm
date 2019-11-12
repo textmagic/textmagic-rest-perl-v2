@@ -174,7 +174,7 @@ __PACKAGE__->method_documentation({
     'status' => {
     	datatype => 'string',
     	base_name => 'status',
-    	description => 'Delivery status of the message. See [message delivery statuses](http://docs.textmagictesting.com/#section/Delivery-status-codes) for details. ',
+    	description => 'Delivery status of the message. See [message delivery statuses](https://docs.textmagic.com/#section/Delivery-status-codes) for details. ',
     	format => '',
     	read_only => '',
     		},
@@ -230,7 +230,7 @@ __PACKAGE__->method_documentation({
     'first_name' => {
     	datatype => 'string',
     	base_name => 'firstName',
-    	description => 'Contact first name. Could be substituted from your [Contacts](http://docs.textmagictesting.com/#tag/Contacts) (even if you submitted the phone number instead of the contact ID). ',
+    	description => 'Contact first name. Could be substituted from your [Contacts](https://docs.textmagic.com/#tag/Contacts) (even if you submitted the phone number instead of the contact ID). ',
     	format => '',
     	read_only => '',
     		},

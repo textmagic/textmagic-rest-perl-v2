@@ -182,7 +182,7 @@ __PACKAGE__->method_documentation({
     'lists' => {
     	datatype => 'string',
     	base_name => 'lists',
-    	description => 'Comma-separated [list](http://docs.textmagictesting.com/#section/Lists) ID. Each contact must be assigned to at least one list.',
+    	description => 'Comma-separated [list](https://docs.textmagic.com/#section/Lists) ID. Each contact must be assigned to at least one list.',
     	format => '',
     	read_only => '',
     		},

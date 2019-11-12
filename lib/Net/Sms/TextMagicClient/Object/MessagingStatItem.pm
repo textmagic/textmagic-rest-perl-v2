@@ -167,7 +167,7 @@ __PACKAGE__->method_documentation({
     'costs' => {
     	datatype => 'double',
     	base_name => 'costs',
-    	description => 'Cost for sent messages during this period. The costs are in the [Account](http://docs.textmagictesting.com/#tag/User) currency. ',
+    	description => 'Cost for sent messages during this period. The costs are in the [Account](https://docs.textmagic.com/#tag/User) currency. ',
     	format => '',
     	read_only => '',
     		},

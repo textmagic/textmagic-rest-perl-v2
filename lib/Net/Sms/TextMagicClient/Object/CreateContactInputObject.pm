@@ -182,7 +182,7 @@ __PACKAGE__->method_documentation({
     'lists' => {
     	datatype => 'string',
     	base_name => 'lists',
-    	description => 'Contact [list](http://docs.textmagictesting.com/#tag/Lists) ID. Each contact must be assigned to at least one list.',
+    	description => 'Contact [list](https://docs.textmagic.com/#tag/Lists) ID. Each contact must be assigned to at least one list.',
     	format => '',
     	read_only => '',
     		},

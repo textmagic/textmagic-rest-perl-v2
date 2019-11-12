@@ -159,14 +159,14 @@ __PACKAGE__->method_documentation({
     'favorited' => {
     	datatype => 'boolean',
     	base_name => 'favorited',
-    	description => 'Is the Contact favorite? [Favorite list](http://docs.textmagictesting.com/#operation/getFavorites).',
+    	description => 'Is the Contact favorite? [Favorite list](https://docs.textmagic.com/#operation/getFavorites).',
     	format => '',
     	read_only => '',
     		},
     'blocked' => {
     	datatype => 'boolean',
     	base_name => 'blocked',
-    	description => 'Is the Contact blocked? [Blocked contacts](http://docs.textmagictesting.com/#operation/getBlockedContacts).',
+    	description => 'Is the Contact blocked? [Blocked contacts](https://docs.textmagic.com/#operation/getBlockedContacts).',
     	format => '',
     	read_only => '',
     		},
@@ -215,7 +215,7 @@ __PACKAGE__->method_documentation({
     'custom_fields' => {
     	datatype => 'ARRAY[ContactCustomField]',
     	base_name => 'customFields',
-    	description => 'See the [Custom Fields](http://docs.textmagictesting.com/#tag/Custom-Fields) section.',
+    	description => 'See the [Custom Fields](https://docs.textmagic.com/#tag/Custom-Fields) section.',
     	format => '',
     	read_only => '',
     		},

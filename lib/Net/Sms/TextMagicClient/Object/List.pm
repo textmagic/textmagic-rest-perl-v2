@@ -169,7 +169,7 @@ __PACKAGE__->method_documentation({
     'favorited' => {
     	datatype => 'boolean',
     	base_name => 'favorited',
-    	description => 'Is the List favorited? See [Favorites list](http://docs.textmagictesting.com/#operation/getFavourites).',
+    	description => 'Is the List favorited? See [Favorites list](https://docs.textmagic.com/#operation/getFavourites).',
     	format => '',
     	read_only => '',
     		},

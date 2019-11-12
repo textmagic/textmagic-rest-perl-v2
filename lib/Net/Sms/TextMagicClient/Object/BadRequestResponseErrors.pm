@@ -146,7 +146,7 @@ __PACKAGE__->method_documentation({
     'common' => {
     	datatype => 'ARRAY[string]',
     	base_name => 'common',
-    	description => 'Array of messages with errors related to the entire request. For example, you did not specify either the **text** or the **templateId** when [sending the message](http://docs.textmagictesting.com/#tag/Outbound-Messages). ',
+    	description => 'Array of messages with errors related to the entire request. For example, you did not specify either the **text** or the **templateId** when [sending the message](https://docs.textmagic.com/#tag/Outbound-Messages). ',
     	format => '',
     	read_only => '',
     		},

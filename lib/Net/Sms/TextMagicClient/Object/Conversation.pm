@@ -188,7 +188,7 @@ __PACKAGE__->method_documentation({
     'status' => {
     	datatype => 'string',
     	base_name => 'status',
-    	description => 'Message status (for chats outbound only). See [message delivery statuses](http://docs.textmagictesting.com/#section/Delivery-status-codes) for details.',
+    	description => 'Message status (for chats outbound only). See [message delivery statuses](https://docs.textmagic.com/#section/Delivery-status-codes) for details.',
     	format => '',
     	read_only => '',
     		},
@@ -209,7 +209,7 @@ __PACKAGE__->method_documentation({
     'session_id' => {
     	datatype => 'int',
     	base_name => 'sessionId',
-    	description => 'Session ID of a message. See [message sessions](http://docs.textmagictesting.com/#tag/Outbound-Message-Sessions) for details.',
+    	description => 'Session ID of a message. See [message sessions](https://docs.textmagic.com/#tag/Outbound-Message-Sessions) for details.',
     	format => '',
     	read_only => '',
     		},

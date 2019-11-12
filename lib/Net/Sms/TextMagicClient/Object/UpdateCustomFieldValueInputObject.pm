@@ -146,7 +146,7 @@ __PACKAGE__->method_documentation({
     'contact_id' => {
     	datatype => 'int',
     	base_name => 'contactId',
-    	description => 'Contact ID. See [Contact](http://docs.textmagictesting.com/#tag/Contacts). ',
+    	description => 'Contact ID. See [Contact](https://docs.textmagic.com/#tag/Contacts). ',
     	format => '',
     	read_only => '',
     		},

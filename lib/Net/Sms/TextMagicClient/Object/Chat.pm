@@ -176,7 +176,7 @@ __PACKAGE__->method_documentation({
     'unsubscribed_contact_id' => {
     	datatype => 'int',
     	base_name => 'unsubscribedContactId',
-    	description => 'If this field has a value, it means that the chat phone number has been unsubscribed from you and this value is an ID of an Unsubscribed contact entity. See [Get all unsubscribed contacts](http://docs.textmagictesting.com/#operation/getUnsubscribers).',
+    	description => 'If this field has a value, it means that the chat phone number has been unsubscribed from you and this value is an ID of an Unsubscribed contact entity. See [Get all unsubscribed contacts](https://docs.textmagic.com/#operation/getUnsubscribers).',
     	format => '',
     	read_only => '',
     		},
