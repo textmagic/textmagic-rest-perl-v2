@@ -206,6 +206,13 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'email' => {
+    	datatype => 'string',
+    	base_name => 'email',
+    	description => 'Sender email.',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -217,7 +224,8 @@ __PACKAGE__->swagger_types( {
     'contact_id' => 'int',
     'first_name' => 'string',
     'last_name' => 'string',
-    'avatar' => 'string'
+    'avatar' => 'string',
+    'email' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -229,7 +237,8 @@ __PACKAGE__->attribute_map( {
     'contact_id' => 'contactId',
     'first_name' => 'firstName',
     'last_name' => 'lastName',
-    'avatar' => 'avatar'
+    'avatar' => 'avatar',
+    'email' => 'email'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

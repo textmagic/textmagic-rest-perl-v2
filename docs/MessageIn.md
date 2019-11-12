@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **first_name** | **string** | Sender contact first name. | [optional] 
 **last_name** | **string** | Sender contact last name. | [optional] 
 **avatar** | **string** |  | 
+**email** | **string** | Sender email. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
