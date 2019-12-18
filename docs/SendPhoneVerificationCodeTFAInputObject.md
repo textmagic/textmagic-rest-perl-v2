@@ -1,8 +1,8 @@
-# Net::Sms::TextMagicClient::Object::SendPhoneVerificationCodeInputObject
+# Net::Sms::TextMagicClient::Object::SendPhoneVerificationCodeTFAInputObject
 
 ## Load the model package
 ```perl
-use Net::Sms::TextMagicClient::Object::SendPhoneVerificationCodeInputObject;
+use Net::Sms::TextMagicClient::Object::SendPhoneVerificationCodeTFAInputObject;
 ```
 
 ## Properties

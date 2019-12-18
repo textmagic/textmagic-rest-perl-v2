@@ -325,11 +325,11 @@ sub cancel_verification {
 #
 # Step 2: Check the verification code 
 # 
-# @param CheckPhoneVerificationCodeInputObject $check_phone_verification_code_input_object  (required)
+# @param CheckPhoneVerificationCodeTFAInputObject $check_phone_verification_code_tfa_input_object  (required)
 {
     my $params = {
-    'check_phone_verification_code_input_object' => {
-        data_type => 'CheckPhoneVerificationCodeInputObject',
+    'check_phone_verification_code_tfa_input_object' => {
+        data_type => 'CheckPhoneVerificationCodeTFAInputObject',
         description => '',
         required => '1',
     },
@@ -345,9 +345,9 @@ sub cancel_verification {
 sub check_phone_verification_code_tfa {
     my ($self, %args) = @_;
 
-    # verify the required parameter 'check_phone_verification_code_input_object' is set
-    unless (exists $args{'check_phone_verification_code_input_object'}) {
-      croak("Missing the required parameter 'check_phone_verification_code_input_object' when calling check_phone_verification_code_tfa");
+    # verify the required parameter 'check_phone_verification_code_tfa_input_object' is set
+    unless (exists $args{'check_phone_verification_code_tfa_input_object'}) {
+      croak("Missing the required parameter 'check_phone_verification_code_tfa_input_object' when calling check_phone_verification_code_tfa");
     }
 
     # parse inputs
@@ -367,8 +367,8 @@ sub check_phone_verification_code_tfa {
 
     my $_body_data;
     # body params
-    if ( exists $args{'check_phone_verification_code_input_object'}) {
-        $_body_data = $args{'check_phone_verification_code_input_object'};
+    if ( exists $args{'check_phone_verification_code_tfa_input_object'}) {
+        $_body_data = $args{'check_phone_verification_code_tfa_input_object'};
     }
 
     # authentication setting, if any
@@ -9685,11 +9685,11 @@ sub send_message {
 #
 # Step 1: Send a verification code 
 # 
-# @param SendPhoneVerificationCodeInputObject $send_phone_verification_code_input_object  (required)
+# @param SendPhoneVerificationCodeTFAInputObject $send_phone_verification_code_tfa_input_object  (required)
 {
     my $params = {
-    'send_phone_verification_code_input_object' => {
-        data_type => 'SendPhoneVerificationCodeInputObject',
+    'send_phone_verification_code_tfa_input_object' => {
+        data_type => 'SendPhoneVerificationCodeTFAInputObject',
         description => '',
         required => '1',
     },
@@ -9705,9 +9705,9 @@ sub send_message {
 sub send_phone_verification_code_tfa {
     my ($self, %args) = @_;
 
-    # verify the required parameter 'send_phone_verification_code_input_object' is set
-    unless (exists $args{'send_phone_verification_code_input_object'}) {
-      croak("Missing the required parameter 'send_phone_verification_code_input_object' when calling send_phone_verification_code_tfa");
+    # verify the required parameter 'send_phone_verification_code_tfa_input_object' is set
+    unless (exists $args{'send_phone_verification_code_tfa_input_object'}) {
+      croak("Missing the required parameter 'send_phone_verification_code_tfa_input_object' when calling send_phone_verification_code_tfa");
     }
 
     # parse inputs
@@ -9727,8 +9727,8 @@ sub send_phone_verification_code_tfa {
 
     my $_body_data;
     # body params
-    if ( exists $args{'send_phone_verification_code_input_object'}) {
-        $_body_data = $args{'send_phone_verification_code_input_object'};
+    if ( exists $args{'send_phone_verification_code_tfa_input_object'}) {
+        $_body_data = $args{'send_phone_verification_code_tfa_input_object'};
     }
 
     # authentication setting, if any

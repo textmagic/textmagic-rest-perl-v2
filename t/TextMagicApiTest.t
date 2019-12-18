@@ -66,8 +66,8 @@ isa_ok($api, 'Net::Sms::TextMagicClient::TextMagicApi');
 # check_phone_verification_code_tfa test
 #
 {
-    my $check_phone_verification_code_input_object = undef; # replace NULL with a proper value
-    my $result = $api->check_phone_verification_code_tfa(check_phone_verification_code_input_object => $check_phone_verification_code_input_object);
+    my $check_phone_verification_code_tfa_input_object = undef; # replace NULL with a proper value
+    my $result = $api->check_phone_verification_code_tfa(check_phone_verification_code_tfa_input_object => $check_phone_verification_code_tfa_input_object);
 }
 
 #
@@ -1195,8 +1195,8 @@ isa_ok($api, 'Net::Sms::TextMagicClient::TextMagicApi');
 # send_phone_verification_code_tfa test
 #
 {
-    my $send_phone_verification_code_input_object = undef; # replace NULL with a proper value
-    my $result = $api->send_phone_verification_code_tfa(send_phone_verification_code_input_object => $send_phone_verification_code_input_object);
+    my $send_phone_verification_code_tfa_input_object = undef; # replace NULL with a proper value
+    my $result = $api->send_phone_verification_code_tfa(send_phone_verification_code_tfa_input_object => $send_phone_verification_code_tfa_input_object);
 }
 
 #

@@ -360,7 +360,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **check_phone_verification_code_tfa**
-> check_phone_verification_code_tfa(check_phone_verification_code_input_object => $check_phone_verification_code_input_object)
+> check_phone_verification_code_tfa(check_phone_verification_code_tfa_input_object => $check_phone_verification_code_tfa_input_object)
 
 Step 2: Check the verification code 
 
@@ -377,10 +377,10 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     password => 'YOUR_PASSWORD',
 );
 
-my $check_phone_verification_code_input_object = Net::Sms::TextMagicClient::Object::CheckPhoneVerificationCodeInputObject->new(); # CheckPhoneVerificationCodeInputObject | 
+my $check_phone_verification_code_tfa_input_object = Net::Sms::TextMagicClient::Object::CheckPhoneVerificationCodeTFAInputObject->new(); # CheckPhoneVerificationCodeTFAInputObject | 
 
 eval { 
-    $api_instance->check_phone_verification_code_tfa(check_phone_verification_code_input_object => $check_phone_verification_code_input_object);
+    $api_instance->check_phone_verification_code_tfa(check_phone_verification_code_tfa_input_object => $check_phone_verification_code_tfa_input_object);
 };
 if ($@) {
     warn "Exception when calling TextMagicApi->check_phone_verification_code_tfa: $@\n";
@@ -391,7 +391,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **check_phone_verification_code_input_object** | [**CheckPhoneVerificationCodeInputObject**](CheckPhoneVerificationCodeInputObject.md)|  | 
+ **check_phone_verification_code_tfa_input_object** | [**CheckPhoneVerificationCodeTFAInputObject**](CheckPhoneVerificationCodeTFAInputObject.md)|  | 
 
 ### Return type
 
@@ -6703,7 +6703,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_phone_verification_code_tfa**
-> SendPhoneVerificationCodeResponse send_phone_verification_code_tfa(send_phone_verification_code_input_object => $send_phone_verification_code_input_object)
+> SendPhoneVerificationCodeResponse send_phone_verification_code_tfa(send_phone_verification_code_tfa_input_object => $send_phone_verification_code_tfa_input_object)
 
 Step 1: Send a verification code 
 
@@ -6720,10 +6720,10 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     password => 'YOUR_PASSWORD',
 );
 
-my $send_phone_verification_code_input_object = Net::Sms::TextMagicClient::Object::SendPhoneVerificationCodeInputObject->new(); # SendPhoneVerificationCodeInputObject | 
+my $send_phone_verification_code_tfa_input_object = Net::Sms::TextMagicClient::Object::SendPhoneVerificationCodeTFAInputObject->new(); # SendPhoneVerificationCodeTFAInputObject | 
 
 eval { 
-    my $result = $api_instance->send_phone_verification_code_tfa(send_phone_verification_code_input_object => $send_phone_verification_code_input_object);
+    my $result = $api_instance->send_phone_verification_code_tfa(send_phone_verification_code_tfa_input_object => $send_phone_verification_code_tfa_input_object);
     print Dumper($result);
 };
 if ($@) {
@@ -6735,7 +6735,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **send_phone_verification_code_input_object** | [**SendPhoneVerificationCodeInputObject**](SendPhoneVerificationCodeInputObject.md)|  | 
+ **send_phone_verification_code_tfa_input_object** | [**SendPhoneVerificationCodeTFAInputObject**](SendPhoneVerificationCodeTFAInputObject.md)|  | 
 
 ### Return type
 
