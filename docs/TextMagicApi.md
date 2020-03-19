@@ -6273,7 +6273,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_contacts**
-> SearchContactsPaginatedResponse search_contacts(page => $page, limit => $limit, shared => $shared, ids => $ids, list_id => $list_id, include_blocked => $include_blocked, query => $query, local => $local, country => $country, order_by => $order_by, direction => $direction)
+> SearchContactsPaginatedResponse search_contacts(page => $page, limit => $limit, shared => $shared, ids => $ids, list_id => $list_id, include_blocked => $include_blocked, query => $query, local => $local, exact_match => $exact_match, country => $country, order_by => $order_by, direction => $direction)
 
 Find contacts by given criteria
 
@@ -6298,12 +6298,13 @@ my $list_id = 56; # int | Find contacts by List ID.
 my $include_blocked = 56; # int | Should blocked contacts be included?
 my $query = 'query_example'; # string | Find contacts by specified search query.
 my $local = 56; # int | Treat phone number passed in the \"query\" field as local. Default is 0.
+my $exact_match = 56; # int | Return only exactly matching contacts. Default is 0.
 my $country = 'country_example'; # string | The 2-letter ISO country code for local phone numbers, used when \"local\" is set to true. Default is the account country.
 my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
 
 eval { 
-    my $result = $api_instance->search_contacts(page => $page, limit => $limit, shared => $shared, ids => $ids, list_id => $list_id, include_blocked => $include_blocked, query => $query, local => $local, country => $country, order_by => $order_by, direction => $direction);
+    my $result = $api_instance->search_contacts(page => $page, limit => $limit, shared => $shared, ids => $ids, list_id => $list_id, include_blocked => $include_blocked, query => $query, local => $local, exact_match => $exact_match, country => $country, order_by => $order_by, direction => $direction);
     print Dumper($result);
 };
 if ($@) {
@@ -6323,6 +6324,7 @@ Name | Type | Description  | Notes
  **include_blocked** | **int**| Should blocked contacts be included? | [optional] 
  **query** | **string**| Find contacts by specified search query. | [optional] 
  **local** | **int**| Treat phone number passed in the \&quot;query\&quot; field as local. Default is 0. | [optional] [default to 0]
+ **exact_match** | **int**| Return only exactly matching contacts. Default is 0. | [optional] [default to 0]
  **country** | **string**| The 2-letter ISO country code for local phone numbers, used when \&quot;local\&quot; is set to true. Default is the account country. | [optional] 
  **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]

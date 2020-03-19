@@ -8828,6 +8828,7 @@ sub search_chats_by_receipent {
 # @param int $include_blocked Should blocked contacts be included? (optional)
 # @param string $query Find contacts by specified search query. (optional)
 # @param int $local Treat phone number passed in the \&quot;query\&quot; field as local. Default is 0. (optional, default to 0)
+# @param int $exact_match Return only exactly matching contacts. Default is 0. (optional, default to 0)
 # @param string $country The 2-letter ISO country code for local phone numbers, used when \&quot;local\&quot; is set to true. Default is the account country. (optional)
 # @param string $order_by Order results by some field. Default is id. (optional, default to id)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
@@ -8871,6 +8872,11 @@ sub search_chats_by_receipent {
     'local' => {
         data_type => 'int',
         description => 'Treat phone number passed in the \&quot;query\&quot; field as local. Default is 0.',
+        required => '0',
+    },
+    'exact_match' => {
+        data_type => 'int',
+        description => 'Return only exactly matching contacts. Default is 0.',
         required => '0',
     },
     'country' => {
@@ -8953,6 +8959,11 @@ sub search_contacts {
     # query params
     if ( exists $args{'local'}) {
         $query_params->{'local'} = $self->{api_client}->to_query_value($args{'local'});
+    }
+
+    # query params
+    if ( exists $args{'exact_match'}) {
+        $query_params->{'exactMatch'} = $self->{api_client}->to_query_value($args{'exact_match'});
     }
 
     # query params

@@ -11,10 +11,10 @@ TextMagic’s application programming interface (API) provides the communication
 ## Installation
 
 ```bash
-wget https://github.com/textmagic/textmagic-rest-perl-v2/archive/v2.0.1067.tar.gz && \
-tar zxf v2.0.1067.tar.gz && \
-rm -f v2.0.1067.tar.gz && \
-cd textmagic-rest-perl-v2-2.0.1067 && \
+wget https://github.com/textmagic/textmagic-rest-perl-v2/archive/v2.0.1307.tar.gz && \
+tar zxf v2.0.1307.tar.gz && \
+rm -f v2.0.1307.tar.gz && \
+cd textmagic-rest-perl-v2-2.0.1307 && \
 perl Makefile.pl && \
 make && \
 make install && \
@@ -33,9 +33,10 @@ use Net::Sms::TextMagicClient::ApiClient;
 use Net::Sms::TextMagicClient::TextMagicApi;
 use Net::Sms::TextMagicClient::Object::SendMessageInputObject;
 
+# put your Username and API Key from https://my.textmagic.com/online/api/rest-api/keys page.
 my $client = Net::Sms::TextMagicClient::ApiClient::->new(
     username   => 'YOUR_USERNAME',
-    password   => 'YOUR_PASSWORD',
+    password   => 'YOUR_API_KEY',
     base_url  => 'https://rest.textmagic.com'
 );
 

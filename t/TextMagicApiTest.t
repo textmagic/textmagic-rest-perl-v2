@@ -1107,10 +1107,11 @@ isa_ok($api, 'Net::Sms::TextMagicClient::TextMagicApi');
     my $include_blocked = undef; # replace NULL with a proper value
     my $query = undef; # replace NULL with a proper value
     my $local = undef; # replace NULL with a proper value
+    my $exact_match = undef; # replace NULL with a proper value
     my $country = undef; # replace NULL with a proper value
     my $order_by = undef; # replace NULL with a proper value
     my $direction = undef; # replace NULL with a proper value
-    my $result = $api->search_contacts(page => $page, limit => $limit, shared => $shared, ids => $ids, list_id => $list_id, include_blocked => $include_blocked, query => $query, local => $local, country => $country, order_by => $order_by, direction => $direction);
+    my $result = $api->search_contacts(page => $page, limit => $limit, shared => $shared, ids => $ids, list_id => $list_id, include_blocked => $include_blocked, query => $query, local => $local, exact_match => $exact_match, country => $country, order_by => $order_by, direction => $direction);
 }
 
 #

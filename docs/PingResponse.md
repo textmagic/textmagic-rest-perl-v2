@@ -8,6 +8,7 @@ use Net::Sms::TextMagicClient::Object::PingResponse;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**user_id** | **int** | Current user Id. | 
 **ping** | **string** | Pong. | 
 **utc_date_time** | **string** | Current date and time. | 
 

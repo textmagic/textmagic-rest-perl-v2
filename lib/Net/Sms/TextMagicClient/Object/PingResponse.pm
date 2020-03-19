@@ -143,6 +143,13 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
+    'user_id' => {
+    	datatype => 'int',
+    	base_name => 'userId',
+    	description => 'Current user Id.',
+    	format => '',
+    	read_only => '',
+    		},
     'ping' => {
     	datatype => 'string',
     	base_name => 'ping',
@@ -160,11 +167,13 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->swagger_types( {
+    'user_id' => 'int',
     'ping' => 'string',
     'utc_date_time' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
+    'user_id' => 'userId',
     'ping' => 'ping',
     'utc_date_time' => 'utcDateTime'
 } );
