@@ -250,6 +250,13 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'pinned' => {
+    	datatype => 'boolean',
+    	base_name => 'pinned',
+    	description => 'Indicates when the chat is pinned.',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -267,7 +274,8 @@ __PACKAGE__->swagger_types( {
     'from' => 'string',
     'muted_until' => 'DateTime',
     'time_left_mute' => 'int',
-    'country' => 'Country'
+    'country' => 'Country',
+    'pinned' => 'boolean'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -285,7 +293,8 @@ __PACKAGE__->attribute_map( {
     'from' => 'from',
     'muted_until' => 'mutedUntil',
     'time_left_mute' => 'timeLeftMute',
-    'country' => 'country'
+    'country' => 'country',
+    'pinned' => 'pinned'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
