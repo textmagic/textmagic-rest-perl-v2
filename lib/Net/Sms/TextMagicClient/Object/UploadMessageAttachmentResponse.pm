@@ -171,20 +171,29 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'resource' => {
+    	datatype => 'string',
+    	base_name => 'resource',
+    	description => 'Internal file name',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
     'chars' => 'int',
     'href' => 'string',
     'name' => 'string',
-    'size' => 'int'
+    'size' => 'int',
+    'resource' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'chars' => 'chars',
     'href' => 'href',
     'name' => 'name',
-    'size' => 'size'
+    'size' => 'size',
+    'resource' => 'resource'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

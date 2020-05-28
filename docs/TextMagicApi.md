@@ -157,6 +157,7 @@ Method | HTTP request | Description
 [**upload_contact_avatar**](TextMagicApi.md#upload_contact_avatar) | **POST** /api/v2/contacts/{id}/avatar | Upload an avatar
 [**upload_list_avatar**](TextMagicApi.md#upload_list_avatar) | **POST** /api/v2/lists/{id}/avatar | Add an avatar for a list
 [**upload_message_attachment**](TextMagicApi.md#upload_message_attachment) | **POST** /api/v2/messages/attachment | Upload message attachment
+[**upload_message_mms_attachment**](TextMagicApi.md#upload_message_mms_attachment) | **POST** /api/v2/messages/mms/attachment | Upload message mms attachment
 
 
 # **assign_contacts_to_list**
@@ -7787,6 +7788,56 @@ eval {
 };
 if ($@) {
     warn "Exception when calling TextMagicApi->upload_message_attachment: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | **File**| Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats. | 
+
+### Return type
+
+[**UploadMessageAttachmentResponse**](UploadMessageAttachmentResponse.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **upload_message_mms_attachment**
+> UploadMessageAttachmentResponse upload_message_mms_attachment(file => $file)
+
+Upload message mms attachment
+
+Upload a new file to mms.
+
+### Example 
+```perl
+use Data::Dumper;
+use Net::Sms::TextMagicClient::TextMagicApi;
+my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
+
+    # Configure HTTP basic authorization: BasicAuth
+    username => 'YOUR_USERNAME',
+    password => 'YOUR_PASSWORD',
+);
+
+my $file = '/path/to/file.txt'; # File | Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx & .vcf file formats.
+
+eval { 
+    my $result = $api_instance->upload_message_mms_attachment(file => $file);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling TextMagicApi->upload_message_mms_attachment: $@\n";
 }
 ```
 

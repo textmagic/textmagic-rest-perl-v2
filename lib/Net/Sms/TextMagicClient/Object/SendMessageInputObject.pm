@@ -262,6 +262,20 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'destination' => {
+    	datatype => 'string',
+    	base_name => 'destination',
+    	description => 'Messsage destination type allowed [mms, tts].',
+    	format => '',
+    	read_only => '',
+    		},
+    'resources' => {
+    	datatype => 'string',
+    	base_name => 'resources',
+    	description => 'File name from mms attachment response (named as resource)',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -281,7 +295,9 @@ __PACKAGE__->swagger_types( {
     'create_chat' => 'boolean',
     'tts' => 'boolean',
     'local' => 'boolean',
-    'local_country' => 'string'
+    'local_country' => 'string',
+    'destination' => 'string',
+    'resources' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -301,7 +317,9 @@ __PACKAGE__->attribute_map( {
     'create_chat' => 'createChat',
     'tts' => 'tts',
     'local' => 'local',
-    'local_country' => 'localCountry'
+    'local_country' => 'localCountry',
+    'destination' => 'destination',
+    'resources' => 'resources'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

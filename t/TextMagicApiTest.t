@@ -1376,5 +1376,13 @@ isa_ok($api, 'Net::Sms::TextMagicClient::TextMagicApi');
     my $result = $api->upload_message_attachment(file => $file);
 }
 
+#
+# upload_message_mms_attachment test
+#
+{
+    my $file = undef; # replace NULL with a proper value
+    my $result = $api->upload_message_mms_attachment(file => $file);
+}
+
 
 1;

@@ -11228,4 +11228,70 @@ sub upload_message_attachment {
     return $_response_object;
 }
 
+#
+# upload_message_mms_attachment
+#
+# Upload message mms attachment
+# 
+# @param File $file Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats. (required)
+{
+    my $params = {
+    'file' => {
+        data_type => 'File',
+        description => 'Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats.',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'upload_message_mms_attachment' } = { 
+    	summary => 'Upload message mms attachment',
+        params => $params,
+        returns => 'UploadMessageAttachmentResponse',
+        };
+}
+# @return UploadMessageAttachmentResponse
+#
+sub upload_message_mms_attachment {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'file' is set
+    unless (exists $args{'file'}) {
+      croak("Missing the required parameter 'file' when calling upload_message_mms_attachment");
+    }
+
+    # parse inputs
+    my $_resource_path = '/api/v2/messages/mms/attachment';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('multipart/form-data');
+
+    # form params
+    if ( exists $args{'file'} ) {
+        $form_params->{'file'} = [] unless defined $form_params->{'file'};
+        push @{$form_params->{'file'}}, $args{'file'};
+            }
+    
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(BasicAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('UploadMessageAttachmentResponse', $response);
+    return $_response_object;
+}
+
 1;
