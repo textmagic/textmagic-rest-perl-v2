@@ -26,7 +26,7 @@ use utf8;
 use Log::Any qw($log);
 use Carp;
 
-use constant VERSION => '2.0.1484';
+use constant VERSION => '2.0.1530';
 
 =head1 Name
 
@@ -46,7 +46,7 @@ default: 180
 
 String. custom UserAgent header
 
-default: textmagic client
+default: textmagic client SDK Perl
 
 =item api_key: (optional)
 
@@ -95,7 +95,7 @@ sub new {
 
 	# class/static variables
 	$p{http_timeout} //= 180;
-	$p{http_user_agent} //= 'textmagic client';
+	$p{http_user_agent} //= 'textmagic client SDK Perl';
 
 	# authentication setting
 	$p{api_key} //= {};
