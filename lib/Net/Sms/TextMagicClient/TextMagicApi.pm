@@ -4116,8 +4116,8 @@ sub get_chat_by_phone {
 # @param int $page Fetch specified results page. (optional, default to 1)
 # @param int $limit The number of results per page. (optional, default to 10)
 # @param string $query Find messages by specified search query. (optional)
-# @param int $start Return messages since specified timestamp only. (optional)
-# @param int $end Return messages up to specified timestamp only. (optional)
+# @param string $start Return messages since specified timestamp only. Required when &#x60;end&#x60; parameter specified. (optional)
+# @param string $end Return messages up to specified timestamp only. Required when &#x60;start&#x60; parameter specified. (optional)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
 # @param int $voice Fetch results with voice calls. (optional, default to 0)
 {
@@ -4143,13 +4143,13 @@ sub get_chat_by_phone {
         required => '0',
     },
     'start' => {
-        data_type => 'int',
-        description => 'Return messages since specified timestamp only.',
+        data_type => 'string',
+        description => 'Return messages since specified timestamp only. Required when &#x60;end&#x60; parameter specified.',
         required => '0',
     },
     'end' => {
-        data_type => 'int',
-        description => 'Return messages up to specified timestamp only.',
+        data_type => 'string',
+        description => 'Return messages up to specified timestamp only. Required when &#x60;start&#x60; parameter specified.',
         required => '0',
     },
     'direction' => {

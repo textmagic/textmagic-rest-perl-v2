@@ -3186,8 +3186,8 @@ my $id = 1; # int |
 my $page = 56; # int | Fetch specified results page.
 my $limit = 56; # int | The number of results per page.
 my $query = 'query_example'; # string | Find messages by specified search query.
-my $start = 56; # int | Return messages since specified timestamp only.
-my $end = 56; # int | Return messages up to specified timestamp only.
+my $start = 'start_example'; # string | Return messages since specified timestamp only. Required when `end` parameter specified.
+my $end = 'end_example'; # string | Return messages up to specified timestamp only. Required when `start` parameter specified.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
 my $voice = 56; # int | Fetch results with voice calls.
 
@@ -3208,8 +3208,8 @@ Name | Type | Description  | Notes
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **query** | **string**| Find messages by specified search query. | [optional] 
- **start** | **int**| Return messages since specified timestamp only. | [optional] 
- **end** | **int**| Return messages up to specified timestamp only. | [optional] 
+ **start** | **string**| Return messages since specified timestamp only. Required when &#x60;end&#x60; parameter specified. | [optional] 
+ **end** | **string**| Return messages up to specified timestamp only. Required when &#x60;start&#x60; parameter specified. | [optional] 
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
  **voice** | **int**| Fetch results with voice calls. | [optional] [default to 0]
 
