@@ -167,7 +167,7 @@ __PACKAGE__->method_documentation({
     'sending_date_time' => {
     	datatype => 'string',
     	base_name => 'sendingDateTime',
-    	description => 'Sending time in Y-m-d H:i:s format (e.g. 2016-05-27 13:02:33). This time is relative to **sendingTimezone**.',
+    	description => 'Sending time in Y-m-d H:i:s format (e.g. 2022-05-27 13:05:10). This time is relative to **sendingTimezone**. Note: for correct operation, the value of seconds must not be less than 10.',
     	format => '',
     	read_only => '',
     		},

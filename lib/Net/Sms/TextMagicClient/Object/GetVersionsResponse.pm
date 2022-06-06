@@ -144,21 +144,21 @@ __PACKAGE__->class_documentation({description => '',
 
 __PACKAGE__->method_documentation({
     'ios' => {
-    	datatype => 'int',
+    	datatype => 'string',
     	base_name => 'ios',
     	description => '',
     	format => '',
     	read_only => '',
     		},
     'android' => {
-    	datatype => 'int',
+    	datatype => 'string',
     	base_name => 'android',
     	description => '',
     	format => '',
     	read_only => '',
     		},
     'desktop' => {
-    	datatype => 'int',
+    	datatype => 'string',
     	base_name => 'desktop',
     	description => '',
     	format => '',
@@ -167,9 +167,9 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->swagger_types( {
-    'ios' => 'int',
-    'android' => 'int',
-    'desktop' => 'int'
+    'ios' => 'string',
+    'android' => 'string',
+    'desktop' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
