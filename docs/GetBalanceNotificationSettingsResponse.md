@@ -9,7 +9,7 @@ use Net::Sms::TextMagicClient::Object::GetBalanceNotificationSettingsResponse;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **low_balance_notification** | **boolean** | Should user receive low balance notification. | 
-**alert_balance** | **string** | If balance is below this value, user receive low balance notification. | 
+**alert_balance** | [**Number**](Number.md) | If balance is below this value, user receive low balance notification. | 
 **alert_phone** | **string** | Low balance notification phone number. | 
 **alert_email1** | **string** | Low balance notification email 1. | 
 **alert_email2** | **string** | Low balance notification email 2. | 

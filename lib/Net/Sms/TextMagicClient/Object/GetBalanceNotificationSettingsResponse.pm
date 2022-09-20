@@ -30,6 +30,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use Net::Sms::TextMagicClient::Object::Number;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -151,7 +152,7 @@ __PACKAGE__->method_documentation({
     	read_only => '',
     		},
     'alert_balance' => {
-    	datatype => 'string',
+    	datatype => 'Number',
     	base_name => 'alertBalance',
     	description => 'If balance is below this value, user receive low balance notification.',
     	format => '',
@@ -189,7 +190,7 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->swagger_types( {
     'low_balance_notification' => 'boolean',
-    'alert_balance' => 'string',
+    'alert_balance' => 'Number',
     'alert_phone' => 'string',
     'alert_email1' => 'string',
     'alert_email2' => 'string',

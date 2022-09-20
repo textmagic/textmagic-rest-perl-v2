@@ -151,9 +151,9 @@ __PACKAGE__->method_documentation({
     	read_only => '',
     		},
     'all' => {
-    	datatype => 'boolean',
+    	datatype => 'int',
     	base_name => 'all',
-    	description => 'Entity ID(s), separated by comma.',
+    	description => 'Optional. Default is 0 (false). If set to 1 all the entities will be removed.',
     	format => '',
     	read_only => '',
     		},
@@ -161,7 +161,7 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->swagger_types( {
     'ids' => 'string',
-    'all' => 'boolean'
+    'all' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
