@@ -171,20 +171,38 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'user_carrier_twilio' => {
+    	datatype => 'ARRAY[string]',
+    	base_name => 'userCarrierTwilio',
+    	description => 'Array of alphanumeric sender IDs.',
+    	format => '',
+    	read_only => '',
+    		},
+    'user_carrier_vonage' => {
+    	datatype => 'ARRAY[string]',
+    	base_name => 'userCarrierVonage',
+    	description => 'Array of alphanumeric sender IDs.',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
     'dedicated' => 'ARRAY[string]',
     'user' => 'ARRAY[string]',
     'shared' => 'ARRAY[string]',
-    'sender_ids' => 'ARRAY[string]'
+    'sender_ids' => 'ARRAY[string]',
+    'user_carrier_twilio' => 'ARRAY[string]',
+    'user_carrier_vonage' => 'ARRAY[string]'
 } );
 
 __PACKAGE__->attribute_map( {
     'dedicated' => 'dedicated',
     'user' => 'user',
     'shared' => 'shared',
-    'sender_ids' => 'senderIds'
+    'sender_ids' => 'senderIds',
+    'user_carrier_twilio' => 'userCarrierTwilio',
+    'user_carrier_vonage' => 'userCarrierVonage'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

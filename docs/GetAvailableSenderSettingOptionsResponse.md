@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **user** | **ARRAY[string]** | Array of verified account phone numbers (currently only one). | 
 **shared** | **ARRAY[string]** | Array of shared number strings. | 
 **sender_ids** | **ARRAY[string]** | Array of alphanumeric sender IDs. | 
+**user_carrier_twilio** | **ARRAY[string]** | Array of alphanumeric sender IDs. | 
+**user_carrier_vonage** | **ARRAY[string]** | Array of alphanumeric sender IDs. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

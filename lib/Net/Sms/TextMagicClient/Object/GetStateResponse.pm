@@ -171,6 +171,27 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'system_account_additional_fields' => {
+    	datatype => 'int',
+    	base_name => 'systemAccountAdditionalFields',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'system_account_permissions_changed' => {
+    	datatype => 'int',
+    	base_name => 'systemAccountPermissionsChanged',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'user_balance_changed' => {
+    	datatype => 'int',
+    	base_name => 'userBalanceChanged',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
     'message_deleted' => {
     	datatype => 'int',
     	base_name => 'messageDeleted',
@@ -258,6 +279,13 @@ __PACKAGE__->method_documentation({
     'message_schedule_deleted' => {
     	datatype => 'int',
     	base_name => 'messageScheduleDeleted',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'message_schedule_not_sent_state_changed' => {
+    	datatype => 'int',
+    	base_name => 'messageScheduleNotSentStateChanged',
     	description => '',
     	format => '',
     	read_only => '',
@@ -353,6 +381,20 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'chat_read' => {
+    	datatype => 'int',
+    	base_name => 'chatRead',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'chat_unread' => {
+    	datatype => 'int',
+    	base_name => 'chatUnread',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
     'contact_added' => {
     	datatype => 'int',
     	base_name => 'contactAdded',
@@ -430,6 +472,62 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'progress_carrier_bulk_lookup' => {
+    	datatype => 'int',
+    	base_name => 'progressCarrierBulkLookup',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'progress_email_bulk_lookup' => {
+    	datatype => 'int',
+    	base_name => 'progressEmailBulkLookup',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'progress_sub_account_bulk_import' => {
+    	datatype => 'int',
+    	base_name => 'progressSubAccountBulkImport',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'progress_contact_bulk_import' => {
+    	datatype => 'int',
+    	base_name => 'progressContactBulkImport',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'force_refresh_web_app' => {
+    	datatype => 'int',
+    	base_name => 'forceRefreshWebApp',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'chat_sender_settings_changed' => {
+    	datatype => 'int',
+    	base_name => 'chatSenderSettingsChanged',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'country_sender_settings_changed' => {
+    	datatype => 'int',
+    	base_name => 'countrySenderSettingsChanged',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'chat_suggested_reply_chunk' => {
+    	datatype => 'int',
+    	base_name => 'chatSuggestedReplyChunk',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -437,6 +535,9 @@ __PACKAGE__->swagger_types( {
     'system_exit' => 'int',
     'system_alert' => 'int',
     'system_account_state_changed' => 'int',
+    'system_account_additional_fields' => 'int',
+    'system_account_permissions_changed' => 'int',
+    'user_balance_changed' => 'int',
     'message_deleted' => 'int',
     'message_incoming' => 'int',
     'message_incoming_deleted' => 'int',
@@ -450,6 +551,7 @@ __PACKAGE__->swagger_types( {
     'message_schedule_added' => 'int',
     'message_schedule_state_changed' => 'int',
     'message_schedule_deleted' => 'int',
+    'message_schedule_not_sent_state_changed' => 'int',
     'message_schedule_cache_clear' => 'int',
     'message_template_cache_clear' => 'int',
     'call_finished' => 'int',
@@ -463,6 +565,8 @@ __PACKAGE__->swagger_types( {
     'chat_closed' => 'int',
     'chat_reopened' => 'int',
     'chat_cache_clear' => 'int',
+    'chat_read' => 'int',
+    'chat_unread' => 'int',
     'contact_added' => 'int',
     'contact_deleted' => 'int',
     'contact_state_changed' => 'int',
@@ -473,7 +577,15 @@ __PACKAGE__->swagger_types( {
     'contact_import_end' => 'int',
     'contact_cache_clear' => 'int',
     'list_cache_clear' => 'int',
-    'custom_fields_cache_clear' => 'int'
+    'custom_fields_cache_clear' => 'int',
+    'progress_carrier_bulk_lookup' => 'int',
+    'progress_email_bulk_lookup' => 'int',
+    'progress_sub_account_bulk_import' => 'int',
+    'progress_contact_bulk_import' => 'int',
+    'force_refresh_web_app' => 'int',
+    'chat_sender_settings_changed' => 'int',
+    'country_sender_settings_changed' => 'int',
+    'chat_suggested_reply_chunk' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -481,6 +593,9 @@ __PACKAGE__->attribute_map( {
     'system_exit' => 'systemExit',
     'system_alert' => 'systemAlert',
     'system_account_state_changed' => 'systemAccountStateChanged',
+    'system_account_additional_fields' => 'systemAccountAdditionalFields',
+    'system_account_permissions_changed' => 'systemAccountPermissionsChanged',
+    'user_balance_changed' => 'userBalanceChanged',
     'message_deleted' => 'messageDeleted',
     'message_incoming' => 'messageIncoming',
     'message_incoming_deleted' => 'messageIncomingDeleted',
@@ -494,6 +609,7 @@ __PACKAGE__->attribute_map( {
     'message_schedule_added' => 'messageScheduleAdded',
     'message_schedule_state_changed' => 'messageScheduleStateChanged',
     'message_schedule_deleted' => 'messageScheduleDeleted',
+    'message_schedule_not_sent_state_changed' => 'messageScheduleNotSentStateChanged',
     'message_schedule_cache_clear' => 'messageScheduleCacheClear',
     'message_template_cache_clear' => 'messageTemplateCacheClear',
     'call_finished' => 'callFinished',
@@ -507,6 +623,8 @@ __PACKAGE__->attribute_map( {
     'chat_closed' => 'chatClosed',
     'chat_reopened' => 'chatReopened',
     'chat_cache_clear' => 'chatCacheClear',
+    'chat_read' => 'chatRead',
+    'chat_unread' => 'chatUnread',
     'contact_added' => 'contactAdded',
     'contact_deleted' => 'contactDeleted',
     'contact_state_changed' => 'contactStateChanged',
@@ -517,7 +635,15 @@ __PACKAGE__->attribute_map( {
     'contact_import_end' => 'contactImportEnd',
     'contact_cache_clear' => 'contactCacheClear',
     'list_cache_clear' => 'listCacheClear',
-    'custom_fields_cache_clear' => 'customFieldsCacheClear'
+    'custom_fields_cache_clear' => 'customFieldsCacheClear',
+    'progress_carrier_bulk_lookup' => 'progressCarrierBulkLookup',
+    'progress_email_bulk_lookup' => 'progressEmailBulkLookup',
+    'progress_sub_account_bulk_import' => 'progressSubAccountBulkImport',
+    'progress_contact_bulk_import' => 'progressContactBulkImport',
+    'force_refresh_web_app' => 'forceRefreshWebApp',
+    'chat_sender_settings_changed' => 'chatSenderSettingsChanged',
+    'country_sender_settings_changed' => 'countrySenderSettingsChanged',
+    'chat_suggested_reply_chunk' => 'chatSuggestedReplyChunk'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
