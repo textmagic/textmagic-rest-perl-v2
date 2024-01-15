@@ -521,6 +521,20 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'chat_summary_chunk' => {
+    	datatype => 'int',
+    	base_name => 'chatSummaryChunk',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'chat_ways_to_reply_chunk' => {
+    	datatype => 'int',
+    	base_name => 'chatWaysToReplyChunk',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
     'chat_suggested_reply_chunk' => {
     	datatype => 'int',
     	base_name => 'chatSuggestedReplyChunk',
@@ -585,6 +599,8 @@ __PACKAGE__->swagger_types( {
     'force_refresh_web_app' => 'int',
     'chat_sender_settings_changed' => 'int',
     'country_sender_settings_changed' => 'int',
+    'chat_summary_chunk' => 'int',
+    'chat_ways_to_reply_chunk' => 'int',
     'chat_suggested_reply_chunk' => 'int'
 } );
 
@@ -643,6 +659,8 @@ __PACKAGE__->attribute_map( {
     'force_refresh_web_app' => 'forceRefreshWebApp',
     'chat_sender_settings_changed' => 'chatSenderSettingsChanged',
     'country_sender_settings_changed' => 'countrySenderSettingsChanged',
+    'chat_summary_chunk' => 'chatSummaryChunk',
+    'chat_ways_to_reply_chunk' => 'chatWaysToReplyChunk',
     'chat_suggested_reply_chunk' => 'chatSuggestedReplyChunk'
 } );
 
