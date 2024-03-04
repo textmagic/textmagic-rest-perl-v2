@@ -213,6 +213,20 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'contact_user_id' => {
+    	datatype => 'int',
+    	base_name => 'contactUserId',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'user_id' => {
+    	datatype => 'int',
+    	base_name => 'userId',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -225,7 +239,9 @@ __PACKAGE__->swagger_types( {
     'first_name' => 'string',
     'last_name' => 'string',
     'avatar' => 'string',
-    'email' => 'string'
+    'email' => 'string',
+    'contact_user_id' => 'int',
+    'user_id' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -238,7 +254,9 @@ __PACKAGE__->attribute_map( {
     'first_name' => 'firstName',
     'last_name' => 'lastName',
     'avatar' => 'avatar',
-    'email' => 'email'
+    'email' => 'email',
+    'contact_user_id' => 'contactUserId',
+    'user_id' => 'userId'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
