@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **int** | The ID of the inbound message. | 
 **sender** | **string** | The sender’s phone number. | 
 **receiver** | **string** | The receiver’s phone number (i.e. your dedicated or shared reply number). | 
-**message_time** | **DateTime** | The time when the message reached the TextMagic API endpoint. | 
+**message_time** | **DateTime** | The time when the message reached the Textmagic API endpoint. | 
 **text** | **string** | The text from the received message. | 
 **contact_id** | **int** | Sender contact ID. | [optional] 
 **first_name** | **string** | Sender contact first name. | [optional] 
