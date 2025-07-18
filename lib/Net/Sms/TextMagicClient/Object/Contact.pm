@@ -30,11 +30,12 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use Net::Sms::TextMagicClient::Object::ContactCustomField;
 use Net::Sms::TextMagicClient::Object::ContactImage;
 use Net::Sms::TextMagicClient::Object::ContactNote;
 use Net::Sms::TextMagicClient::Object::Country;
+use Net::Sms::TextMagicClient::Object::CustomFieldListItem;
 use Net::Sms::TextMagicClient::Object::List;
+use Net::Sms::TextMagicClient::Object::Tag;
 use Net::Sms::TextMagicClient::Object::User;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -213,9 +214,9 @@ __PACKAGE__->method_documentation({
     	read_only => '',
     		},
     'custom_fields' => {
-    	datatype => 'ARRAY[ContactCustomField]',
+    	datatype => 'ARRAY[CustomFieldListItem]',
     	base_name => 'customFields',
-    	description => 'See the [Custom Fields](https://docs.textmagic.com/#tag/Custom-Fields) section.',
+    	description => '',
     	format => '',
     	read_only => '',
     		},
@@ -229,6 +230,20 @@ __PACKAGE__->method_documentation({
     'lists' => {
     	datatype => 'ARRAY[List]',
     	base_name => 'lists',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'owner' => {
+    	datatype => 'User',
+    	base_name => 'owner',
+    	description => 'Contact Owner User ID.',
+    	format => '',
+    	read_only => '',
+    		},
+    'tags' => {
+    	datatype => 'ARRAY[Tag]',
+    	base_name => 'tags',
     	description => '',
     	format => '',
     	read_only => '',
@@ -254,6 +269,13 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'whatsapp_phone' => {
+    	datatype => 'string',
+    	base_name => 'whatsappPhone',
+    	description => 'Whatsapp phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -266,12 +288,15 @@ __PACKAGE__->swagger_types( {
     'phone' => 'string',
     'email' => 'string',
     'country' => 'Country',
-    'custom_fields' => 'ARRAY[ContactCustomField]',
+    'custom_fields' => 'ARRAY[CustomFieldListItem]',
     'user' => 'User',
     'lists' => 'ARRAY[List]',
+    'owner' => 'User',
+    'tags' => 'ARRAY[Tag]',
     'phone_type' => 'string',
     'avatar' => 'ContactImage',
-    'notes' => 'ARRAY[ContactNote]'
+    'notes' => 'ARRAY[ContactNote]',
+    'whatsapp_phone' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -287,9 +312,12 @@ __PACKAGE__->attribute_map( {
     'custom_fields' => 'customFields',
     'user' => 'user',
     'lists' => 'lists',
+    'owner' => 'owner',
+    'tags' => 'tags',
     'phone_type' => 'phoneType',
     'avatar' => 'avatar',
-    'notes' => 'notes'
+    'notes' => 'notes',
+    'whatsapp_phone' => 'whatsappPhone'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

@@ -150,6 +150,20 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'user_custom_field_id' => {
+    	datatype => 'int',
+    	base_name => 'userCustomFieldId',
+    	description => 'Old property custom Field ID.',
+    	format => '',
+    	read_only => '',
+    		},
+    'name' => {
+    	datatype => 'string',
+    	base_name => 'name',
+    	description => 'Custom Field name.',
+    	format => '',
+    	read_only => '',
+    		},
     'value' => {
     	datatype => 'string',
     	base_name => 'value',
@@ -157,16 +171,29 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'created_at' => {
+    	datatype => 'DateTime',
+    	base_name => 'createdAt',
+    	description => 'Custom field creation time.',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
     'id' => 'int',
-    'value' => 'string'
+    'user_custom_field_id' => 'int',
+    'name' => 'string',
+    'value' => 'string',
+    'created_at' => 'DateTime'
 } );
 
 __PACKAGE__->attribute_map( {
     'id' => 'id',
-    'value' => 'value'
+    'user_custom_field_id' => 'userCustomFieldId',
+    'name' => 'name',
+    'value' => 'value',
+    'created_at' => 'createdAt'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

@@ -32,6 +32,8 @@ use DateTime;
 
 use Net::Sms::TextMagicClient::Object::Contact;
 use Net::Sms::TextMagicClient::Object::Country;
+use Net::Sms::TextMagicClient::Object::Number;
+use Net::Sms::TextMagicClient::Object::Tag;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -264,6 +266,34 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'type' => {
+    	datatype => 'string',
+    	base_name => 'type',
+    	description => 'Chat type.',
+    	format => '',
+    	read_only => '',
+    		},
+    'sms_price' => {
+    	datatype => 'Number',
+    	base_name => 'smsPrice',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'mms_price' => {
+    	datatype => 'Number',
+    	base_name => 'mmsPrice',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'tags' => {
+    	datatype => 'ARRAY[Tag]',
+    	base_name => 'tags',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -283,7 +313,11 @@ __PACKAGE__->swagger_types( {
     'muted_until' => 'DateTime',
     'time_left_mute' => 'int',
     'country' => 'Country',
-    'pinned' => 'boolean'
+    'pinned' => 'boolean',
+    'type' => 'string',
+    'sms_price' => 'Number',
+    'mms_price' => 'Number',
+    'tags' => 'ARRAY[Tag]'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -303,7 +337,11 @@ __PACKAGE__->attribute_map( {
     'muted_until' => 'mutedUntil',
     'time_left_mute' => 'timeLeftMute',
     'country' => 'country',
-    'pinned' => 'pinned'
+    'pinned' => 'pinned',
+    'type' => 'type',
+    'sms_price' => 'smsPrice',
+    'mms_price' => 'mmsPrice',
+    'tags' => 'tags'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

@@ -200,6 +200,20 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'initiator_id' => {
+    	datatype => 'int',
+    	base_name => 'initiatorId',
+    	description => 'Initiator ID.',
+    	format => '',
+    	read_only => '',
+    		},
+    'title' => {
+    	datatype => 'string',
+    	base_name => 'title',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -210,7 +224,9 @@ __PACKAGE__->swagger_types( {
     'reference_id' => 'string',
     'price' => 'Number',
     'numbers_count' => 'int',
-    'destination' => 'string'
+    'destination' => 'string',
+    'initiator_id' => 'int',
+    'title' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -221,7 +237,9 @@ __PACKAGE__->attribute_map( {
     'reference_id' => 'referenceId',
     'price' => 'price',
     'numbers_count' => 'numbersCount',
-    'destination' => 'destination'
+    'destination' => 'destination',
+    'initiator_id' => 'initiatorId',
+    'title' => 'title'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

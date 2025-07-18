@@ -153,7 +153,7 @@ __PACKAGE__->method_documentation({
     'content' => {
     	datatype => 'string',
     	base_name => 'content',
-    	description => 'Template text. May contain tags inside braces. See [Custom fields list](https://docs.textmagic.com/#section/Custom-fields-list-(Merge-tags)).',
+    	description => 'Template text. May contain dynamic fields inside braces. See [Custom fields list](https://docs.textmagic.com/#tag/Templates/Custom-fields-list-(Merge-dynamic-fields)).',
     	format => '',
     	read_only => '',
     		},

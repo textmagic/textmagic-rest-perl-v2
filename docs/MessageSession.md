@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **price** | [**Number**](Number.md) | Session cost (in account currency). | 
 **numbers_count** | **int** | Session recipient count. | 
 **destination** | **string** | Destination type of a Message Session: * **t** – text SMS; * **s** – text-to-speech; * **v** – voice broadcast.  | 
+**initiator_id** | **int** | Initiator ID. | 
+**title** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

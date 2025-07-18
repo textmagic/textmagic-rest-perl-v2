@@ -30,6 +30,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use Net::Sms::TextMagicClient::Object::File;
+use Net::Sms::TextMagicClient::Object::MessagePayload;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -220,6 +222,69 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'message_file_id' => {
+    	datatype => 'int',
+    	base_name => 'messageFileId',
+    	description => 'Message file id.',
+    	format => '',
+    	read_only => '',
+    		},
+    'type' => {
+    	datatype => 'string',
+    	base_name => 'type',
+    	description => 'Message type.',
+    	format => '',
+    	read_only => '',
+    		},
+    'chat_type' => {
+    	datatype => 'string',
+    	base_name => 'chatType',
+    	description => 'Chat type.',
+    	format => '',
+    	read_only => '',
+    		},
+    'chat_id' => {
+    	datatype => 'int',
+    	base_name => 'chatId',
+    	description => 'Chat id.',
+    	format => '',
+    	read_only => '',
+    		},
+    'is_edited' => {
+    	datatype => 'boolean',
+    	base_name => 'isEdited',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'error_code' => {
+    	datatype => 'string',
+    	base_name => 'errorCode',
+    	description => 'Error code.',
+    	format => '',
+    	read_only => '',
+    		},
+    'files' => {
+    	datatype => 'ARRAY[File]',
+    	base_name => 'files',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'payload' => {
+    	datatype => 'MessagePayload',
+    	base_name => 'payload',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'avatar' => {
+    	datatype => 'string',
+    	base_name => 'avatar',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -233,7 +298,16 @@ __PACKAGE__->swagger_types( {
     'first_name' => 'string',
     'last_name' => 'string',
     'session_id' => 'int',
-    'initiator_id' => 'int'
+    'initiator_id' => 'int',
+    'message_file_id' => 'int',
+    'type' => 'string',
+    'chat_type' => 'string',
+    'chat_id' => 'int',
+    'is_edited' => 'boolean',
+    'error_code' => 'string',
+    'files' => 'ARRAY[File]',
+    'payload' => 'MessagePayload',
+    'avatar' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -247,7 +321,16 @@ __PACKAGE__->attribute_map( {
     'first_name' => 'firstName',
     'last_name' => 'lastName',
     'session_id' => 'sessionId',
-    'initiator_id' => 'initiatorId'
+    'initiator_id' => 'initiatorId',
+    'message_file_id' => 'messageFileId',
+    'type' => 'type',
+    'chat_type' => 'chatType',
+    'chat_id' => 'chatId',
+    'is_edited' => 'isEdited',
+    'error_code' => 'errorCode',
+    'files' => 'files',
+    'payload' => 'payload',
+    'avatar' => 'avatar'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

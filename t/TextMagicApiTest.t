@@ -55,22 +55,6 @@ isa_ok($api, 'Net::Sms::TextMagicClient::TextMagicApi');
 }
 
 #
-# cancel_verification test
-#
-{
-    my $verify_id = undef; # replace NULL with a proper value
-    my $result = $api->cancel_verification(verify_id => $verify_id);
-}
-
-#
-# check_phone_verification_code_tfa test
-#
-{
-    my $check_phone_verification_code_tfa_input_object = undef; # replace NULL with a proper value
-    my $result = $api->check_phone_verification_code_tfa(check_phone_verification_code_tfa_input_object => $check_phone_verification_code_tfa_input_object);
-}
-
-#
 # clear_and_assign_contacts_to_list test
 #
 {
@@ -547,7 +531,8 @@ isa_ok($api, 'Net::Sms::TextMagicClient::TextMagicApi');
     my $end = undef; # replace NULL with a proper value
     my $direction = undef; # replace NULL with a proper value
     my $voice = undef; # replace NULL with a proper value
-    my $result = $api->get_chat_messages(id => $id, page => $page, limit => $limit, query => $query, start => $start, end => $end, direction => $direction, voice => $voice);
+    my $include_notes = undef; # replace NULL with a proper value
+    my $result = $api->get_chat_messages(id => $id, page => $page, limit => $limit, query => $query, start => $start, end => $end, direction => $direction, voice => $voice, include_notes => $include_notes);
 }
 
 #
@@ -1190,14 +1175,6 @@ isa_ok($api, 'Net::Sms::TextMagicClient::TextMagicApi');
 {
     my $send_message_input_object = undef; # replace NULL with a proper value
     my $result = $api->send_message(send_message_input_object => $send_message_input_object);
-}
-
-#
-# send_phone_verification_code_tfa test
-#
-{
-    my $send_phone_verification_code_tfa_input_object = undef; # replace NULL with a proper value
-    my $result = $api->send_phone_verification_code_tfa(send_phone_verification_code_tfa_input_object => $send_phone_verification_code_tfa_input_object);
 }
 
 #

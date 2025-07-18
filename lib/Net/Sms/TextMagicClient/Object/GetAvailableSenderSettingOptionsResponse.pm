@@ -185,6 +185,27 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'user_carrier_sinch' => {
+    	datatype => 'ARRAY[string]',
+    	base_name => 'userCarrierSinch',
+    	description => 'Array of alphanumeric sender IDs.',
+    	format => '',
+    	read_only => '',
+    		},
+    'u_carrier_bandwidth' => {
+    	datatype => 'ARRAY[string]',
+    	base_name => 'uCarrierBandwidth',
+    	description => 'Array of alphanumeric sender IDs.',
+    	format => '',
+    	read_only => '',
+    		},
+    'uc_twilio_sender_id' => {
+    	datatype => 'ARRAY[string]',
+    	base_name => 'ucTwilioSenderId',
+    	description => 'Array of alphanumeric sender IDs.',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -193,7 +214,10 @@ __PACKAGE__->swagger_types( {
     'shared' => 'ARRAY[string]',
     'sender_ids' => 'ARRAY[string]',
     'user_carrier_twilio' => 'ARRAY[string]',
-    'user_carrier_vonage' => 'ARRAY[string]'
+    'user_carrier_vonage' => 'ARRAY[string]',
+    'user_carrier_sinch' => 'ARRAY[string]',
+    'u_carrier_bandwidth' => 'ARRAY[string]',
+    'uc_twilio_sender_id' => 'ARRAY[string]'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -202,7 +226,10 @@ __PACKAGE__->attribute_map( {
     'shared' => 'shared',
     'sender_ids' => 'senderIds',
     'user_carrier_twilio' => 'userCarrierTwilio',
-    'user_carrier_vonage' => 'userCarrierVonage'
+    'user_carrier_vonage' => 'userCarrierVonage',
+    'user_carrier_sinch' => 'userCarrierSinch',
+    'u_carrier_bandwidth' => 'uCarrierBandwidth',
+    'uc_twilio_sender_id' => 'ucTwilioSenderId'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

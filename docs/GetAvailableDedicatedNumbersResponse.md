@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **numbers** | **ARRAY[string]** | Array of phone numbers. | 
 **price** | **double** | Dedicated number monthly fee for this country. Returned in the current [account](https://docs.textmagic.com/#tag/User) currency. | 
+**gift_type** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

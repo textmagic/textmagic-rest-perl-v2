@@ -188,7 +188,7 @@ __PACKAGE__->method_documentation({
     'value' => {
     	datatype => 'string',
     	base_name => 'value',
-    	description => 'Value differs by **type**: *   for **sms**, it is the sent messages amount; *   for **number**, it is a dedicated phone number; *   for **schedule**, it is a scheduled messages amount; *   for **top-up**, it is an invoice ID. ',
+    	description => 'Value differs by **type**: *   for **sms**, it is the sent messages amount; *   for **number**, it is a dedicated phone number; *   for **schedule**, it is a scheduled messages amount; *   for **top-up**, it is an invoice ID. ',
     	format => '',
     	read_only => '',
     		},

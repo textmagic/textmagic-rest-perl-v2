@@ -228,6 +228,20 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'tags' => {
+    	datatype => 'string',
+    	base_name => 'tags',
+    	description => 'Contact [list](https://docs.textmagic.com/#tag/Tag) ID. Each contact must be assigned to at least one list.',
+    	format => '',
+    	read_only => '',
+    		},
+    'owner' => {
+    	datatype => 'int',
+    	base_name => 'owner',
+    	description => 'Contact Owner ID',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -242,7 +256,9 @@ __PACKAGE__->swagger_types( {
     'type' => 'int',
     'custom_field_values' => 'ARRAY[CustomFieldListItem]',
     'local' => 'int',
-    'country' => 'string'
+    'country' => 'string',
+    'tags' => 'string',
+    'owner' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -257,7 +273,9 @@ __PACKAGE__->attribute_map( {
     'type' => 'type',
     'custom_field_values' => 'customFieldValues',
     'local' => 'local',
-    'country' => 'country'
+    'country' => 'country',
+    'tags' => 'tags',
+    'owner' => 'owner'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

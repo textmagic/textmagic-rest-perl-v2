@@ -153,7 +153,7 @@ __PACKAGE__->method_documentation({
     'value' => {
     	datatype => 'string',
     	base_name => 'value',
-    	description => 'Custom field value. Note that this value is not parsed in any way; it is stored and used in tags exactly as you send it.',
+    	description => 'Custom field value. Note that this value is not parsed in any way; it is stored and used in dynamic fields exactly as you send it.',
     	format => '',
     	read_only => '',
     		},

@@ -164,18 +164,27 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'filtered_views' => {
+    	datatype => 'ARRAY[int]',
+    	base_name => 'filteredViews',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
     'contacts' => 'ARRAY[int]',
     'groups' => 'ARRAY[int]',
-    'numbers' => 'ARRAY[string]'
+    'numbers' => 'ARRAY[string]',
+    'filtered_views' => 'ARRAY[int]'
 } );
 
 __PACKAGE__->attribute_map( {
     'contacts' => 'contacts',
     'groups' => 'groups',
-    'numbers' => 'numbers'
+    'numbers' => 'numbers',
+    'filtered_views' => 'filteredViews'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

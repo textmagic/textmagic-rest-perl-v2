@@ -12,8 +12,6 @@ Method | HTTP request | Description
 [**assign_contacts_to_list**](TextMagicApi.md#assign_contacts_to_list) | **PUT** /api/v2/lists/{id}/contacts | Assign contacts to a list
 [**block_contact**](TextMagicApi.md#block_contact) | **POST** /api/v2/contacts/block | Block a contact by phone number
 [**buy_dedicated_number**](TextMagicApi.md#buy_dedicated_number) | **POST** /api/v2/numbers | Buy a dedicated number
-[**cancel_verification**](TextMagicApi.md#cancel_verification) | **DELETE** /api/v2/verify/{verifyId} | Cancel verification process
-[**check_phone_verification_code_tfa**](TextMagicApi.md#check_phone_verification_code_tfa) | **PUT** /api/v2/verify | Step 2: Check the verification code 
 [**clear_and_assign_contacts_to_list**](TextMagicApi.md#clear_and_assign_contacts_to_list) | **POST** /api/v2/lists/{id}/contacts | Reset list members to the specified contacts
 [**close_chats_bulk**](TextMagicApi.md#close_chats_bulk) | **POST** /api/v2/chats/close/bulk | Close chats (bulk)
 [**close_read_chats**](TextMagicApi.md#close_read_chats) | **POST** /api/v2/chats/close/read | Close read chats
@@ -135,7 +133,6 @@ Method | HTTP request | Description
 [**search_scheduled_messages**](TextMagicApi.md#search_scheduled_messages) | **GET** /api/v2/schedules/search | Find scheduled messages
 [**search_templates**](TextMagicApi.md#search_templates) | **GET** /api/v2/templates/search | Find templates by criteria
 [**send_message**](TextMagicApi.md#send_message) | **POST** /api/v2/messages | Send message
-[**send_phone_verification_code_tfa**](TextMagicApi.md#send_phone_verification_code_tfa) | **POST** /api/v2/verify | Step 1: Send a verification code 
 [**set_chat_status**](TextMagicApi.md#set_chat_status) | **POST** /api/v2/chats/status | Change chat status
 [**unblock_contact**](TextMagicApi.md#unblock_contact) | **POST** /api/v2/contacts/unblock | Unblock a contact by phone number
 [**unblock_contacts_bulk**](TextMagicApi.md#unblock_contacts_bulk) | **POST** /api/v2/contacts/unblock/bulk | Unblock contacts (bulk)
@@ -295,104 +292,6 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buy_dedicated_number_input_object** | [**BuyDedicatedNumberInputObject**](BuyDedicatedNumberInputObject.md)|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **cancel_verification**
-> cancel_verification(verify_id => $verify_id)
-
-Cancel verification process
-
-You can cancel the verification not earlier than 30 seconds after the initial request.
-
-### Example 
-```perl
-use Data::Dumper;
-use Net::Sms::TextMagicClient::TextMagicApi;
-my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
-
-    # Configure HTTP basic authorization: BasicAuth
-    username => 'YOUR_USERNAME',
-    password => 'YOUR_PASSWORD',
-);
-
-my $verify_id = '"123e4567-e89b-12d3-a456-426655440000"'; # string | The verifyId that you received in Step 1.
-
-eval { 
-    $api_instance->cancel_verification(verify_id => $verify_id);
-};
-if ($@) {
-    warn "Exception when calling TextMagicApi->cancel_verification: $@\n";
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **verify_id** | **string**| The verifyId that you received in Step 1. | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **check_phone_verification_code_tfa**
-> check_phone_verification_code_tfa(check_phone_verification_code_tfa_input_object => $check_phone_verification_code_tfa_input_object)
-
-Step 2: Check the verification code 
-
-Check received code from user with the code which was actually sent.
-
-### Example 
-```perl
-use Data::Dumper;
-use Net::Sms::TextMagicClient::TextMagicApi;
-my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
-
-    # Configure HTTP basic authorization: BasicAuth
-    username => 'YOUR_USERNAME',
-    password => 'YOUR_PASSWORD',
-);
-
-my $check_phone_verification_code_tfa_input_object = Net::Sms::TextMagicClient::Object::CheckPhoneVerificationCodeTFAInputObject->new(); # CheckPhoneVerificationCodeTFAInputObject | 
-
-eval { 
-    $api_instance->check_phone_verification_code_tfa(check_phone_verification_code_tfa_input_object => $check_phone_verification_code_tfa_input_object);
-};
-if ($@) {
-    warn "Exception when calling TextMagicApi->check_phone_verification_code_tfa: $@\n";
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **check_phone_verification_code_tfa_input_object** | [**CheckPhoneVerificationCodeTFAInputObject**](CheckPhoneVerificationCodeTFAInputObject.md)|  | 
 
 ### Return type
 
@@ -3165,7 +3064,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_chat_messages**
-> GetChatMessagesPaginatedResponse get_chat_messages(id => $id, page => $page, limit => $limit, query => $query, start => $start, end => $end, direction => $direction, voice => $voice)
+> GetChatMessagesPaginatedResponse get_chat_messages(id => $id, page => $page, limit => $limit, query => $query, start => $start, end => $end, direction => $direction, voice => $voice, include_notes => $include_notes)
 
 Get chat messages
 
@@ -3190,9 +3089,10 @@ my $start = 'start_example'; # string | Return messages since specified timestam
 my $end = 'end_example'; # string | Return messages up to specified timestamp only. Required when `start` parameter specified.
 my $direction = 'direction_example'; # string | Order direction. Default is desc.
 my $voice = 56; # int | Fetch results with voice calls.
+my $include_notes = 56; # int | Fetch results with messenger notes.
 
 eval { 
-    my $result = $api_instance->get_chat_messages(id => $id, page => $page, limit => $limit, query => $query, start => $start, end => $end, direction => $direction, voice => $voice);
+    my $result = $api_instance->get_chat_messages(id => $id, page => $page, limit => $limit, query => $query, start => $start, end => $end, direction => $direction, voice => $voice, include_notes => $include_notes);
     print Dumper($result);
 };
 if ($@) {
@@ -3212,6 +3112,7 @@ Name | Type | Description  | Notes
  **end** | **string**| Return messages up to specified timestamp only. Required when &#x60;start&#x60; parameter specified. | [optional] 
  **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
  **voice** | **int**| Fetch results with voice calls. | [optional] [default to 0]
+ **include_notes** | **int**| Fetch results with messenger notes. | [optional] [default to 0]
 
 ### Return type
 
@@ -4367,7 +4268,7 @@ Name | Type | Description  | Notes
 
 Preview message
 
-Get a messages preview (with tags merged) of up to 100 messages per session.
+Get a messages preview (with dynamic fields merged) of up to 100 messages per session. 
 
 ### Example 
 ```perl
@@ -6693,56 +6594,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SendMessageResponse**](SendMessageResponse.md)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **send_phone_verification_code_tfa**
-> SendPhoneVerificationCodeResponse send_phone_verification_code_tfa(send_phone_verification_code_tfa_input_object => $send_phone_verification_code_tfa_input_object)
-
-Step 1: Send a verification code 
-
-Sends a verification code to a specified phone number.
-
-### Example 
-```perl
-use Data::Dumper;
-use Net::Sms::TextMagicClient::TextMagicApi;
-my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
-
-    # Configure HTTP basic authorization: BasicAuth
-    username => 'YOUR_USERNAME',
-    password => 'YOUR_PASSWORD',
-);
-
-my $send_phone_verification_code_tfa_input_object = Net::Sms::TextMagicClient::Object::SendPhoneVerificationCodeTFAInputObject->new(); # SendPhoneVerificationCodeTFAInputObject | 
-
-eval { 
-    my $result = $api_instance->send_phone_verification_code_tfa(send_phone_verification_code_tfa_input_object => $send_phone_verification_code_tfa_input_object);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling TextMagicApi->send_phone_verification_code_tfa: $@\n";
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **send_phone_verification_code_tfa_input_object** | [**SendPhoneVerificationCodeTFAInputObject**](SendPhoneVerificationCodeTFAInputObject.md)|  | 
-
-### Return type
-
-[**SendPhoneVerificationCodeResponse**](SendPhoneVerificationCodeResponse.md)
 
 ### Authorization
 

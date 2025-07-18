@@ -25,6 +25,10 @@ Name | Type | Description | Notes
 **time_left_mute** | **int** | Time left untill the chat will be unmuted (seconds). | 
 **country** | [**Country**](Country.md) |  | 
 **pinned** | **boolean** | Indicates when the chat is pinned. | 
+**type** | **string** | Chat type. | 
+**sms_price** | [**Number**](Number.md) |  | 
+**mms_price** | [**Number**](Number.md) |  | 
+**tags** | [**ARRAY[Tag]**](Tag.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

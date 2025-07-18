@@ -30,6 +30,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use Net::Sms::TextMagicClient::Object::MessageOutSenderSource;
+use Net::Sms::TextMagicClient::Object::MessageOutSession;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -178,6 +180,13 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'reject_reason' => {
+    	datatype => 'string',
+    	base_name => 'rejectReason',
+    	description => 'Rejection reason.',
+    	format => '',
+    	read_only => '',
+    		},
     'contact_id' => {
     	datatype => 'int',
     	base_name => 'contactId',
@@ -283,6 +292,20 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'sender_source' => {
+    	datatype => 'MessageOutSenderSource',
+    	base_name => 'senderSource',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'session' => {
+    	datatype => 'MessageOutSession',
+    	base_name => 'session',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -291,6 +314,7 @@ __PACKAGE__->swagger_types( {
     'receiver' => 'string',
     'text' => 'string',
     'status' => 'string',
+    'reject_reason' => 'string',
     'contact_id' => 'int',
     'session_id' => 'int',
     'message_time' => 'DateTime',
@@ -305,7 +329,9 @@ __PACKAGE__->swagger_types( {
     'price' => 'double',
     'parts_count' => 'int',
     'from_email' => 'string',
-    'from_number' => 'string'
+    'from_number' => 'string',
+    'sender_source' => 'MessageOutSenderSource',
+    'session' => 'MessageOutSession'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -314,6 +340,7 @@ __PACKAGE__->attribute_map( {
     'receiver' => 'receiver',
     'text' => 'text',
     'status' => 'status',
+    'reject_reason' => 'rejectReason',
     'contact_id' => 'contactId',
     'session_id' => 'sessionId',
     'message_time' => 'messageTime',
@@ -328,7 +355,9 @@ __PACKAGE__->attribute_map( {
     'price' => 'price',
     'parts_count' => 'partsCount',
     'from_email' => 'fromEmail',
-    'from_number' => 'fromNumber'
+    'from_number' => 'fromNumber',
+    'sender_source' => 'senderSource',
+    'session' => 'session'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

@@ -258,130 +258,6 @@ sub buy_dedicated_number {
 }
 
 #
-# cancel_verification
-#
-# Cancel verification process
-# 
-# @param string $verify_id The verifyId that you received in Step 1. (required)
-{
-    my $params = {
-    'verify_id' => {
-        data_type => 'string',
-        description => 'The verifyId that you received in Step 1.',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'cancel_verification' } = { 
-    	summary => 'Cancel verification process',
-        params => $params,
-        returns => undef,
-        };
-}
-# @return void
-#
-sub cancel_verification {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'verify_id' is set
-    unless (exists $args{'verify_id'}) {
-      croak("Missing the required parameter 'verify_id' when calling cancel_verification");
-    }
-
-    # parse inputs
-    my $_resource_path = '/api/v2/verify/{verifyId}';
-
-    my $_method = 'DELETE';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
-
-    # path params
-    if ( exists $args{'verify_id'}) {
-        my $_base_variable = "{" . "verifyId" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'verify_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # authentication setting, if any
-    my $auth_settings = [qw(BasicAuth )];
-
-    # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    return;
-}
-
-#
-# check_phone_verification_code_tfa
-#
-# Step 2: Check the verification code 
-# 
-# @param CheckPhoneVerificationCodeTFAInputObject $check_phone_verification_code_tfa_input_object  (required)
-{
-    my $params = {
-    'check_phone_verification_code_tfa_input_object' => {
-        data_type => 'CheckPhoneVerificationCodeTFAInputObject',
-        description => '',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'check_phone_verification_code_tfa' } = { 
-    	summary => 'Step 2: Check the verification code ',
-        params => $params,
-        returns => undef,
-        };
-}
-# @return void
-#
-sub check_phone_verification_code_tfa {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'check_phone_verification_code_tfa_input_object' is set
-    unless (exists $args{'check_phone_verification_code_tfa_input_object'}) {
-      croak("Missing the required parameter 'check_phone_verification_code_tfa_input_object' when calling check_phone_verification_code_tfa");
-    }
-
-    # parse inputs
-    my $_resource_path = '/api/v2/verify';
-
-    my $_method = 'PUT';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
-
-    my $_body_data;
-    # body params
-    if ( exists $args{'check_phone_verification_code_tfa_input_object'}) {
-        $_body_data = $args{'check_phone_verification_code_tfa_input_object'};
-    }
-
-    # authentication setting, if any
-    my $auth_settings = [qw(BasicAuth )];
-
-    # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    return;
-}
-
-#
 # clear_and_assign_contacts_to_list
 #
 # Reset list members to the specified contacts
@@ -4120,6 +3996,7 @@ sub get_chat_by_phone {
 # @param string $end Return messages up to specified timestamp only. Required when &#x60;start&#x60; parameter specified. (optional)
 # @param string $direction Order direction. Default is desc. (optional, default to desc)
 # @param int $voice Fetch results with voice calls. (optional, default to 0)
+# @param int $include_notes Fetch results with messenger notes. (optional, default to 0)
 {
     my $params = {
     'id' => {
@@ -4160,6 +4037,11 @@ sub get_chat_by_phone {
     'voice' => {
         data_type => 'int',
         description => 'Fetch results with voice calls.',
+        required => '0',
+    },
+    'include_notes' => {
+        data_type => 'int',
+        description => 'Fetch results with messenger notes.',
         required => '0',
     },
     };
@@ -4227,6 +4109,11 @@ sub get_chat_messages {
     # query params
     if ( exists $args{'voice'}) {
         $query_params->{'voice'} = $self->{api_client}->to_query_value($args{'voice'});
+    }
+
+    # query params
+    if ( exists $args{'include_notes'}) {
+        $query_params->{'includeNotes'} = $self->{api_client}->to_query_value($args{'include_notes'});
     }
 
     # path params
@@ -9688,71 +9575,6 @@ sub send_message {
         return;
     }
     my $_response_object = $self->{api_client}->deserialize('SendMessageResponse', $response);
-    return $_response_object;
-}
-
-#
-# send_phone_verification_code_tfa
-#
-# Step 1: Send a verification code 
-# 
-# @param SendPhoneVerificationCodeTFAInputObject $send_phone_verification_code_tfa_input_object  (required)
-{
-    my $params = {
-    'send_phone_verification_code_tfa_input_object' => {
-        data_type => 'SendPhoneVerificationCodeTFAInputObject',
-        description => '',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'send_phone_verification_code_tfa' } = { 
-    	summary => 'Step 1: Send a verification code ',
-        params => $params,
-        returns => 'SendPhoneVerificationCodeResponse',
-        };
-}
-# @return SendPhoneVerificationCodeResponse
-#
-sub send_phone_verification_code_tfa {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'send_phone_verification_code_tfa_input_object' is set
-    unless (exists $args{'send_phone_verification_code_tfa_input_object'}) {
-      croak("Missing the required parameter 'send_phone_verification_code_tfa_input_object' when calling send_phone_verification_code_tfa");
-    }
-
-    # parse inputs
-    my $_resource_path = '/api/v2/verify';
-
-    my $_method = 'POST';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
-
-    my $_body_data;
-    # body params
-    if ( exists $args{'send_phone_verification_code_tfa_input_object'}) {
-        $_body_data = $args{'send_phone_verification_code_tfa_input_object'};
-    }
-
-    # authentication setting, if any
-    my $auth_settings = [qw(BasicAuth )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('SendPhoneVerificationCodeResponse', $response);
     return $_response_object;
 }
 
