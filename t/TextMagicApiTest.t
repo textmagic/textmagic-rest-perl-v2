@@ -112,6 +112,14 @@ isa_ok($api, 'Net::Sms::TextMagicClient::TextMagicApi');
 }
 
 #
+# create_email_campaign test
+#
+{
+    my $create_email_campaign_input_object = undef; # replace NULL with a proper value
+    my $result = $api->create_email_campaign(create_email_campaign_input_object => $create_email_campaign_input_object);
+}
+
+#
 # create_list test
 #
 {
@@ -659,6 +667,14 @@ isa_ok($api, 'Net::Sms::TextMagicClient::TextMagicApi');
 }
 
 #
+# get_email_senders test
+#
+{
+    my $domain_id = undef; # replace NULL with a proper value
+    my $result = $api->get_email_senders(domain_id => $domain_id);
+}
+
+#
 # get_favorites test
 #
 {
@@ -1047,6 +1063,14 @@ isa_ok($api, 'Net::Sms::TextMagicClient::TextMagicApi');
 {
     my $request_sender_id_input_object = undef; # replace NULL with a proper value
     my $result = $api->request_sender_id(request_sender_id_input_object => $request_sender_id_input_object);
+}
+
+#
+# schedule_email_campaign test
+#
+{
+    my $schedule_email_campaign_input_object = undef; # replace NULL with a proper value
+    my $result = $api->schedule_email_campaign(schedule_email_campaign_input_object => $schedule_email_campaign_input_object);
 }
 
 #

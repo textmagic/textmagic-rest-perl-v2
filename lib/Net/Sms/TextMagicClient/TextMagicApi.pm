@@ -723,6 +723,71 @@ sub create_custom_field {
 }
 
 #
+# create_email_campaign
+#
+# Create new email campaign
+# 
+# @param CreateEmailCampaignInputObject $create_email_campaign_input_object  (required)
+{
+    my $params = {
+    'create_email_campaign_input_object' => {
+        data_type => 'CreateEmailCampaignInputObject',
+        description => '',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'create_email_campaign' } = { 
+    	summary => 'Create new email campaign',
+        params => $params,
+        returns => 'CreateEmailCampaignResponse',
+        };
+}
+# @return CreateEmailCampaignResponse
+#
+sub create_email_campaign {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'create_email_campaign_input_object' is set
+    unless (exists $args{'create_email_campaign_input_object'}) {
+      croak("Missing the required parameter 'create_email_campaign_input_object' when calling create_email_campaign");
+    }
+
+    # parse inputs
+    my $_resource_path = '/api/v2/email-campaigns';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'create_email_campaign_input_object'}) {
+        $_body_data = $args{'create_email_campaign_input_object'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(BasicAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('CreateEmailCampaignResponse', $response);
+    return $_response_object;
+}
+
+#
 # create_list
 #
 # Create a new list
@@ -5166,6 +5231,66 @@ sub get_dedicated_number {
 }
 
 #
+# get_email_senders
+#
+# Get list of email senders
+# 
+# @param int $domain_id Filter email senders by specific domain ID. (optional)
+{
+    my $params = {
+    'domain_id' => {
+        data_type => 'int',
+        description => 'Filter email senders by specific domain ID.',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'get_email_senders' } = { 
+    	summary => 'Get list of email senders',
+        params => $params,
+        returns => 'GetEmailSendersResponse',
+        };
+}
+# @return GetEmailSendersResponse
+#
+sub get_email_senders {
+    my ($self, %args) = @_;
+
+    # parse inputs
+    my $_resource_path = '/api/v2/email-campaigns/email-senders';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # query params
+    if ( exists $args{'domain_id'}) {
+        $query_params->{'domainId'} = $self->{api_client}->to_query_value($args{'domain_id'});
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(BasicAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('GetEmailSendersResponse', $response);
+    return $_response_object;
+}
+
+#
 # get_favorites
 #
 # Get favorite contacts and lists
@@ -8442,6 +8567,71 @@ sub request_sender_id {
         return;
     }
     my $_response_object = $self->{api_client}->deserialize('ResourceLinkResponse', $response);
+    return $_response_object;
+}
+
+#
+# schedule_email_campaign
+#
+# Schedule new email campaign
+# 
+# @param ScheduleEmailCampaignInputObject $schedule_email_campaign_input_object  (required)
+{
+    my $params = {
+    'schedule_email_campaign_input_object' => {
+        data_type => 'ScheduleEmailCampaignInputObject',
+        description => '',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'schedule_email_campaign' } = { 
+    	summary => 'Schedule new email campaign',
+        params => $params,
+        returns => 'ScheduleEmailCampaignResponse',
+        };
+}
+# @return ScheduleEmailCampaignResponse
+#
+sub schedule_email_campaign {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'schedule_email_campaign_input_object' is set
+    unless (exists $args{'schedule_email_campaign_input_object'}) {
+      croak("Missing the required parameter 'schedule_email_campaign_input_object' when calling schedule_email_campaign");
+    }
+
+    # parse inputs
+    my $_resource_path = '/api/v2/email-campaigns/schedule';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'schedule_email_campaign_input_object'}) {
+        $_body_data = $args{'schedule_email_campaign_input_object'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(BasicAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('ScheduleEmailCampaignResponse', $response);
     return $_response_object;
 }
 
