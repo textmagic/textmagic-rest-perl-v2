@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **status** | **string** | * **n** – bulk session is just created * **w** - work in progress * **f** - failed * **c** - completed with success * **s** - suspended  | 
 **items_processed** | **int** | Amount of messages already processed. | 
 **items_total** | **int** | Total amount of messages to be processed. | 
-**created_at** | **DateTime** | Creation date and time of a Bulk Session. | 
+**created_at** | **DATE_TIME** | Creation date and time of a Bulk Session. | 
 **session** | [**MessageSession**](MessageSession.md) |  | 
 **text** | **string** | Message text of a Bulk Session. | 
 

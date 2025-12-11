@@ -11,12 +11,12 @@ Name | Type | Description | Notes
 **id** | **int** | Unique scheduled campaign ID. | 
 **status** | **string** | Current scheduled campaign status. | 
 **email_sender_id** | **int** | Email sender ID used for this campaign. | [optional] 
-**start_at** | **DateTime** | Scheduled start timestamp (UTC). | 
-**end_at** | **DateTime** | End timestamp for recurring campaigns (UTC). | [optional] 
-**next_send_at** | **DateTime** | Next scheduled send timestamp (UTC). | [optional] 
+**start_at** | **DATE_TIME** | Scheduled start timestamp (UTC). | 
+**end_at** | **DATE_TIME** | End timestamp for recurring campaigns (UTC). | [optional] 
+**next_send_at** | **DATE_TIME** | Next scheduled send timestamp (UTC). | [optional] 
 **created_by** | [**UserPersonalInfo**](UserPersonalInfo.md) |  | 
-**created_at** | **DateTime** | Campaign creation timestamp. | 
-**updated_at** | **DateTime** | Last update timestamp. | 
+**created_at** | **DATE_TIME** | Campaign creation timestamp. | 
+**updated_at** | **DATE_TIME** | Last update timestamp. | 
 **type** | **string** | Campaign recurrence type. | 
 **from_name** | **string** | Sender name displayed in recipient&#39;s inbox. | [optional] 
 **from_email** | **string** | Sender email address. | 

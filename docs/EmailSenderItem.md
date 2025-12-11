@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **int** | Unique email sender identifier. | 
 **domain_id** | **int** | ID of the associated domain. | 
 **email** | **string** | Email address of the sender. | 
-**created_at** | **DateTime** | When the email sender was created. | 
+**created_at** | **DATE_TIME** | When the email sender was created. | 
 **domain_status** | **string** | Current verification status of the associated domain. | 
 **from_name** | **string** | Display name for the sender. | [optional] 
 **reply_to** | **string** | Reply-to email address. | [optional] 

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **mime_type** | **string** |  | 
 **size** | **int** |  | 
 **type** | **string** | File type. | 
-**created_at** | **DateTime** |  | 
+**created_at** | **DATE_TIME** |  | 
 **preview_url** | **string** |  | [optional] 
 **url** | **string** |  | [optional] 
 **metadata** | [**FileMetadata**](FileMetadata.md) |  | [optional] 

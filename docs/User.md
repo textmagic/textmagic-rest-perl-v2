@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **last_name** | **string** | Account last name. | 
 **email** | **string** | User email address. | 
 **status** | **string** | Current account status: * **A** for Active; * **T** for Trial.  | 
-**balance** | [**Number**](Number.md) | Account balance (in account currency). | 
+**balance** | **double** | Account balance (in account currency). | 
 **phone** | **string** | User&#39;s phone number. | 
 **company** | **string** | Account company name. | 
 **currency** | [**Currency**](Currency.md) |  | 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | User statement ID. | 
 **user_id** | **int** | User ID. | 
-**date** | **DateTime** | User statement date. | 
+**date** | **DATE_TIME** | User statement date. | 
 **balance** | **double** |  | 
 **delta** | **double** | Balance change amount. | 
 **type** | **string** | Type of statement (what you have been charged for): *   **sms** - for sending SMS *   **number** - for renewing a dedicated number; *   **schedule** - for scheduling text messages; *   **topup** - for adding credits to your account.  | 

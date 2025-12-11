@@ -9,7 +9,7 @@ use Net::Sms::TextMagicClient::Object::ContactNote;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Contact note ID. | 
-**created_at** | **DateTime** | Contact note creation time. | 
+**created_at** | **DATE_TIME** | Contact note creation time. | 
 **note** | **string** | Contact note text. | 
 **user** | [**User**](User.md) |  | 
 

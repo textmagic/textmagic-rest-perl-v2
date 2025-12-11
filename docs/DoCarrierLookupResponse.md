@@ -8,8 +8,8 @@ use Net::Sms::TextMagicClient::Object::DoCarrierLookupResponse;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cost** | [**Number**](Number.md) | The cost to check that one number is constant – 0.04 in your account currency. | 
-**country** | [**Country**](Country.md) | Phone number country. | [optional] 
+**cost** | **double** | The cost to check that one number is constant – 0.04 in your account currency. | 
+**country** | [**Country**](Country.md) |  | [optional] 
 **local** | **string** | Phone number in [National format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers). | 
 **type** | **string** | Phone number type. | 
 **carrier** | **string** | Carrier name. | 

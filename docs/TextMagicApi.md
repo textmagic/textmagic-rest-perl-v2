@@ -15,12 +15,12 @@ Method | HTTP request | Description
 [**clear_and_assign_contacts_to_list**](TextMagicApi.md#clear_and_assign_contacts_to_list) | **POST** /api/v2/lists/{id}/contacts | Reset list members to the specified contacts
 [**close_chats_bulk**](TextMagicApi.md#close_chats_bulk) | **POST** /api/v2/chats/close/bulk | Close chats (bulk)
 [**close_read_chats**](TextMagicApi.md#close_read_chats) | **POST** /api/v2/chats/close/read | Close read chats
-[**close_subaccount**](TextMagicApi.md#close_subaccount) | **DELETE** /api/v2/subaccounts/{id} | Close sub-account
 [**create_contact**](TextMagicApi.md#create_contact) | **POST** /api/v2/contacts/normalized | Add a new contact
 [**create_contact_note**](TextMagicApi.md#create_contact_note) | **POST** /api/v2/contacts/{id}/notes | Create a new contact note
 [**create_custom_field**](TextMagicApi.md#create_custom_field) | **POST** /api/v2/customfields | Add a new custom field
-[**create_email_campaign**](TextMagicApi.md#create_email_campaign) | **POST** /api/v2/email-campaigns | Create new email campaign
+[**create_email_campaign**](TextMagicApi.md#create_email_campaign) | **POST** /api/v2/email-campaigns | Send email campaign
 [**create_list**](TextMagicApi.md#create_list) | **POST** /api/v2/lists | Create a new list
+[**create_tag**](TextMagicApi.md#create_tag) | **POST** /api/v2/tags | Create tag
 [**create_template**](TextMagicApi.md#create_template) | **POST** /api/v2/templates | Create a template
 [**delete_all_contacts**](TextMagicApi.md#delete_all_contacts) | **DELETE** /api/v2/contact/all | Delete contacts (bulk)
 [**delete_all_outbound_messages**](TextMagicApi.md#delete_all_outbound_messages) | **DELETE** /api/v2/message/all | Delete all messages
@@ -106,9 +106,6 @@ Method | HTTP request | Description
 [**get_sender_ids**](TextMagicApi.md#get_sender_ids) | **GET** /api/v2/senderids | Get all your approved Sender IDs
 [**get_sender_settings**](TextMagicApi.md#get_sender_settings) | **GET** /api/v2/sender/settings/normalized | Get current sender settings
 [**get_spending_stat**](TextMagicApi.md#get_spending_stat) | **GET** /api/v2/stats/spending | Get spending statistics
-[**get_subaccount**](TextMagicApi.md#get_subaccount) | **GET** /api/v2/subaccounts/{id} | Get sub-account information
-[**get_subaccounts**](TextMagicApi.md#get_subaccounts) | **GET** /api/v2/subaccounts | Get a sub-accounts list
-[**get_subaccounts_with_tokens**](TextMagicApi.md#get_subaccounts_with_tokens) | **POST** /api/v2/subaccounts/tokens/list | Get all sub-accounts with their REST API tokens associated with a specified app name
 [**get_template**](TextMagicApi.md#get_template) | **GET** /api/v2/templates/{id} | Get a template&#x60;s details
 [**get_timezones**](TextMagicApi.md#get_timezones) | **GET** /api/v2/timezones | Get timezones
 [**get_unread_messages_total**](TextMagicApi.md#get_unread_messages_total) | **GET** /api/v2/chats/unread/count | Get unread messages number
@@ -116,14 +113,12 @@ Method | HTTP request | Description
 [**get_unsubscribers**](TextMagicApi.md#get_unsubscribers) | **GET** /api/v2/unsubscribers | Get all unsubscribed contacts
 [**get_user_dedicated_numbers**](TextMagicApi.md#get_user_dedicated_numbers) | **GET** /api/v2/numbers | Get all your dedicated numbers
 [**import_contacts**](TextMagicApi.md#import_contacts) | **POST** /api/v2/contacts/import/normalized | Import contacts
-[**invite_subaccount**](TextMagicApi.md#invite_subaccount) | **POST** /api/v2/subaccounts | Invite a new sub-account
 [**mark_chats_read_bulk**](TextMagicApi.md#mark_chats_read_bulk) | **POST** /api/v2/chats/read/bulk | Mark chats as read (bulk)
 [**mark_chats_unread_bulk**](TextMagicApi.md#mark_chats_unread_bulk) | **POST** /api/v2/chats/unread/bulk | Mark chats as unread (bulk)
 [**mute_chat**](TextMagicApi.md#mute_chat) | **POST** /api/v2/chats/mute | Mute chat sounds
 [**mute_chats_bulk**](TextMagicApi.md#mute_chats_bulk) | **POST** /api/v2/chats/mute/bulk | Mute chats (bulk)
 [**ping**](TextMagicApi.md#ping) | **GET** /api/v2/ping | Ping
 [**reopen_chats_bulk**](TextMagicApi.md#reopen_chats_bulk) | **POST** /api/v2/chats/reopen/bulk | Reopen chats (bulk)
-[**request_new_subaccount_token**](TextMagicApi.md#request_new_subaccount_token) | **POST** /api/v2/subaccounts/tokens | Request a new REST API token for sub-account
 [**request_sender_id**](TextMagicApi.md#request_sender_id) | **POST** /api/v2/senderids | Apply for a new Sender ID
 [**schedule_email_campaign**](TextMagicApi.md#schedule_email_campaign) | **POST** /api/v2/email-campaigns/schedule | Schedule new email campaign
 [**search_chats**](TextMagicApi.md#search_chats) | **GET** /api/v2/chats/search | Find chats by message text
@@ -161,13 +156,13 @@ Method | HTTP request | Description
 
 
 # **assign_contacts_to_list**
-> ResourceLinkResponse assign_contacts_to_list(assign_contacts_to_list_input_object => $assign_contacts_to_list_input_object, id => $id)
+> ResourceLinkResponse assign_contacts_to_list(id => $id, assign_contacts_to_list_input_object => $assign_contacts_to_list_input_object)
 
 Assign contacts to a list
 
 > Unlike all other PUT requests, this command does not need old contact IDs to be submitted. For example, if you have a list with contacts 150, 151 and 152 and you want to add contact ID 153, you only need to submit 153 as a parameter of PUT /api/v2/lists/{id}/contacts. 
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -176,13 +171,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $assign_contacts_to_list_input_object = Net::Sms::TextMagicClient::Object::AssignContactsToListInputObject->new(); # AssignContactsToListInputObject | 
 my $id = 1; # int | 
+my $assign_contacts_to_list_input_object = Net::Sms::TextMagicClient::Object::AssignContactsToListRequest->new(); # AssignContactsToListRequest | 
 
-eval { 
-    my $result = $api_instance->assign_contacts_to_list(assign_contacts_to_list_input_object => $assign_contacts_to_list_input_object, id => $id);
+eval {
+    my $result = $api_instance->assign_contacts_to_list(id => $id, assign_contacts_to_list_input_object => $assign_contacts_to_list_input_object);
     print Dumper($result);
 };
 if ($@) {
@@ -194,8 +190,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **assign_contacts_to_list_input_object** | [**AssignContactsToListInputObject**](AssignContactsToListInputObject.md)|  | 
  **id** | **int**|  | 
+ **assign_contacts_to_list_input_object** | [**AssignContactsToListRequest**](AssignContactsToListRequest.md)|  | 
 
 ### Return type
 
@@ -219,7 +215,7 @@ Block a contact by phone number
 
 Block a contact from inbound and outbound communication by phone number.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -228,11 +224,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $block_contact_input_object = Net::Sms::TextMagicClient::Object::BlockContactInputObject->new(); # BlockContactInputObject | 
+my $block_contact_input_object = Net::Sms::TextMagicClient::Object::BlockContactRequest->new(); # BlockContactRequest | 
 
-eval { 
+eval {
     my $result = $api_instance->block_contact(block_contact_input_object => $block_contact_input_object);
     print Dumper($result);
 };
@@ -245,7 +242,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **block_contact_input_object** | [**BlockContactInputObject**](BlockContactInputObject.md)|  | 
+ **block_contact_input_object** | [**BlockContactRequest**](BlockContactRequest.md)|  | 
 
 ### Return type
 
@@ -269,7 +266,7 @@ Buy a dedicated number
 
 To buy a dedicated number, you first need to find an available number matching your criteria using the `/api/v2/numbers/available` command described above.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -278,11 +275,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $buy_dedicated_number_input_object = Net::Sms::TextMagicClient::Object::BuyDedicatedNumberInputObject->new(); # BuyDedicatedNumberInputObject | 
+my $buy_dedicated_number_input_object = Net::Sms::TextMagicClient::Object::BuyDedicatedNumberRequest->new(); # BuyDedicatedNumberRequest | 
 
-eval { 
+eval {
     $api_instance->buy_dedicated_number(buy_dedicated_number_input_object => $buy_dedicated_number_input_object);
 };
 if ($@) {
@@ -294,7 +292,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buy_dedicated_number_input_object** | [**BuyDedicatedNumberInputObject**](BuyDedicatedNumberInputObject.md)|  | 
+ **buy_dedicated_number_input_object** | [**BuyDedicatedNumberRequest**](BuyDedicatedNumberRequest.md)|  | 
 
 ### Return type
 
@@ -312,13 +310,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **clear_and_assign_contacts_to_list**
-> ResourceLinkResponse clear_and_assign_contacts_to_list(clear_and_assign_contacts_to_list_input_object => $clear_and_assign_contacts_to_list_input_object, id => $id)
+> ResourceLinkResponse clear_and_assign_contacts_to_list(id => $id, clear_and_assign_contacts_to_list_input_object => $clear_and_assign_contacts_to_list_input_object)
 
 Reset list members to the specified contacts
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -327,13 +323,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $clear_and_assign_contacts_to_list_input_object = Net::Sms::TextMagicClient::Object::ClearAndAssignContactsToListInputObject->new(); # ClearAndAssignContactsToListInputObject | 
 my $id = 1; # int | 
+my $clear_and_assign_contacts_to_list_input_object = Net::Sms::TextMagicClient::Object::ClearAndAssignContactsToListRequest->new(); # ClearAndAssignContactsToListRequest | 
 
-eval { 
-    my $result = $api_instance->clear_and_assign_contacts_to_list(clear_and_assign_contacts_to_list_input_object => $clear_and_assign_contacts_to_list_input_object, id => $id);
+eval {
+    my $result = $api_instance->clear_and_assign_contacts_to_list(id => $id, clear_and_assign_contacts_to_list_input_object => $clear_and_assign_contacts_to_list_input_object);
     print Dumper($result);
 };
 if ($@) {
@@ -345,8 +342,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clear_and_assign_contacts_to_list_input_object** | [**ClearAndAssignContactsToListInputObject**](ClearAndAssignContactsToListInputObject.md)|  | 
  **id** | **int**|  | 
+ **clear_and_assign_contacts_to_list_input_object** | [**ClearAndAssignContactsToListRequest**](ClearAndAssignContactsToListRequest.md)|  | 
 
 ### Return type
 
@@ -370,7 +367,7 @@ Close chats (bulk)
 
 Close chats by chat IDs or close all chats
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -379,11 +376,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $close_chats_bulk_input_object = Net::Sms::TextMagicClient::Object::CloseChatsBulkInputObject->new(); # CloseChatsBulkInputObject | 
+my $close_chats_bulk_input_object = Net::Sms::TextMagicClient::Object::MarkChatsUnreadBulkRequest->new(); # MarkChatsUnreadBulkRequest | 
 
-eval { 
+eval {
     $api_instance->close_chats_bulk(close_chats_bulk_input_object => $close_chats_bulk_input_object);
 };
 if ($@) {
@@ -395,7 +393,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **close_chats_bulk_input_object** | [**CloseChatsBulkInputObject**](CloseChatsBulkInputObject.md)|  | 
+ **close_chats_bulk_input_object** | [**MarkChatsUnreadBulkRequest**](MarkChatsUnreadBulkRequest.md)|  | 
 
 ### Return type
 
@@ -408,7 +406,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -419,7 +417,7 @@ Close read chats
 
 Close all chats that have no unread messages.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -428,10 +426,11 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 
-eval { 
+eval {
     $api_instance->close_read_chats();
 };
 if ($@) {
@@ -452,57 +451,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **close_subaccount**
-> close_subaccount(id => $id)
-
-Close sub-account
-
-
-
-### Example 
-```perl
-use Data::Dumper;
-use Net::Sms::TextMagicClient::TextMagicApi;
-my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
-
-    # Configure HTTP basic authorization: BasicAuth
-    username => 'YOUR_USERNAME',
-    password => 'YOUR_PASSWORD',
-);
-
-my $id = 1; # int | 
-
-eval { 
-    $api_instance->close_subaccount(id => $id);
-};
-if ($@) {
-    warn "Exception when calling TextMagicApi->close_subaccount: $@\n";
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -511,9 +461,7 @@ void (empty response body)
 
 Add a new contact
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -522,11 +470,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $create_contact_input_object = Net::Sms::TextMagicClient::Object::CreateContactInputObject->new(); # CreateContactInputObject | 
+my $create_contact_input_object = Net::Sms::TextMagicClient::Object::CreateContactRequest->new(); # CreateContactRequest | 
 
-eval { 
+eval {
     my $result = $api_instance->create_contact(create_contact_input_object => $create_contact_input_object);
     print Dumper($result);
 };
@@ -539,7 +488,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_contact_input_object** | [**CreateContactInputObject**](CreateContactInputObject.md)|  | 
+ **create_contact_input_object** | [**CreateContactRequest**](CreateContactRequest.md)|  | 
 
 ### Return type
 
@@ -557,13 +506,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_contact_note**
-> ResourceLinkResponse create_contact_note(create_contact_note_input_object => $create_contact_note_input_object, id => $id)
+> ResourceLinkResponse create_contact_note(id => $id, create_contact_note_input_object => $create_contact_note_input_object)
 
 Create a new contact note
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -572,13 +519,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $create_contact_note_input_object = Net::Sms::TextMagicClient::Object::CreateContactNoteInputObject->new(); # CreateContactNoteInputObject | 
 my $id = 1; # int | 
+my $create_contact_note_input_object = Net::Sms::TextMagicClient::Object::CreateContactNoteRequest->new(); # CreateContactNoteRequest | 
 
-eval { 
-    my $result = $api_instance->create_contact_note(create_contact_note_input_object => $create_contact_note_input_object, id => $id);
+eval {
+    my $result = $api_instance->create_contact_note(id => $id, create_contact_note_input_object => $create_contact_note_input_object);
     print Dumper($result);
 };
 if ($@) {
@@ -590,8 +538,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_contact_note_input_object** | [**CreateContactNoteInputObject**](CreateContactNoteInputObject.md)|  | 
  **id** | **int**|  | 
+ **create_contact_note_input_object** | [**CreateContactNoteRequest**](CreateContactNoteRequest.md)|  | 
 
 ### Return type
 
@@ -613,9 +561,7 @@ Name | Type | Description  | Notes
 
 Add a new custom field
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -624,11 +570,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $create_custom_field_input_object = Net::Sms::TextMagicClient::Object::CreateCustomFieldInputObject->new(); # CreateCustomFieldInputObject | 
+my $create_custom_field_input_object = Net::Sms::TextMagicClient::Object::CreateCustomFieldRequest->new(); # CreateCustomFieldRequest | 
 
-eval { 
+eval {
     my $result = $api_instance->create_custom_field(create_custom_field_input_object => $create_custom_field_input_object);
     print Dumper($result);
 };
@@ -641,7 +588,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_custom_field_input_object** | [**CreateCustomFieldInputObject**](CreateCustomFieldInputObject.md)|  | 
+ **create_custom_field_input_object** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)|  | 
 
 ### Return type
 
@@ -661,11 +608,11 @@ Name | Type | Description  | Notes
 # **create_email_campaign**
 > CreateEmailCampaignResponse create_email_campaign(create_email_campaign_input_object => $create_email_campaign_input_object)
 
-Create new email campaign
+Send email campaign
 
 Creates a new email campaign and sends it to the specified recipients.  This endpoint allows you to create and immediately send an email marketing campaign to your contacts, groups, or direct email addresses. The campaign will be processed asynchronously, and you'll receive a campaign object with tracking information.  ## Request Requirements  - **Email Sender ID**: Must be a valid, configured email sender from your account - **Recipients**: At least one recipient type must be specified (contacts, groups, or emails) - **Content**: Subject and HTML message content are required - **Balance**: Sufficient account balance for the estimated campaign cost  ## Recipient Types  You can target multiple recipient types in a single campaign:  - **Contact IDs**: Send to specific contacts from your contact list - **Group IDs**: Send to all contacts within specified groups   - **Direct Emails**: Send to email addresses not in your contact list  ## Content Guidelines  - **Subject**: Maximum 998 characters, should be engaging and relevant - **Message**: HTML content supported, including images, links, and formatting - **From Name**: Optional custom sender name (max 500 characters) - **Reply-To**: Optional custom reply-to email address  ## Cost and Balance  The API automatically calculates campaign costs based on: - Total number of unique recipients across all specified groups, contacts, and emails - Your account's email pricing tier - Any additional features or premium content  If your account balance is insufficient, the request will be rejected with a low balance error.  ## Response Information  Successful campaigns return: - Campaign ID for tracking and analytics - Current campaign status and progress - Cost breakdown and recipient counts - Sender information and content preview - Statistical totals and engagement metrics  ## Error Scenarios  Common error conditions include: - **Validation Errors**: Invalid email addresses, missing required fields, or content that exceeds limits - **Insufficient Balance**: Account balance too low for campaign cost - **Invalid Recipients**: Non-existent contact/group IDs or invalid email formats - **Sender Configuration**: Invalid or unconfigured email sender ID - **No Recipients**: All recipient arrays are empty or invalid 
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -674,11 +621,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $create_email_campaign_input_object = Net::Sms::TextMagicClient::Object::CreateEmailCampaignInputObject->new(); # CreateEmailCampaignInputObject | 
+my $create_email_campaign_input_object = Net::Sms::TextMagicClient::Object::CreateEmailCampaignRequest->new(); # CreateEmailCampaignRequest | 
 
-eval { 
+eval {
     my $result = $api_instance->create_email_campaign(create_email_campaign_input_object => $create_email_campaign_input_object);
     print Dumper($result);
 };
@@ -691,7 +639,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_email_campaign_input_object** | [**CreateEmailCampaignInputObject**](CreateEmailCampaignInputObject.md)|  | 
+ **create_email_campaign_input_object** | [**CreateEmailCampaignRequest**](CreateEmailCampaignRequest.md)|  | 
 
 ### Return type
 
@@ -713,9 +661,7 @@ Name | Type | Description  | Notes
 
 Create a new list
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -724,11 +670,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $create_list_input_object = Net::Sms::TextMagicClient::Object::CreateListInputObject->new(); # CreateListInputObject | 
+my $create_list_input_object = Net::Sms::TextMagicClient::Object::CreateListRequest->new(); # CreateListRequest | 
 
-eval { 
+eval {
     my $result = $api_instance->create_list(create_list_input_object => $create_list_input_object);
     print Dumper($result);
 };
@@ -741,11 +688,62 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_list_input_object** | [**CreateListInputObject**](CreateListInputObject.md)|  | 
+ **create_list_input_object** | [**CreateListRequest**](CreateListRequest.md)|  | 
 
 ### Return type
 
 [**ResourceLinkResponse**](ResourceLinkResponse.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_tag**
+> CreateTagResponse create_tag(create_tag_input_object => $create_tag_input_object)
+
+Create tag
+
+Creates a new tag for organizing and categorizing contacts.  This endpoint allows you to create a custom tag that can be used to segment and organize your contact database. Tags provide a flexible way to categorize contacts for better contact management.  ## Request Requirements  - **Title**: Required field, must be between 1 and 50 characters - **Uniqueness**: Tag titles must be unique within your account - **Authentication**: Valid API credentials required  ## Common Use Cases  Create tags for various organizational purposes:  - **Customer Types**: \"VIP Customer\", \"New Lead\", \"Active Subscriber\" - **Geographic Segments**: \"North Region\", \"Europe\", \"Local Customers\" - **Engagement Levels**: \"Highly Engaged\", \"Inactive\", \"Recent Purchase\" - **Campaign Categories**: \"Summer Promotion\", \"Newsletter Subscriber\", \"Event Attendee\" - **Custom Segments**: Any custom categorization that fits your business needs  ## Response Information  Successful tag creation returns: - **Tag ID**: Unique identifier for the newly created tag - **Title**: The tag name as provided in the request  Use the returned tag ID to assign this tag to contacts or reference it in other API operations.  ## Error Scenarios  Common error conditions include: - **Validation Errors**: Title exceeds 50 characters or is empty - **Duplicate Tag**: A tag with the same title already exists in your account - **Authentication Errors**: Invalid or missing API credentials  ## Next Steps  After creating a tag: 1. Use the tag ID to assign it to contacts via contact management endpoints 2. Reference the tag when filtering contacts 3. Manage and update tags through other Tags API endpoints 
+
+### Example
+```perl
+use Data::Dumper;
+use Net::Sms::TextMagicClient::TextMagicApi;
+my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
+
+    # Configure HTTP basic authorization: BasicAuth
+    username => 'YOUR_USERNAME',
+    password => 'YOUR_PASSWORD',
+    
+);
+
+my $create_tag_input_object = Net::Sms::TextMagicClient::Object::CreateTagRequest->new(); # CreateTagRequest | 
+
+eval {
+    my $result = $api_instance->create_tag(create_tag_input_object => $create_tag_input_object);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling TextMagicApi->create_tag: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_tag_input_object** | [**CreateTagRequest**](CreateTagRequest.md)|  | 
+
+### Return type
+
+[**CreateTagResponse**](CreateTagResponse.md)
 
 ### Authorization
 
@@ -765,7 +763,7 @@ Create a template
 
 There are times when creating a new template makes sense (such as when targeting specific clients or improving your business strategies).  You can create new SMS templates for marketing purposes or SMS templates for business campaigns. 
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -774,11 +772,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $create_template_input_object = Net::Sms::TextMagicClient::Object::CreateTemplateInputObject->new(); # CreateTemplateInputObject | 
+my $create_template_input_object = Net::Sms::TextMagicClient::Object::CreateTemplateRequest->new(); # CreateTemplateRequest | 
 
-eval { 
+eval {
     my $result = $api_instance->create_template(create_template_input_object => $create_template_input_object);
     print Dumper($result);
 };
@@ -791,7 +790,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_template_input_object** | [**CreateTemplateInputObject**](CreateTemplateInputObject.md)|  | 
+ **create_template_input_object** | [**CreateTemplateRequest**](CreateTemplateRequest.md)|  | 
 
 ### Return type
 
@@ -813,9 +812,7 @@ Name | Type | Description  | Notes
 
 Delete contacts (bulk)
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -824,10 +821,11 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 
-eval { 
+eval {
     $api_instance->delete_all_contacts();
 };
 if ($@) {
@@ -848,7 +846,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -860,7 +858,7 @@ Delete all messages
 
 Delete all messages.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -869,10 +867,11 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 
-eval { 
+eval {
     $api_instance->delete_all_outbound_messages();
 };
 if ($@) {
@@ -893,8 +892,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -903,9 +902,7 @@ void (empty response body)
 
 Delete an avatar
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -914,10 +911,11 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 
-eval { 
+eval {
     $api_instance->delete_avatar();
 };
 if ($@) {
@@ -938,19 +936,19 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_chat_messages**
-> delete_chat_messages(delete_chat_messages_bulk_input_object => $delete_chat_messages_bulk_input_object, id => $id)
+> delete_chat_messages(id => $id, delete_chat_messages_bulk_input_object => $delete_chat_messages_bulk_input_object)
 
 Delete chat messages by ID(s)
 
 Delete messages from chat by given message IDs.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -959,13 +957,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $delete_chat_messages_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteChatMessagesBulkInputObject->new(); # DeleteChatMessagesBulkInputObject | 
 my $id = 1; # int | 
+my $delete_chat_messages_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteChatMessagesRequest->new(); # DeleteChatMessagesRequest | 
 
-eval { 
-    $api_instance->delete_chat_messages(delete_chat_messages_bulk_input_object => $delete_chat_messages_bulk_input_object, id => $id);
+eval {
+    $api_instance->delete_chat_messages(id => $id, delete_chat_messages_bulk_input_object => $delete_chat_messages_bulk_input_object);
 };
 if ($@) {
     warn "Exception when calling TextMagicApi->delete_chat_messages: $@\n";
@@ -976,8 +975,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **delete_chat_messages_bulk_input_object** | [**DeleteChatMessagesBulkInputObject**](DeleteChatMessagesBulkInputObject.md)|  | 
  **id** | **int**|  | 
+ **delete_chat_messages_bulk_input_object** | [**DeleteChatMessagesRequest**](DeleteChatMessagesRequest.md)|  | 
 
 ### Return type
 
@@ -990,7 +989,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1001,7 +1000,7 @@ Delete chats (bulk)
 
 Delete chats by given IDs or delete all chats.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1010,11 +1009,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $delete_chats_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteChatsBulkInputObject->new(); # DeleteChatsBulkInputObject | 
+my $delete_chats_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteChatsBulkRequest->new(); # DeleteChatsBulkRequest | 
 
-eval { 
+eval {
     $api_instance->delete_chats_bulk(delete_chats_bulk_input_object => $delete_chats_bulk_input_object);
 };
 if ($@) {
@@ -1026,7 +1026,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **delete_chats_bulk_input_object** | [**DeleteChatsBulkInputObject**](DeleteChatsBulkInputObject.md)|  | 
+ **delete_chats_bulk_input_object** | [**DeleteChatsBulkRequest**](DeleteChatsBulkRequest.md)|  | 
 
 ### Return type
 
@@ -1039,7 +1039,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1050,7 +1050,7 @@ Delete a contact
 
 > This command removes your contact completely. If it was assigned or saved to a shared list, it will disappear from there too. If you only need to remove a contact from selected lists, use the Contact assignment command in the Lists section instead, rather than deleting the contact. 
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1059,11 +1059,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     $api_instance->delete_contact(id => $id);
 };
 if ($@) {
@@ -1087,8 +1088,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1097,9 +1098,7 @@ void (empty response body)
 
 Delete an avatar
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1108,11 +1107,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     $api_instance->delete_contact_avatar(id => $id);
 };
 if ($@) {
@@ -1136,7 +1136,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1146,9 +1146,7 @@ void (empty response body)
 
 Delete a contact note
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1157,11 +1155,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     $api_instance->delete_contact_note(id => $id);
 };
 if ($@) {
@@ -1185,8 +1184,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1195,9 +1194,7 @@ void (empty response body)
 
 Delete contact notes (bulk)
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1206,12 +1203,13 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
-my $delete_contact_notes_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteContactNotesBulkInputObject->new(); # DeleteContactNotesBulkInputObject | 
+my $delete_contact_notes_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteContactNotesBulkRequest->new(); # DeleteContactNotesBulkRequest | 
 
-eval { 
+eval {
     $api_instance->delete_contact_notes_bulk(id => $id, delete_contact_notes_bulk_input_object => $delete_contact_notes_bulk_input_object);
 };
 if ($@) {
@@ -1224,7 +1222,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **delete_contact_notes_bulk_input_object** | [**DeleteContactNotesBulkInputObject**](DeleteContactNotesBulkInputObject.md)|  | 
+ **delete_contact_notes_bulk_input_object** | [**DeleteContactNotesBulkRequest**](DeleteContactNotesBulkRequest.md)|  | 
 
 ### Return type
 
@@ -1237,7 +1235,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1246,9 +1244,7 @@ void (empty response body)
 
 Delete contacts by IDs (bulk)
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1257,11 +1253,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $delete_contacts_by_ids_input_object = Net::Sms::TextMagicClient::Object::DeleteContactsByIdsInputObject->new(); # DeleteContactsByIdsInputObject | 
+my $delete_contacts_by_ids_input_object = Net::Sms::TextMagicClient::Object::DeleteContactsByIdsRequest->new(); # DeleteContactsByIdsRequest | 
 
-eval { 
+eval {
     $api_instance->delete_contacts_by_ids(delete_contacts_by_ids_input_object => $delete_contacts_by_ids_input_object);
 };
 if ($@) {
@@ -1273,7 +1270,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **delete_contacts_by_ids_input_object** | [**DeleteContactsByIdsInputObject**](DeleteContactsByIdsInputObject.md)|  | 
+ **delete_contacts_by_ids_input_object** | [**DeleteContactsByIdsRequest**](DeleteContactsByIdsRequest.md)|  | 
 
 ### Return type
 
@@ -1286,18 +1283,18 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_contacts_from_list**
-> delete_contacts_from_list(delete_contacs_from_list_object => $delete_contacs_from_list_object, id => $id)
+> delete_contacts_from_list(id => $id, delete_contacs_from_list_object => $delete_contacs_from_list_object)
 
 Unassign contacts from a list
 
 > When you remove contacts from a specific list, they will be deleted permanently, unless they are first saved in another list. 
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1306,13 +1303,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $delete_contacs_from_list_object = Net::Sms::TextMagicClient::Object::DeleteContacsFromListObject->new(); # DeleteContacsFromListObject | 
 my $id = 1; # int | 
+my $delete_contacs_from_list_object = Net::Sms::TextMagicClient::Object::DeleteContactsFromListRequest->new(); # DeleteContactsFromListRequest | 
 
-eval { 
-    $api_instance->delete_contacts_from_list(delete_contacs_from_list_object => $delete_contacs_from_list_object, id => $id);
+eval {
+    $api_instance->delete_contacts_from_list(id => $id, delete_contacs_from_list_object => $delete_contacs_from_list_object);
 };
 if ($@) {
     warn "Exception when calling TextMagicApi->delete_contacts_from_list: $@\n";
@@ -1323,8 +1321,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **delete_contacs_from_list_object** | [**DeleteContacsFromListObject**](DeleteContacsFromListObject.md)|  | 
  **id** | **int**|  | 
+ **delete_contacs_from_list_object** | [**DeleteContactsFromListRequest**](DeleteContactsFromListRequest.md)|  | 
 
 ### Return type
 
@@ -1337,7 +1335,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1348,7 +1346,7 @@ Delete a custom field
 
 > When a custom field is deleted, all the information that was added to contacts under this custom field will also be lost. 
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1357,11 +1355,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     $api_instance->delete_custom_field(id => $id);
 };
 if ($@) {
@@ -1385,8 +1384,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1395,9 +1394,7 @@ void (empty response body)
 
 Cancel a dedicated number subscription
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1406,11 +1403,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     $api_instance->delete_dedicated_number(id => $id);
 };
 if ($@) {
@@ -1434,8 +1432,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1446,7 +1444,7 @@ Delete a single inbound message
 
 > Note: deleted inbound messages will disappear from TextMagic Online, chats, and any other place they are referenced.  So, be careful! 
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1455,11 +1453,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | The unique numeric ID for the inbound message.
 
-eval { 
+eval {
     $api_instance->delete_inbound_message(id => $id);
 };
 if ($@) {
@@ -1483,8 +1482,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1495,7 +1494,7 @@ Delete inbound messages (bulk)
 
 > Note: deleted inbound messages will disappear from TextMagic Online, chats, and any other place they are referenced.  So, be careful! 
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1504,11 +1503,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $delete_inbound_messages_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteInboundMessagesBulkInputObject->new(); # DeleteInboundMessagesBulkInputObject | 
+my $delete_inbound_messages_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteListsBulkRequest->new(); # DeleteListsBulkRequest | 
 
-eval { 
+eval {
     $api_instance->delete_inbound_messages_bulk(delete_inbound_messages_bulk_input_object => $delete_inbound_messages_bulk_input_object);
 };
 if ($@) {
@@ -1520,7 +1520,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **delete_inbound_messages_bulk_input_object** | [**DeleteInboundMessagesBulkInputObject**](DeleteInboundMessagesBulkInputObject.md)|  | 
+ **delete_inbound_messages_bulk_input_object** | [**DeleteListsBulkRequest**](DeleteListsBulkRequest.md)|  | 
 
 ### Return type
 
@@ -1533,7 +1533,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1544,7 +1544,7 @@ Delete a list
 
 This command has no parameters. If successful, this command will return the standard delete response (204 No Content); otherwise, a standard error response will be returned.  When you delete a list, the contacts in it are deleted as well, unless they were saved in another list.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1553,11 +1553,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     $api_instance->delete_list(id => $id);
 };
 if ($@) {
@@ -1581,8 +1582,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1593,7 +1594,7 @@ Delete an avatar for a list
 
 Delete an avatar for a list
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1602,11 +1603,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     $api_instance->delete_list_avatar(id => $id);
 };
 if ($@) {
@@ -1630,19 +1632,19 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_list_contacts_bulk**
-> delete_list_contacts_bulk(delete_list_contacts_bulk_input_object => $delete_list_contacts_bulk_input_object, id => $id)
+> delete_list_contacts_bulk(id => $id, delete_list_contacts_bulk_input_object => $delete_list_contacts_bulk_input_object)
 
 Delete contacts from a list (bulk)
 
 Delete contacts from a list (bulk)
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1651,13 +1653,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $delete_list_contacts_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteListContactsBulkInputObject->new(); # DeleteListContactsBulkInputObject | 
 my $id = 1; # int | 
+my $delete_list_contacts_bulk_input_object = Net::Sms::TextMagicClient::Object::UnblockContactsBulkRequest->new(); # UnblockContactsBulkRequest | 
 
-eval { 
-    $api_instance->delete_list_contacts_bulk(delete_list_contacts_bulk_input_object => $delete_list_contacts_bulk_input_object, id => $id);
+eval {
+    $api_instance->delete_list_contacts_bulk(id => $id, delete_list_contacts_bulk_input_object => $delete_list_contacts_bulk_input_object);
 };
 if ($@) {
     warn "Exception when calling TextMagicApi->delete_list_contacts_bulk: $@\n";
@@ -1668,8 +1671,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **delete_list_contacts_bulk_input_object** | [**DeleteListContactsBulkInputObject**](DeleteListContactsBulkInputObject.md)|  | 
  **id** | **int**|  | 
+ **delete_list_contacts_bulk_input_object** | [**UnblockContactsBulkRequest**](UnblockContactsBulkRequest.md)|  | 
 
 ### Return type
 
@@ -1682,7 +1685,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1691,9 +1694,7 @@ void (empty response body)
 
 Delete lists (bulk)
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1702,11 +1703,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $delete_lists_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteListsBulkInputObject->new(); # DeleteListsBulkInputObject | 
+my $delete_lists_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteListsBulkRequest->new(); # DeleteListsBulkRequest | 
 
-eval { 
+eval {
     $api_instance->delete_lists_bulk(delete_lists_bulk_input_object => $delete_lists_bulk_input_object);
 };
 if ($@) {
@@ -1718,7 +1720,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **delete_lists_bulk_input_object** | [**DeleteListsBulkInputObject**](DeleteListsBulkInputObject.md)|  | 
+ **delete_lists_bulk_input_object** | [**DeleteListsBulkRequest**](DeleteListsBulkRequest.md)|  | 
 
 ### Return type
 
@@ -1731,7 +1733,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1742,7 +1744,7 @@ Delete a session
 
 Delete a message session, together with all nested messages. > You will not be refunded for any deleted sent sessions. 
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1751,11 +1753,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     $api_instance->delete_message_session(id => $id);
 };
 if ($@) {
@@ -1779,8 +1782,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1791,7 +1794,7 @@ Delete sessions (bulk)
 
 Delete message sessions, together with all nested messages, by given ID(s) or delete all message sessions.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1800,11 +1803,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $delete_message_sessions_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteMessageSessionsBulkInputObject->new(); # DeleteMessageSessionsBulkInputObject | 
+my $delete_message_sessions_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteListsBulkRequest->new(); # DeleteListsBulkRequest | 
 
-eval { 
+eval {
     $api_instance->delete_message_sessions_bulk(delete_message_sessions_bulk_input_object => $delete_message_sessions_bulk_input_object);
 };
 if ($@) {
@@ -1816,7 +1820,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **delete_message_sessions_bulk_input_object** | [**DeleteMessageSessionsBulkInputObject**](DeleteMessageSessionsBulkInputObject.md)|  | 
+ **delete_message_sessions_bulk_input_object** | [**DeleteListsBulkRequest**](DeleteListsBulkRequest.md)|  | 
 
 ### Return type
 
@@ -1829,7 +1833,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1840,7 +1844,7 @@ Delete message
 
 Delete a single message.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1849,11 +1853,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     $api_instance->delete_outbound_message(id => $id);
 };
 if ($@) {
@@ -1877,8 +1882,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1889,7 +1894,7 @@ Delete messages (bulk)
 
 Delete outbound messages by the given ID(s) or delete all outbound messages.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1898,11 +1903,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $delete_outbound_messages_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteOutboundMessagesBulkInputObject->new(); # DeleteOutboundMessagesBulkInputObject | 
+my $delete_outbound_messages_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteOutboundMessagesBulkRequest->new(); # DeleteOutboundMessagesBulkRequest | 
 
-eval { 
+eval {
     $api_instance->delete_outbound_messages_bulk(delete_outbound_messages_bulk_input_object => $delete_outbound_messages_bulk_input_object);
 };
 if ($@) {
@@ -1914,7 +1920,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **delete_outbound_messages_bulk_input_object** | [**DeleteOutboundMessagesBulkInputObject**](DeleteOutboundMessagesBulkInputObject.md)|  | 
+ **delete_outbound_messages_bulk_input_object** | [**DeleteOutboundMessagesBulkRequest**](DeleteOutboundMessagesBulkRequest.md)|  | 
 
 ### Return type
 
@@ -1927,7 +1933,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1936,9 +1942,7 @@ void (empty response body)
 
 Delete a single scheduled message
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1947,11 +1951,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     $api_instance->delete_scheduled_message(id => $id);
 };
 if ($@) {
@@ -1975,8 +1980,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1985,9 +1990,7 @@ void (empty response body)
 
 Delete scheduled messages (bulk)
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -1996,11 +1999,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $delete_scheduled_messages_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteScheduledMessagesBulkInputObject->new(); # DeleteScheduledMessagesBulkInputObject | 
+my $delete_scheduled_messages_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteScheduledMessagesBulkRequest->new(); # DeleteScheduledMessagesBulkRequest | 
 
-eval { 
+eval {
     $api_instance->delete_scheduled_messages_bulk(delete_scheduled_messages_bulk_input_object => $delete_scheduled_messages_bulk_input_object);
 };
 if ($@) {
@@ -2012,7 +2016,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **delete_scheduled_messages_bulk_input_object** | [**DeleteScheduledMessagesBulkInputObject**](DeleteScheduledMessagesBulkInputObject.md)|  | 
+ **delete_scheduled_messages_bulk_input_object** | [**DeleteScheduledMessagesBulkRequest**](DeleteScheduledMessagesBulkRequest.md)|  | 
 
 ### Return type
 
@@ -2025,7 +2029,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2034,9 +2038,7 @@ void (empty response body)
 
 Delete a Sender ID
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2045,11 +2047,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     $api_instance->delete_sender_id(id => $id);
 };
 if ($@) {
@@ -2073,8 +2076,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2083,9 +2086,7 @@ void (empty response body)
 
 Delete a template
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2094,11 +2095,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     $api_instance->delete_template(id => $id);
 };
 if ($@) {
@@ -2122,8 +2124,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2134,7 +2136,7 @@ Delete templates (bulk)
 
 Delete templates by given IDs or delete all templates.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2143,11 +2145,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $delete_templates_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteTemplatesBulkInputObject->new(); # DeleteTemplatesBulkInputObject | 
+my $delete_templates_bulk_input_object = Net::Sms::TextMagicClient::Object::DeleteContactNotesBulkRequest->new(); # DeleteContactNotesBulkRequest | 
 
-eval { 
+eval {
     $api_instance->delete_templates_bulk(delete_templates_bulk_input_object => $delete_templates_bulk_input_object);
 };
 if ($@) {
@@ -2159,7 +2162,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **delete_templates_bulk_input_object** | [**DeleteTemplatesBulkInputObject**](DeleteTemplatesBulkInputObject.md)|  | 
+ **delete_templates_bulk_input_object** | [**DeleteContactNotesBulkRequest**](DeleteContactNotesBulkRequest.md)|  | 
 
 ### Return type
 
@@ -2172,7 +2175,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2183,7 +2186,7 @@ Carrier Lookup
 
 This API call allows you to retrieve additional information about a phone number: region-specific phone number formatting, carrier, phone type (landline/mobile) and country information.  > Numbers must be checked one by one. You cannot check multiple numbers in one request.   
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2192,12 +2195,13 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $phone = '"447860021130"'; # string | Phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164) or in [National format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers). 
-my $country = '"GB"'; # string | This option must be specified only if the phone number is in a **[National format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers)**. 
+my $phone = 447860021130; # string | Phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164) or in [National format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers). 
+my $country = GB; # string | This option must be specified only if the phone number is in a **[National format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers)**. 
 
-eval { 
+eval {
     my $result = $api_instance->do_carrier_lookup(phone => $phone, country => $country);
     print Dumper($result);
 };
@@ -2223,7 +2227,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2235,7 +2239,7 @@ Email Lookup
 
 To get more details about an email address or to check whether it is a valid email or not, you can use the Email Lookup command. To upload and check emails in bulk, please use our [Web app](https://my.textmagic.com/online/email-lookup/).  This API call allows you to retrieve additional information about an email address, such as mailbox detection, syntax checks, DNS validation, deliverability status, and many more helpful values (see the table below).  > Emails must be checked one by one. You cannot check multiple emails in one request. To upload and check emails in bulk, please use our [Web app](https://my.textmagic.com/online/email-lookup/).
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2244,11 +2248,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $email = '"john@sample.com"'; # string | Email address.
+my $email = john@sample.com; # string | Email address.
 
-eval { 
+eval {
     my $result = $api_instance->do_email_lookup(email => $email);
     print Dumper($result);
 };
@@ -2273,7 +2278,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2283,9 +2288,7 @@ Name | Type | Description  | Notes
 
 Get all bulk sessions
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2294,12 +2297,13 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
 
-eval { 
+eval {
     my $result = $api_instance->get_all_bulk_sessions(page => $page, limit => $limit);
     print Dumper($result);
 };
@@ -2325,7 +2329,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2335,9 +2339,7 @@ Name | Type | Description  | Notes
 
 Get all chats
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2346,16 +2348,17 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $status = '"a"'; # string | Fetch only (a)ctive, (c)losed or (d)eleted chats.
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
-my $voice = 56; # int | Fetch results with voice calls.
+my $status = a; # string | Fetch only (a)ctive, (c)losed or (d)eleted chats.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $order_by = 'id'; # string | Order results by some field. Default is id.
+my $voice = 0; # int | Fetch results with voice calls.
 my $flat = 1; # int | Should additional contact info be included?
 
-eval { 
+eval {
     my $result = $api_instance->get_all_chats(status => $status, page => $page, limit => $limit, order_by => $order_by, voice => $voice, flat => $flat);
     print Dumper($result);
 };
@@ -2371,7 +2374,7 @@ Name | Type | Description  | Notes
  **status** | **string**| Fetch only (a)ctive, (c)losed or (d)eleted chats. | [optional] 
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to &#39;id&#39;]
  **voice** | **int**| Fetch results with voice calls. | [optional] [default to 0]
  **flat** | **int**| Should additional contact info be included? | [optional] [default to 0]
 
@@ -2385,7 +2388,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2395,9 +2398,7 @@ Name | Type | Description  | Notes
 
 Get all inbound messages
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2406,14 +2407,15 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
-my $direction = 'direction_example'; # string | Order direction. Default is desc.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $order_by = 'id'; # string | Order results by some field. Default is id.
+my $direction = 'desc'; # string | Order direction. Default is desc.
 
-eval { 
+eval {
     my $result = $api_instance->get_all_inbound_messages(page => $page, limit => $limit, order_by => $order_by, direction => $direction);
     print Dumper($result);
 };
@@ -2428,8 +2430,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to &#39;id&#39;]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to &#39;desc&#39;]
 
 ### Return type
 
@@ -2441,7 +2443,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2453,7 +2455,7 @@ Get all sessions
 
 Get all message sending sessions. > This list contains all of your sessions, including those which were sent but not via API 
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2462,12 +2464,13 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
 
-eval { 
+eval {
     my $result = $api_instance->get_all_message_sessions(page => $page, limit => $limit);
     print Dumper($result);
 };
@@ -2493,7 +2496,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2505,7 +2508,7 @@ Get all messages
 
 Get all user oubound messages.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2514,13 +2517,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
 my $last_id = 56; # int | Filter results by ID, selecting all values lesser than the specified ID. Note that the \\'page\\' parameter is ignored when \\'lastId\\' is specified.
 
-eval { 
+eval {
     my $result = $api_instance->get_all_outbound_messages(page => $page, limit => $limit, last_id => $last_id);
     print Dumper($result);
 };
@@ -2547,7 +2551,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2557,9 +2561,7 @@ Name | Type | Description  | Notes
 
 Get all scheduled messages
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2568,15 +2570,16 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $status = 'status_example'; # string | Fetch schedules with a specific status: a - actual, c - completed, x - all.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
-my $direction = 'direction_example'; # string | Order direction. Default is desc.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $status = 'x'; # string | Fetch schedules with a specific status: a - actual, c - completed, x - all.
+my $order_by = 'id'; # string | Order results by some field. Default is id.
+my $direction = 'desc'; # string | Order direction. Default is desc.
 
-eval { 
+eval {
     my $result = $api_instance->get_all_scheduled_messages(page => $page, limit => $limit, status => $status, order_by => $order_by, direction => $direction);
     print Dumper($result);
 };
@@ -2591,9 +2594,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **status** | **string**| Fetch schedules with a specific status: a - actual, c - completed, x - all. | [optional] [default to x]
- **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
+ **status** | **string**| Fetch schedules with a specific status: a - actual, c - completed, x - all. | [optional] [default to &#39;x&#39;]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to &#39;id&#39;]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to &#39;desc&#39;]
 
 ### Return type
 
@@ -2605,7 +2608,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2615,9 +2618,7 @@ Name | Type | Description  | Notes
 
 Get all templates
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2626,12 +2627,13 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $page = 1; # int | Fetch specified results page.
 my $limit = 10; # int | The number of results per page.
 
-eval { 
+eval {
     my $result = $api_instance->get_all_templates(page => $page, limit => $limit);
     print Dumper($result);
 };
@@ -2657,7 +2659,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2667,9 +2669,7 @@ Name | Type | Description  | Notes
 
 Find dedicated numbers available for purchase
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2678,13 +2678,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $country = '"GB"'; # string | The 2-letter dedicated number country ISO code.
+my $country = GB; # string | The 2-letter dedicated number country ISO code.
 my $prefix = 447155; # int | Desired number prefix. Should include the country code (i.e. 447 for UK phone number format). Leave blank to get all the available numbers for the specified country.
-my $tollfree = 56; # int | Should we show only tollfree numbers (tollfree available only for US).
+my $tollfree = 0; # int | Should we show only tollfree numbers (tollfree available only for US).
 
-eval { 
+eval {
     my $result = $api_instance->get_available_dedicated_numbers(country => $country, prefix => $prefix, tollfree => $tollfree);
     print Dumper($result);
 };
@@ -2711,7 +2712,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2723,7 +2724,7 @@ Get available sender settings
 
 Get all available sender setting options which can be used in the \"from\" parameter of the POST messages method.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2732,11 +2733,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $country = '"US"'; # string | The 2-letter ISO country ID. If not specified, it returns all the available sender settings.
+my $country = US; # string | The 2-letter ISO country ID. If not specified, it returns all the available sender settings.
 
-eval { 
+eval {
     my $result = $api_instance->get_available_sender_setting_options(country => $country);
     print Dumper($result);
 };
@@ -2761,7 +2763,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2771,9 +2773,7 @@ Name | Type | Description  | Notes
 
 Returns the list of available balance options which can be used as a bound to determine when to send email to user with low balance notification. See https://my.textmagic.com/online/account/notifications/balance
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2782,10 +2782,11 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 
-eval { 
+eval {
     my $result = $api_instance->get_balance_notification_options();
     print Dumper($result);
 };
@@ -2807,7 +2808,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2817,9 +2818,7 @@ This endpoint does not need any parameter.
 
 Get balance notification settings
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2828,10 +2827,11 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 
-eval { 
+eval {
     my $result = $api_instance->get_balance_notification_settings();
     print Dumper($result);
 };
@@ -2853,7 +2853,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2863,9 +2863,7 @@ This endpoint does not need any parameter.
 
 Get blocked contacts
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2874,15 +2872,16 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $query = 'query_example'; # string | Find blocked contacts by specified search query.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
-my $direction = 'direction_example'; # string | Order direction. Default is desc.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $query = "query_example"; # string | Find blocked contacts by specified search query.
+my $order_by = 'id'; # string | Order results by some field. Default is id.
+my $direction = 'desc'; # string | Order direction. Default is desc.
 
-eval { 
+eval {
     my $result = $api_instance->get_blocked_contacts(page => $page, limit => $limit, query => $query, order_by => $order_by, direction => $direction);
     print Dumper($result);
 };
@@ -2898,8 +2897,8 @@ Name | Type | Description  | Notes
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **query** | **string**| Find blocked contacts by specified search query. | [optional] 
- **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to &#39;id&#39;]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to &#39;desc&#39;]
 
 ### Return type
 
@@ -2911,7 +2910,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2921,9 +2920,7 @@ Name | Type | Description  | Notes
 
 Get bulk session status
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2932,11 +2929,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     my $result = $api_instance->get_bulk_session(id => $id);
     print Dumper($result);
 };
@@ -2961,7 +2959,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2971,9 +2969,7 @@ Name | Type | Description  | Notes
 
 Fetch callback URL settings
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -2982,10 +2978,11 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 
-eval { 
+eval {
     my $result = $api_instance->get_callback_settings();
     print Dumper($result);
 };
@@ -3007,7 +3004,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3017,9 +3014,7 @@ This endpoint does not need any parameter.
 
 Get a single chat
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3028,11 +3023,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     my $result = $api_instance->get_chat(id => $id);
     print Dumper($result);
 };
@@ -3057,7 +3053,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3067,9 +3063,7 @@ Name | Type | Description  | Notes
 
 Find chats by phone
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3078,13 +3072,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $phone = '"447860021130"'; # string | 
-my $upsert = 56; # int | Create a new chat if not found.
-my $reopen = 56; # int | Reopen chat if found or do not change status.
+my $phone = 447860021130; # string | 
+my $upsert = 0; # int | Create a new chat if not found.
+my $reopen = 0; # int | Reopen chat if found or do not change status.
 
-eval { 
+eval {
     my $result = $api_instance->get_chat_by_phone(phone => $phone, upsert => $upsert, reopen => $reopen);
     print Dumper($result);
 };
@@ -3111,7 +3106,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3121,9 +3116,7 @@ Name | Type | Description  | Notes
 
 Get chat messages
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3132,19 +3125,20 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $query = 'query_example'; # string | Find messages by specified search query.
-my $start = 'start_example'; # string | Return messages since specified timestamp only. Required when `end` parameter specified.
-my $end = 'end_example'; # string | Return messages up to specified timestamp only. Required when `start` parameter specified.
-my $direction = 'direction_example'; # string | Order direction. Default is desc.
-my $voice = 56; # int | Fetch results with voice calls.
-my $include_notes = 56; # int | Fetch results with messenger notes.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $query = "query_example"; # string | Find messages by specified search query.
+my $start = "start_example"; # string | Return messages since specified timestamp only. Required when `end` parameter specified.
+my $end = "end_example"; # string | Return messages up to specified timestamp only. Required when `start` parameter specified.
+my $direction = 'desc'; # string | Order direction. Default is desc.
+my $voice = 0; # int | Fetch results with voice calls.
+my $include_notes = 0; # int | Fetch results with messenger notes.
 
-eval { 
+eval {
     my $result = $api_instance->get_chat_messages(id => $id, page => $page, limit => $limit, query => $query, start => $start, end => $end, direction => $direction, voice => $voice, include_notes => $include_notes);
     print Dumper($result);
 };
@@ -3163,7 +3157,7 @@ Name | Type | Description  | Notes
  **query** | **string**| Find messages by specified search query. | [optional] 
  **start** | **string**| Return messages since specified timestamp only. Required when &#x60;end&#x60; parameter specified. | [optional] 
  **end** | **string**| Return messages up to specified timestamp only. Required when &#x60;start&#x60; parameter specified. | [optional] 
- **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to &#39;desc&#39;]
  **voice** | **int**| Fetch results with voice calls. | [optional] [default to 0]
  **include_notes** | **int**| Fetch results with messenger notes. | [optional] [default to 0]
 
@@ -3177,7 +3171,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3187,9 +3181,7 @@ Name | Type | Description  | Notes
 
 Get the details of a specific contact
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3198,11 +3190,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | Contact ID.
 
-eval { 
+eval {
     my $result = $api_instance->get_contact(id => $id);
     print Dumper($result);
 };
@@ -3227,7 +3220,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3237,9 +3230,7 @@ Name | Type | Description  | Notes
 
 Get the details of a specific contact by phone number
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3248,11 +3239,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $phone = '"447860021130"'; # string | 
+my $phone = 447860021130; # string | 
 
-eval { 
+eval {
     my $result = $api_instance->get_contact_by_phone(phone => $phone);
     print Dumper($result);
 };
@@ -3277,7 +3269,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3287,9 +3279,7 @@ Name | Type | Description  | Notes
 
 Check if a phone number is blocked
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3298,11 +3288,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $phone = '"447860021130"'; # string | Phone number to check.
+my $phone = 447860021130; # string | Phone number to check.
 
-eval { 
+eval {
     my $result = $api_instance->get_contact_if_blocked(phone => $phone);
     print Dumper($result);
 };
@@ -3327,7 +3318,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3339,7 +3330,7 @@ Check import progress
 
 Get contact import session progress.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3348,11 +3339,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     my $result = $api_instance->get_contact_import_session_progress(id => $id);
     print Dumper($result);
 };
@@ -3377,7 +3369,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3387,9 +3379,7 @@ Name | Type | Description  | Notes
 
 Get a contact note
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3398,11 +3388,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     my $result = $api_instance->get_contact_note(id => $id);
     print Dumper($result);
 };
@@ -3427,7 +3418,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3437,9 +3428,7 @@ Name | Type | Description  | Notes
 
 Fetch notes assigned to a given contact
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3448,13 +3437,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
 
-eval { 
+eval {
     my $result = $api_instance->get_contact_notes(id => $id, page => $page, limit => $limit);
     print Dumper($result);
 };
@@ -3481,7 +3471,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3491,9 +3481,7 @@ Name | Type | Description  | Notes
 
 Get all contacts
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3502,15 +3490,16 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $shared = 56; # int | Should shared contacts be included?
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
-my $direction = 'direction_example'; # string | Order direction. Default is desc.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $shared = 0; # int | Should shared contacts be included?
+my $order_by = 'id'; # string | Order results by some field. Default is id.
+my $direction = 'desc'; # string | Order direction. Default is desc.
 
-eval { 
+eval {
     my $result = $api_instance->get_contacts(page => $page, limit => $limit, shared => $shared, order_by => $order_by, direction => $direction);
     print Dumper($result);
 };
@@ -3526,8 +3515,8 @@ Name | Type | Description  | Notes
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **shared** | **int**| Should shared contacts be included? | [optional] [default to 0]
- **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to &#39;id&#39;]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to &#39;desc&#39;]
 
 ### Return type
 
@@ -3539,19 +3528,19 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_contacts_autocomplete**
-> GetContactsAutocompleteResponse get_contacts_autocomplete(query => $query, limit => $limit, lists => $lists)
+> ARRAY[GetContactsAutocompleteResponseItem] get_contacts_autocomplete(query => $query, limit => $limit, lists => $lists)
 
 Get contacts autocomplete suggestions
 
 Get contacts autocomplete suggestions by given search terms.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3560,13 +3549,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $query = '"A"'; # string | Find recipients by specified search query.
-my $limit = 56; # int | The number of results per page.
-my $lists = 56; # int | Should lists be returned or not?
+my $query = A; # string | Find recipients by specified search query.
+my $limit = 10; # int | The number of results per page.
+my $lists = 0; # int | Should lists be returned or not?
 
-eval { 
+eval {
     my $result = $api_instance->get_contacts_autocomplete(query => $query, limit => $limit, lists => $lists);
     print Dumper($result);
 };
@@ -3585,7 +3575,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetContactsAutocompleteResponse**](GetContactsAutocompleteResponse.md)
+[**ARRAY[GetContactsAutocompleteResponseItem]**](GetContactsAutocompleteResponseItem.md)
 
 ### Authorization
 
@@ -3593,7 +3583,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3605,7 +3595,7 @@ Get all contacts in a list
 
 A useful synonym for the \"contacts/search\" command with the provided \"listId\" parameter.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3614,15 +3604,16 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | Given group ID.
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
-my $direction = 'direction_example'; # string | Order direction. Default is desc.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $order_by = 'id'; # string | Order results by some field. Default is id.
+my $direction = 'desc'; # string | Order direction. Default is desc.
 
-eval { 
+eval {
     my $result = $api_instance->get_contacts_by_list_id(id => $id, page => $page, limit => $limit, order_by => $order_by, direction => $direction);
     print Dumper($result);
 };
@@ -3638,8 +3629,8 @@ Name | Type | Description  | Notes
  **id** | **int**| Given group ID. | 
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to &#39;id&#39;]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to &#39;desc&#39;]
 
 ### Return type
 
@@ -3651,19 +3642,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_countries**
-> GetCountriesResponse get_countries()
+> ARRAY[Country] get_countries()
 
 Get countries
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3672,10 +3661,11 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 
-eval { 
+eval {
     my $result = $api_instance->get_countries();
     print Dumper($result);
 };
@@ -3689,7 +3679,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**GetCountriesResponse**](GetCountriesResponse.md)
+[**ARRAY[Country]**](Country.md)
 
 ### Authorization
 
@@ -3697,7 +3687,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3707,9 +3697,7 @@ This endpoint does not need any parameter.
 
 Get current account information
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3718,10 +3706,11 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 
-eval { 
+eval {
     my $result = $api_instance->get_current_user();
     print Dumper($result);
 };
@@ -3743,7 +3732,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3753,9 +3742,7 @@ This endpoint does not need any parameter.
 
 Get the details of a specific custom field
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3764,11 +3751,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     my $result = $api_instance->get_custom_field(id => $id);
     print Dumper($result);
 };
@@ -3793,7 +3781,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3803,9 +3791,7 @@ Name | Type | Description  | Notes
 
 Get all custom fields
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3814,12 +3800,13 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
 
-eval { 
+eval {
     my $result = $api_instance->get_custom_fields(page => $page, limit => $limit);
     print Dumper($result);
 };
@@ -3845,7 +3832,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3855,9 +3842,7 @@ Name | Type | Description  | Notes
 
 Get the details of a specific dedicated number
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3866,11 +3851,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     my $result = $api_instance->get_dedicated_number(id => $id);
     print Dumper($result);
 };
@@ -3895,7 +3881,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3907,7 +3893,7 @@ Get list of email senders
 
 Retrieves a list of configured email senders available for creating email campaigns.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3916,11 +3902,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $domain_id = 56; # int | Filter email senders by specific domain ID.
 
-eval { 
+eval {
     my $result = $api_instance->get_email_senders(domain_id => $domain_id);
     print Dumper($result);
 };
@@ -3945,7 +3932,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3955,9 +3942,7 @@ Name | Type | Description  | Notes
 
 Get favorite contacts and lists
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -3966,13 +3951,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $query = '"A"'; # string | Find contacts or lists by specified search query.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $query = A; # string | Find contacts or lists by specified search query.
 
-eval { 
+eval {
     my $result = $api_instance->get_favorites(page => $page, limit => $limit, query => $query);
     print Dumper($result);
 };
@@ -3999,7 +3985,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4009,9 +3995,7 @@ Name | Type | Description  | Notes
 
 Get a single inbound message
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4020,11 +4004,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1782832; # int | The unique numeric ID for the inbound message.
 
-eval { 
+eval {
     my $result = $api_instance->get_inbound_message(id => $id);
     print Dumper($result);
 };
@@ -4049,7 +4034,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4059,9 +4044,7 @@ Name | Type | Description  | Notes
 
 Get inbound messages notification settings
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4070,10 +4053,11 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 
-eval { 
+eval {
     my $result = $api_instance->get_inbound_messages_notification_settings();
     print Dumper($result);
 };
@@ -4095,7 +4079,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4107,7 +4091,7 @@ Get all invoices
 
 With the TextMagic API, you can check the invoices and transactions for your account.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4116,12 +4100,13 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
 
-eval { 
+eval {
     my $result = $api_instance->get_invoices(page => $page, limit => $limit);
     print Dumper($result);
 };
@@ -4147,7 +4132,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4157,9 +4142,7 @@ Name | Type | Description  | Notes
 
 Get the details of a specific list
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4168,11 +4151,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     my $result = $api_instance->get_list(id => $id);
     print Dumper($result);
 };
@@ -4197,19 +4181,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_list_contacts_ids**
-> GetListContactsIdsResponse get_list_contacts_ids(id => $id)
+> ARRAY[int] get_list_contacts_ids(id => $id)
 
 Get all contact IDs in a list
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4218,11 +4200,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     my $result = $api_instance->get_list_contacts_ids(id => $id);
     print Dumper($result);
 };
@@ -4239,7 +4222,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetListContactsIdsResponse**](GetListContactsIdsResponse.md)
+**ARRAY[int]**
 
 ### Authorization
 
@@ -4247,7 +4230,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4257,9 +4240,7 @@ Name | Type | Description  | Notes
 
 Get all lists
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4268,16 +4249,17 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | The current fetched page.
-my $limit = 56; # int | The number of results per page.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
-my $direction = 'direction_example'; # string | Order direction. Default is desc.
-my $favorite_only = 56; # int | Return only favorited lists.
-my $only_mine = 56; # int | Return only current user lists.
+my $page = 1; # int | The current fetched page.
+my $limit = 10; # int | The number of results per page.
+my $order_by = 'id'; # string | Order results by some field. Default is id.
+my $direction = 'desc'; # string | Order direction. Default is desc.
+my $favorite_only = 0; # int | Return only favorited lists.
+my $only_mine = 0; # int | Return only current user lists.
 
-eval { 
+eval {
     my $result = $api_instance->get_lists(page => $page, limit => $limit, order_by => $order_by, direction => $direction, favorite_only => $favorite_only, only_mine => $only_mine);
     print Dumper($result);
 };
@@ -4292,8 +4274,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| The current fetched page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
- **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to &#39;id&#39;]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to &#39;desc&#39;]
  **favorite_only** | **int**| Return only favorited lists. | [optional] [default to 0]
  **only_mine** | **int**| Return only current user lists. | [optional] [default to 0]
 
@@ -4307,7 +4289,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4319,7 +4301,7 @@ Get a contact's lists
 
 Get all the lists in which a contact is included.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4328,13 +4310,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
 
-eval { 
+eval {
     my $result = $api_instance->get_lists_of_contact(id => $id, page => $page, limit => $limit);
     print Dumper($result);
 };
@@ -4361,7 +4344,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4373,7 +4356,7 @@ Preview message
 
 Get a messages preview (with dynamic fields merged) of up to 100 messages per session. 
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4382,27 +4365,28 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $text = '"Test message test"'; # string | Message text. Required if **template_id** is not set.
+my $text = Test message test; # string | Message text. Required if **template_id** is not set.
 my $template_id = 1; # int | Template used instead of message text. Required if **text** is not set.
 my $sending_time = 1565606455; # int | DEPRECATED, consider using sendingDateTime and sendingTimezone parameters instead: Optional (required with rrule set). Message sending time is in unix timestamp format. Default is now.
-my $sending_date_time = '"2020-05-27 13:02:33"'; # string | Sending time is in Y-m-d H:i:s format (e.g. 2016-05-27 13:02:33). This time is relative to the sendingTimezone.
-my $sending_timezone = '"America/Buenos_Aires"'; # string | The ID or ISO-name of the timezone used for sending when the sendingDateTime parameter is set, e.g. if you specify sendingDateTime = \\\"2016-05-27 13:02:33\\\" and sendingTimezone = \\\"America/Buenos_Aires\\\", your message will be sent on May 27, 2016 13:02:33 Buenos Aires time, or 16:02:33 UTC. Default is the account timezone.
-my $contacts = '"1,2,3,4"'; # string | Comma-separated array of contact resources id message will be sent to.
-my $lists = '"1,2,3,4"'; # string | Comma-separated array of list resources id message will be sent to.
-my $phones = '"447860021130,447860021131"'; # string | Comma-separated array of E.164 phone numbers message will be sent to.
-my $cut_extra = 56; # int | Should sending method cut extra characters which not fit supplied partsCount or return 400 Bad request response instead.
-my $parts_count = 56; # int | Maximum message parts count (Textmagic allows sending of 1 to 6 message parts).
+my $sending_date_time = 2020-05-27 13:02:33; # string | Sending time is in Y-m-d H:i:s format (e.g. 2016-05-27 13:02:33). This time is relative to the sendingTimezone.
+my $sending_timezone = America/Buenos_Aires; # string | The ID or ISO-name of the timezone used for sending when the sendingDateTime parameter is set, e.g. if you specify sendingDateTime = \\\"2016-05-27 13:02:33\\\" and sendingTimezone = \\\"America/Buenos_Aires\\\", your message will be sent on May 27, 2016 13:02:33 Buenos Aires time, or 16:02:33 UTC. Default is the account timezone.
+my $contacts = 1,2,3,4; # string | Comma-separated array of contact resources id message will be sent to.
+my $lists = 1,2,3,4; # string | Comma-separated array of list resources id message will be sent to.
+my $phones = 447860021130,447860021131; # string | Comma-separated array of E.164 phone numbers message will be sent to.
+my $cut_extra = 0; # int | Should sending method cut extra characters which not fit supplied partsCount or return 400 Bad request response instead.
+my $parts_count = 6; # int | Maximum message parts count (Textmagic allows sending of 1 to 6 message parts).
 my $reference_id = 1; # int | Custom message reference id which can be used in your application infrastructure.
-my $from = '"Test Sender ID"'; # string | One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](https://docs.textmagic.com/#tag/Sender-IDs).
-my $rule = '"FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1;COUNT=1"'; # string | An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details.
-my $create_chat = 56; # int | Should the sending method try to create new Chat(if not exist) with specified recipients?
-my $tts = 56; # int | Send Text-to-Speech message.
-my $local = 56; # int | Treat phone numbers passed in the \\'phones\\' field as local.
-my $local_country = '"US"'; # string | The 2-letter ISO country code for local phone numbers, used when \\'local\\' is set to true. Default is the account country.
+my $from = Test Sender ID; # string | One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](https://docs.textmagic.com/#tag/Sender-IDs).
+my $rule = FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1;COUNT=1; # string | An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details.
+my $create_chat = 0; # int | Should the sending method try to create new Chat(if not exist) with specified recipients?
+my $tts = 0; # int | Send Text-to-Speech message.
+my $local = 0; # int | Treat phone numbers passed in the \\'phones\\' field as local.
+my $local_country = US; # string | The 2-letter ISO country code for local phone numbers, used when \\'local\\' is set to true. Default is the account country.
 
-eval { 
+eval {
     my $result = $api_instance->get_message_preview(text => $text, template_id => $template_id, sending_time => $sending_time, sending_date_time => $sending_date_time, sending_timezone => $sending_timezone, contacts => $contacts, lists => $lists, phones => $phones, cut_extra => $cut_extra, parts_count => $parts_count, reference_id => $reference_id, from => $from, rule => $rule, create_chat => $create_chat, tts => $tts, local => $local, local_country => $local_country);
     print Dumper($result);
 };
@@ -4443,7 +4427,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4455,7 +4439,7 @@ Check message price
 
 Check pricing for a new outbound message.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4464,28 +4448,29 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $include_blocked = 56; # int | Should we show the pricing for blocked contacts?
-my $text = '"Test message test"'; # string | Message text. Required if the **template_id** is not set.
+my $include_blocked = 0; # int | Should we show the pricing for blocked contacts?
+my $text = Test message test; # string | Message text. Required if the **template_id** is not set.
 my $template_id = 1; # int | Template used instead of message text. Required if the **text** is not set.
 my $sending_time = 1565606455; # int | DEPRECATED, consider using the sendingDateTime and sendingTimezone parameters instead: optional (required with rrule set). Message sending time is in unix timestamp format. Default is now.
-my $sending_date_time = '"2020-05-27 13:02:33"'; # string | Sending time is in Y-m-d H:i:s format (e.g. 2016-05-27 13:02:33). This time is relative to the sendingTimezone.
-my $sending_timezone = '"America/Buenos_Aires"'; # string | The ID or ISO-name of the timezone used for sending when sendingDateTime parameter is set, e.g. if you specify sendingDateTime = \\\"2016-05-27 13:02:33\\\" and sendingTimezone = \\\"America/Buenos_Aires\\\", your message will be sent on May 27, 2016 13:02:33 Buenos Aires time, or 16:02:33 UTC. Default is the account timezone.
-my $contacts = '"1,2,3,4"'; # string | Comma-separated array of contact resources id message will be sent to.
-my $lists = '"1,2,3,4"'; # string | Comma-separated array of list resources id message will be sent to.
-my $phones = '"447860021130,447860021131"'; # string | Comma-separated array of E.164 phone numbers message will be sent to.
-my $cut_extra = 56; # int | Should sending method cut extra characters which not fit supplied partsCount or return 400 Bad request response instead.
-my $parts_count = 56; # int | Maximum message parts count (Textmagic allows sending 1 to 6 message parts).
+my $sending_date_time = 2020-05-27 13:02:33; # string | Sending time is in Y-m-d H:i:s format (e.g. 2016-05-27 13:02:33). This time is relative to the sendingTimezone.
+my $sending_timezone = America/Buenos_Aires; # string | The ID or ISO-name of the timezone used for sending when sendingDateTime parameter is set, e.g. if you specify sendingDateTime = \\\"2016-05-27 13:02:33\\\" and sendingTimezone = \\\"America/Buenos_Aires\\\", your message will be sent on May 27, 2016 13:02:33 Buenos Aires time, or 16:02:33 UTC. Default is the account timezone.
+my $contacts = 1,2,3,4; # string | Comma-separated array of contact resources id message will be sent to.
+my $lists = 1,2,3,4; # string | Comma-separated array of list resources id message will be sent to.
+my $phones = 447860021130,447860021131; # string | Comma-separated array of E.164 phone numbers message will be sent to.
+my $cut_extra = 0; # int | Should sending method cut extra characters which not fit supplied partsCount or return 400 Bad request response instead.
+my $parts_count = 6; # int | Maximum message parts count (Textmagic allows sending 1 to 6 message parts).
 my $reference_id = 1; # int | Custom message reference id which can be used in your application infrastructure.
-my $from = '"Test Sender ID"'; # string | One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](https://docs.textmagic.com/#tag/Sender-IDs).
-my $rule = '"FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1;COUNT=1"'; # string | An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details.
-my $create_chat = 56; # int | Should the sending method try to create new Chat (if not exist) with specified recipients?
-my $tts = 56; # int | Send a Text-to-Speech message.
-my $local = 56; # int | Treat phone numbers passed in the \\'phones\\' field as local.
-my $local_country = '"US"'; # string | The 2-letter ISO country code for local phone numbers, used when \\'local\\' is set to true. Default is the account country.
+my $from = Test Sender ID; # string | One of the allowed Sender ID (phone number or alphanumeric sender ID). If the specified Sender ID is not allowed for some destinations, a fallback default Sender ID will be used to ensure delivery. See [Get timezones](https://docs.textmagic.com/#tag/Sender-IDs).
+my $rule = FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1;COUNT=1; # string | An iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as the start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details.
+my $create_chat = 0; # int | Should the sending method try to create new Chat (if not exist) with specified recipients?
+my $tts = 0; # int | Send a Text-to-Speech message.
+my $local = 0; # int | Treat phone numbers passed in the \\'phones\\' field as local.
+my $local_country = US; # string | The 2-letter ISO country code for local phone numbers, used when \\'local\\' is set to true. Default is the account country.
 
-eval { 
+eval {
     my $result = $api_instance->get_message_price(include_blocked => $include_blocked, text => $text, template_id => $template_id, sending_time => $sending_time, sending_date_time => $sending_date_time, sending_timezone => $sending_timezone, contacts => $contacts, lists => $lists, phones => $phones, cut_extra => $cut_extra, parts_count => $parts_count, reference_id => $reference_id, from => $from, rule => $rule, create_chat => $create_chat, tts => $tts, local => $local, local_country => $local_country);
     print Dumper($result);
 };
@@ -4527,7 +4512,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4539,7 +4524,7 @@ Get a session`s details
 
 Get a specific session’s details.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4548,11 +4533,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | Session ID.
 
-eval { 
+eval {
     my $result = $api_instance->get_message_session(id => $id);
     print Dumper($result);
 };
@@ -4577,7 +4563,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4587,9 +4573,7 @@ Name | Type | Description  | Notes
 
 Get a session`s statistics
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4598,12 +4582,13 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
-my $include_deleted = 56; # int | Search also in deleted messages.
+my $include_deleted = 0; # int | Search also in deleted messages.
 
-eval { 
+eval {
     my $result = $api_instance->get_message_session_stat(id => $id, include_deleted => $include_deleted);
     print Dumper($result);
 };
@@ -4629,7 +4614,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4641,7 +4626,7 @@ Get a session`s messages
 
 A useful synonym for the \"messages/search\" command with the provided \"sessionId\" parameter.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4650,15 +4635,16 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $statuses = 'statuses_example'; # string | Find messages by status.
-my $include_deleted = 56; # int | Search also in deleted messages.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $statuses = "statuses_example"; # string | Find messages by status.
+my $include_deleted = 0; # int | Search also in deleted messages.
 
-eval { 
+eval {
     my $result = $api_instance->get_messages_by_session_id(id => $id, page => $page, limit => $limit, statuses => $statuses, include_deleted => $include_deleted);
     print Dumper($result);
 };
@@ -4687,7 +4673,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4699,7 +4685,7 @@ Get sent/received messages counters values
 
 Get total contacts, sent messages and received messages counters values.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4708,10 +4694,11 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 
-eval { 
+eval {
     my $result = $api_instance->get_messaging_counters();
     print Dumper($result);
 };
@@ -4733,19 +4720,17 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_messaging_stat**
-> GetMessagingStatResponse get_messaging_stat(by => $by, start => $start, end => $end)
+> ARRAY[MessagingStatItem] get_messaging_stat(by => $by, start => $start, end => $end)
 
 Get messaging statistics
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4754,13 +4739,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $by = '"off"'; # string | *   **off** - to get total values per specified time interval; *   **day** - to show values grouped by day; *   **month** - to show values grouped by month; *   **year** - to show values grouped by year. 
+my $by = off; # string | *   **off** - to get total values per specified time interval; *   **day** - to show values grouped by day; *   **month** - to show values grouped by month; *   **year** - to show values grouped by year. 
 my $start = 1430438400; # int | Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is 7 days prior. 
 my $end = 1431648000; # int | Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is today. 
 
-eval { 
+eval {
     my $result = $api_instance->get_messaging_stat(by => $by, start => $start, end => $end);
     print Dumper($result);
 };
@@ -4773,13 +4759,13 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **by** | **string**| *   **off** - to get total values per specified time interval; *   **day** - to show values grouped by day; *   **month** - to show values grouped by month; *   **year** - to show values grouped by year.  | [optional] [default to off]
+ **by** | **string**| *   **off** - to get total values per specified time interval; *   **day** - to show values grouped by day; *   **month** - to show values grouped by month; *   **year** - to show values grouped by year.  | [optional] [default to &#39;off&#39;]
  **start** | **int**| Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is 7 days prior.  | [optional] 
  **end** | **int**| Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is today.  | [optional] 
 
 ### Return type
 
-[**GetMessagingStatResponse**](GetMessagingStatResponse.md)
+[**ARRAY[MessagingStatItem]**](MessagingStatItem.md)
 
 ### Authorization
 
@@ -4787,7 +4773,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4799,7 +4785,7 @@ Get a single message
 
 Get a single outgoing message.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4808,11 +4794,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     my $result = $api_instance->get_outbound_message(id => $id);
     print Dumper($result);
 };
@@ -4837,7 +4824,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4849,7 +4836,7 @@ Get history
 
 Get the outbound messages history.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4858,15 +4845,16 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $limit = 56; # int | The number of results per page.
+my $limit = 10; # int | The number of results per page.
 my $last_id = 56; # int | Filter results by ID, selecting all values lesser than the specified ID.
-my $query = 'query_example'; # string | Find message by specified search query.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
-my $direction = 'direction_example'; # string | Order direction. Default is desc.
+my $query = "query_example"; # string | Find message by specified search query.
+my $order_by = 'id'; # string | Order results by some field. Default is id.
+my $direction = 'desc'; # string | Order direction. Default is desc.
 
-eval { 
+eval {
     my $result = $api_instance->get_outbound_messages_history(limit => $limit, last_id => $last_id, query => $query, order_by => $order_by, direction => $direction);
     print Dumper($result);
 };
@@ -4882,8 +4870,8 @@ Name | Type | Description  | Notes
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **last_id** | **int**| Filter results by ID, selecting all values lesser than the specified ID. | [optional] 
  **query** | **string**| Find message by specified search query. | [optional] 
- **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to &#39;id&#39;]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to &#39;desc&#39;]
 
 ### Return type
 
@@ -4895,7 +4883,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4905,9 +4893,7 @@ Name | Type | Description  | Notes
 
 Get a single scheduled message
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4916,11 +4902,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     my $result = $api_instance->get_scheduled_message(id => $id);
     print Dumper($result);
 };
@@ -4945,7 +4932,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4955,9 +4942,7 @@ Name | Type | Description  | Notes
 
 Get the details of a specific Sender ID
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -4966,11 +4951,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     my $result = $api_instance->get_sender_id(id => $id);
     print Dumper($result);
 };
@@ -4995,7 +4981,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5005,9 +4991,7 @@ Name | Type | Description  | Notes
 
 Get all your approved Sender IDs
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5016,12 +5000,13 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
 
-eval { 
+eval {
     my $result = $api_instance->get_sender_ids(page => $page, limit => $limit);
     print Dumper($result);
 };
@@ -5047,7 +5032,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5057,9 +5042,7 @@ Name | Type | Description  | Notes
 
 Get current sender settings
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5068,11 +5051,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $country = '"US"'; # string | Return sender settings enabled for sending to a specified country. Should be 2 upper-case characters.
+my $country = US; # string | Return sender settings enabled for sending to a specified country. Should be 2 upper-case characters.
 
-eval { 
+eval {
     my $result = $api_instance->get_sender_settings(country => $country);
     print Dumper($result);
 };
@@ -5097,7 +5081,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5107,9 +5091,7 @@ Name | Type | Description  | Notes
 
 Get spending statistics
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5118,14 +5100,15 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $start = '"2018-11-11 11:11"'; # string | Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is 7 days prior. 
-my $end = '"2019-11-11 11:11"'; # string | Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is today. 
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $start = 2018-11-11 11:11; # string | Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is 7 days prior. 
+my $end = 2019-11-11 11:11; # string | Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is today. 
 
-eval { 
+eval {
     my $result = $api_instance->get_spending_stat(page => $page, limit => $limit, start => $start, end => $end);
     print Dumper($result);
 };
@@ -5153,163 +5136,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_subaccount**
-> User get_subaccount(id => $id)
-
-Get sub-account information
-
-
-
-### Example 
-```perl
-use Data::Dumper;
-use Net::Sms::TextMagicClient::TextMagicApi;
-my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
-
-    # Configure HTTP basic authorization: BasicAuth
-    username => 'YOUR_USERNAME',
-    password => 'YOUR_PASSWORD',
-);
-
-my $id = 1; # int | 
-
-eval { 
-    my $result = $api_instance->get_subaccount(id => $id);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling TextMagicApi->get_subaccount: $@\n";
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
-
-### Return type
-
-[**User**](User.md)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_subaccounts**
-> User get_subaccounts(page => $page, limit => $limit)
-
-Get a sub-accounts list
-
-
-
-### Example 
-```perl
-use Data::Dumper;
-use Net::Sms::TextMagicClient::TextMagicApi;
-my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
-
-    # Configure HTTP basic authorization: BasicAuth
-    username => 'YOUR_USERNAME',
-    password => 'YOUR_PASSWORD',
-);
-
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-
-eval { 
-    my $result = $api_instance->get_subaccounts(page => $page, limit => $limit);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling TextMagicApi->get_subaccounts: $@\n";
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **int**| Fetch specified results page. | [optional] [default to 1]
- **limit** | **int**| The number of results per page. | [optional] [default to 10]
-
-### Return type
-
-[**User**](User.md)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_subaccounts_with_tokens**
-> GetSubaccountsWithTokensResponse get_subaccounts_with_tokens(get_subaccounts_with_tokens_input_object => $get_subaccounts_with_tokens_input_object, page => $page, limit => $limit)
-
-Get all sub-accounts with their REST API tokens associated with a specified app name
-
-Get all sub-accounts with their REST API tokens associated with specified app name. When more than one token related to app name, last key will be returned.
-
-### Example 
-```perl
-use Data::Dumper;
-use Net::Sms::TextMagicClient::TextMagicApi;
-my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
-
-    # Configure HTTP basic authorization: BasicAuth
-    username => 'YOUR_USERNAME',
-    password => 'YOUR_PASSWORD',
-);
-
-my $get_subaccounts_with_tokens_input_object = Net::Sms::TextMagicClient::Object::GetSubaccountsWithTokensInputObject->new(); # GetSubaccountsWithTokensInputObject | 
-my $page = 8.14; # Number | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-
-eval { 
-    my $result = $api_instance->get_subaccounts_with_tokens(get_subaccounts_with_tokens_input_object => $get_subaccounts_with_tokens_input_object, page => $page, limit => $limit);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling TextMagicApi->get_subaccounts_with_tokens: $@\n";
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **get_subaccounts_with_tokens_input_object** | [**GetSubaccountsWithTokensInputObject**](GetSubaccountsWithTokensInputObject.md)|  | 
- **page** | **Number**| Fetch specified results page. | [optional] [default to 1]
- **limit** | **int**| The number of results per page. | [optional] [default to 10]
-
-### Return type
-
-[**GetSubaccountsWithTokensResponse**](GetSubaccountsWithTokensResponse.md)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5321,7 +5148,7 @@ Get a template`s details
 
 Get a single template.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5330,11 +5157,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     my $result = $api_instance->get_template(id => $id);
     print Dumper($result);
 };
@@ -5359,19 +5187,19 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_timezones**
-> GetTimezonesResponse get_timezones(full => $full)
+> object get_timezones(full => $full)
 
 Get timezones
 
 Return all available timezone IDs
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5380,11 +5208,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $full = 56; # int | Return full info about timezones in array (0 or 1). Default is 0.
+my $full = 0; # int | Return full info about timezones in array (0 or 1). Default is 0.
 
-eval { 
+eval {
     my $result = $api_instance->get_timezones(full => $full);
     print Dumper($result);
 };
@@ -5401,7 +5230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetTimezonesResponse**](GetTimezonesResponse.md)
+**object**
 
 ### Authorization
 
@@ -5409,7 +5238,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5421,7 +5250,7 @@ Get unread messages number
 
 Get the total amount of unread messages in the current user chats.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5430,10 +5259,11 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 
-eval { 
+eval {
     my $result = $api_instance->get_unread_messages_total();
     print Dumper($result);
 };
@@ -5455,7 +5285,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5465,9 +5295,7 @@ This endpoint does not need any parameter.
 
 Get the details of a specific unsubscribed contact
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5476,11 +5304,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
 
-eval { 
+eval {
     my $result = $api_instance->get_unsubscribed_contact(id => $id);
     print Dumper($result);
 };
@@ -5505,7 +5334,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5517,7 +5346,7 @@ Get all unsubscribed contacts
 
 When one of your message recipients sends a request with one of the [STOP-words](https://www.textmagic.com/sms-stop-command/), they will be immediately opted-out of your send lists and their contact status will change to an unsubscribed contact. To retrieve information on all contacts who have unsubscribed status, use: 
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5526,12 +5355,13 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
 
-eval { 
+eval {
     my $result = $api_instance->get_unsubscribers(page => $page, limit => $limit);
     print Dumper($result);
 };
@@ -5557,7 +5387,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5567,9 +5397,7 @@ Name | Type | Description  | Notes
 
 Get all your dedicated numbers
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5578,13 +5406,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
 my $survey_id = 56; # int | Fetch only those numbers that are ready for the survey.
 
-eval { 
+eval {
     my $result = $api_instance->get_user_dedicated_numbers(page => $page, limit => $limit, survey_id => $survey_id);
     print Dumper($result);
 };
@@ -5611,19 +5440,19 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_contacts**
-> ResourceLinkResponse import_contacts(file => $file, column => $column, list_id => $list_id, list_name => $list_name)
+> ResourceLinkResponse import_contacts(column => $column, file => $file, list_id => $list_id, list_name => $list_name)
 
 Import contacts
 
 Import contacts from the CSV, XLS or XLSX file.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5632,15 +5461,16 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $file = '/path/to/file.txt'; # File | File containing contacts in csv or xls(x) formats.
-my $column = '"0:firstName;1:lastName;3:phone;4:email"'; # string | Import file column mapping. The string must contain sub-strings of mapping in format `columnNumber:field` glued by `;`. For example: `0:firstName;1:lastName;3:phone;4:email` where the value before `:` is a number of the column in the file, and the value after `:` is a field of the newly created contact or the ID of a custom field. Numbers of columns begin from zero. Allowed built-in contact fields are: `firstName`, `lastName`, `phone`, `email`. Existing of `phone` mapping is required. 
+my $column = 0:firstName;1:lastName;3:phone;4:email; # string | Import file column mapping. The string must contain sub-strings of mapping in format `columnNumber:field` glued by `;`. For example: `0:firstName;1:lastName;3:phone;4:email` where the value before `:` is a number of the column in the file, and the value after `:` is a field of the newly created contact or the ID of a custom field. Numbers of columns begin from zero. Allowed built-in contact fields are: `firstName`, `lastName`, `phone`, `email`. Existing of `phone` mapping is required. 
+my $file = "/path/to/file"; # string | File containing contacts in csv or xls(x) formats.
 my $list_id = 443; # int | List that ID contacts will be imported to. Ignored if `listName` is specified. 
-my $list_name = '"A new list"'; # string | List name. This list will be created during import. If such name is already taken, an ordinal (1, 2, ...) will be added to the end. Ignored if `listId` is specified. 
+my $list_name = A new list; # string | List name. This list will be created during import. If such name is already taken, an ordinal (1, 2, ...) will be added to the end. Ignored if `listId` is specified. 
 
-eval { 
-    my $result = $api_instance->import_contacts(file => $file, column => $column, list_id => $list_id, list_name => $list_name);
+eval {
+    my $result = $api_instance->import_contacts(column => $column, file => $file, list_id => $list_id, list_name => $list_name);
     print Dumper($result);
 };
 if ($@) {
@@ -5652,8 +5482,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **File**| File containing contacts in csv or xls(x) formats. | 
  **column** | **string**| Import file column mapping. The string must contain sub-strings of mapping in format &#x60;columnNumber:field&#x60; glued by &#x60;;&#x60;. For example: &#x60;0:firstName;1:lastName;3:phone;4:email&#x60; where the value before &#x60;:&#x60; is a number of the column in the file, and the value after &#x60;:&#x60; is a field of the newly created contact or the ID of a custom field. Numbers of columns begin from zero. Allowed built-in contact fields are: &#x60;firstName&#x60;, &#x60;lastName&#x60;, &#x60;phone&#x60;, &#x60;email&#x60;. Existing of &#x60;phone&#x60; mapping is required.  | 
+ **file** | **string****string**| File containing contacts in csv or xls(x) formats. | 
  **list_id** | **int**| List that ID contacts will be imported to. Ignored if &#x60;listName&#x60; is specified.  | [optional] 
  **list_name** | **string**| List name. This list will be created during import. If such name is already taken, an ordinal (1, 2, ...) will be added to the end. Ignored if &#x60;listId&#x60; is specified.  | [optional] 
 
@@ -5672,55 +5502,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invite_subaccount**
-> invite_subaccount(invite_subaccount_input_object => $invite_subaccount_input_object)
-
-Invite a new sub-account
-
-
-
-### Example 
-```perl
-use Data::Dumper;
-use Net::Sms::TextMagicClient::TextMagicApi;
-my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
-
-    # Configure HTTP basic authorization: BasicAuth
-    username => 'YOUR_USERNAME',
-    password => 'YOUR_PASSWORD',
-);
-
-my $invite_subaccount_input_object = Net::Sms::TextMagicClient::Object::InviteSubaccountInputObject->new(); # InviteSubaccountInputObject | 
-
-eval { 
-    $api_instance->invite_subaccount(invite_subaccount_input_object => $invite_subaccount_input_object);
-};
-if ($@) {
-    warn "Exception when calling TextMagicApi->invite_subaccount: $@\n";
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **invite_subaccount_input_object** | [**InviteSubaccountInputObject**](InviteSubaccountInputObject.md)|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **mark_chats_read_bulk**
 > mark_chats_read_bulk(mark_chats_read_bulk_input_object => $mark_chats_read_bulk_input_object)
 
@@ -5728,7 +5509,7 @@ Mark chats as read (bulk)
 
 Mark several chats as read by chat IDs or mark all chats as read
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5737,11 +5518,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $mark_chats_read_bulk_input_object = Net::Sms::TextMagicClient::Object::MarkChatsReadBulkInputObject->new(); # MarkChatsReadBulkInputObject | 
+my $mark_chats_read_bulk_input_object = Net::Sms::TextMagicClient::Object::MarkChatsUnreadBulkRequest->new(); # MarkChatsUnreadBulkRequest | 
 
-eval { 
+eval {
     $api_instance->mark_chats_read_bulk(mark_chats_read_bulk_input_object => $mark_chats_read_bulk_input_object);
 };
 if ($@) {
@@ -5753,7 +5535,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mark_chats_read_bulk_input_object** | [**MarkChatsReadBulkInputObject**](MarkChatsReadBulkInputObject.md)|  | 
+ **mark_chats_read_bulk_input_object** | [**MarkChatsUnreadBulkRequest**](MarkChatsUnreadBulkRequest.md)|  | 
 
 ### Return type
 
@@ -5766,7 +5548,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5777,7 +5559,7 @@ Mark chats as unread (bulk)
 
 Mark several chats as UNread by chat IDs or mark all chats as UNread
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5786,11 +5568,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $mark_chats_unread_bulk_input_object = Net::Sms::TextMagicClient::Object::MarkChatsUnreadBulkInputObject->new(); # MarkChatsUnreadBulkInputObject | 
+my $mark_chats_unread_bulk_input_object = Net::Sms::TextMagicClient::Object::MarkChatsUnreadBulkRequest->new(); # MarkChatsUnreadBulkRequest | 
 
-eval { 
+eval {
     $api_instance->mark_chats_unread_bulk(mark_chats_unread_bulk_input_object => $mark_chats_unread_bulk_input_object);
 };
 if ($@) {
@@ -5802,7 +5585,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mark_chats_unread_bulk_input_object** | [**MarkChatsUnreadBulkInputObject**](MarkChatsUnreadBulkInputObject.md)|  | 
+ **mark_chats_unread_bulk_input_object** | [**MarkChatsUnreadBulkRequest**](MarkChatsUnreadBulkRequest.md)|  | 
 
 ### Return type
 
@@ -5815,7 +5598,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5824,9 +5607,7 @@ void (empty response body)
 
 Mute chat sounds
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5835,11 +5616,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $mute_chat_input_object = Net::Sms::TextMagicClient::Object::MuteChatInputObject->new(); # MuteChatInputObject | 
+my $mute_chat_input_object = Net::Sms::TextMagicClient::Object::MuteChatRequest->new(); # MuteChatRequest | 
 
-eval { 
+eval {
     my $result = $api_instance->mute_chat(mute_chat_input_object => $mute_chat_input_object);
     print Dumper($result);
 };
@@ -5852,7 +5634,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mute_chat_input_object** | [**MuteChatInputObject**](MuteChatInputObject.md)|  | 
+ **mute_chat_input_object** | [**MuteChatRequest**](MuteChatRequest.md)|  | 
 
 ### Return type
 
@@ -5876,7 +5658,7 @@ Mute chats (bulk)
 
 Mute several chats by chat ids or mute all chats.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5885,11 +5667,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $mute_chats_bulk_input_object = Net::Sms::TextMagicClient::Object::MuteChatsBulkInputObject->new(); # MuteChatsBulkInputObject | 
+my $mute_chats_bulk_input_object = Net::Sms::TextMagicClient::Object::MuteChatsBulkRequest->new(); # MuteChatsBulkRequest | 
 
-eval { 
+eval {
     $api_instance->mute_chats_bulk(mute_chats_bulk_input_object => $mute_chats_bulk_input_object);
 };
 if ($@) {
@@ -5901,7 +5684,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mute_chats_bulk_input_object** | [**MuteChatsBulkInputObject**](MuteChatsBulkInputObject.md)|  | 
+ **mute_chats_bulk_input_object** | [**MuteChatsBulkRequest**](MuteChatsBulkRequest.md)|  | 
 
 ### Return type
 
@@ -5914,7 +5697,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5925,7 +5708,7 @@ Ping
 
 Make a simple ping request.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5934,10 +5717,11 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 
-eval { 
+eval {
     my $result = $api_instance->ping();
     print Dumper($result);
 };
@@ -5959,7 +5743,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5971,7 +5755,7 @@ Reopen chats (bulk)
 
 Reopen chats by chat IDs or reopen all chats
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -5980,11 +5764,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $reopen_chats_bulk_input_object = Net::Sms::TextMagicClient::Object::ReopenChatsBulkInputObject->new(); # ReopenChatsBulkInputObject | 
+my $reopen_chats_bulk_input_object = Net::Sms::TextMagicClient::Object::MarkChatsUnreadBulkRequest->new(); # MarkChatsUnreadBulkRequest | 
 
-eval { 
+eval {
     $api_instance->reopen_chats_bulk(reopen_chats_bulk_input_object => $reopen_chats_bulk_input_object);
 };
 if ($@) {
@@ -5996,7 +5781,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **reopen_chats_bulk_input_object** | [**ReopenChatsBulkInputObject**](ReopenChatsBulkInputObject.md)|  | 
+ **reopen_chats_bulk_input_object** | [**MarkChatsUnreadBulkRequest**](MarkChatsUnreadBulkRequest.md)|  | 
 
 ### Return type
 
@@ -6009,57 +5794,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **request_new_subaccount_token**
-> User request_new_subaccount_token(request_new_subaccount_token_input_object => $request_new_subaccount_token_input_object)
-
-Request a new REST API token for sub-account
-
-Returning user object, key and app name.
-
-### Example 
-```perl
-use Data::Dumper;
-use Net::Sms::TextMagicClient::TextMagicApi;
-my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
-
-    # Configure HTTP basic authorization: BasicAuth
-    username => 'YOUR_USERNAME',
-    password => 'YOUR_PASSWORD',
-);
-
-my $request_new_subaccount_token_input_object = Net::Sms::TextMagicClient::Object::RequestNewSubaccountTokenInputObject->new(); # RequestNewSubaccountTokenInputObject | 
-
-eval { 
-    my $result = $api_instance->request_new_subaccount_token(request_new_subaccount_token_input_object => $request_new_subaccount_token_input_object);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling TextMagicApi->request_new_subaccount_token: $@\n";
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **request_new_subaccount_token_input_object** | [**RequestNewSubaccountTokenInputObject**](RequestNewSubaccountTokenInputObject.md)|  | 
-
-### Return type
-
-[**User**](User.md)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6070,7 +5805,7 @@ Apply for a new Sender ID
 
 > Sender IDs are shared among all of your sub-accounts.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6079,11 +5814,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $request_sender_id_input_object = Net::Sms::TextMagicClient::Object::RequestSenderIdInputObject->new(); # RequestSenderIdInputObject | 
+my $request_sender_id_input_object = Net::Sms::TextMagicClient::Object::RequestSenderIdRequest->new(); # RequestSenderIdRequest | 
 
-eval { 
+eval {
     my $result = $api_instance->request_sender_id(request_sender_id_input_object => $request_sender_id_input_object);
     print Dumper($result);
 };
@@ -6096,7 +5832,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request_sender_id_input_object** | [**RequestSenderIdInputObject**](RequestSenderIdInputObject.md)|  | 
+ **request_sender_id_input_object** | [**RequestSenderIdRequest**](RequestSenderIdRequest.md)|  | 
 
 ### Return type
 
@@ -6120,7 +5856,7 @@ Schedule new email campaign
 
 Creates a new scheduled email campaign that will be sent at a specified time or according to a recurring schedule.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6129,11 +5865,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $schedule_email_campaign_input_object = Net::Sms::TextMagicClient::Object::ScheduleEmailCampaignInputObject->new(); # ScheduleEmailCampaignInputObject | 
+my $schedule_email_campaign_input_object = Net::Sms::TextMagicClient::Object::ScheduleEmailCampaignRequest->new(); # ScheduleEmailCampaignRequest | 
 
-eval { 
+eval {
     my $result = $api_instance->schedule_email_campaign(schedule_email_campaign_input_object => $schedule_email_campaign_input_object);
     print Dumper($result);
 };
@@ -6146,7 +5883,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **schedule_email_campaign_input_object** | [**ScheduleEmailCampaignInputObject**](ScheduleEmailCampaignInputObject.md)|  | 
+ **schedule_email_campaign_input_object** | [**ScheduleEmailCampaignRequest**](ScheduleEmailCampaignRequest.md)|  | 
 
 ### Return type
 
@@ -6168,9 +5905,7 @@ Name | Type | Description  | Notes
 
 Find chats by message text
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6179,13 +5914,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $query = 'query_example'; # string | Find chats by specified search query.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $query = "query_example"; # string | Find chats by specified search query.
 
-eval { 
+eval {
     my $result = $api_instance->search_chats(page => $page, limit => $limit, query => $query);
     print Dumper($result);
 };
@@ -6212,7 +5948,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6222,9 +5958,7 @@ Name | Type | Description  | Notes
 
 Find chats (bulk)
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6233,13 +5967,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $ids = 'ids_example'; # string | Find chats by ID(s).
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $ids = "ids_example"; # string | Find chats by ID(s).
 
-eval { 
+eval {
     my $result = $api_instance->search_chats_by_ids(page => $page, limit => $limit, ids => $ids);
     print Dumper($result);
 };
@@ -6266,7 +6001,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6278,7 +6013,7 @@ Find chats by recipient
 
 Find chats by recipient (contact, list name or phone number).
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6287,14 +6022,15 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $query = 'query_example'; # string | Find chats by specified search query.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $query = "query_example"; # string | Find chats by specified search query.
+my $order_by = 'id'; # string | Order results by some field. Default is id.
 
-eval { 
+eval {
     my $result = $api_instance->search_chats_by_receipent(page => $page, limit => $limit, query => $query, order_by => $order_by);
     print Dumper($result);
 };
@@ -6310,7 +6046,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Fetch specified results page. | [optional] [default to 1]
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **query** | **string**| Find chats by specified search query. | [optional] 
- **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to &#39;id&#39;]
 
 ### Return type
 
@@ -6322,19 +6058,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_contacts**
-> SearchContactsPaginatedResponse search_contacts(page => $page, limit => $limit, shared => $shared, ids => $ids, list_id => $list_id, include_blocked => $include_blocked, query => $query, local => $local, exact_match => $exact_match, country => $country, order_by => $order_by, direction => $direction)
+> SearchContactsPaginatedResponse search_contacts(page => $page, limit => $limit, shared => $shared, ids => $ids, list_id => $list_id, include_blocked => $include_blocked, query => $query, local => $local, exact_match => $exact_match, country => $country, order_by => $order_by, direction => $direction, tag_ids => $tag_ids)
 
 Find contacts by given criteria
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6343,23 +6077,25 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $shared = 56; # int | Should shared contacts be included?
-my $ids = 'ids_example'; # string | Find contacts by IDs.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $shared = 0; # int | Should shared contacts be included?
+my $ids = "ids_example"; # string | Find contacts by IDs.
 my $list_id = 56; # int | Find contacts by List ID.
 my $include_blocked = 56; # int | Should blocked contacts be included?
-my $query = 'query_example'; # string | Find contacts by specified search query.
-my $local = 56; # int | Treat phone number passed in the \"query\" field as local. Default is 0.
-my $exact_match = 56; # int | Return only exactly matching contacts. Default is 0.
-my $country = 'country_example'; # string | The 2-letter ISO country code for local phone numbers, used when \"local\" is set to true. Default is the account country.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
-my $direction = 'direction_example'; # string | Order direction. Default is desc.
+my $query = "query_example"; # string | Find contacts by specified search query.
+my $local = 0; # int | Treat phone number passed in the \"query\" field as local. Default is 0.
+my $exact_match = 0; # int | Return only exactly matching contacts. Default is 0.
+my $country = "country_example"; # string | The 2-letter ISO country code for local phone numbers, used when \"local\" is set to true. Default is the account country.
+my $order_by = 'id'; # string | Order results by some field. Default is id.
+my $direction = 'desc'; # string | Order direction. Default is desc.
+my $tag_ids = "tag_ids_example"; # string | Find contacts by tag ID(s). Multiple IDs can be separated by comma.
 
-eval { 
-    my $result = $api_instance->search_contacts(page => $page, limit => $limit, shared => $shared, ids => $ids, list_id => $list_id, include_blocked => $include_blocked, query => $query, local => $local, exact_match => $exact_match, country => $country, order_by => $order_by, direction => $direction);
+eval {
+    my $result = $api_instance->search_contacts(page => $page, limit => $limit, shared => $shared, ids => $ids, list_id => $list_id, include_blocked => $include_blocked, query => $query, local => $local, exact_match => $exact_match, country => $country, order_by => $order_by, direction => $direction, tag_ids => $tag_ids);
     print Dumper($result);
 };
 if ($@) {
@@ -6381,8 +6117,9 @@ Name | Type | Description  | Notes
  **local** | **int**| Treat phone number passed in the \&quot;query\&quot; field as local. Default is 0. | [optional] [default to 0]
  **exact_match** | **int**| Return only exactly matching contacts. Default is 0. | [optional] [default to 0]
  **country** | **string**| The 2-letter ISO country code for local phone numbers, used when \&quot;local\&quot; is set to true. Default is the account country. | [optional] 
- **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to &#39;id&#39;]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to &#39;desc&#39;]
+ **tag_ids** | **string**| Find contacts by tag ID(s). Multiple IDs can be separated by comma. | [optional] 
 
 ### Return type
 
@@ -6394,7 +6131,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6406,7 +6143,7 @@ Find inbound messages
 
 Find inbound messages by given parameters.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6415,17 +6152,18 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $ids = 'ids_example'; # string | Find message by ID(s).
-my $query = 'query_example'; # string | Find recipients by specified search query.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
-my $direction = 'direction_example'; # string | Order direction. Default is desc.
-my $expand = 56; # int | Expand by adding firstName, lastName and contactId.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $ids = "ids_example"; # string | Find message by ID(s).
+my $query = "query_example"; # string | Find recipients by specified search query.
+my $order_by = 'id'; # string | Order results by some field. Default is id.
+my $direction = 'desc'; # string | Order direction. Default is desc.
+my $expand = 0; # int | Expand by adding firstName, lastName and contactId.
 
-eval { 
+eval {
     my $result = $api_instance->search_inbound_messages(page => $page, limit => $limit, ids => $ids, query => $query, order_by => $order_by, direction => $direction, expand => $expand);
     print Dumper($result);
 };
@@ -6442,8 +6180,8 @@ Name | Type | Description  | Notes
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **ids** | **string**| Find message by ID(s). | [optional] 
  **query** | **string**| Find recipients by specified search query. | [optional] 
- **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to &#39;id&#39;]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to &#39;desc&#39;]
  **expand** | **int**| Expand by adding firstName, lastName and contactId. | [optional] [default to 0]
 
 ### Return type
@@ -6456,7 +6194,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6466,9 +6204,7 @@ Name | Type | Description  | Notes
 
 Find lists by given criteria
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6477,18 +6213,19 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $ids = '"1,2,3,4"'; # string | Find lists by IDs.
-my $query = '"A"'; # string | Find lists by specified search query.
-my $only_mine = 56; # int | Return only current user lists.
-my $only_default = 56; # int | Return only default lists.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
-my $direction = 'direction_example'; # string | Order direction. Default is desc.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $ids = 1,2,3,4; # string | Find lists by IDs.
+my $query = A; # string | Find lists by specified search query.
+my $only_mine = 0; # int | Return only current user lists.
+my $only_default = 0; # int | Return only default lists.
+my $order_by = 'id'; # string | Order results by some field. Default is id.
+my $direction = 'desc'; # string | Order direction. Default is desc.
 
-eval { 
+eval {
     my $result = $api_instance->search_lists(page => $page, limit => $limit, ids => $ids, query => $query, only_mine => $only_mine, only_default => $only_default, order_by => $order_by, direction => $direction);
     print Dumper($result);
 };
@@ -6507,8 +6244,8 @@ Name | Type | Description  | Notes
  **query** | **string**| Find lists by specified search query. | [optional] 
  **only_mine** | **int**| Return only current user lists. | [optional] [default to 0]
  **only_default** | **int**| Return only default lists. | [optional] [default to 0]
- **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to &#39;id&#39;]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to &#39;desc&#39;]
 
 ### Return type
 
@@ -6520,7 +6257,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6532,7 +6269,7 @@ Find messages
 
 Find outbound messages by given parameters.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6541,18 +6278,19 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
 my $last_id = 56; # int | Filter results by ID, selecting all values lesser than the specified ID. Note that the \\'page\\' parameter is ignored when \\'lastId\\' is specified.
-my $ids = 'ids_example'; # string | Find message by ID(s).
+my $ids = "ids_example"; # string | Find message by ID(s).
 my $session_id = 56; # int | Find messages by session ID.
-my $statuses = '"q"'; # string | Find messages by status.
-my $include_deleted = 56; # int | Search also in deleted messages.
-my $query = 'query_example'; # string | Find messages by specified search query.
+my $statuses = q; # string | Find messages by status.
+my $include_deleted = 0; # int | Search also in deleted messages.
+my $query = "query_example"; # string | Find messages by specified search query.
 
-eval { 
+eval {
     my $result = $api_instance->search_outbound_messages(page => $page, limit => $limit, last_id => $last_id, ids => $ids, session_id => $session_id, statuses => $statuses, include_deleted => $include_deleted, query => $query);
     print Dumper($result);
 };
@@ -6584,7 +6322,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6594,9 +6332,7 @@ Name | Type | Description  | Notes
 
 Find scheduled messages
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6605,17 +6341,18 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $query = 'query_example'; # string | Find messages by specified search query.
-my $ids = 'ids_example'; # string | Find schedules by ID(s).
-my $status = 'status_example'; # string | Fetch schedules with a specific status: a - actual, c - completed, x - all.
-my $order_by = 'order_by_example'; # string | Order results by some field. Default is id.
-my $direction = 'direction_example'; # string | Order direction. Default is desc.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $query = "query_example"; # string | Find messages by specified search query.
+my $ids = "ids_example"; # string | Find schedules by ID(s).
+my $status = 'x'; # string | Fetch schedules with a specific status: a - actual, c - completed, x - all.
+my $order_by = 'id'; # string | Order results by some field. Default is id.
+my $direction = 'desc'; # string | Order direction. Default is desc.
 
-eval { 
+eval {
     my $result = $api_instance->search_scheduled_messages(page => $page, limit => $limit, query => $query, ids => $ids, status => $status, order_by => $order_by, direction => $direction);
     print Dumper($result);
 };
@@ -6632,9 +6369,9 @@ Name | Type | Description  | Notes
  **limit** | **int**| The number of results per page. | [optional] [default to 10]
  **query** | **string**| Find messages by specified search query. | [optional] 
  **ids** | **string**| Find schedules by ID(s). | [optional] 
- **status** | **string**| Fetch schedules with a specific status: a - actual, c - completed, x - all. | [optional] [default to x]
- **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to id]
- **direction** | **string**| Order direction. Default is desc. | [optional] [default to desc]
+ **status** | **string**| Fetch schedules with a specific status: a - actual, c - completed, x - all. | [optional] [default to &#39;x&#39;]
+ **order_by** | **string**| Order results by some field. Default is id. | [optional] [default to &#39;id&#39;]
+ **direction** | **string**| Order direction. Default is desc. | [optional] [default to &#39;desc&#39;]
 
 ### Return type
 
@@ -6646,7 +6383,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6658,7 +6395,7 @@ Find templates by criteria
 
 Find user templates by given parameters.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6667,15 +6404,16 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $page = 56; # int | Fetch specified results page.
-my $limit = 56; # int | The number of results per page.
-my $ids = 'ids_example'; # string | Find template by ID(s).
-my $name = 'name_example'; # string | Find template by name.
-my $content = 'content_example'; # string | Find template by content.
+my $page = 1; # int | Fetch specified results page.
+my $limit = 10; # int | The number of results per page.
+my $ids = "ids_example"; # string | Find template by ID(s).
+my $name = "name_example"; # string | Find template by name.
+my $content = "content_example"; # string | Find template by content.
 
-eval { 
+eval {
     my $result = $api_instance->search_templates(page => $page, limit => $limit, ids => $ids, name => $name, content => $content);
     print Dumper($result);
 };
@@ -6704,7 +6442,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6716,7 +6454,7 @@ Send message
 
 This is the main entrypoint to send messages. See the examples above for the reference.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6725,11 +6463,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $send_message_input_object = Net::Sms::TextMagicClient::Object::SendMessageInputObject->new(); # SendMessageInputObject | 
+my $send_message_input_object = Net::Sms::TextMagicClient::Object::SendMessageRequest->new(); # SendMessageRequest | 
 
-eval { 
+eval {
     my $result = $api_instance->send_message(send_message_input_object => $send_message_input_object);
     print Dumper($result);
 };
@@ -6742,7 +6481,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **send_message_input_object** | [**SendMessageInputObject**](SendMessageInputObject.md)|  | 
+ **send_message_input_object** | [**SendMessageRequest**](SendMessageRequest.md)|  | 
 
 ### Return type
 
@@ -6766,7 +6505,7 @@ Change chat status
 
 Set the status of the chat given by ID.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6775,11 +6514,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $set_chat_status_input_object = Net::Sms::TextMagicClient::Object::SetChatStatusInputObject->new(); # SetChatStatusInputObject | 
+my $set_chat_status_input_object = Net::Sms::TextMagicClient::Object::SetChatStatusRequest->new(); # SetChatStatusRequest | 
 
-eval { 
+eval {
     my $result = $api_instance->set_chat_status(set_chat_status_input_object => $set_chat_status_input_object);
     print Dumper($result);
 };
@@ -6792,7 +6532,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **set_chat_status_input_object** | [**SetChatStatusInputObject**](SetChatStatusInputObject.md)|  | 
+ **set_chat_status_input_object** | [**SetChatStatusRequest**](SetChatStatusRequest.md)|  | 
 
 ### Return type
 
@@ -6816,7 +6556,7 @@ Unblock a contact by phone number
 
 Unblock a contact by phone number
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6825,11 +6565,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $unblock_contact_input_object = Net::Sms::TextMagicClient::Object::UnblockContactInputObject->new(); # UnblockContactInputObject | 
+my $unblock_contact_input_object = Net::Sms::TextMagicClient::Object::BlockContactRequest->new(); # BlockContactRequest | 
 
-eval { 
+eval {
     $api_instance->unblock_contact(unblock_contact_input_object => $unblock_contact_input_object);
 };
 if ($@) {
@@ -6841,7 +6582,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unblock_contact_input_object** | [**UnblockContactInputObject**](UnblockContactInputObject.md)|  | 
+ **unblock_contact_input_object** | [**BlockContactRequest**](BlockContactRequest.md)|  | 
 
 ### Return type
 
@@ -6854,7 +6595,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6865,7 +6606,7 @@ Unblock contacts (bulk)
 
 Unblock several contacts by blocked contact IDs or unblock all contacts.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6874,11 +6615,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $unblock_contacts_bulk_input_object = Net::Sms::TextMagicClient::Object::UnblockContactsBulkInputObject->new(); # UnblockContactsBulkInputObject | 
+my $unblock_contacts_bulk_input_object = Net::Sms::TextMagicClient::Object::UnblockContactsBulkRequest->new(); # UnblockContactsBulkRequest | 
 
-eval { 
+eval {
     $api_instance->unblock_contacts_bulk(unblock_contacts_bulk_input_object => $unblock_contacts_bulk_input_object);
 };
 if ($@) {
@@ -6890,7 +6632,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unblock_contacts_bulk_input_object** | [**UnblockContactsBulkInputObject**](UnblockContactsBulkInputObject.md)|  | 
+ **unblock_contacts_bulk_input_object** | [**UnblockContactsBulkRequest**](UnblockContactsBulkRequest.md)|  | 
 
 ### Return type
 
@@ -6903,7 +6645,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6914,7 +6656,7 @@ Unmute chats (bulk)
 
 Unmute several chats by chat ids or unmute all chats.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6923,11 +6665,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $unmute_chats_bulk_input_object = Net::Sms::TextMagicClient::Object::UnmuteChatsBulkInputObject->new(); # UnmuteChatsBulkInputObject | 
+my $unmute_chats_bulk_input_object = Net::Sms::TextMagicClient::Object::UnmuteChatsBulkRequest->new(); # UnmuteChatsBulkRequest | 
 
-eval { 
+eval {
     $api_instance->unmute_chats_bulk(unmute_chats_bulk_input_object => $unmute_chats_bulk_input_object);
 };
 if ($@) {
@@ -6939,7 +6682,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unmute_chats_bulk_input_object** | [**UnmuteChatsBulkInputObject**](UnmuteChatsBulkInputObject.md)|  | 
+ **unmute_chats_bulk_input_object** | [**UnmuteChatsBulkRequest**](UnmuteChatsBulkRequest.md)|  | 
 
 ### Return type
 
@@ -6952,7 +6695,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6963,7 +6706,7 @@ Manually unsubscribe a contact
 
 > Please note, if you unsubscribe a contact, this action cannot be reversed. 
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -6972,11 +6715,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $unsubscribe_contact_input_object = Net::Sms::TextMagicClient::Object::UnsubscribeContactInputObject->new(); # UnsubscribeContactInputObject | 
+my $unsubscribe_contact_input_object = Net::Sms::TextMagicClient::Object::UnsubscribeContactRequest->new(); # UnsubscribeContactRequest | 
 
-eval { 
+eval {
     my $result = $api_instance->unsubscribe_contact(unsubscribe_contact_input_object => $unsubscribe_contact_input_object);
     print Dumper($result);
 };
@@ -6989,7 +6733,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unsubscribe_contact_input_object** | [**UnsubscribeContactInputObject**](UnsubscribeContactInputObject.md)|  | 
+ **unsubscribe_contact_input_object** | [**UnsubscribeContactRequest**](UnsubscribeContactRequest.md)|  | 
 
 ### Return type
 
@@ -7011,9 +6755,7 @@ Name | Type | Description  | Notes
 
 Update balance notification settings
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7022,11 +6764,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $update_balance_notification_settings_input_object = Net::Sms::TextMagicClient::Object::UpdateBalanceNotificationSettingsInputObject->new(); # UpdateBalanceNotificationSettingsInputObject | 
+my $update_balance_notification_settings_input_object = Net::Sms::TextMagicClient::Object::UpdateBalanceNotificationSettingsRequest->new(); # UpdateBalanceNotificationSettingsRequest | 
 
-eval { 
+eval {
     $api_instance->update_balance_notification_settings(update_balance_notification_settings_input_object => $update_balance_notification_settings_input_object);
 };
 if ($@) {
@@ -7038,7 +6781,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **update_balance_notification_settings_input_object** | [**UpdateBalanceNotificationSettingsInputObject**](UpdateBalanceNotificationSettingsInputObject.md)|  | 
+ **update_balance_notification_settings_input_object** | [**UpdateBalanceNotificationSettingsRequest**](UpdateBalanceNotificationSettingsRequest.md)|  | 
 
 ### Return type
 
@@ -7051,7 +6794,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7060,9 +6803,7 @@ void (empty response body)
 
 Update callback URL settings
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7071,11 +6812,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $update_callback_settings_input_object = Net::Sms::TextMagicClient::Object::UpdateCallbackSettingsInputObject->new(); # UpdateCallbackSettingsInputObject | 
+my $update_callback_settings_input_object = Net::Sms::TextMagicClient::Object::UpdateCallbackSettingsRequest->new(); # UpdateCallbackSettingsRequest | 
 
-eval { 
+eval {
     $api_instance->update_callback_settings(update_callback_settings_input_object => $update_callback_settings_input_object);
 };
 if ($@) {
@@ -7087,7 +6829,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **update_callback_settings_input_object** | [**UpdateCallbackSettingsInputObject**](UpdateCallbackSettingsInputObject.md)|  | 
+ **update_callback_settings_input_object** | [**UpdateCallbackSettingsRequest**](UpdateCallbackSettingsRequest.md)|  | 
 
 ### Return type
 
@@ -7109,9 +6851,7 @@ void (empty response body)
 
 Update chat desktop notification settings
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7120,11 +6860,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $update_chat_desktop_notification_settings_input_object = Net::Sms::TextMagicClient::Object::UpdateChatDesktopNotificationSettingsInputObject->new(); # UpdateChatDesktopNotificationSettingsInputObject | 
+my $update_chat_desktop_notification_settings_input_object = Net::Sms::TextMagicClient::Object::UpdateChatDesktopNotificationSettingsRequest->new(); # UpdateChatDesktopNotificationSettingsRequest | 
 
-eval { 
+eval {
     $api_instance->update_chat_desktop_notification_settings(update_chat_desktop_notification_settings_input_object => $update_chat_desktop_notification_settings_input_object);
 };
 if ($@) {
@@ -7136,7 +6877,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **update_chat_desktop_notification_settings_input_object** | [**UpdateChatDesktopNotificationSettingsInputObject**](UpdateChatDesktopNotificationSettingsInputObject.md)|  | 
+ **update_chat_desktop_notification_settings_input_object** | [**UpdateChatDesktopNotificationSettingsRequest**](UpdateChatDesktopNotificationSettingsRequest.md)|  | 
 
 ### Return type
 
@@ -7154,13 +6895,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_contact**
-> ResourceLinkResponse update_contact(update_contact_input_object => $update_contact_input_object, id => $id)
+> ResourceLinkResponse update_contact(id => $id, update_contact_input_object => $update_contact_input_object)
 
 Edit a contact
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7169,13 +6908,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $update_contact_input_object = Net::Sms::TextMagicClient::Object::UpdateContactInputObject->new(); # UpdateContactInputObject | 
 my $id = 1; # int | 
+my $update_contact_input_object = Net::Sms::TextMagicClient::Object::UpdateContactRequest->new(); # UpdateContactRequest | 
 
-eval { 
-    my $result = $api_instance->update_contact(update_contact_input_object => $update_contact_input_object, id => $id);
+eval {
+    my $result = $api_instance->update_contact(id => $id, update_contact_input_object => $update_contact_input_object);
     print Dumper($result);
 };
 if ($@) {
@@ -7187,8 +6927,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **update_contact_input_object** | [**UpdateContactInputObject**](UpdateContactInputObject.md)|  | 
  **id** | **int**|  | 
+ **update_contact_input_object** | [**UpdateContactRequest**](UpdateContactRequest.md)|  | 
 
 ### Return type
 
@@ -7206,13 +6946,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_contact_note**
-> ResourceLinkResponse update_contact_note(update_contact_note_input_object => $update_contact_note_input_object, id => $id)
+> ResourceLinkResponse update_contact_note(id => $id, update_contact_note_input_object => $update_contact_note_input_object)
 
 Update a contact note
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7221,13 +6959,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $update_contact_note_input_object = Net::Sms::TextMagicClient::Object::UpdateContactNoteInputObject->new(); # UpdateContactNoteInputObject | 
 my $id = 1; # int | 
+my $update_contact_note_input_object = Net::Sms::TextMagicClient::Object::UpdateContactNoteRequest->new(); # UpdateContactNoteRequest | 
 
-eval { 
-    my $result = $api_instance->update_contact_note(update_contact_note_input_object => $update_contact_note_input_object, id => $id);
+eval {
+    my $result = $api_instance->update_contact_note(id => $id, update_contact_note_input_object => $update_contact_note_input_object);
     print Dumper($result);
 };
 if ($@) {
@@ -7239,8 +6978,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **update_contact_note_input_object** | [**UpdateContactNoteInputObject**](UpdateContactNoteInputObject.md)|  | 
  **id** | **int**|  | 
+ **update_contact_note_input_object** | [**UpdateContactNoteRequest**](UpdateContactNoteRequest.md)|  | 
 
 ### Return type
 
@@ -7262,9 +7001,7 @@ Name | Type | Description  | Notes
 
 Edit current account info
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7273,11 +7010,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $update_current_user_input_object = Net::Sms::TextMagicClient::Object::UpdateCurrentUserInputObject->new(); # UpdateCurrentUserInputObject | 
+my $update_current_user_input_object = Net::Sms::TextMagicClient::Object::UpdateCurrentUserRequest->new(); # UpdateCurrentUserRequest | 
 
-eval { 
+eval {
     my $result = $api_instance->update_current_user(update_current_user_input_object => $update_current_user_input_object);
     print Dumper($result);
 };
@@ -7290,7 +7028,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **update_current_user_input_object** | [**UpdateCurrentUserInputObject**](UpdateCurrentUserInputObject.md)|  | 
+ **update_current_user_input_object** | [**UpdateCurrentUserRequest**](UpdateCurrentUserRequest.md)|  | 
 
 ### Return type
 
@@ -7308,13 +7046,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_custom_field**
-> ResourceLinkResponse update_custom_field(update_custom_field_input_object => $update_custom_field_input_object, id => $id)
+> ResourceLinkResponse update_custom_field(id => $id, update_custom_field_input_object => $update_custom_field_input_object)
 
 Edit a custom field
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7323,13 +7059,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $update_custom_field_input_object = Net::Sms::TextMagicClient::Object::UpdateCustomFieldInputObject->new(); # UpdateCustomFieldInputObject | 
 my $id = 1; # int | 
+my $update_custom_field_input_object = Net::Sms::TextMagicClient::Object::CreateCustomFieldRequest->new(); # CreateCustomFieldRequest | 
 
-eval { 
-    my $result = $api_instance->update_custom_field(update_custom_field_input_object => $update_custom_field_input_object, id => $id);
+eval {
+    my $result = $api_instance->update_custom_field(id => $id, update_custom_field_input_object => $update_custom_field_input_object);
     print Dumper($result);
 };
 if ($@) {
@@ -7341,8 +7078,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **update_custom_field_input_object** | [**UpdateCustomFieldInputObject**](UpdateCustomFieldInputObject.md)|  | 
  **id** | **int**|  | 
+ **update_custom_field_input_object** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)|  | 
 
 ### Return type
 
@@ -7360,13 +7097,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_custom_field_value**
-> ResourceLinkResponse update_custom_field_value(update_custom_field_value_input_object => $update_custom_field_value_input_object, id => $id)
+> ResourceLinkResponse update_custom_field_value(id => $id, update_custom_field_value_input_object => $update_custom_field_value_input_object)
 
 Edit the custom field value of a specified contact
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7375,13 +7110,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $update_custom_field_value_input_object = Net::Sms::TextMagicClient::Object::UpdateCustomFieldValueInputObject->new(); # UpdateCustomFieldValueInputObject | 
 my $id = 554; # int | 
+my $update_custom_field_value_input_object = Net::Sms::TextMagicClient::Object::UpdateCustomFieldValueRequest->new(); # UpdateCustomFieldValueRequest | 
 
-eval { 
-    my $result = $api_instance->update_custom_field_value(update_custom_field_value_input_object => $update_custom_field_value_input_object, id => $id);
+eval {
+    my $result = $api_instance->update_custom_field_value(id => $id, update_custom_field_value_input_object => $update_custom_field_value_input_object);
     print Dumper($result);
 };
 if ($@) {
@@ -7393,8 +7129,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **update_custom_field_value_input_object** | [**UpdateCustomFieldValueInputObject**](UpdateCustomFieldValueInputObject.md)|  | 
  **id** | **int**|  | 
+ **update_custom_field_value_input_object** | [**UpdateCustomFieldValueRequest**](UpdateCustomFieldValueRequest.md)|  | 
 
 ### Return type
 
@@ -7416,9 +7152,7 @@ Name | Type | Description  | Notes
 
 Update inbound messages notification settings
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7427,11 +7161,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $update_inbound_messages_notification_settings_input_object = Net::Sms::TextMagicClient::Object::UpdateInboundMessagesNotificationSettingsInputObject->new(); # UpdateInboundMessagesNotificationSettingsInputObject | 
+my $update_inbound_messages_notification_settings_input_object = Net::Sms::TextMagicClient::Object::UpdateInboundMessagesNotificationSettingsRequest->new(); # UpdateInboundMessagesNotificationSettingsRequest | 
 
-eval { 
+eval {
     $api_instance->update_inbound_messages_notification_settings(update_inbound_messages_notification_settings_input_object => $update_inbound_messages_notification_settings_input_object);
 };
 if ($@) {
@@ -7443,7 +7178,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **update_inbound_messages_notification_settings_input_object** | [**UpdateInboundMessagesNotificationSettingsInputObject**](UpdateInboundMessagesNotificationSettingsInputObject.md)|  | 
+ **update_inbound_messages_notification_settings_input_object** | [**UpdateInboundMessagesNotificationSettingsRequest**](UpdateInboundMessagesNotificationSettingsRequest.md)|  | 
 
 ### Return type
 
@@ -7456,7 +7191,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7465,9 +7200,7 @@ void (empty response body)
 
 Edit a list
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7476,12 +7209,13 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
 my $id = 1; # int | 
-my $update_list_object = Net::Sms::TextMagicClient::Object::UpdateListObject->new(); # UpdateListObject | 
+my $update_list_object = Net::Sms::TextMagicClient::Object::UpdateListRequest->new(); # UpdateListRequest | 
 
-eval { 
+eval {
     my $result = $api_instance->update_list(id => $id, update_list_object => $update_list_object);
     print Dumper($result);
 };
@@ -7495,7 +7229,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **update_list_object** | [**UpdateListObject**](UpdateListObject.md)|  | [optional] 
+ **update_list_object** | [**UpdateListRequest**](UpdateListRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -7517,9 +7251,7 @@ Name | Type | Description  | Notes
 
 Change sender settings
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7528,11 +7260,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $update_sender_setting_input_object = Net::Sms::TextMagicClient::Object::UpdateSenderSettingInputObject->new(); # UpdateSenderSettingInputObject | 
+my $update_sender_setting_input_object = Net::Sms::TextMagicClient::Object::UpdateSenderSettingRequest->new(); # UpdateSenderSettingRequest | 
 
-eval { 
+eval {
     $api_instance->update_sender_setting(update_sender_setting_input_object => $update_sender_setting_input_object);
 };
 if ($@) {
@@ -7544,7 +7277,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **update_sender_setting_input_object** | [**UpdateSenderSettingInputObject**](UpdateSenderSettingInputObject.md)|  | 
+ **update_sender_setting_input_object** | [**UpdateSenderSettingRequest**](UpdateSenderSettingRequest.md)|  | 
 
 ### Return type
 
@@ -7557,18 +7290,16 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_template**
-> ResourceLinkResponse update_template(update_template_input_object => $update_template_input_object, id => $id)
+> ResourceLinkResponse update_template(id => $id, update_template_input_object => $update_template_input_object)
 
 Update a template
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7577,13 +7308,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $update_template_input_object = Net::Sms::TextMagicClient::Object::UpdateTemplateInputObject->new(); # UpdateTemplateInputObject | 
 my $id = 1; # int | 
+my $update_template_input_object = Net::Sms::TextMagicClient::Object::CreateTemplateRequest->new(); # CreateTemplateRequest | 
 
-eval { 
-    my $result = $api_instance->update_template(update_template_input_object => $update_template_input_object, id => $id);
+eval {
+    my $result = $api_instance->update_template(id => $id, update_template_input_object => $update_template_input_object);
     print Dumper($result);
 };
 if ($@) {
@@ -7595,8 +7327,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **update_template_input_object** | [**UpdateTemplateInputObject**](UpdateTemplateInputObject.md)|  | 
  **id** | **int**|  | 
+ **update_template_input_object** | [**CreateTemplateRequest**](CreateTemplateRequest.md)|  | 
 
 ### Return type
 
@@ -7618,9 +7350,7 @@ Name | Type | Description  | Notes
 
 Upload an avatar
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7629,11 +7359,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $image = '/path/to/file.txt'; # File | User avatar. Should be a PNG or JPG file not more than 10 MB.
+my $image = "/path/to/file"; # string | User avatar. Should be a PNG or JPG file not more than 10 MB.
 
-eval { 
+eval {
     $api_instance->upload_avatar(image => $image);
 };
 if ($@) {
@@ -7645,7 +7376,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **image** | **File**| User avatar. Should be a PNG or JPG file not more than 10 MB. | 
+ **image** | **string****string**| User avatar. Should be a PNG or JPG file not more than 10 MB. | 
 
 ### Return type
 
@@ -7663,13 +7394,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_contact_avatar**
-> ResourceLinkResponse upload_contact_avatar(image => $image, id => $id)
+> ResourceLinkResponse upload_contact_avatar(id => $id, image => $image)
 
 Upload an avatar
 
-
-
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7678,13 +7407,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $image = '/path/to/file.txt'; # File | Contact avatar. Should be a PNG or JPG file not more than 10 MB.
 my $id = 1; # int | 
+my $image = "/path/to/file"; # string | Contact avatar. Should be a PNG or JPG file not more than 10 MB.
 
-eval { 
-    my $result = $api_instance->upload_contact_avatar(image => $image, id => $id);
+eval {
+    my $result = $api_instance->upload_contact_avatar(id => $id, image => $image);
     print Dumper($result);
 };
 if ($@) {
@@ -7696,8 +7426,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **image** | **File**| Contact avatar. Should be a PNG or JPG file not more than 10 MB. | 
  **id** | **int**|  | 
+ **image** | **string****string**| Contact avatar. Should be a PNG or JPG file not more than 10 MB. | 
 
 ### Return type
 
@@ -7715,13 +7445,13 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_list_avatar**
-> ResourceLinkResponse upload_list_avatar(image => $image, id => $id)
+> ResourceLinkResponse upload_list_avatar(id => $id, image => $image)
 
 Add an avatar for a list
 
 Add an avatar for a list
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7730,13 +7460,14 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $image = '/path/to/file.txt'; # File | List avatar. Should be a PNG or JPG file not more than 10 MB.
 my $id = 1; # int | 
+my $image = "/path/to/file"; # string | List avatar. Should be a PNG or JPG file not more than 10 MB.
 
-eval { 
-    my $result = $api_instance->upload_list_avatar(image => $image, id => $id);
+eval {
+    my $result = $api_instance->upload_list_avatar(id => $id, image => $image);
     print Dumper($result);
 };
 if ($@) {
@@ -7748,8 +7479,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **image** | **File**| List avatar. Should be a PNG or JPG file not more than 10 MB. | 
  **id** | **int**|  | 
+ **image** | **string****string**| List avatar. Should be a PNG or JPG file not more than 10 MB. | 
 
 ### Return type
 
@@ -7773,7 +7504,7 @@ Upload message attachment
 
 Upload a new file to insert it as a link.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7782,11 +7513,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $file = '/path/to/file.txt'; # File | Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx & .vcf file formats.
+my $file = "/path/to/file"; # string | Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx & .vcf file formats.
 
-eval { 
+eval {
     my $result = $api_instance->upload_message_attachment(file => $file);
     print Dumper($result);
 };
@@ -7799,7 +7531,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **File**| Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats. | 
+ **file** | **string****string**| Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats. | 
 
 ### Return type
 
@@ -7823,7 +7555,7 @@ Upload message mms attachment
 
 Upload a new file to mms.
 
-### Example 
+### Example
 ```perl
 use Data::Dumper;
 use Net::Sms::TextMagicClient::TextMagicApi;
@@ -7832,11 +7564,12 @@ my $api_instance = Net::Sms::TextMagicClient::TextMagicApi->new(
     # Configure HTTP basic authorization: BasicAuth
     username => 'YOUR_USERNAME',
     password => 'YOUR_PASSWORD',
+    
 );
 
-my $file = '/path/to/file.txt'; # File | Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx & .vcf file formats.
+my $file = "/path/to/file"; # string | Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx & .vcf file formats.
 
-eval { 
+eval {
     my $result = $api_instance->upload_message_mms_attachment(file => $file);
     print Dumper($result);
 };
@@ -7849,7 +7582,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **File**| Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats. | 
+ **file** | **string****string**| Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats. | 
 
 ### Return type
 

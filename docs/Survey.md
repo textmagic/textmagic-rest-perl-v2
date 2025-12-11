@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **id** | **int** |  | 
 **name** | **string** |  | 
 **status** | **string** |  | 
-**created_at** | **DateTime** |  | 
-**updated_at** | **DateTime** |  | 
+**created_at** | **DATE_TIME** |  | 
+**updated_at** | **DATE_TIME** |  | 
 **receipents** | [**ARRAY[SurveyRecipient]**](SurveyRecipient.md) |  | [optional] 
 **countries** | [**ARRAY[SurveySenderCountries]**](SurveySenderCountries.md) |  | [optional] 
 

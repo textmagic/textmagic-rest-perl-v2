@@ -9,7 +9,7 @@ use Net::Sms::TextMagicClient::Object::OutboundEmailResponse;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Outbound email ID. | 
-**send_time** | **DateTime** | Email send timestamp. | 
+**send_time** | **DATE_TIME** | Email send timestamp. | 
 **from_name** | **string** | Sender name. | [optional] 
 **from_email** | **string** | Sender email address. | 
 **reply_to_email** | **string** | Reply-to email address. | 

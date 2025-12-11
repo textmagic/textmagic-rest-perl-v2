@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | 
 **direction** | **string** | Message type: inbound or outbound.  | 
 **sender** | **string** | Sender phone number. | 
-**message_time** | **DateTime** | Time when  the message arrived at Textmagic. | 
+**message_time** | **DATE_TIME** | Time when  the message arrived at Textmagic. | 
 **text** | **string** | Message text. | 
 **receiver** | **string** | Receiver&#39;s phone number. | 
 **status** | **string** | Message status (for chats outbound only). See [message delivery statuses](https://docs.textmagic.com/#section/Delivery-status-codes) for details. | 

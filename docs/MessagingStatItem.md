@@ -9,7 +9,7 @@ use Net::Sms::TextMagicClient::Object::MessagingStatItem;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reply_rate** | **double** | The number of incoming messages divided by the number of total messages. | 
-**date** | **DateTime** | Time interval start: empty if the **by** parameter was set to **off**.  | 
+**date** | **DATE_TIME** | Time interval start: empty if the **by** parameter was set to **off**.  | 
 **delivery_rate** | **double** | Message delivery rate:the number of delivered messages divided by the number of total messages. | 
 **costs** | **double** | Cost for sent messages during this period. The costs are in the [Account](https://docs.textmagic.com/#tag/User) currency.  | 
 **messages_received** | **int** | Total received messages count. | 

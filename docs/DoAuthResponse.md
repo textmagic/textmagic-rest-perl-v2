@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **username** | **string** |  | 
 **token** | **string** |  | 
-**expires** | **DateTime** |  | 
+**expires** | **DATE_TIME** |  | 
 **min_versions** | [**DoAuthResponseMinVersions**](DoAuthResponseMinVersions.md) |  | 
 **disallowed_rules** | **ARRAY[string]** |  | 
 

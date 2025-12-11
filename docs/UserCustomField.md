@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Custom field ID. | 
 **name** | **string** | Custom field name. | 
-**created_at** | **DateTime** | Custom field creation time. | 
+**created_at** | **DATE_TIME** | Custom field creation time. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

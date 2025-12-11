@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **reject_reason** | **string** | Rejection reason. | [optional] 
 **contact_id** | **int** | Recipient contact ID. | 
 **session_id** | **int** | Message Session ID of a message. | 
-**message_time** | **DateTime** | Sending time. | 
+**message_time** | **DATE_TIME** | Sending time. | 
 **avatar** | **string** |  | 
 **deleted** | **boolean** | Indicates that the message has been deleted. | [optional] 
 **charset** | **string** | Message charset. Could be: *   **ISO-8859-1** for plaintext SMS; *   **UTF-16BE** for Unicode SMS.  | 
