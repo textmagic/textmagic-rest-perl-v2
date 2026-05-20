@@ -604,6 +604,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'web_widget_created' => {
+        datatype => 'int',
+        base_name => 'webWidgetCreated',
+        description => '',
+        format => '',
+        read_only => '',
+            },
     'contact_added' => {
         datatype => 'int',
         base_name => 'contactAdded',
@@ -1549,6 +1556,90 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'toll_free_pre_fill_completed' => {
+        datatype => 'int',
+        base_name => 'tollFreePreFillCompleted',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'toll_free_pre_fill_failed' => {
+        datatype => 'int',
+        base_name => 'tollFreePreFillFailed',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'toll_free_compliance_check_completed' => {
+        datatype => 'int',
+        base_name => 'tollFreeComplianceCheckCompleted',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'toll_free_compliance_check_failed' => {
+        datatype => 'int',
+        base_name => 'tollFreeComplianceCheckFailed',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'ten_dlc_pre_fill_completed' => {
+        datatype => 'int',
+        base_name => 'tenDlcPreFillCompleted',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'ten_dlc_pre_fill_failed' => {
+        datatype => 'int',
+        base_name => 'tenDlcPreFillFailed',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'ten_dlc_compliance_check_completed' => {
+        datatype => 'int',
+        base_name => 'tenDlcComplianceCheckCompleted',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'ten_dlc_compliance_check_failed' => {
+        datatype => 'int',
+        base_name => 'tenDlcComplianceCheckFailed',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'marketing_data_modal_changed' => {
+        datatype => 'int',
+        base_name => 'marketingDataModalChanged',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'integration_status_changed' => {
+        datatype => 'int',
+        base_name => 'integrationStatusChanged',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'integration_customer_sync_progress_state' => {
+        datatype => 'int',
+        base_name => 'integrationCustomerSyncProgressState',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'integration_customer_sync_end' => {
+        datatype => 'int',
+        base_name => 'integrationCustomerSyncEnd',
+        description => '',
+        format => '',
+        read_only => '',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -1607,6 +1698,7 @@ __PACKAGE__->openapi_types( {
     'live_chat_rated' => 'int',
     'web_widget_updated' => 'int',
     'web_widget_deleted' => 'int',
+    'web_widget_created' => 'int',
     'contact_added' => 'int',
     'contact_deleted' => 'int',
     'contact_bulk_updated' => 'int',
@@ -1741,7 +1833,19 @@ __PACKAGE__->openapi_types( {
     'scheduled_email_campaign_deleted' => 'int',
     'email_campaign_failed_attempt_created' => 'int',
     'email_campaign_failed_attempt_deleted' => 'int',
-    'email_campaign_failed_attempt_state_updated' => 'int'
+    'email_campaign_failed_attempt_state_updated' => 'int',
+    'toll_free_pre_fill_completed' => 'int',
+    'toll_free_pre_fill_failed' => 'int',
+    'toll_free_compliance_check_completed' => 'int',
+    'toll_free_compliance_check_failed' => 'int',
+    'ten_dlc_pre_fill_completed' => 'int',
+    'ten_dlc_pre_fill_failed' => 'int',
+    'ten_dlc_compliance_check_completed' => 'int',
+    'ten_dlc_compliance_check_failed' => 'int',
+    'marketing_data_modal_changed' => 'int',
+    'integration_status_changed' => 'int',
+    'integration_customer_sync_progress_state' => 'int',
+    'integration_customer_sync_end' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -1800,6 +1904,7 @@ __PACKAGE__->attribute_map( {
     'live_chat_rated' => 'liveChatRated',
     'web_widget_updated' => 'webWidgetUpdated',
     'web_widget_deleted' => 'webWidgetDeleted',
+    'web_widget_created' => 'webWidgetCreated',
     'contact_added' => 'contactAdded',
     'contact_deleted' => 'contactDeleted',
     'contact_bulk_updated' => 'contactBulkUpdated',
@@ -1934,7 +2039,19 @@ __PACKAGE__->attribute_map( {
     'scheduled_email_campaign_deleted' => 'scheduledEmailCampaignDeleted',
     'email_campaign_failed_attempt_created' => 'emailCampaignFailedAttemptCreated',
     'email_campaign_failed_attempt_deleted' => 'emailCampaignFailedAttemptDeleted',
-    'email_campaign_failed_attempt_state_updated' => 'emailCampaignFailedAttemptStateUpdated'
+    'email_campaign_failed_attempt_state_updated' => 'emailCampaignFailedAttemptStateUpdated',
+    'toll_free_pre_fill_completed' => 'tollFreePreFillCompleted',
+    'toll_free_pre_fill_failed' => 'tollFreePreFillFailed',
+    'toll_free_compliance_check_completed' => 'tollFreeComplianceCheckCompleted',
+    'toll_free_compliance_check_failed' => 'tollFreeComplianceCheckFailed',
+    'ten_dlc_pre_fill_completed' => 'tenDlcPreFillCompleted',
+    'ten_dlc_pre_fill_failed' => 'tenDlcPreFillFailed',
+    'ten_dlc_compliance_check_completed' => 'tenDlcComplianceCheckCompleted',
+    'ten_dlc_compliance_check_failed' => 'tenDlcComplianceCheckFailed',
+    'marketing_data_modal_changed' => 'marketingDataModalChanged',
+    'integration_status_changed' => 'integrationStatusChanged',
+    'integration_customer_sync_progress_state' => 'integrationCustomerSyncProgressState',
+    'integration_customer_sync_end' => 'integrationCustomerSyncEnd'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

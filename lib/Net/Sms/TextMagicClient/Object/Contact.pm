@@ -34,6 +34,7 @@ use Net::Sms::TextMagicClient::Object::ContactImage;
 use Net::Sms::TextMagicClient::Object::ContactNote;
 use Net::Sms::TextMagicClient::Object::Country;
 use Net::Sms::TextMagicClient::Object::CustomFieldListItem;
+use Net::Sms::TextMagicClient::Object::CustomFieldValues;
 use Net::Sms::TextMagicClient::Object::List;
 use Net::Sms::TextMagicClient::Object::Tag;
 use Net::Sms::TextMagicClient::Object::User;
@@ -296,6 +297,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'custom_field_values' => {
+        datatype => 'ARRAY[CustomFieldValues]',
+        base_name => 'customFieldValues',
+        description => '',
+        format => '',
+        read_only => '',
+            },
     'user' => {
         datatype => 'User',
         base_name => 'user',
@@ -365,6 +373,7 @@ __PACKAGE__->openapi_types( {
     'email' => 'string',
     'country' => 'Country',
     'custom_fields' => 'ARRAY[CustomFieldListItem]',
+    'custom_field_values' => 'ARRAY[CustomFieldValues]',
     'user' => 'User',
     'lists' => 'ARRAY[List]',
     'owner' => 'User',
@@ -386,6 +395,7 @@ __PACKAGE__->attribute_map( {
     'email' => 'email',
     'country' => 'country',
     'custom_fields' => 'customFields',
+    'custom_field_values' => 'customFieldValues',
     'user' => 'user',
     'lists' => 'lists',
     'owner' => 'owner',

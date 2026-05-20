@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 bin/autodoc
@@ -31,6 +30,7 @@ docs/CreateTagResponse.md
 docs/CreateTemplateRequest.md
 docs/Currency.md
 docs/CustomFieldListItem.md
+docs/CustomFieldValues.md
 docs/DeleteChatMessagesRequest.md
 docs/DeleteChatsBulkRequest.md
 docs/DeleteContactNotesBulkRequest.md
@@ -115,6 +115,7 @@ docs/MessagingStatItem.md
 docs/MuteChatRequest.md
 docs/MuteChatsBulkRequest.md
 docs/NotFoundResponse.md
+docs/NullableUserPersonalInfo.md
 docs/OutboundEmailResponse.md
 docs/PingResponse.md
 docs/PushToken.md
@@ -203,6 +204,7 @@ lib/Net/Sms/TextMagicClient/Object/CreateTagResponse.pm
 lib/Net/Sms/TextMagicClient/Object/CreateTemplateRequest.pm
 lib/Net/Sms/TextMagicClient/Object/Currency.pm
 lib/Net/Sms/TextMagicClient/Object/CustomFieldListItem.pm
+lib/Net/Sms/TextMagicClient/Object/CustomFieldValues.pm
 lib/Net/Sms/TextMagicClient/Object/DeleteChatMessagesRequest.pm
 lib/Net/Sms/TextMagicClient/Object/DeleteChatsBulkRequest.pm
 lib/Net/Sms/TextMagicClient/Object/DeleteContactNotesBulkRequest.pm
@@ -287,6 +289,7 @@ lib/Net/Sms/TextMagicClient/Object/MessagingStatItem.pm
 lib/Net/Sms/TextMagicClient/Object/MuteChatRequest.pm
 lib/Net/Sms/TextMagicClient/Object/MuteChatsBulkRequest.pm
 lib/Net/Sms/TextMagicClient/Object/NotFoundResponse.pm
+lib/Net/Sms/TextMagicClient/Object/NullableUserPersonalInfo.pm
 lib/Net/Sms/TextMagicClient/Object/OutboundEmailResponse.pm
 lib/Net/Sms/TextMagicClient/Object/PingResponse.pm
 lib/Net/Sms/TextMagicClient/Object/PushToken.pm

@@ -63,6 +63,7 @@ Name | Type | Description | Notes
 **live_chat_rated** | **int** |  | 
 **web_widget_updated** | **int** |  | 
 **web_widget_deleted** | **int** |  | 
+**web_widget_created** | **int** |  | 
 **contact_added** | **int** |  | 
 **contact_deleted** | **int** |  | 
 **contact_bulk_updated** | **int** |  | 
@@ -198,6 +199,18 @@ Name | Type | Description | Notes
 **email_campaign_failed_attempt_created** | **int** |  | 
 **email_campaign_failed_attempt_deleted** | **int** |  | 
 **email_campaign_failed_attempt_state_updated** | **int** |  | 
+**toll_free_pre_fill_completed** | **int** |  | 
+**toll_free_pre_fill_failed** | **int** |  | 
+**toll_free_compliance_check_completed** | **int** |  | 
+**toll_free_compliance_check_failed** | **int** |  | 
+**ten_dlc_pre_fill_completed** | **int** |  | 
+**ten_dlc_pre_fill_failed** | **int** |  | 
+**ten_dlc_compliance_check_completed** | **int** |  | 
+**ten_dlc_compliance_check_failed** | **int** |  | 
+**marketing_data_modal_changed** | **int** |  | 
+**integration_status_changed** | **int** |  | 
+**integration_customer_sync_progress_state** | **int** |  | 
+**integration_customer_sync_end** | **int** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

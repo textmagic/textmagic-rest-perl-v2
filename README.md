@@ -63,10 +63,10 @@ if ($@) {
 
 ```bash
 # Download and extract
-wget https://github.com/textmagic/textmagic-rest-perl-v2/archive/v3.0.43909.tar.gz
-tar zxf v3.0.43909.tar.gz
-rm -f v3.0.43909.tar.gz
-cd textmagic-rest-perl-v2-3.0.43909
+wget https://github.com/textmagic/textmagic-rest-perl-v2/archive/v3.0.50030.tar.gz
+tar zxf v3.0.50030.tar.gz
+rm -f v3.0.50030.tar.gz
+cd textmagic-rest-perl-v2-3.0.50030
 
 # Install dependencies
 cpanm --installdeps .
@@ -81,7 +81,7 @@ If you want to include this SDK in your project's dependencies:
 
 ```perl
 # Add to your cpanfile
-requires 'Net::Sms::TextMagicClient', '== 3.0.43909';
+requires 'Net::Sms::TextMagicClient', '== 3.0.50030';
 ```
 
 Then install:
@@ -381,10 +381,10 @@ rm -rf /path/to/perl/lib/Net/Sms/TextMagicClient
 
 ```bash
 # Download v3.x
-wget https://github.com/textmagic/textmagic-rest-perl-v2/archive/v3.0.43909.tar.gz
-tar zxf v3.0.43909.tar.gz
-rm -f v3.0.43909.tar.gz
-cd textmagic-rest-perl-v2-3.0.43909
+wget https://github.com/textmagic/textmagic-rest-perl-v2/archive/v3.0.50030.tar.gz
+tar zxf v3.0.50030.tar.gz
+rm -f v3.0.50030.tar.gz
+cd textmagic-rest-perl-v2-3.0.50030
 
 # Install dependencies
 cpanm --installdeps .
@@ -472,14 +472,14 @@ perl -w -Ilib your_script.pl
 **If using cpanfile in your project:**
 ```perl
 # Update your project's cpanfile
-requires 'Net::Sms::TextMagicClient', '== 3.0.43909';
+requires 'Net::Sms::TextMagicClient', '== 3.0.50030';
 ```
 
 **If using Makefile.PL:**
 ```perl
 # Update PREREQ_PM in your Makefile.PL
 PREREQ_PM => {
-    'Net::Sms::TextMagicClient' => '3.0.43909',
+    'Net::Sms::TextMagicClient' => '3.0.50030',
     # ... other dependencies
 },
 ```

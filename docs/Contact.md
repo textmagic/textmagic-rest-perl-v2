@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **email** | **string** | Contact email address. | 
 **country** | [**Country**](Country.md) |  | 
 **custom_fields** | [**ARRAY[CustomFieldListItem]**](CustomFieldListItem.md) |  | 
+**custom_field_values** | [**ARRAY[CustomFieldValues]**](CustomFieldValues.md) |  | 
 **user** | [**User**](User.md) |  | 
 **lists** | [**ARRAY[List]**](List.md) |  | 
 **owner** | [**User**](User.md) |  | [optional] 
